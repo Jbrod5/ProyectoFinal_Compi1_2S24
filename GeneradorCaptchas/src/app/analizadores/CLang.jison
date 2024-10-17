@@ -7,73 +7,73 @@
 [ \r\t\n]     {/*ignorar*/}
 
 // ETIQUETAS - - - - - - - - - - - - - - - - -
-"C_CC" 			return 'CC'
-"C_HEAD" 		return 'HEAD'
-"C_TITLE"	    return 'TITLE'
-"C_LINK" 		return 'LINK'
-"C_BODY"	    return 'BODY'
-"C_SPAM" 		return 'SPAM'
-"C_INPUT" 		return 'INPUT'
-"C_TEXTAREA" 	return 'TEXTAREA'
-"C_SELECT" 		return 'SELECT'
-"C_OPTION" 		return 'OPTION'
-"C_DIV" 		return 'DIV'
-"C_IMG" 		return 'IMG'
-"C_BR" 			return 'BR'
-"C_BUTTON" 		return 'BUTTON'
-"C_H1" 			return 'H1'
-"C_P" 			return 'P'
-"C_SCRIPTING"   return 'SCRIPTING'
+"C_CC" 			{ mostrarToken('CC'			, yytext);   return 'CC';  	     }
+"C_HEAD" 		{ mostrarToken('HEAD'		, yytext);   return 'HEAD';      }
+"C_TITLE"	    { mostrarToken('TITLE'		, yytext);	 return 'TITLE';     }
+"C_LINK" 		{ mostrarToken('LINK'		, yytext);	 return 'LINK';      }
+"C_BODY"	    { mostrarToken('BODY'		, yytext);	 return 'BODY';      }
+"C_SPAM" 		{ mostrarToken('SPAM'		, yytext);	 return 'SPAM';      }
+"C_INPUT" 		{ mostrarToken('INPUT'		, yytext);	 return 'INPUT';     }
+"C_TEXTAREA" 	{ mostrarToken('TEXTAREA'	, yytext);	 return 'TEXTAREA';  }
+"C_SELECT" 		{ mostrarToken('SELECT'		, yytext);	 return 'SELECT'; 	 }
+"C_OPTION" 		{ mostrarToken('OPTION'		, yytext);	 return 'OPTION'; 	 }
+"C_DIV" 		{ mostrarToken('DIV'		, yytext);	 return 'DIV'; 		 }
+"C_IMG" 		{ mostrarToken('IMG'		, yytext);	 return 'IMG'; 		 }
+"C_BR" 			{ mostrarToken('BR'			, yytext);	 return 'BR'; 		 }
+"C_BUTTON" 		{ mostrarToken('BUTTON'		, yytext);	 return 'BUTTON'; 	 }
+"C_H1" 			{ mostrarToken('H1'			, yytext);	 return 'H1'; 		 }
+"C_P" 			{ mostrarToken('P'			, yytext);	 return 'P'; 		 }
+"C_SCRIPTING"   { mostrarToken('SCRIPTING'	, yytext);   return 'SCRIPTING'; }
 
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_CC"[\r\t\n]*">") 		return 'CC_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_HEAD"[\r\t\n]*">") 		return 'HEAD_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_TITLE"[\r\t\n]*">") 	return 'TITLE_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_LINK"[\r\t\n]*">") 		return 'LINK_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_BODY"[\r\t\n]*">") 		return 'BODY_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_SPAM"[\r\t\n]*">") 		return 'SPAM_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_INPUT"[\r\t\n]*">") 	return 'INPUT_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_TEXTAREA"[\r\t\n]*">") 	return 'TEXTAREA_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_SELECT"[\r\t\n]*">") 	return 'SELECT_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_OPTION"[\r\t\n]*">") 	return 'OPTION_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_DIV"[\r\t\n]*">") 		return 'DIV_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_IMG"[\r\t\n]*">") 		return 'IMG_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_BR"[\r\t\n]*">") 		return 'BR_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_BUTTON"[\r\t\n]*">") 	return 'BUTTON_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_H1"[\r\t\n]*">") 		return 'H1_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_P"[\r\t\n]*">") 		return 'P_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_SCRIPTING"[\r\t\n]*">") return 'SCRIPTING_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_CC"[\r\t\n]*">") 			{ mostrarToken('CC_FIN'       , yytext);	 return 'CC_FIN';	    }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_HEAD"[\r\t\n]*">") 		{ mostrarToken('HEAD_FIN'     , yytext);	 return 'HEAD_FIN';     }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_TITLE"[\r\t\n]*">") 		{ mostrarToken('TITLE_FIN'    , yytext);	 return 'TITLE_FIN';    }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_LINK"[\r\t\n]*">") 		{ mostrarToken('LINK_FIN'     , yytext);	 return 'LINK_FIN';     }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_BODY"[\r\t\n]*">") 		{ mostrarToken('BODY_FIN'     , yytext);	 return 'BODY_FIN';     }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_SPAM"[\r\t\n]*">") 		{ mostrarToken('SPAM_FIN'     , yytext);     return 'SPAM_FIN';     }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_INPUT"[\r\t\n]*">") 		{ mostrarToken('INPUT_FIN'    , yytext);     return 'INPUT_FIN';    }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_TEXTAREA"[\r\t\n]*">")	{ mostrarToken('TEXTAREA_FIN' , yytext);     return 'TEXTAREA_FIN'; }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_SELECT"[\r\t\n]*">") 		{ mostrarToken('SELECT_FIN'   , yytext);     return 'SELECT_FIN';   }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_OPTION"[\r\t\n]*">") 		{ mostrarToken('OPTION_FIN'   , yytext);     return 'OPTION_FIN';   }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_DIV"[\r\t\n]*">") 		{ mostrarToken('DIV_FIN'      , yytext);	 return 'DIV_FIN';      }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_IMG"[\r\t\n]*">") 		{ mostrarToken('IMG_FIN'      , yytext);	 return 'IMG_FIN';      }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_BR"[\r\t\n]*">") 			{ mostrarToken('BR_FIN'       , yytext);	 return 'BR_FIN';       }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_BUTTON"[\r\t\n]*">") 		{ mostrarToken('BUTTON_FIN'   , yytext);     return 'BUTTON_FIN';   }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_H1"[\r\t\n]*">") 			{ mostrarToken('H1_FIN'       , yytext);	 return 'H1_FIN';       }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_P"[\r\t\n]*">") 			{ mostrarToken('P_FIN'        , yytext);	 return 'P_FIN';        }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_SCRIPTING"[\r\t\n]*">")   { mostrarToken('SCRIPTING_FIN', yytext);     return 'SCRIPTING_FIN';}
 
 // SIMBOLOS - - - - - - - - - - - - - - - - - -
-"<"  	       { mostrarToken("MENQUE"); return 'MENQUE'; }
-">"  	       { mostrarToken("MAYQUE"); return 'MAYQUE'; }
-"["  	       { mostrarToken("CORIZQ"); return 'CORIZQ'; }
-"]"  	       { mostrarToken("CORDER"); return 'CORDER'; }
-"="  	       { mostrarToken("IGUAL"); return 'IGUAL'; }
-"/"  	       { mostrarToken("BARRA"); return 'BARRA'; }
-("“"|"”"|"\"") { mostrarToken("COMILL"); return 'COMILL'; }
+"<"  	       { mostrarToken("MENQUE", yytext); return 'MENQUE'; }
+">"  	       { mostrarToken("MAYQUE", yytext); return 'MAYQUE'; }
+"["  	       { mostrarToken("CORIZQ", yytext); return 'CORIZQ'; }
+"]"  	       { mostrarToken("CORDER", yytext); return 'CORDER'; }
+"="  	       { mostrarToken("IGUAL" , yytext);  return 'IGUAL'; }
+"/"  	       { mostrarToken("BARRA" , yytext);  return 'BARRA'; }
+("“"|"”"|"\"") { mostrarToken("COMILL", yytext); return 'COMILL'; }
 
 // PARAMETROS - - - - - - - - - - - - - - - - - 
-"href"        return 'HREF'   
-"background"  return 'BACKGROUND'   
-"color"       return 'COLOR'   
-"font-size"   return 'F_SIZE'     
-"font-family" return 'F_FAM'    
-"text-align"  return 'TEXT_AL'  
-"type"        return 'TYPE'     
-"id"          return 'ID' 
-"name"        return 'NAME'         
-"cols"        return 'COLS'    
-"rows"        return 'ROWS' 
-"class"       return 'CLASS' 
-"src"         return 'SRC' 
-"width"       return 'WIDTH'      
-"height"      return 'HEIGHT'     
-"onclick()"   return 'ONCLICK'   
+"href"        { mostrarToken('HREF'		 , yytext);   return 'HREF';	  }   
+"background"  { mostrarToken('BACKGROUND', yytext);   return 'BACKGROUND';}   
+"color"       { mostrarToken('COLOR'	 , yytext);   return 'COLOR';	  }   
+"font-size"   { mostrarToken('F_SIZE'	 , yytext);   return 'F_SIZE';	  }     
+"font-family" { mostrarToken('F_FAM' 	 , yytext);   return 'F_FAM';	  }    
+"text-align"  { mostrarToken('TEXT_AL'	 , yytext);   return 'TEXT_AL';	  }  
+"type"        { mostrarToken('TYPE'		 , yytext);   return 'TYPE';	  }     
+"id"          { mostrarToken('ID'		 , yytext);   return 'ID';		  } 
+"name"        { mostrarToken('NAME'		 , yytext);   return 'NAME';      }         
+"cols"        { mostrarToken('COLS' 	 , yytext);   return 'COLS';      }    
+"rows"        { mostrarToken('ROWS'		 , yytext);   return 'ROWS';      } 
+"class"       { mostrarToken('CLASS'	 , yytext);   return 'CLASS';     } 
+"src"         { mostrarToken('SRC'		 , yytext);   return 'SRC';       } 
+"width"       { mostrarToken('WIDTH'	 , yytext);   return 'WIDTH';     }      
+"height"      { mostrarToken('HEIGHT'	 , yytext);   return 'HEIGHT';    }     
+"onclick()"   { mostrarToken('ONCLICK'	 , yytext);   return 'ONCLICK';   }   
 
 
 
 //OTROS - - - - - - - - - - - - - - - - - - - -
-[a-zA-Z0-9.#/%_()]+         {mostrarToken("VALOR"); return 'VALOR';}
+[a-zA-Z0-9.#/%_()]+         {mostrarToken("VALOR", yytext); return 'VALOR';}
 <<EOF>>                     return 'EOF'
 .                           return 'INVALID'
 
@@ -82,8 +82,8 @@
 %start inicio
 	%{ 
 		//Codigo javascript incrustado
-		function mostrarToken(mensaje){
-			console.log("Token: " + mensaje + " | " + this.yytext);
+		function mostrarToken(mensaje, token){
+			console.log("Token: " + mensaje + " | Valor: " + token);
 		}
 	%}
 
