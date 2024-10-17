@@ -6,6 +6,15 @@
 
 [ \r\t\n]     {/*ignorar*/}
 
+// SIMBOLOS - - - - - - - - - - - - - - - - - -
+"<"  	       { mostrarToken("MENQUE"); return 'MENQUE'; }
+">"  	       { mostrarToken("MAYQUE"); return 'MAYQUE'; }
+"["  	       { mostrarToken("CORIZQ"); return 'CORIZQ'; }
+"]"  	       { mostrarToken("CORDER"); return 'CORDER'; }
+"="  	       { mostrarToken("IGUAL"); return 'IGUAL'; }
+"/"  	       { mostrarToken("BARRA"); return 'BARRA'; }
+("“"|"”"|"\"") { mostrarToken("COMILL"); return 'COMILL'; }
+
 // ETIQUETAS - - - - - - - - - - - - - - - - -
 "C_CC" 			return 'CC'
 "C_HEAD" 		return 'HEAD'
@@ -25,32 +34,23 @@
 "C_P" 			return 'P'
 "C_SCRIPTING"   return 'SCRIPTING'
 
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_CC"[\r\t\n]*">") 		return 'CC_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_HEAD"[\r\t\n]*">") 		return 'HEAD_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_TITLE"[\r\t\n]*">") 	return 'TITLE_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_LINK"[\r\t\n]*">") 		return 'LINK_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_BODY"[\r\t\n]*">") 		return 'BODY_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_SPAM"[\r\t\n]*">") 		return 'SPAM_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_INPUT"[\r\t\n]*">") 	return 'INPUT_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_TEXTAREA"[\r\t\n]*">") 	return 'TEXTAREA_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_SELECT"[\r\t\n]*">") 	return 'SELECT_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_OPTION"[\r\t\n]*">") 	return 'OPTION_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_DIV"[\r\t\n]*">") 		return 'DIV_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_IMG"[\r\t\n]*">") 		return 'IMG_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_BR"[\r\t\n]*">") 		return 'BR_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_BUTTON"[\r\t\n]*">") 	return 'BUTTON_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_H1"[\r\t\n]*">") 		return 'H1_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_P"[\r\t\n]*">") 		return 'P_FIN'
-("<"[ \r\t\n]*"/"[ \r\t\n]*"C_SCRIPTING"[\r\t\n]*">") return 'SCRIPTING_FIN'
-
-// SIMBOLOS - - - - - - - - - - - - - - - - - -
-"<"  	       { mostrarToken("MENQUE"); return 'MENQUE'; }
-">"  	       { mostrarToken("MAYQUE"); return 'MAYQUE'; }
-"["  	       { mostrarToken("CORIZQ"); return 'CORIZQ'; }
-"]"  	       { mostrarToken("CORDER"); return 'CORDER'; }
-"="  	       { mostrarToken("IGUAL"); return 'IGUAL'; }
-"/"  	       { mostrarToken("BARRA"); return 'BARRA'; }
-("“"|"”"|"\"") { mostrarToken("COMILL"); return 'COMILL'; }
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_CC"[\r\t\n]*">")\b 		return 'CC_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_HEAD"[\r\t\n]*">")\b 		return 'HEAD_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_TITLE"[\r\t\n]*">")\b 	return 'TITLE_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_LINK"[\r\t\n]*">")\b 		return 'LINK_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_BODY"[\r\t\n]*">")\b 		return 'BODY_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_SPAM"[\r\t\n]*">")\b 		return 'SPAM_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_INPUT"[\r\t\n]*">")\b 	return 'INPUT_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_TEXTAREA"[\r\t\n]*">")\b 	return 'TEXTAREA_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_SELECT"[\r\t\n]*">")\b 	return 'SELECT_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_OPTION"[\r\t\n]*">")\b 	return 'OPTION_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_DIV"[\r\t\n]*">")\b 		return 'DIV_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_IMG"[\r\t\n]*">")\b 		return 'IMG_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_BR"[\r\t\n]*">")\b 		return 'BR_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_BUTTON"[\r\t\n]*">")\b 	return 'BUTTON_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_H1"[\r\t\n]*">")\b 		return 'H1_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_P"[\r\t\n]*">")\b 		return 'P_FIN'
+("<"[ \r\t\n]*"/"[ \r\t\n]*"C_SCRIPTING"[\r\t\n]*">")\b return 'SCRIPTING_FIN'
 
 // PARAMETROS - - - - - - - - - - - - - - - - - 
 "href"        return 'HREF'   
@@ -127,28 +127,42 @@ etiqueta: head | title | cc | body | div | select | link | spam | input | t_area
 valor : VALOR;
 
 /* Sin parametros */
-head  : MENQUE HEAD  MAYQUE etiquetas 		HEAD_FIN;
-title : MENQUE TITLE MAYQUE valor     		TITLE_FIN;
+head  : MENQUE HEAD  MAYQUE etiquetas 		head_fin;
+title : MENQUE TITLE MAYQUE valor     		title_fin;
+head_fin : HEAD_FIN 	| MENQUE BARRA HEAD MAYQUE;
+title_fin: TITLE_FIN    | MENQUE BARRA TITLE MAYQUE;
 
 /* - - Con parametros - - */
 // Con etiquetas
-cc    : MENQUE CC      parametros MAYQUE etiquetas 		CC_FIN  ;
-body  : MENQUE BODY    parametros MAYQUE etiquetas 		BODY_FIN;
-div   : MENQUE DIV     parametros MAYQUE etiquetas 		DIV_FIN ;
+cc    : MENQUE CC      parametros MAYQUE etiquetas 		cc_fin  ;
+body  : MENQUE BODY    parametros MAYQUE etiquetas 		body_fin;
+div   : MENQUE DIV     parametros MAYQUE etiquetas 		div_fin ;
+cc_fin  : CC_FIN   | MENQUE BARRA CC 	MAYQUE;
+body_fin: BODY_FIN | MENQUE BARRA BODY  MAYQUE;
+div_fin : DIV_FIN  | MENQUE BARRA DIV 	MAYQUE;  
 
-select: MENQUE SELECT  parametros MAYQUE opciones  		SELECT_FIN; //Solo etiquetas option
-option  : MENQUE OPTION MAYQUE valor 					OPTION_FIN;
+select: MENQUE SELECT  parametros MAYQUE opciones  		select_fin; //Solo etiquetas option
+option  : MENQUE OPTION MAYQUE valor 					option_fin;
 options : option options | option ;
-
+select_fin : SELECT_FIN | MENQUE BARRA SELECT MAYQUE;
+option_fin : OPTION_FIN | MENQUE BARRA OPTION MAYQUE;
 
 //Sin etiquetas
-link  : MENQUE LINK     parametros MAYQUE valor     LINK_FIN	;
-spam  : MENQUE SPAM     parametros MAYQUE valor     SPAM_FIN	; 
-input : MENQUE INPUT    parametros MAYQUE valor 	INPUT_FIN	; 
-t_area: MENQUE TEXTAREA parametros MAYQUE valor     TEXTAREA_FIN;
+link  : MENQUE LINK     parametros MAYQUE valor     link_fin	;
+spam  : MENQUE SPAM     parametros MAYQUE valor     spam_fin	; 
+input : MENQUE INPUT    parametros MAYQUE valor 	input_fin	; 
+t_area: MENQUE TEXTAREA parametros MAYQUE valor     t_area_fin  ;
 img   : MENQUE IMG      parametros MAYQUE;
 br    : MENQUE BR 				   MAYQUE 
 	  | MENQUE BARRA BR 		   MAYQUE;
-button: MENQUE BUTTON 	parametros MAYQUE valor     BUTTON_FIN;
-h1    : MENQUE H1       parametros MAYQUE valor     H1_FIN	  ;
-P     : MENQUE P        parametros MAYQUE valor     P_FIN	  ; 
+button: MENQUE BUTTON 	parametros MAYQUE valor     button_fin;
+h1    : MENQUE H1       parametros MAYQUE valor     h1_fin	  ;
+P     : MENQUE P        parametros MAYQUE valor     p_fin	  ; 
+
+link_fin  : LINK_FIN	| MENQUE BARRA LINK  	MAYQUE;
+spam_fin  : SPAM_FIN	| MENQUE BARRA SPAM  	MAYQUE; 
+input_fin : INPUT_FIN	| MENQUE BARRA INPUT 	MAYQUE;
+t_area_fin: TEXTAREA_FIN| MENQUE BARRA TEXTAREA MAYQUE;
+button_fin: BUTTON_FIN	| MENQUE BARRA BUTTON   MAYQUE;
+h1_fin    : H1_FIN		| MENQUE BARRA H1       MAYQUE;
+p_fin     : P_FIN		| MENQUE BARRA P        MAYQUE;
