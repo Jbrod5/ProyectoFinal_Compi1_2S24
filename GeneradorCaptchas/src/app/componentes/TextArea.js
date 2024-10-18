@@ -1,40 +1,37 @@
 import { Componente } from "./Componente";
 
-export class Input extends Componente{
+export class TextArea extends Componente{
 
-    tipo;
-    font_size; 
-    font_family; 
-    text_align;
+    fontSize; 
+    fontFamily; 
+    textAlign; 
     id; 
-    color;  
-
-    valor;
+    cols; 
+    rows; 
 
     /**
      * Establece un parametro para el componente. 
-     * @param {String} parametro - Nombre del parametro en mayusculas que se desea establecer. 
-     * @param {String} valor - Valor del parametro que se desea establecer. 
+     * @param {String} parametro - Nombre del parametro en mayusculas que se desea establecer.
+     * @param {String} valor - Valor del parametro que se desea establecer.
      * 
-     * @throws {Error} Error semantico, si se desea establecer un parametro que no es valido en el componente o si ese parametro ya contaba con un valo.*/
+     * @throws {Error} Error semantico, si se desea establecer un parametro que no es valido en el componente o si el parametro ya contaba con un valor.
+     */
     establecerParametro(parametro, valor){
-
         switch(parametro){
-            case 'TIPO':
-                if(this.tipo != undefined){
-                    mensaje = "Error Semantico: se intento establecer el parametro tipo pero ya estaba definido.";
+            case 'COLS':
+                if(this.cols != undefined){
+                    mensaje = "Error Semantico: se intento establecer el parametro cols pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 }
-                val = valor.toLocaleLowerCase();
-                if(val === "text" | val === "number" | val === "radio" | val === "checkbox"){
-                    this.tipo = val;
-                }else{
-                    mensaje = "Error Sintactico: se intento establecer el parametro tipo pero " + val + " no es un tipo de input correcto.";
-                    super.lanzarExcepcionSintactica(mensaje);
-                }
+                this.cols = valor; 
                 break; 
-            
-
+            case 'ROWS':
+                if(this.rows != undefined){
+                    mensaje = "Error Semantico: se intento establecer el parametro rows pero ya estaba definido";
+                    super.lanzarExcepcionSemantica(mensaje);
+                }
+                this.rows = valor;
+                break;
             case 'FONT_SIZE':
                 if(this.font_size != undefined){
                     mensaje = "Error Semantico: se intento establecer el parametro font-size pero ya estaba definido.";
@@ -71,35 +68,23 @@ export class Input extends Componente{
                 this.id = valor;
                 break;
             default: 
-                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia Input pero no es un parametro valido para el componente.";
+                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia TextArea pero no es un parametro valido para el componente.";
                 super.lanzarExcepcionSemantica();
         }
     }
 
     /**
-     * Establece el valor que tendra el input como texto mostrado. 
-     * @param {String} valor - Valor que tendra el input como texto mostrado para la entrada. 
-     */
-    establecerValor(valor){
-        this.valor = valor;
-    }
-
-
-
-
-    /**
-     * @returns {String} El codigo HTML del componente
+     * @returns {String} El codigo HTML del componente. 
      */
     obtenerCodigo(){
-        this.tipo = this.tipo || 'text';
-        this.color = this.color || '#000000';
         this.fontSize = this.fontSize || '10px';
         this.fontFamily = this.fontFamily || 'Arial';
         this.textAlign = this.textAlign || 'left';
-        style = "\" color: " + this.color + "; font-size: " + this.fontSize + "; font-family: " + this.fontFamily + "; text-align: " + this.textAlign + ";\"";
-        codigo = "<input type=\"" + this.tipo + "\" id = \"" + this.id + "\" name = \""+ this.id  +"\" " + style + " value = \"" + this.valor + "\">";
 
-
+        this.cols = this.cols || '40';
+        this.rows = this.rows || '15';
+        style = "style=\"font-size: " + this.fontSize + "; font-family: " + this.fontFamily + "; text-align: " + this.textAlign + ";\"";
+        codigo = "<textarea id=\"" + this.id + "\" rows=\"" + this.rows + "\" cols=\"" + this.cols + "\" " + style + "></textarea>";
         return codigo; 
     }
 
