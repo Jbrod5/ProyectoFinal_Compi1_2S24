@@ -88,7 +88,7 @@ export class Input extends Componente{
 
 
     /**
-     * @returns {String} El codigo HTML del componente
+     * @returns {String} El codigo HTML del componente.
      */
     obtenerCodigo(){
         this.tipo = this.tipo || 'text';

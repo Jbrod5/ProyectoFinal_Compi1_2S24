@@ -19,6 +19,13 @@ export class Componente{
 
     }
 
+    /**
+     * Agrega un componente a la lista de componentes.
+     * @param {Componente} componente - Componente que se agregara a la lista de componentes.
+     */
+    agregarComponente(componente){
+
+    }
 
 
 

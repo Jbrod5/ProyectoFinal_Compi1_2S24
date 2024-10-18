@@ -1,21 +1,34 @@
 import { Componente } from "./Componente";
+import { Option } from "./Option";
+export class Select extends Componente{
 
-export class Spam extends Componente{
+    //Opciones contenidas en el Select
+    opciones = [];
 
+    //Parametros
+    fontSize; 
+    fontFamily; 
+    textAlign; 
     color; 
-    font_size;
-    font_family;
-    text_align;
-    id;
+    id; 
 
-    valor;
 
     /**
-     * Establece un parametro del componente.
-     * @param {String} parametro - Nombre del parametro en mayusculas que se desea establecer. 
+     * Agrega una opcion a la lista de componentes interna.
+     * @param {Option} componente 
+     */
+    agregarComponente(componente){
+        this.opciones.push(componente);
+    }
+
+
+    /**
+     * Establece un parametro para el componente. 
+     * @param {String} parametro - Nombre del parametro en mayusculas que se desea establecer.
      * @param {String} valor - Valor del parametro que se desea establecer.
      * 
-     * @throws {Error} Error semantico, si se desea establecer un parametro que no es valido en el componete o si ese parámetro ya contaba con un valor.*/
+     * @throws {Error} Error semantico, si se desea establecer un parametro que no es valido en el componente o si el parametro ya contaba con un valor.
+     */
     establecerParametro(parametro, valor){
         switch(parametro){
             case 'COLOR':
@@ -58,8 +71,8 @@ export class Spam extends Componente{
                         break; 
                     case 'aqua': color = '#00FFFF';
                         break;
-                    default:
-                        color = valor; 
+                    default: 
+                        color = valor;  
                 }
                 break;
             case 'FONT_SIZE':
@@ -97,21 +110,11 @@ export class Spam extends Componente{
                 }
                 this.id = valor;
                 break;
-            default:
-                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia Spam pero no es un parametro valido para el componente.";
-                super.lanzarExcepcionSemantica(mensaje);
+            default: 
+                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia TextArea pero no es un parametro valido para el componente.";
+                super.lanzarExcepcionSemantica();
         }
     }
-
-    /**
-     * Establece el valor que se encerrará entre las etiquetas de apertura y cierre.
-     * @param {String} valor - Valor que se contendra entre las etiquetas de apertura y cierre. 
-     */
-    establecerValor(valor){
-        this.valor = valor;
-    }
-
-
 
     /**
      * @returns {String} El codigo HTML del componente.
@@ -122,9 +125,17 @@ export class Spam extends Componente{
         this.fontFamily = this.fontFamily || 'Arial';
         this.textAlign = this.textAlign || 'left';
 
-        codigo = "<p><span style=\"color: " + this.color + "; font-size: " +  this.fontSize + "; font-family: " + this.fontFamily + "; text-align: " + this.textAlign + ";>" + valor + "</span></p><>";
+        style = "style=\"font-size: " + this.fontSize + "; font-family: " + this.fontFamily + "; text-align: " + this.textAlign + "; color: " + this.color + ";\"";
+        codigo = "<select id=\"" + this.id + "\"" + style + ">\n";
+
+        this.opciones.forEach(opcion => {
+            codigo += "    " + opcion.obtenerCodigo() + "\n";
+        });
+
+        codigo += "</select>"
+
+
         return codigo; 
     }
 
 }
-
