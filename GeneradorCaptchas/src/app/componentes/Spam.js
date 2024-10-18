@@ -21,8 +21,7 @@ export class Spam extends Componente{
             case 'COLOR':
                 if(color != undefined){
                     mensaje = "Error Semantico: se intento establecer el parametro color pero ya estaba definido.";
-                    console.log(mensaje);
-                    throw new Error(mensaje);
+                    super.lanzarExcepcionSemantica(mensaje);
                 }
                 //1. Evaluar si es un color preestablecido
                 c = valor.toLowerCase();
@@ -65,24 +64,21 @@ export class Spam extends Componente{
             case 'FONT_SIZE':
                 if(this.font_size != undefined){
                     mensaje = "Error Semantico: se intento establecer el parametro font-size pero ya estaba definido.";
-                    console.log(mensaje);
-                    throw new Error(mensaje);
+                    super.lanzarExcepcionSemantica(mensaje);
                 }
                 this.font_size = valor;  
                 break;
             case 'FONT_FAMILY':
                 if(this.font_family != undefined){
                     mensaje = "Error Semantico: se intento establecer el parametro font_family pero ya estaba definido.";
-                    console.log(mensaje);
-                    throw new Error(mensaje);
+                    super.lanzarExcepcionSemantica(mensaje);
                 } 
                 this.font_family = valor;
                 break;
             case 'TEXT_ALIGN':
                 if(this.text_align != undefined){
                     mensaje = "Error Semantico: se intento establecer el parametro text-align pero ya estaba definido.";
-                    console.log(mensaje);
-                    throw new Error(mensaje);
+                    super.lanzarExcepcionSemantica(mensaje);
                 } 
                 al = valor.toLowerCase(); 
                 switch(al){
@@ -90,21 +86,19 @@ export class Spam extends Componente{
                     case 'right': this.text_align = 'right'; break; 
                     case 'center': this.text_align = 'center'; break; 
                     case 'justify': this.text_align = 'justify'; break;                    
-                    default: this.text_align = valor;
+                    default: this.lanzarExcepcionSintactica("Error Sintactico: se intento establecer una alineacion de texto " + al + " pero no es una alineacion valida.")
                 }
                 break;
             case 'ID':
                 if(this.id != undefined){
                     mensaje = "Error Semantico: se intento establecer el parametro id pero ya estaba definido.";
-                    console.log(mensaje);
-                    throw new Error(mensaje);
+                    super.lanzarExcepcionSemantica(mensaje);
                 }
                 this.id = valor;
                 break;
             default:
                 mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia Spam pero no es un parametro valido para el componente.";
-                console.log(mensaje);
-                throw new Error(mensaje);
+                super.lanzarExcepcionSemantica(mensaje);
         }
     }
 

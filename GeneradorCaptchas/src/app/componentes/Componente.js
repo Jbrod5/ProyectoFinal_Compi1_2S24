@@ -29,7 +29,25 @@ export class Componente{
         return "st";
     }
 
+    /**
+     * Lanza una excepcion semantica.
+     * @param {String} mensaje - Mensaje que tendra la excepcion lanzada. 
+     * @throws {Error} Error semantico.
+     */
+    lanzarExcepcionSemantica(mensaje){
+        console.log(mensaje);
+        throw new Error(mensaje);
+    }
 
+     /**
+     * Lanza una excepcion sintactica.
+     * @param {String} mensaje - Mensaje que tendra la excepcion lanzada. 
+     * @throws {Error} Error sintactico.
+     */
+     lanzarExcepcionSintactica(mensaje){
+        console.log(mensaje);
+        throw new Error(mensaje);
+    }
 
     
 }
