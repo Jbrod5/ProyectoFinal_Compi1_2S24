@@ -111,7 +111,7 @@ export class Select extends Componente{
                 this.id = valor;
                 break;
             default: 
-                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia TextArea pero no es un parametro valido para el componente.";
+                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia Select pero no es un parametro valido para el componente.";
                 super.lanzarExcepcionSemantica();
         }
     }

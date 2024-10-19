@@ -1,19 +1,15 @@
 import { Componente } from "./Componente";
 
-export class Button extends Componente{
+export class H1 extends Componente{
 
-    color;
-    fontSize;
-    fontFamily;
-    textAlign;
+    fontSize; 
+    fontFamily; 
+    textAlign; 
     id;
-    backround;
-    
+    color; 
 
-    onclick;
+    valor;
 
-
-    valor; 
 
     /**
      * Establece un parametro para el componente; 
@@ -103,62 +99,11 @@ export class Button extends Componente{
                 }
                 this.id = valor;
                 break;
-            case 'BACKGROUND':
-                if(this.background == undefined){
-                    c = valor.toLowerCase();
-                    switch(c){
-                        case 'black': this.background = '#000000';
-                            break;
-                        case 'olive': this.background =  '#808000';
-                            break;
-                        case 'teal': this.background = '#008080';
-                            break; 
-                        case 'red': this.background = '#FF0000';
-                            break; 
-                        case 'blue': this.background = '#0000FF';
-                            break;
-                        case 'maroon': this.background = '#800000';
-                            break; 
-                        case 'navy': this.background = '#000080';
-                            break; 
-                        case 'gray': this.background = '#808080';
-                            break; 
-                        case 'lime': this.background = '#00FF00';
-                            break; 
-                        case 'fucshia': this.background = '#FF00FF';
-                            break; 
-                        case 'green': this.background = '#008000';
-                            break; 
-                        case 'white': this.background = '#FFFFFF';
-                            break; 
-                        case 'purple': this.background = '#800080';
-                            break;
-                        case 'silver': this.background = '#C0C0C0';
-                            break;
-                        case 'yellow': this.background = '#FFFF00';
-                            break; 
-                        case 'aqua': this.background = '#00FFFF';
-                            break;
-                        default: 
-                            this.background = valor;  
-                    }
-                }else{
-                    mensaje = "Error Semantico: se intento establecer el parametro background pero ya estaba definido.";
-                    super.lanzarExcepcionSemantica(mensaje)
-                }
-                break;
-            case 'ONCLICK':
-                if(this.onclick != undefined){
-                    super.lanzarExcepcionSemantica("Error Semantico: se intento establecer el parametro ONCLICK pero ya estaba definido.")
-                }
-                this.onclick = valor; 
-                break; 
             default: 
-                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia Button pero no es un parametro valido para el componente.";
+                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia H1 pero no es un parametro valido para el componente.";
                 super.lanzarExcepcionSemantica();
         }
     }
-
 
     /**
      * Establece el valor que se encerrará entre las etiquetas de apertura y cierre.
@@ -169,27 +114,22 @@ export class Button extends Componente{
     }
 
     /**
-     * @returns {String} El codigo HTML del componente.
+     * Establece el valor que se encerrará entre las etiquetas de apertura y cierre.
+     * @param {String} valor - Valor que se contendra entre las etiquetas de apertura y cierre. 
      */
     obtenerCodigo(){
         this.color = this.color || '#000000';
         this.fontSize = this.fontSize || '10px';
         this.fontFamily = this.fontFamily || 'Arial';
         this.textAlign = this.textAlign || 'left';
-        this.background = this.background || '#FFFFFF';
 
-        codigo = "<button ";
-        codigo += "id=\"" + this.id + "\" ";
-        codigo += "onclick=\"" + this.onclick + "\"";
         style = " style=\"";
-        style += "background-color: " + this.background + "; ";
         style += "color: " + this.color + "; ";
         style += "font-family: " + this.fontFamily + "; ";
         style += "font-size: " + this.fontSize + "; ";
         style += "text-align: " + this.textAlign + "; \"";
 
-        codigo += style + ">" + valor + "</button>"; 
-
+        codigo = "<h1 id=\"" + this.id + "\" " + style +">" + this.valor + "</h1>";
         return codigo; 
     }
 

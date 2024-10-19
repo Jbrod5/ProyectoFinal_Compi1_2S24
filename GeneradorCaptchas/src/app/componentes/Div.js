@@ -161,7 +161,7 @@ export class Div extends Componente{
                 }
                 break; 
             default: 
-                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia TextArea pero no es un parametro valido para el componente.";
+                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia Div pero no es un parametro valido para el componente.";
                 super.lanzarExcepcionSemantica();
         }
 
