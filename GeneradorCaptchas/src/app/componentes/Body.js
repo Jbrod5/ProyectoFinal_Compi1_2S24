@@ -1,7 +1,9 @@
 import { Componente } from "./Componente";
 
 export class Body extends Componente{
-    background; 
+    background;
+    
+    componentes = [];
 
     /**
      * Establece un parametro del componente.
@@ -61,6 +63,13 @@ export class Body extends Componente{
         }
     }
 
+    /**
+     * Agrega un componente a la lista de componentes.
+     * @param {Componente} componente - Componente que se agregara a la lista de componentes.
+     */
+    agregarComponente(componente){
+        this.componentes.push(componente);
+    }
 
     /**
      * @returns {String} El codigo HTML del componente body.
@@ -69,7 +78,14 @@ export class Body extends Componente{
         if(this.background == undefined){
             this.background = "#FFFFFF";
         }
-        codigo = "<body style=\"background-color: " + this.background + ";\"></body>";
+        codigo = "<body style=\"background-color: " + this.background + ";\">";
+        
+        //concatenar el codigo de los componentes.
+        this.componentes.forEach(comp =>{
+            codigo += comp.obtenerCodigo();
+        })
+
+        codigo += "</body>";
         return codigo; 
 
     }

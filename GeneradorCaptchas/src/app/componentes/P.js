@@ -99,7 +99,7 @@ export class P extends Componente{
                 this.id = valor;
                 break;
             default: 
-                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia H1 pero no es un parametro valido para el componente.";
+                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia P pero no es un parametro valido para el componente.";
                 super.lanzarExcepcionSemantica();
         }
     }
