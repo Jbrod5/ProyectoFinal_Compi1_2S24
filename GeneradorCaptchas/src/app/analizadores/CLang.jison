@@ -1,4 +1,29 @@
 /* DEFINICIONES LEXICAS */
+%{	
+	/*
+	
+	import { Componente } from "../componentes/Componente";
+	
+	import { Body } from "../componentes/Body";
+	import { Br } from "../componentes/Br";
+	import { Button } from "../componentes/Button";
+	import { Div } from "../componentes/Div";
+	import { H1 } from "../componentes/H1";
+	import { Head } from "../componentes/Head";
+	import { Html } from "../componentes/Html";
+	import { Img } from "../componentes/Img";
+	import { Input } from "../componentes/Input";
+	import { Link } from "../componentes/Link";
+	import { Option } from "../componentes/Option";
+	import { P } from "../componentes/P";
+	import { Select } from "../componentes/Select";
+	import { Spam } from "../componentes/Spam";
+	import { TextArea } from "../componentes/TextArea";
+	import { Title } from "../componentes/Title";
+	
+	*/
+
+%}
 %lex
 
 %% 
