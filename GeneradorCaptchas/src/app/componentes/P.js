@@ -1,19 +1,18 @@
 import { Componente } from "./Componente";
 
-export class H1 extends Componente{
+export class P extends Componente{
 
     fontSize; 
     fontFamily; 
-    textAlign; 
-    id;
-    color; 
+    textAlign;
+    id; 
+    color;
 
-    valor;
-
+    valor; 
 
     /**
      * Establece un parametro para el componente.
-     * @param {String} parametro - Nombre del parametro en mayusculas que se desea establecer. 
+     * @param {String} parametro - Nombre del parametro en mayusculas que se desea establecer.
      * @param {String} valor - Valor del parametro que se desea establecer.
      * 
      * @throws {Error} Error semantico, si se desea establecer un parametro que no es valido en el componente o si el parametro ya contaba con un valor establecido.
@@ -113,8 +112,9 @@ export class H1 extends Componente{
         this.valor = valor; 
     }
 
+
     /**
-     * @returns {String} String con el codigo html del componente.. 
+     * @returns {String} String con el codigo html del componente.
      */
     obtenerCodigo(){
         this.color = this.color || '#000000';
@@ -128,8 +128,7 @@ export class H1 extends Componente{
         style += "font-size: " + this.fontSize + "; ";
         style += "text-align: " + this.textAlign + "; \"";
 
-        codigo = "<h1 id=\"" + this.id + "\" " + style +">" + this.valor + "</h1>";
+        codigo = "<p id=\"" + this.id + "\" " + style +">" + this.valor + "</p>";
         return codigo; 
     }
-
 }
