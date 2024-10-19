@@ -83,6 +83,57 @@ performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* actio
 
 var $0 = $$.length - 1;
 switch (yystate) {
+case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19:
+ this.$ = $$[$0]; 
+break;
+case 20:
+ this.$ = new PARAMETRO("HREF"		  , $$[$0-2]); 
+break;
+case 21:
+ this.$ = new PARAMETRO("BACKGROUND" , $$[$0-2]); 
+break;
+case 22:
+ this.$ = new PARAMETRO("COLOR"	  , $$[$0-2]); 
+break;
+case 23:
+ this.$ = new PARAMETRO("FONT_SIZE"  , $$[$0-2]); 
+break;
+case 24:
+ this.$ = new PARAMETRO("FONT_FAMILY", $$[$0-2]); 
+break;
+case 25:
+ this.$ = new PARAMETRO("TEXT_ALIGN" , $$[$0-2]); 
+break;
+case 26:
+ this.$ = new PARAMETRO("TIPO"       , $$[$0-2]); 
+break;
+case 27:
+ this.$ = new PARAMETRO("ID"         , $$[$0-2]); 
+break;
+case 28:
+ this.$ = new PARAMETRO("NAME"       , $$[$0-2]); 
+break;
+case 29:
+ this.$ = new PARAMETRO("COLS"       , $$[$0-2]); 
+break;
+case 30:
+ this.$ = new PARAMETRO("ROWS"       , $$[$0-2]); 
+break;
+case 31:
+ this.$ = new PARAMETRO("CLASS"      , $$[$0-2]); 
+break;
+case 32:
+ this.$ = new PARAMETRO("SRC"        , $$[$0-2]); 
+break;
+case 33:
+ this.$ = new PARAMETRO("WIDTH"      , $$[$0-2]); 
+break;
+case 34:
+ this.$ = new PARAMETRO("HEIGHT"     , $$[$0-2]); 
+break;
+case 35:
+ this.$ = new PARAMETRO("ONCLICK"    , $$[$0-2]); 
+break;
 case 53:
 
 	console.log('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
@@ -341,7 +392,7 @@ _handle_error:
 }};
 	
 	/*
-	
+
 	import { Componente } from "../componentes/Componente";
 	
 	import { Body } from "../componentes/Body";
@@ -360,8 +411,14 @@ _handle_error:
 	import { Spam } from "../componentes/Spam";
 	import { TextArea } from "../componentes/TextArea";
 	import { Title } from "../componentes/Title";
+
+	import { PARAMETRO } from "../componentes/PARAMETRO";
 	
 	*/
+
+	parametros = [];
+
+
 
  
 		//Codigo javascript incrustado

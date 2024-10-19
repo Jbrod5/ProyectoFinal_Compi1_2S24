@@ -1,7 +1,7 @@
 /* DEFINICIONES LEXICAS */
 %{	
 	/*
-	
+
 	import { Componente } from "../componentes/Componente";
 	
 	import { Body } from "../componentes/Body";
@@ -20,8 +20,14 @@
 	import { Spam } from "../componentes/Spam";
 	import { TextArea } from "../componentes/TextArea";
 	import { Title } from "../componentes/Title";
+
+	import { PARAMETRO } from "../componentes/PARAMETRO";
 	
 	*/
+
+	parametros = [];
+
+
 
 %}
 %lex
@@ -122,24 +128,26 @@ inicio: cc EOF;
 
 // Parametros - - - - - - - - - - -
 parametros : parametro parametros |/**/;
-parametro : href | background | color | font_size | font_family | text_align | type | id | name | cols | rows | class | src | width | height | onclick;
+parametro : href        { $$ = $1; }| background  { $$ = $1; }     | color       { $$ = $1; }    | font_size   { $$ = $1; }    | font_family { $$ = $1; }   | text_align  { $$ = $1; }    | type        { $$ = $1; }    | id          { $$ = $1; }  | name        { $$ = $1; } | cols        { $$ = $1; }   | rows        { $$ = $1; }  | class       { $$ = $1; }  | src         { $$ = $1; }  | width       { $$ = $1; }| height      { $$ = $1; }| onclick     { $$ = $1; };
 
-href 		: CORIZQ HREF 		IGUAL COMILL VALOR COMILL CORDER; 
-background  : CORIZQ BACKGROUND IGUAL COMILL VALOR COMILL CORDER;
-color		: CORIZQ COLOR 		IGUAL COMILL VALOR COMILL CORDER;
-font_size   : CORIZQ F_SIZE 	IGUAL COMILL VALOR COMILL CORDER;
-font_family : CORIZQ F_FAM 		IGUAL COMILL VALOR COMILL CORDER; 
-text_align  : CORIZQ TEXT_AL 	IGUAL COMILL VALOR COMILL CORDER; 
-type        : CORIZQ TYPE 		IGUAL COMILL VALOR COMILL CORDER;  
-id          : CORIZQ ID 		IGUAL COMILL VALOR COMILL CORDER;       
-name        : CORIZQ NAME 		IGUAL COMILL VALOR COMILL CORDER;      
-cols        : CORIZQ COLS 		IGUAL COMILL VALOR COMILL CORDER;   
-rows        : CORIZQ ROWS 		IGUAL COMILL VALOR COMILL CORDER;     
-class       : CORIZQ CLASS 		IGUAL COMILL VALOR COMILL CORDER;         
-src         : CORIZQ SRC 		IGUAL COMILL VALOR COMILL CORDER;     
-width       : CORIZQ WIDTH 		IGUAL COMILL VALOR COMILL CORDER;     
-height      : CORIZQ HEIGHT 	IGUAL COMILL VALOR COMILL CORDER;    
-onclick     : CORIZQ ONCLICK 	IGUAL COMILL VALOR COMILL CORDER;  
+
+
+href 		: CORIZQ HREF 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("HREF"		  , $5); }; 
+background  : CORIZQ BACKGROUND IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("BACKGROUND" , $5); };
+color		: CORIZQ COLOR 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("COLOR"	  , $5); };
+font_size   : CORIZQ F_SIZE 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("FONT_SIZE"  , $5); };
+font_family : CORIZQ F_FAM 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("FONT_FAMILY", $5); }; 
+text_align  : CORIZQ TEXT_AL 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("TEXT_ALIGN" , $5); }; 
+type        : CORIZQ TYPE 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("TIPO"       , $5); };  
+id          : CORIZQ ID 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("ID"         , $5); };       
+name        : CORIZQ NAME 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("NAME"       , $5); };      
+cols        : CORIZQ COLS 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("COLS"       , $5); };   
+rows        : CORIZQ ROWS 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("ROWS"       , $5); };     
+class       : CORIZQ CLASS 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("CLASS"      , $5); };         
+src         : CORIZQ SRC 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("SRC"        , $5); };     
+width       : CORIZQ WIDTH 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("WIDTH"      , $5); };     
+height      : CORIZQ HEIGHT 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("HEIGHT"     , $5); };    
+onclick     : CORIZQ ONCLICK 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("ONCLICK"    , $5); };  
 
 // Etiquetas - - - - - - - - - - - -
 etiquetas: etiqueta etiquetas | etiqueta;
