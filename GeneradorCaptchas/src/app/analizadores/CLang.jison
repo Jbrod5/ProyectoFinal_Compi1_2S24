@@ -1,110 +1,27 @@
 /* DEFINICIONES LEXICAS */
 %{	
 	
-	/*
-	import { Componente } from "../componentes/Componente";
 	
-	import { Body } from "../componentes/Body";
-	import { Br } from "../componentes/Br";
-	import { Button } from "../componentes/Button";
-	import { Div } from "../componentes/Div";
-	import { H1 } from "../componentes/H1";
-	import { Head } from "../componentes/Head";
-	import { Html } from "../componentes/Html";
-	import { Img } from "../componentes/Img";
-	import { Input } from "../componentes/Input";
-	import { Link } from "../componentes/Link";
-	import { Option } from "../componentes/Option";
-	import { P } from "../componentes/P";
-	import { Select } from "../componentes/Select";
-	import { Spam } from "../componentes/Spam";
-	import { TextArea } from "../componentes/TextArea";
-	import { Title } from "../componentes/Title";
+	const {Componente} = require ('../componentes/Componente');
+	
+	const { Body }     = require ('../componentes/Body')	;
+	const { Br }       = require ('../componentes/Br')		;
+	const { Button }   = require ('../componentes/Button')	;
+	const { Div }      = require ('../componentes/Div')		;
+	const { H1 }       = require ('../componentes/H1')		;
+	const { Head }     = require ('../componentes/Head')	;
+	const { Html }     = require ('../componentes/Html')	;
+	const { Img }      = require ('../componentes/Img')		;
+	const { Input }    = require ('../componentes/Input')	;
+	const { Link }     = require ('../componentes/Link')	;
+	const { Option }   = require ('../componentes/Option')	;
+	const { P }        = require ('../componentes/P')		;
+	const { Select }   = require ('../componentes/Select')	;
+	const { Spam }     = require ('../componentes/Spam')	;
+	const { TextArea } = require ('../componentes/TextArea');
+	const { Title }    = require ('../componentes/Title')	;
 
-	import { PARAMETRO } from "../componentes/PARAMETRO";
-	*/
-
-
-
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	//CLASES QUE NO SE PUDIERON IMPORTAR - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-	
-
-	class Componente{
-
-		/** 
-		 *  Establece un parametro del componente
-		 * @param {string} parametro - Nombre del parametro en mayusculas que se desea establecer.
-		 * @param {string} valor - Valor del parametro que se desea establecer
-		 *
-		 * @throws {Error} Error sintactico, si se desea establecer un parametro que no es valido en el componete o si ese parámetro ya contaba con un valor.*/
-		establecerParametro(parametro, valor){
-	
-		}
-	
-		/**
-		 * Establece el valor que se encerrará entre las etiquetas de apertura y cierre.
-		 * @param {String} valor - Valor que se contendra entre las etiquetas de apertura y cierre. 
-		 */
-		establecerValor(valor){
-	
-		}
-	
-		/**
-		 * Agrega un componente a la lista de componentes.
-		 * @param {Componente} componente - Componente que se agregara a la lista de componentes.
-		 */
-		agregarComponente(componente){
-	
-		}
-	
-	
-	
-		/**
-		 * @returns {String} El codigo HTML del componente.
-		 */
-		obtenerCodigo(){
-			return "st";
-		}
-	
-		/**
-		 * Lanza una excepcion semantica.
-		 * @param {String} mensaje - Mensaje que tendra la excepcion lanzada. 
-		 * @throws {Error} Error semantico.
-		 */
-		lanzarExcepcionSemantica(mensaje){
-			console.log(mensaje);
-			throw new Error(mensaje);
-		}
-	
-		 /**
-		 * Lanza una excepcion sintactica.
-		 * @param {String} mensaje - Mensaje que tendra la excepcion lanzada. 
-		 * @throws {Error} Error sintactico.
-		 */
-		 lanzarExcepcionSintactica(mensaje){
-			console.log(mensaje);
-			throw new Error(mensaje);
-		}
-		
-	}
-
-	//class Parametro{
-	//	
-	//	parametro; 
-	//	valor; 
-	//
-	//	constructor(parametro, valor){
-	//		this.parametro = parametro;
-	//		this.valor = valor; 
-	//	}
-	//
-	//}
-	const {Parametro} = require('../componentes/Parametro');
-
-
-
+	const {Parametro} = require('../componentes/Parametro')	;
 
 	var parametros = [];
 
@@ -206,8 +123,9 @@
 inicio: cc EOF;
 
 
-
-// Parametros - - - - - - - - - - -
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+// Parametros = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 parametros : parametro parametros {
 				var params = $2; 
 				var par = $1;
@@ -225,7 +143,13 @@ parametros : parametro parametros {
 				$$ = res; 
 			}
 		   | /**/ { $$ = undefined;  };
-parametro : href        { $$ = $1; }| background  { $$ = $1; }     | color       { $$ = $1; }    | font_size   { $$ = $1; }    | font_family { $$ = $1; }   | text_align  { $$ = $1; }    | type        { $$ = $1; }    | id          { $$ = $1; }  | name        { $$ = $1; } | cols        { $$ = $1; }   | rows        { $$ = $1; }  | class       { $$ = $1; }  | src         { $$ = $1; }  | width       { $$ = $1; }| height      { $$ = $1; }| onclick     { $$ = $1; };
+
+parametro : href        { $$ = $1; }    | background  { $$ = $1; }   | color       { $$ = $1; }    
+		  | font_size   { $$ = $1; }    | font_family { $$ = $1; }   | text_align  { $$ = $1; }    
+		  | type        { $$ = $1; }    | id          { $$ = $1; }   | name        { $$ = $1; } 
+		  | cols        { $$ = $1; }    | rows        { $$ = $1; }   | class       { $$ = $1; }  
+		  | src         { $$ = $1; }    | width       { $$ = $1; }   | height      { $$ = $1; }
+		  | onclick     { $$ = $1; };
 
 
 href 		: CORIZQ HREF 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("HREF"		  , $5); }; 
@@ -245,7 +169,11 @@ width       : CORIZQ WIDTH 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametr
 height      : CORIZQ HEIGHT 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("HEIGHT"     , $5); };    
 onclick     : CORIZQ ONCLICK 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("ONCLICK"    , $5); };  
 
-// Etiquetas - - - - - - - - - - - -
+
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// Etiquetas = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
 etiquetas: etiqueta etiquetas | etiqueta;
 etiqueta: head | title | cc | body | div | select | link | spam | input | t_area | img | br | button | h1 | P | error {
 	console.log('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
