@@ -8,6 +8,4 @@ export class Parametro{
         this.valor = valor; 
     }
 
-    
-
 }

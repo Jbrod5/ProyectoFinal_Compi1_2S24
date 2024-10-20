@@ -1,7 +1,7 @@
 /* DEFINICIONES LEXICAS */
 %{	
 	
-
+	/*
 	import { Componente } from "../componentes/Componente";
 	
 	import { Body } from "../componentes/Body";
@@ -22,8 +22,89 @@
 	import { Title } from "../componentes/Title";
 
 	import { PARAMETRO } from "../componentes/PARAMETRO";
+	*/
+
+
+
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	//CLASES QUE NO SE PUDIERON IMPORTAR - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	
+
+	class Componente{
+
+		/** 
+		 *  Establece un parametro del componente
+		 * @param {string} parametro - Nombre del parametro en mayusculas que se desea establecer.
+		 * @param {string} valor - Valor del parametro que se desea establecer
+		 *
+		 * @throws {Error} Error sintactico, si se desea establecer un parametro que no es valido en el componete o si ese parámetro ya contaba con un valor.*/
+		establecerParametro(parametro, valor){
+	
+		}
+	
+		/**
+		 * Establece el valor que se encerrará entre las etiquetas de apertura y cierre.
+		 * @param {String} valor - Valor que se contendra entre las etiquetas de apertura y cierre. 
+		 */
+		establecerValor(valor){
+	
+		}
+	
+		/**
+		 * Agrega un componente a la lista de componentes.
+		 * @param {Componente} componente - Componente que se agregara a la lista de componentes.
+		 */
+		agregarComponente(componente){
+	
+		}
 	
 	
+	
+		/**
+		 * @returns {String} El codigo HTML del componente.
+		 */
+		obtenerCodigo(){
+			return "st";
+		}
+	
+		/**
+		 * Lanza una excepcion semantica.
+		 * @param {String} mensaje - Mensaje que tendra la excepcion lanzada. 
+		 * @throws {Error} Error semantico.
+		 */
+		lanzarExcepcionSemantica(mensaje){
+			console.log(mensaje);
+			throw new Error(mensaje);
+		}
+	
+		 /**
+		 * Lanza una excepcion sintactica.
+		 * @param {String} mensaje - Mensaje que tendra la excepcion lanzada. 
+		 * @throws {Error} Error sintactico.
+		 */
+		 lanzarExcepcionSintactica(mensaje){
+			console.log(mensaje);
+			throw new Error(mensaje);
+		}
+		
+	}
+
+	//class Parametro{
+	//	
+	//	parametro; 
+	//	valor; 
+	//
+	//	constructor(parametro, valor){
+	//		this.parametro = parametro;
+	//		this.valor = valor; 
+	//	}
+	//
+	//}
+	const {Parametro} = require('../componentes/Parametro');
+
+
+
 
 	var parametros = [];
 
@@ -128,13 +209,16 @@ inicio: cc EOF;
 
 // Parametros - - - - - - - - - - -
 parametros : parametro parametros {
-				params = $2; 
-				par = $1;
-				res = [];
+				var params = $2; 
+				var par = $1;
+				var res = [];
+				console.log("parametro: " + par)
+				console.log(params);
 				res.push(par);
 
-				if(params != undefined){
-					params.foreach(p=>{
+				if(params != undefined && Array.isArray(params)){
+					console.log('Params si es un arary!')
+					params.forEach(p=>{
 						res.push(p);
 					});
 				}
@@ -144,23 +228,22 @@ parametros : parametro parametros {
 parametro : href        { $$ = $1; }| background  { $$ = $1; }     | color       { $$ = $1; }    | font_size   { $$ = $1; }    | font_family { $$ = $1; }   | text_align  { $$ = $1; }    | type        { $$ = $1; }    | id          { $$ = $1; }  | name        { $$ = $1; } | cols        { $$ = $1; }   | rows        { $$ = $1; }  | class       { $$ = $1; }  | src         { $$ = $1; }  | width       { $$ = $1; }| height      { $$ = $1; }| onclick     { $$ = $1; };
 
 
-
-href 		: CORIZQ HREF 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("HREF"		  , $5); }; 
-background  : CORIZQ BACKGROUND IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("BACKGROUND" , $5); };
-color		: CORIZQ COLOR 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("COLOR"	  , $5); };
-font_size   : CORIZQ F_SIZE 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("FONT_SIZE"  , $5); };
-font_family : CORIZQ F_FAM 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("FONT_FAMILY", $5); }; 
-text_align  : CORIZQ TEXT_AL 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("TEXT_ALIGN" , $5); }; 
-type        : CORIZQ TYPE 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("TIPO"       , $5); };  
-id          : CORIZQ ID 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("ID"         , $5); };       
-name        : CORIZQ NAME 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("NAME"       , $5); };      
-cols        : CORIZQ COLS 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("COLS"       , $5); };   
-rows        : CORIZQ ROWS 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("ROWS"       , $5); };     
-class       : CORIZQ CLASS 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("CLASS"      , $5); };         
-src         : CORIZQ SRC 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("SRC"        , $5); };     
-width       : CORIZQ WIDTH 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("WIDTH"      , $5); };     
-height      : CORIZQ HEIGHT 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("HEIGHT"     , $5); };    
-onclick     : CORIZQ ONCLICK 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new PARAMETRO("ONCLICK"    , $5); };  
+href 		: CORIZQ HREF 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("HREF"		  , $5); }; 
+background  : CORIZQ BACKGROUND IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("BACKGROUND" , $5); };
+color		: CORIZQ COLOR 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("COLOR"	  , $5); };
+font_size   : CORIZQ F_SIZE 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("FONT_SIZE"  , $5); };
+font_family : CORIZQ F_FAM 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("FONT_FAMILY", $5); }; 
+text_align  : CORIZQ TEXT_AL 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("TEXT_ALIGN" , $5); }; 
+type        : CORIZQ TYPE 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("TIPO"       , $5); };  
+id          : CORIZQ ID 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("ID"         , $5); };       
+name        : CORIZQ NAME 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("NAME"       , $5); };      
+cols        : CORIZQ COLS 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("COLS"       , $5); };   
+rows        : CORIZQ ROWS 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("ROWS"       , $5); };     
+class       : CORIZQ CLASS 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("CLASS"      , $5); };         
+src         : CORIZQ SRC 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("SRC"        , $5); };     
+width       : CORIZQ WIDTH 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("WIDTH"      , $5); };     
+height      : CORIZQ HEIGHT 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("HEIGHT"     , $5); };    
+onclick     : CORIZQ ONCLICK 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("ONCLICK"    , $5); };  
 
 // Etiquetas - - - - - - - - - - - -
 etiquetas: etiqueta etiquetas | etiqueta;
