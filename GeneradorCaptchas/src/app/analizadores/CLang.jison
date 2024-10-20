@@ -1,6 +1,6 @@
 /* DEFINICIONES LEXICAS */
 %{	
-	/*
+	
 
 	import { Componente } from "../componentes/Componente";
 	
@@ -23,9 +23,9 @@
 
 	import { PARAMETRO } from "../componentes/PARAMETRO";
 	
-	*/
+	
 
-	parametros = [];
+	var parametros = [];
 
 
 
@@ -127,7 +127,20 @@ inicio: cc EOF;
 
 
 // Parametros - - - - - - - - - - -
-parametros : parametro parametros |/**/;
+parametros : parametro parametros {
+				params = $2; 
+				par = $1;
+				res = [];
+				res.push(par);
+
+				if(params != undefined){
+					params.foreach(p=>{
+						res.push(p);
+					});
+				}
+				$$ = res; 
+			}
+		   | /**/ { $$ = undefined;  };
 parametro : href        { $$ = $1; }| background  { $$ = $1; }     | color       { $$ = $1; }    | font_size   { $$ = $1; }    | font_family { $$ = $1; }   | text_align  { $$ = $1; }    | type        { $$ = $1; }    | id          { $$ = $1; }  | name        { $$ = $1; } | cols        { $$ = $1; }   | rows        { $$ = $1; }  | class       { $$ = $1; }  | src         { $$ = $1; }  | width       { $$ = $1; }| height      { $$ = $1; }| onclick     { $$ = $1; };
 
 

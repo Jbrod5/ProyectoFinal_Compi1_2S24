@@ -83,6 +83,24 @@ performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* actio
 
 var $0 = $$.length - 1;
 switch (yystate) {
+case 2:
+
+				params = $$[$0]; 
+				par = $$[$0-1];
+				res = [];
+				res.push(par);
+
+				if(params != undefined){
+					params.foreach(p=>{
+						res.push(p);
+					});
+				}
+				this.$ = res; 
+			
+break;
+case 3:
+ this.$ = undefined;  
+break;
 case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19:
  this.$ = $$[$0]; 
 break;
@@ -391,7 +409,7 @@ _handle_error:
     return true;
 }};
 	
-	/*
+	
 
 	import { Componente } from "../componentes/Componente";
 	
@@ -414,9 +432,9 @@ _handle_error:
 
 	import { PARAMETRO } from "../componentes/PARAMETRO";
 	
-	*/
+	
 
-	parametros = [];
+	var parametros = [];
 
 
 

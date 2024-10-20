@@ -1,3 +1,17 @@
+Este es el main de la app :D
+<div>
+  <h1>Calculador de expresiones</h1>
+</div>
+
+
+<div class="form-floating">
+  <textarea [(ngModel)]="expression" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+  <label for="floatingTextarea">Escribe expresiones aritmeticas</label>
+</div>
+
+<button (click)="parse()" type="button" class="btn btn-success">Calcular</button>
+
+
 <button type="button" class="btn btn-primary">Primary</button>
 <button type="button" class="btn btn-secondary">Secondary</button>
 <button type="button" class="btn btn-success">Success</button>
