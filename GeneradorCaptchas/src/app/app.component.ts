@@ -25,7 +25,11 @@ export class AppComponent {
     // Lógica para procesar el código cuando se haga clic en el botón "Process"
     const code = (document.getElementById('codeArea') as HTMLTextAreaElement).value;
     console.log('Código ingresado:', code);
+    const pars = CLang.parse(code)
   }
+  
+
+
 
   updateCursorPosition(event: KeyboardEvent | MouseEvent) {
     const textArea = event.target as HTMLTextAreaElement;

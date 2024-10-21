@@ -1,27 +1,26 @@
-Este es el main de la app :D
 <div>
-  <h1>Calculador de expresiones</h1>
+  <h1>Generador de captchas</h1>
 </div>
 
-
+<!--
 <div class="form-floating">
   <textarea [(ngModel)]="expression" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
   <label for="floatingTextarea">Escribe expresiones aritmeticas</label>
 </div>
 
-<button (click)="parse()" type="button" class="btn btn-success">Calcular</button>
+<button (click)="parse()" type="button" class="btn btn-success">Calcular</button>-->
 
 
 
 <div class="code-editor-container">
   <div class="editor">
     <div class="line-numbers" id="line-numbers"></div>
-    <textarea id="codeArea" (scroll)="syncScroll()" (keyup)="updateCursorPosition($event)" (click)="updateCursorPosition($event)"></textarea>
+    <textarea id="codeArea" (scroll)="syncScroll()" (keyup)="updateCursorPosition($event)" (click)="updateCursorPosition($event)" placeholder="Codigo C_LANG para captchas"></textarea>
   </div>
   <div class="cursor-info">
     Línea: {{ currentLine }}, Columna: {{ currentColumn }}
   </div>
-  <button class="process-btn" (click)="processCode()">Process</button>
+  <button class="btn btn-success" (click)="processCode()">Procesar captcha</button>
 </div>
 
 <router-outlet></router-outlet>
