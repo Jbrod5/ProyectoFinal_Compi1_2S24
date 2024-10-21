@@ -29,7 +29,7 @@ export class Title extends Componente{
      * @returns {String} String con el codigo html del componente.
      */
     obtenerCodigo(){
-        codigo = "<title>" + this.valor + "</title>";
+        var codigo = "<title>" + this.valor + "</title>";
         return codigo; 
     }
 }

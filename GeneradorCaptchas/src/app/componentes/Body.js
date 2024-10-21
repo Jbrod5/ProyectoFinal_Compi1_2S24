@@ -16,7 +16,7 @@ export class Body extends Componente{
         switch(parametro){
             case 'BACKGROUND': 
                 if(this.background == undefined){
-                    c = valor.toLowerCase();
+                    var c = valor.toLowerCase();
                     switch(c){
                         case 'black': this.background = '#000000';
                             break;
@@ -59,8 +59,9 @@ export class Body extends Componente{
                 }
                 break;
             default:
-                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una isntancia Body pero no es un parametro valido para el componente.";
-        }
+                var mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una isntancia Body pero no es un parametro valido para el componente.";
+                super.lanzarExcepcionSemantica(mensaje)
+            }
     }
 
     /**
@@ -78,14 +79,14 @@ export class Body extends Componente{
         if(this.background == undefined){
             this.background = "#FFFFFF";
         }
-        codigo = "<body style=\"background-color: " + this.background + ";\">";
+        var codigo = "<body style=\"background-color: " + this.background + ";\">\n";
         
         //concatenar el codigo de los componentes.
         this.componentes.forEach(comp =>{
-            codigo += comp.obtenerCodigo();
+            codigo += comp.obtenerCodigo() + "\n";
         })
 
-        codigo += "</body>";
+        codigo += "\n</body>";
         return codigo; 
 
     }

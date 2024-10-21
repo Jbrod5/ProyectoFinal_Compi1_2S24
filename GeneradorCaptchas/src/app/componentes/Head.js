@@ -35,7 +35,7 @@ export class Head extends Componente{
      * @returns {String} String con el codigo html del componente.
      */
     obtenerCodigo(){
-        codigo = "<head>\n"
+        var codigo = "<head>\n"
         if(this.title != undefined){
             codigo += this.title.obtenerCodigo() + "\n";
         }

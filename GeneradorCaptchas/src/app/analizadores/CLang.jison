@@ -174,24 +174,157 @@ onclick     : CORIZQ ONCLICK 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new Paramet
 // Etiquetas = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-etiquetas: etiqueta etiquetas | etiqueta;
-etiqueta: head | title | cc | body | div | select | link | spam | input | t_area | img | br | button | h1 | P | error {
-	console.log('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
-};
+etiquetas: etiqueta etiquetas {
+				var etiquetas = $2;
+				var et = $1;
+				var res = [];
+
+				if(et != undefined){
+					res.push(et);
+				}
+
+				if(etiquetas != undefined && Array.isArray(etiquetas)){
+					console.log("Etiquetas si es un array!");
+					etiquetas.forEach(e=>{
+						if(e != undefined){
+							res.push(e);
+						}
+					})
+				}
+				$$ = res;
+		 }
+		 | etiqueta{
+				var etiqueta = $1;
+				var res = [];
+				if(etiqueta != undefined){
+					res.push(etiqueta);
+				}
+				$$ = res; 
+		 };
+etiqueta: head 
+		| title  { $$ = $1; } | cc 	 { $$ = $1; }   | body 	 { $$ = $1; } 
+		| div 	 { $$ = $1; } | select { $$ = $1; } | link 	 { $$ = $1; } 
+		| spam 	 { $$ = $1; } | input  { $$ = $1; } | t_area { $$ = $1; } 
+		| img 	 { $$ = $1; } | br 	   { $$ = $1; } | button { $$ = $1; } 
+		| h1 	 { $$ = $1; } | P 	 { $$ = $1; } 
+		| error {
+			console.log('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
+			$$ = undefined;
+		};
+
+
+
+
+
+
+
+
+
+
 
 
 
 valor : VALOR;
 
-/* Sin parametros */
-head  : MENQUE HEAD  MAYQUE etiquetas 		HEAD_FIN;
-title : MENQUE TITLE MAYQUE valor     		TITLE_FIN;
+/* - - Sin parametros - - */
+head  : MENQUE HEAD  MAYQUE etiquetas 		HEAD_FIN{
+			var etiquetas = $4;
+			var head = new Head();
+			etiquetas.forEach(etiqueta =>{
+				head.agregarComponente(etiqueta);
+			});
+
+			console.log(head.obtenerCodigo());
+			$$ = head;
+	  };
+title : MENQUE TITLE MAYQUE valor     		TITLE_FIN{
+			var valor = $4;
+			var titulo = new Title();
+			titulo.establecerValor(valor);
+			console.log(titulo.obtenerCodigo());
+			$$ = titulo; 
+	  };
+
+
+
+
 
 /* - - Con parametros - - */
 // Con etiquetas
-cc    : MENQUE CC      parametros MAYQUE etiquetas 		CC_FIN  ;
-body  : MENQUE BODY    parametros MAYQUE etiquetas 		BODY_FIN;
-div   : MENQUE DIV     parametros MAYQUE etiquetas 		DIV_FIN ;
+cc    : MENQUE CC      parametros MAYQUE etiquetas 		CC_FIN  {
+			var parametros = $3;
+			var etiquetas = $5;
+
+			var html = new Html();
+
+			//Establecer parametros
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!=undefined){
+						try{
+							html.establecerParametro(p.parametro, p.valor);
+						}catch(error){
+
+						}
+					}
+				});
+			}
+			//Agregar componentes
+			if(etiquetas != undefined && Array.isArray(etiquetas)){
+				etiquetas.forEach(e =>{
+					if(e!=undefined){
+						//Verificar si es un Head, Body o componente
+						if(e instanceof Head){
+							html.establecerHead(e);
+						} else if(e instanceof Body){
+							html.establecerBody(e);
+						} else if(e instanceof Componente){
+							html.agregarComponente(e)
+						}
+					}
+				});
+			}
+
+			console.log(html.obtenerCodigo());
+			$$ = html; 
+
+	  };
+body  : MENQUE BODY    parametros MAYQUE etiquetas 		BODY_FIN{
+			var parametros = $3;
+			var etiquetas = $5;
+
+			var body = new Body();
+
+			//Establecer parametros
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!=undefined){
+						try{
+							body.establecerParametro(p.parametro, p.valor);
+						}catch(error){
+						
+						}
+					}
+				});
+			}
+			//Agregar componentes
+			if(etiquetas != undefined && Array.isArray(etiquetas)){
+				etiquetas.forEach(e =>{
+					if(e!=undefined){
+						//Verificar si es un componente
+						if(e instanceof Componente){
+							body.agregarComponente(e)
+						}
+					}
+				});
+			}
+		
+			console.log(body.obtenerCodigo());
+			$$ = body; 
+	  };
+div   : MENQUE DIV     parametros MAYQUE etiquetas 		DIV_FIN {
+
+	  };
 
 select: MENQUE SELECT  parametros MAYQUE opciones  		SELECT_FIN; //Solo etiquetas option
 option  : MENQUE OPTION MAYQUE valor 					OPTION_FIN;

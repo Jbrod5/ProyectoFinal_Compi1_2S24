@@ -104,7 +104,7 @@ break;
 case 3:
  this.$ = undefined;  
 break;
-case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19:
+case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 39: case 40: case 41: case 42: case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51: case 52:
  this.$ = $$[$0]; 
 break;
 case 20:
@@ -155,10 +155,138 @@ break;
 case 35:
  this.$ = new Parametro("ONCLICK"    , $$[$0-2]); 
 break;
+case 36:
+
+				var etiquetas = $$[$0];
+				var et = $$[$0-1];
+				var res = [];
+
+				if(et != undefined){
+					res.push(et);
+				}
+
+				if(etiquetas != undefined && Array.isArray(etiquetas)){
+					console.log("Etiquetas si es un array!");
+					etiquetas.forEach(e=>{
+						if(e != undefined){
+							res.push(e);
+						}
+					})
+				}
+				this.$ = res;
+		 
+break;
+case 37:
+
+				var etiqueta = $$[$0];
+				var res = [];
+				if(etiqueta != undefined){
+					res.push(etiqueta);
+				}
+				this.$ = res; 
+		 
+break;
 case 53:
 
-	console.log('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
+			console.log('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
+			this.$ = undefined;
+		
+break;
+case 55:
 
+			var etiquetas = $$[$0-1];
+			var head = new Head();
+			etiquetas.forEach(etiqueta =>{
+				head.agregarComponente(etiqueta);
+			});
+
+			console.log(head.obtenerCodigo());
+			this.$ = head;
+	  
+break;
+case 56:
+
+			var valor = $$[$0-1];
+			var titulo = new Title();
+			titulo.establecerValor(valor);
+			console.log(titulo.obtenerCodigo());
+			this.$ = titulo; 
+	  
+break;
+case 57:
+
+			var parametros = $$[$0-3];
+			var etiquetas = $$[$0-1];
+
+			var html = new Html();
+
+			//Establecer parametros
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!=undefined){
+						try{
+							html.establecerParametro(p.parametro, p.valor);
+						}catch(error){
+
+						}
+					}
+				});
+			}
+			//Agregar componentes
+			if(etiquetas != undefined && Array.isArray(etiquetas)){
+				etiquetas.forEach(e =>{
+					if(e!=undefined){
+						//Verificar si es un Head, Body o componente
+						if(e instanceof Head){
+							html.establecerHead(e);
+						} else if(e instanceof Body){
+							html.establecerBody(e);
+						} else if(e instanceof Componente){
+							html.agregarComponente(e)
+						}
+					}
+				});
+			}
+
+			console.log(html.obtenerCodigo());
+			this.$ = html; 
+
+	  
+break;
+case 58:
+
+			var parametros = $$[$0-3];
+			var etiquetas = $$[$0-1];
+
+			var body = new Body();
+
+			//Establecer parametros
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!=undefined){
+						try{
+							body.establecerParametro(p.parametro, p.valor);
+						}catch(error){
+						
+						}
+					}
+				});
+			}
+			//Agregar componentes
+			if(etiquetas != undefined && Array.isArray(etiquetas)){
+				etiquetas.forEach(e =>{
+					if(e!=undefined){
+						//Verificar si es un componente
+						if(e instanceof Componente){
+							body.agregarComponente(e)
+						}
+					}
+				});
+			}
+		
+			console.log(body.obtenerCodigo());
+			this.$ = body; 
+	  
 break;
 }
 },

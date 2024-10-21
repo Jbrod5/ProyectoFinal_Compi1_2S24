@@ -26,21 +26,21 @@ export class Html extends Componente{
         switch(parametro){
             case 'ID':
                 if(this.id != undefined){
-                    mensaje = "Error Semantico: se intento establecer el parametro id pero ya estaba definido.";
+                    var mensaje = "Error Semantico: se intento establecer el parametro id pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 }
                 this.id = valor;
                 break;
             case 'NAME':
                 if(this.name != undefined){
-                    mensaje = "Error Semantico: se intento establecer el parametro name pero ya estaba definido.";
+                    var mensaje = "Error Semantico: se intento establecer el parametro name pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 }
                 this.name = valor;
                 break;
             default: 
-                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia HTML pero no es un parametro valido para el componente.";
-                super.lanzarExcepcionSemantica();
+                var mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia HTML pero no es un parametro valido para el componente.";
+                super.lanzarExcepcionSemantica(mensaje);
             
         }
     }
@@ -70,23 +70,35 @@ export class Html extends Componente{
         this.body = body;
     }
 
+    agregarComponente(componente){
+        this.componentes.push(componente);
+    }
+
 
     /**
      * @returns {String} El codigo HTML.
      */
     obtenerCodigo(){
-        codigo = "<!DOCTYPE html>\n";
+        var codigo = "<!DOCTYPE html>\n";
         codigo += "<html lang=\"es\">\n";
 
         if(this.head != undefined){
-            codigo += this.head.obtenerCodigo();
+            codigo += this.head.obtenerCodigo() + "\n";
         }
 
         if(this.body != undefined){
-            codigo += this.body.obtenerCodigo();
+            codigo += this.body.obtenerCodigo() + "\n";
         }
 
-        codigo += "</html>"
+        if(this.componentes != undefined){
+            this.componentes.forEach(componente =>{
+                if(componente != undefined){
+                    codigo+=componente.obtenerCodigo() + "\n";
+                }
+            });
+        }
+
+        codigo += "\n</html>"
 
 
 
