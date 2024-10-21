@@ -323,7 +323,37 @@ body  : MENQUE BODY    parametros MAYQUE etiquetas 		BODY_FIN{
 			$$ = body; 
 	  };
 div   : MENQUE DIV     parametros MAYQUE etiquetas 		DIV_FIN {
+			var parametros = $3;
+			var etiquetas = $5;
 
+			var div = new Div();
+
+			//Establecer parametros
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!=undefined){
+						try{
+							div.establecerParametro(p.parametro, p.valor);
+						}catch(error){
+						
+						}
+					}
+				});
+			}
+			//Agregar componentes
+			if(etiquetas != undefined && Array.isArray(etiquetas)){
+				etiquetas.forEach(e =>{
+					if(e!=undefined){
+						//Verificar si es un componente
+						if(e instanceof Componente){
+							div.agregarComponente(e)
+						}
+					}
+				});
+			}
+		
+			console.log(div.obtenerCodigo());
+			$$ = div; 
 	  };
 
 select: MENQUE SELECT  parametros MAYQUE opciones  		SELECT_FIN; //Solo etiquetas option

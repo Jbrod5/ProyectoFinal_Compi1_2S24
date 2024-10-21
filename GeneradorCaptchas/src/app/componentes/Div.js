@@ -31,7 +31,7 @@ export class Div extends Componente{
         switch(parametro){
             case 'COLOR':
                 if(color != undefined){
-                    mensaje = "Error Semantico: se intento establecer el parametro color pero ya estaba definido.";
+                    var mensaje ="Error Semantico: se intento establecer el parametro color pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 }
                 //1. Evaluar si es un color preestablecido
@@ -75,21 +75,21 @@ export class Div extends Componente{
                 break;
             case 'FONT_SIZE':
                 if(this.font_size != undefined){
-                    mensaje = "Error Semantico: se intento establecer el parametro font-size pero ya estaba definido.";
+                    var mensaje ="Error Semantico: se intento establecer el parametro font-size pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 }
                 this.font_size = valor;  
                 break;
             case 'FONT_FAMILY':
                 if(this.font_family != undefined){
-                    mensaje = "Error Semantico: se intento establecer el parametro font_family pero ya estaba definido.";
+                    var mensaje ="Error Semantico: se intento establecer el parametro font_family pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 } 
                 this.font_family = valor;
                 break;
             case 'TEXT_ALIGN':
                 if(this.text_align != undefined){
-                    mensaje = "Error Semantico: se intento establecer el parametro text-align pero ya estaba definido.";
+                    var mensaje ="Error Semantico: se intento establecer el parametro text-align pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 } 
                 al = valor.toLowerCase(); 
@@ -103,7 +103,7 @@ export class Div extends Componente{
                 break;
             case 'ID':
                 if(this.id != undefined){
-                    mensaje = "Error Semantico: se intento establecer el parametro id pero ya estaba definido.";
+                    var mensaje ="Error Semantico: se intento establecer el parametro id pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 }
                 this.id = valor;
@@ -156,12 +156,12 @@ export class Div extends Componente{
                             this.background = valor;  
                     }
                 }else{
-                    mensaje = "Error Semantico: se intento establecer el parametro background pero ya estaba definido.";
+                    var mensaje ="Error Semantico: se intento establecer el parametro background pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje)
                 }
                 break; 
             default: 
-                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia Div pero no es un parametro valido para el componente.";
+                var mensaje ="Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia Div pero no es un parametro valido para el componente.";
                 super.lanzarExcepcionSemantica();
         }
 
@@ -179,19 +179,19 @@ export class Div extends Componente{
         this.textAlign = this.textAlign || 'left';
         this.background = this.background || '#FFFFFF';
 
-        style = "style=\"font-size: " + this.fontSize + "; font-family: " + this.fontFamily + "; text-align: " + this.textAlign + "; color: " + this.color + "; background-color: " + this.background + ";";
-        if(clase.toLowerCase() == 'row'){
+        var style = "style=\"font-size: " + this.fontSize + "; font-family: " + this.fontFamily + "; text-align: " + this.textAlign + "; color: " + this.color + "; background-color: " + this.background + ";";
+        if(this.clase != undefined && this.clase.toLowerCase() == 'row'){
             style += "display: flex; justify-content: center;\"";
         }else{
             style += "display: flex; flex-direction: column; align-items: center;\"";
         }
 
-        codigo = "<div id=\"" + this.id + "\"" + style + ">\n";
+        var codigo = "<div id=\"" + this.id + "\"" + style + ">\n";
         this.componentes.forEach(componente =>{
             codigo += componente.obtenerCodigo() + "\n";
         });
 
-        codigo += "</div>"
+        codigo += "\n</div>"
         return codigo; 
     }
 
