@@ -206,7 +206,7 @@ etiqueta: head
 		| div 	 { $$ = $1; } | select { $$ = $1; } | link 	 { $$ = $1; } 
 		| spam 	 { $$ = $1; } | input  { $$ = $1; } | t_area { $$ = $1; } 
 		| img 	 { $$ = $1; } | br 	   { $$ = $1; } | button { $$ = $1; } 
-		| h1 	 { $$ = $1; } | P 	 { $$ = $1; } 
+		| h1 	 { $$ = $1; } | p 	   { $$ = $1; } 
 		| error {
 			console.log('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
 			$$ = undefined;
@@ -544,6 +544,69 @@ br    : MENQUE BR 				   MAYQUE{
 			console.log(result.obtenerCodigo());
 			$$ = result;
 	  };
-button: MENQUE BUTTON 	parametros MAYQUE valor     BUTTON_FIN;
-h1    : MENQUE H1       parametros MAYQUE valor     H1_FIN	  ;
-P     : MENQUE P        parametros MAYQUE valor     P_FIN	  ; 
+button: MENQUE BUTTON 	parametros MAYQUE valor     BUTTON_FIN{
+			var parametros = $3;
+			var valor = $5;
+			var res = new Button();
+
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!=undefined){
+						try{
+							res.establecerParametro(p.parametro, p.valor);
+						}catch(error){
+
+						}
+					}
+				});
+			}
+
+			res.establecerValor(valor);
+			console.log(res.obtenerCodigo());
+			$$ = res; 
+
+	  };
+h1    : MENQUE H1       parametros MAYQUE valor     H1_FIN	  {
+			var parametros = $3;
+			var valor = $5;
+			var res = new H1();
+
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!=undefined){
+						try{
+							res.establecerParametro(p.parametro, p.valor);
+						}catch(error){
+
+						}
+					}
+				});
+			}
+
+			res.establecerValor(valor);
+			console.log(res.obtenerCodigo());
+			$$ = res; 
+
+	  };
+p     : MENQUE P        parametros MAYQUE valor     P_FIN	  {
+			var parametros = $3;
+			var valor = $5;
+			var res = new P();
+
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!=undefined){
+						try{
+							res.establecerParametro(p.parametro, p.valor);
+						}catch(error){
+
+						}
+					}
+				});
+			}
+
+			res.establecerValor(valor);
+			console.log(res.obtenerCodigo());
+			$$ = res; 
+
+	  }; 
