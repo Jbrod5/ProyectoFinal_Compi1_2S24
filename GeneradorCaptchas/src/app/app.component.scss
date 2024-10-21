@@ -22,10 +22,12 @@
     user-select: none;
     white-space: pre; /* Asegura que los números de línea estén en líneas separadas */
     overflow: hidden; /* Para que no haya desplazamiento interno en los números */
+    font-family: monospace; /* Fuente monoespaciada */
+    font-size: 13px; /* Tamaño de letra de 11px */
   }
   
   textarea {
-    font-family: monospace;
+    font-family: monospace; /* Fuente monoespaciada */
     padding: 10px;
     width: 100%;
     height: 100%;
@@ -35,6 +37,7 @@
     overflow: auto;
     white-space: pre; /* Permite que el contenido no se ajuste a la línea */
     overflow-x: auto; /* Habilita el desplazamiento horizontal */
+    font-size: 13px; /* Tamaño de letra de 11px */
   }
   
   .cursor-info {
@@ -45,5 +48,4 @@
     align-self: flex-end;
     margin-top: 10px;
   }
-  
   
