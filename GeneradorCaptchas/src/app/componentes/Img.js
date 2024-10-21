@@ -62,7 +62,7 @@ export class Img extends Componente{
         this.height = this.height   || '250px';  
         this.alt    = this.alt      || 'Descripcion por defecto';
     
-        codigo = "<img ";
+        var codigo = "<img ";
         codigo += "src=\"" + this.src + "\" ";
         codigo += "width=\"" + this.width + "\" ";
         codigo += "height=\"" + this.height + "\" ";

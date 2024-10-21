@@ -509,9 +509,32 @@ t_area: MENQUE TEXTAREA parametros MAYQUE valor     TEXTAREA_FIN{
 			console.log(res.obtenerCodigo());
 			$$ = res;
 	  };
-img   : MENQUE IMG      parametros MAYQUE;
-br    : MENQUE BR 				   MAYQUE 
-	  | MENQUE BARRA BR 		   MAYQUE;
+img   : MENQUE IMG      parametros MAYQUE{
+			var parametros = $3;
+			var img = new Img();
+
+			//Establecer parametros
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!=undefined){
+						try{
+							img.establecerParametro(p.parametro, p.valor);
+						}catch(error){
+
+						}
+					}
+				});
+			}
+
+			console.log(img.obtenerCodigo());
+			$$ = img;
+	  };
+br    : MENQUE BR 				   MAYQUE{
+
+	  }
+	  | MENQUE BARRA BR 		   MAYQUE{
+			
+	  };
 button: MENQUE BUTTON 	parametros MAYQUE valor     BUTTON_FIN;
 h1    : MENQUE H1       parametros MAYQUE valor     H1_FIN	  ;
 P     : MENQUE P        parametros MAYQUE valor     P_FIN	  ; 
