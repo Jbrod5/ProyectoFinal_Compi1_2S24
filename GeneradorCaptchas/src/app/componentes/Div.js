@@ -30,47 +30,47 @@ export class Div extends Componente{
     establecerParametro(parametro, valor){
         switch(parametro){
             case 'COLOR':
-                if(color != undefined){
+                if(this.color != undefined){
                     var mensaje ="Error Semantico: se intento establecer el parametro color pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 }
                 //1. Evaluar si es un color preestablecido
-                c = valor.toLowerCase();
+                var c = valor.toLowerCase();
                 switch(c){
-                    case 'black': color = '#000000';
+                    case 'black': this.color =   '#000000';
                         break;
-                    case 'olive': color =  '#808000';
+                    case 'olive': this.color =    '#808000';
                         break;
-                    case 'teal': color = '#008080';
+                    case 'teal': this.color =   '#008080';
                         break; 
-                    case 'red': color = '#FF0000';
+                    case 'red': this.color =   '#FF0000';
                         break; 
-                    case 'blue': color = '#0000FF';
+                    case 'blue': this.color =   '#0000FF';
                         break;
-                    case 'maroon': color = '#800000';
+                    case 'maroon': this.color =   '#800000';
                         break; 
-                    case 'navy': color = '#000080';
+                    case 'navy': this.color =   '#000080';
                         break; 
-                    case 'gray': color = '#808080';
+                    case 'gray': this.color =   '#808080';
                         break; 
-                    case 'lime': color = '#00FF00';
+                    case 'lime': this.color =   '#00FF00';
                         break; 
-                    case 'fucshia': color = '#FF00FF';
+                    case 'fucshia': this.color =   '#FF00FF';
                         break; 
-                    case 'green': color = '#008000';
+                    case 'green': this.color =   '#008000';
                         break; 
-                    case 'white': color = '#FFFFFF';
+                    case 'white': this.color =   '#FFFFFF';
                         break; 
-                    case 'purple': color = '#800080';
+                    case 'purple': this.color =   '#800080';
                         break;
-                    case 'silver': color = '#C0C0C0';
+                    case 'silver': this.color =   '#C0C0C0';
                         break;
-                    case 'yellow': color = '#FFFF00';
+                    case 'yellow': this.color =   '#FFFF00';
                         break; 
-                    case 'aqua': color = '#00FFFF';
+                    case 'aqua': this.color =   '#00FFFF';
                         break;
                     default: 
-                        color = valor;  
+                        this.color = valor;  
                 }
                 break;
             case 'FONT_SIZE':
@@ -92,7 +92,7 @@ export class Div extends Componente{
                     var mensaje ="Error Semantico: se intento establecer el parametro text-align pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 } 
-                al = valor.toLowerCase(); 
+                var al = valor.toLowerCase(); 
                 switch(al){
                     case 'left': this.text_align = 'left'; break; 
                     case 'right': this.text_align = 'right'; break; 
@@ -109,7 +109,7 @@ export class Div extends Componente{
                 this.id = valor;
                 break;
             case 'CLASS':
-                c = valor.toLocaleLowerCase();
+                var c = valor.toLocaleLowerCase();
                 if(c === "row" || c === "column"){
                     this.clase = c; 
                 }else{
@@ -118,7 +118,7 @@ export class Div extends Componente{
                 break; 
             case 'BACKGROUND':
                 if(this.background == undefined){
-                    c = valor.toLowerCase();
+                    var c = valor.toLowerCase();
                     switch(c){
                         case 'black': this.background = '#000000';
                             break;

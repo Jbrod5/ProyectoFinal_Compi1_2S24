@@ -155,7 +155,7 @@ export class Button extends Componente{
                 break; 
             default: 
                 var mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia Button pero no es un parametro valido para el componente.";
-                super.lanzarExcepcionSemantica();
+                super.lanzarExcepcionSemantica(mensaje);
         }
     }
 

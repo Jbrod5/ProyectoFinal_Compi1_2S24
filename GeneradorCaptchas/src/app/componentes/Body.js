@@ -54,7 +54,7 @@ export class Body extends Componente{
                             this.background = valor;  
                     }
                 }else{
-                    mensaje = "Error Semantico: se intento establecer el parametro background pero ya estaba definido.";
+                    var mensaje = "Error Semantico: se intento establecer el parametro background pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(error);
                 }
                 break;
