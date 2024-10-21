@@ -530,10 +530,19 @@ img   : MENQUE IMG      parametros MAYQUE{
 			$$ = img;
 	  };
 br    : MENQUE BR 				   MAYQUE{
-
+			var result = new Br();
+			console.log(result.obtenerCodigo());
+			$$ = result;					
 	  }
 	  | MENQUE BARRA BR 		   MAYQUE{
-			
+			var result = new Br();
+			console.log(result.obtenerCodigo());
+			$$ = result;
+	  }
+	  | BR_FIN{
+			var result = new Br();
+			console.log(result.obtenerCodigo());
+			$$ = result;
 	  };
 button: MENQUE BUTTON 	parametros MAYQUE valor     BUTTON_FIN;
 h1    : MENQUE H1       parametros MAYQUE valor     H1_FIN	  ;
