@@ -50,6 +50,8 @@ export class AppComponent {
   syncScroll() {
     const codeArea = document.getElementById('codeArea') as HTMLTextAreaElement;
     const lineNumbers = document.getElementById('line-numbers') as HTMLDivElement;
+    
+    // Sincroniza el desplazamiento vertical
     lineNumbers.scrollTop = codeArea.scrollTop;
   }
 }
