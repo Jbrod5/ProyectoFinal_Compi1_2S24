@@ -356,16 +356,159 @@ div   : MENQUE DIV     parametros MAYQUE etiquetas 		DIV_FIN {
 			$$ = div; 
 	  };
 
-select: MENQUE SELECT  parametros MAYQUE opciones  		SELECT_FIN; //Solo etiquetas option
-option  : MENQUE OPTION MAYQUE valor 					OPTION_FIN;
-options : option options | option ;
+select: MENQUE SELECT  parametros MAYQUE options  		SELECT_FIN{ //Solo etiquetas option
+			var parametros = $3;
+			var opciones = $5;
+
+			var select = new Select();
+			//Establecer parametros
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!=undefined){
+						try{
+							select.establecerParametro(p.parametro, p.valor);
+						}catch(error){
+						
+						}
+					}
+				});
+			}
+			//Agregar componentes
+			if(opciones != undefined && Array.isArray(opciones)){
+				opciones.forEach(e =>{
+					if(e!=undefined){
+						//Verificar si es un componente
+						if(e instanceof Componente){
+							select.agregarComponente(e);
+						}
+					}
+				});
+			}
+		
+			console.log(select.obtenerCodigo());
+			$$ = select;
+
+		}; 
+option  : MENQUE OPTION MAYQUE valor 					OPTION_FIN{
+			var option = new Option();
+			var val = $4;
+			option.establecerValor(val);
+			console.log(option.obtenerCodigo());
+			$$ = option; 
+		};
+options : option options{
+			var op = $1;
+			var options = $2;
+			var res = [];
+
+			if(op != undefined){
+				res.push(op);
+			}
+
+			if(options != undefined && Array.isArray(options)){
+				options.forEach(o=>{
+					if(o != undefined){
+						res.push(o);
+					}
+				});
+			}
+			$$ = res;
+		} 
+		| option {
+			var op = $1;
+			var res = [];
+			if(op != undefined){
+				res.push(op);
+			}
+			$$ = res;
+		};
 
 
 //Sin etiquetas
-link  : MENQUE LINK     parametros MAYQUE valor     LINK_FIN	;
-spam  : MENQUE SPAM     parametros MAYQUE valor     SPAM_FIN	; 
-input : MENQUE INPUT    parametros MAYQUE valor 	INPUT_FIN	; 
-t_area: MENQUE TEXTAREA parametros MAYQUE valor     TEXTAREA_FIN;
+link  : MENQUE LINK     parametros MAYQUE valor     LINK_FIN	{
+			var parametros = $3;
+			var valor = $5;
+			var res = new Link();
+
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!= undefined){
+						try{
+							res.establecerParametro(p.parametro, p.valor);
+						}catch(error){
+
+						}
+					}
+				});
+			}
+
+			res.establecerValor(valor);
+			console.log(res.obtenerCodigo());
+			$$ = res;
+	  };
+spam  : MENQUE SPAM     parametros MAYQUE valor     SPAM_FIN	{
+			var parametros = $3;
+			var valor = $5;
+			var res = new Spam();
+
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!= undefined){
+						try{
+							res.establecerParametro(p.parametro, p.valor);
+						}catch(error){
+
+						}
+					}
+				});
+			}
+
+			res.establecerValor(valor);
+			console.log(res.obtenerCodigo());
+			$$ = res;
+	  }; 
+input : MENQUE INPUT    parametros MAYQUE valor 	INPUT_FIN	{
+			var parametros = $3;
+			var valor = $5;
+			var res = new Input();
+
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!= undefined){
+						try{
+							res.establecerParametro(p.parametro, p.valor);
+						}catch(error){
+
+						}
+					}
+				});
+			}
+
+			res.establecerValor(valor);
+			console.log(res.obtenerCodigo());
+			$$ = res;
+	  }; 
+t_area: MENQUE TEXTAREA parametros MAYQUE valor     TEXTAREA_FIN{
+			var parametros = $3;
+			var valor = $5;
+			var res = new TextArea();
+
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!= undefined){
+						try{
+							res.establecerParametro(p.parametro, p.valor);
+						}catch(error){
+
+						}
+					}
+				});
+			}
+
+			res.establecerValor(valor);
+			console.log(res.obtenerCodigo());
+			$$ = res;
+	  };
 img   : MENQUE IMG      parametros MAYQUE;
 br    : MENQUE BR 				   MAYQUE 
 	  | MENQUE BARRA BR 		   MAYQUE;

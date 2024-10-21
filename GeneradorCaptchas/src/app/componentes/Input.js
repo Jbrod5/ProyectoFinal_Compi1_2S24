@@ -22,14 +22,14 @@ export class Input extends Componente{
         switch(parametro){
             case 'TIPO':
                 if(this.tipo != undefined){
-                    mensaje = "Error Semantico: se intento establecer el parametro tipo pero ya estaba definido.";
+                    var mensaje = "Error Semantico: se intento establecer el parametro tipo pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 }
-                val = valor.toLocaleLowerCase();
+                var val = valor.toLocaleLowerCase();
                 if(val === "text" | val === "number" | val === "radio" | val === "checkbox"){
                     this.tipo = val;
                 }else{
-                    mensaje = "Error Sintactico: se intento establecer el parametro tipo pero " + val + " no es un tipo de input correcto.";
+                    var mensaje = "Error Sintactico: se intento establecer el parametro tipo pero " + val + " no es un tipo de input correcto.";
                     super.lanzarExcepcionSintactica(mensaje);
                 }
                 break; 
@@ -37,24 +37,24 @@ export class Input extends Componente{
 
             case 'FONT_SIZE':
                 if(this.font_size != undefined){
-                    mensaje = "Error Semantico: se intento establecer el parametro font-size pero ya estaba definido.";
+                    var mensaje = "Error Semantico: se intento establecer el parametro font-size pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 }
                 this.font_size = valor;  
                 break;
             case 'FONT_FAMILY':
                 if(this.font_family != undefined){
-                    mensaje = "Error Semantico: se intento establecer el parametro font_family pero ya estaba definido.";
+                    var mensaje = "Error Semantico: se intento establecer el parametro font_family pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 } 
                 this.font_family = valor;
                 break;
             case 'TEXT_ALIGN':
                 if(this.text_align != undefined){
-                    mensaje = "Error Semantico: se intento establecer el parametro text-align pero ya estaba definido.";
+                    var mensaje = "Error Semantico: se intento establecer el parametro text-align pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 } 
-                al = valor.toLowerCase(); 
+                var al = valor.toLowerCase(); 
                 switch(al){
                     case 'left': this.text_align = 'left'; break; 
                     case 'right': this.text_align = 'right'; break; 
@@ -65,13 +65,13 @@ export class Input extends Componente{
                 break;
             case 'ID':
                 if(this.id != undefined){
-                    mensaje = "Error Semantico: se intento establecer el parametro id pero ya estaba definido.";
+                    var mensaje = "Error Semantico: se intento establecer el parametro id pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 }
                 this.id = valor;
                 break;
             default: 
-                mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia Input pero no es un parametro valido para el componente.";
+                var mensaje = "Error Semantico: se intentó establecer el parametro " + parametro + " en una instancia Input pero no es un parametro valido para el componente.";
                 super.lanzarExcepcionSemantica();
         }
     }
@@ -96,8 +96,8 @@ export class Input extends Componente{
         this.fontSize = this.fontSize || '10px';
         this.fontFamily = this.fontFamily || 'Arial';
         this.textAlign = this.textAlign || 'left';
-        style = "\" color: " + this.color + "; font-size: " + this.fontSize + "; font-family: " + this.fontFamily + "; text-align: " + this.textAlign + ";\"";
-        codigo = "<input type=\"" + this.tipo + "\" id = \"" + this.id + "\" name = \""+ this.id  +"\" " + style + " value = \"" + this.valor + "\">";
+        var style = "\" color: " + this.color + "; font-size: " + this.fontSize + "; font-family: " + this.fontFamily + "; text-align: " + this.textAlign + ";\"";
+        var codigo = "<input type=\"" + this.tipo + "\" id = \"" + this.id + "\" name = \""+ this.id  +"\" " + style + " value = \"" + this.valor + "\">";
 
 
         return codigo; 

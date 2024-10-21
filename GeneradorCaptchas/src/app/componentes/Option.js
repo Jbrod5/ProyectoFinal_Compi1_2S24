@@ -12,7 +12,7 @@ export class Option extends Componente{
     establecerParametro(parametro, valor){
 
         //Este componente no tiene parametros asociados.
-        mensaje = "Error Semantico: se intento establecer el parametro " + parametro + " en una isntancia Option pero este componente no cuenta con parametros asociados";
+        var mensaje = "Error Semantico: se intento establecer el parametro " + parametro + " en una isntancia Option pero este componente no cuenta con parametros asociados";
         super.lanzarExcepcionSemantica(mensaje);
 
     }
@@ -31,7 +31,7 @@ export class Option extends Componente{
      * @returns {String} El codigo HTML del componente.
      */
     obtenerCodigo(){
-        codigo = "<option>" + this.valor + "</option>";
+        var codigo = "<option>" + this.valor + "</option>\n";
         return codigo; 
     }
 }
