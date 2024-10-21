@@ -17,10 +17,7 @@
     padding: 10px 5px;
     text-align: right;
     user-select: none;
-  }
-  
-  #line-numbers::after {
-    content: attr(data-content);
+    white-space: pre; /* Asegura que los números de línea estén en líneas separadas */
   }
   
   textarea {
