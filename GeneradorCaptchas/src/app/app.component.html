@@ -12,4 +12,16 @@ Este es el main de la app :D
 <button (click)="parse()" type="button" class="btn btn-success">Calcular</button>
 
 
+
+<div class="code-editor-container">
+  <div class="editor">
+    <div class="line-numbers" id="line-numbers"></div>
+    <textarea id="codeArea" (scroll)="syncScroll()" (keyup)="updateCursorPosition($event)" (click)="updateCursorPosition($event)"></textarea>
+  </div>
+  <div class="cursor-info">
+    Línea: {{ currentLine }}, Columna: {{ currentColumn }}
+  </div>
+  <button class="process-btn" (click)="processCode()">Process</button>
+</div>
+
 <router-outlet></router-outlet>
