@@ -11,8 +11,11 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  *
@@ -83,28 +86,29 @@ public class SvSavePag extends HttpServlet {
         System.out.println("Nombre: " + nombrePagina);
         System.out.println("Ruta: " + ruta);
         
-        FileWriter escritor = null; 
-        try {
+        /*try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta))) {
             // Creamos un objeto File para representar el archivo
             File archivo = new File(ruta);
 
             // Si el archivo ya existe, lo eliminamos
             if (archivo.exists()) {
                 archivo.delete();
+                archivo.createNewFile();
             }
-
-                escritor = new FileWriter(archivo);
-                escritor.write(codigoPagina);
             
-
-            System.out.println("El archivo se ha guardado correctamente en: " + ruta);
+            writer.write("jdkflakdsjalsdjkfa\nasdhjfaskd\njsdfa ajksd f asldkfja lskdjfall asdjkfasldñkfjasld fañlsdkf jalksdjf alksjdflaksjdfal sd");
+            System.out.println("Archivo escrito exitosamente en: " + ruta);
         } catch (IOException e) {
-            System.out.println("Error al guardar el archivo: " + e.getMessage());
-            if(escritor != null){
-                escritor.close();
-            }
-        }
-        
+            System.err.println("Error al escribir el archivo: " + e.getMessage());
+        } */
+        try {
+        // Escribir el contenido en el archivo, sobrescribiendo si ya existe
+            Files.write(Paths.get(ruta), codigoPagina.getBytes());
+        System.out.println("Archivo escrito exitosamente en: " + ruta);
+    } catch (IOException e) {
+        System.err.println("Error al escribir el archivo: " + e.getMessage());
+        e.printStackTrace(); // Para más detalles sobre el error
+    }
         
         
     }
