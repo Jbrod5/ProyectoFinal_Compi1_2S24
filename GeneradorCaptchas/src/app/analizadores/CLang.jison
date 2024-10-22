@@ -24,13 +24,15 @@
 	const {Parametro} = require('../componentes/Parametro')	;
 
 	var parametros = [];
-	var nombrePagina = undefined; 
-	var codigoPagina = undefined; 
-	//this.httpclient = undefined;
+	
 
-	exports.nombrePagina = nombrePagina; 
-	exports.codigoPagina = codigoPagina;
 
+	//function cambiarParametros(){
+	//	nombrePagina="definido con funcion"
+	//	codigoPagina="Definido COn Funcion"
+	//}
+
+	//module.exports= {cambiarParametros()};
 	//function setHttpClient(httpC){
 	//	this.httpclient = httpC;
 	//	return "";
@@ -125,6 +127,21 @@
 		function mostrarToken(mensaje, token){
 			console.log("Token: " + mensaje + " | Valor: " + token);
 		}
+
+		//let nombrePagina = "No inicializado."; 
+		//let codigoPagina = "No inicializado."; 
+		//this.httpclient = undefined;
+
+		var nombrePagina = "a";
+		var codigoPagina = "b";
+		exports.nombrePagina = nombrePagina; 
+		exports.codigoPagina = codigoPagina;
+
+		//exports.cambiarParametros = funcion(
+		//	nombrePagina = "NOMBREPAGINA"
+		//	codigoPagina = "CODIGOPAGINA"
+		//)
+			
 	%}
 
 %% 
@@ -297,34 +314,17 @@ cc    : MENQUE CC      parametros MAYQUE etiquetas 		CC_FIN  {
 			}
 
 			console.log(html.obtenerCodigo());
+
+			console.log("codigo pagina sin inicializar:");
+			console.log(codigoPagina)
+
+			console.log("codigo pagina inicializado:")
 			codigoPagina = html.obtenerCodigo();
+			console.log(codigoPagina)
+
+
 			nombrePagina = html.obtenerNombre();
-
-			//Enviar al servlet java: 
-			//var url = 'http://localhost:8080/AdministradorPaginas/guardarpagina';
-			//const headers = new HttpHeaders({
-			//	'Content-Type': 'application/json'
-			//  });
-			//
-			//  const bd = {
-			//	codigoPagina: html.obtenerCodigo(),
-			//	nombrePagina: html.obtenerNombre()
-			//  };
-			//
-			//  
-			//  this.httpclient.post(url, bd, { headers })
-			//	.subscribe(
-			//	  response => {
-			//		console.log('Respuesta del servidor:', response);
-			//		// Manejar la respuesta del servidor
-			//	  },
-			//	  error => {
-			//		console.error('Error al enviar la petición:', error);
-			//		// Manejar los errores
-			//	  }
-			//	);
-
-
+			
 			$$ = html; 
 
 	  };

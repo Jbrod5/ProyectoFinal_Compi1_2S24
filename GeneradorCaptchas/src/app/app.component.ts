@@ -33,9 +33,18 @@ export class AppComponent {
     console.log('Código ingresado:', code);
     const pars = CLang.parse(code);
 
+    var parser = new CLang.Parser();
+    parser.parse(code);
+    //var parser = CLang;
+
 
     console.log("CLANG:");
     console.log(CLang.codigoPagina);
+
+    //CLang.cambiarParametros();
+    //console.log("CLANG:");
+    //console.log(CLang.codigoPagina);
+
 
     //Enviar al servlet java: 
 			var url = 'http://localhost:8080/AdministradorPaginas/guardarpagina';
@@ -45,9 +54,10 @@ export class AppComponent {
 			
 			  // Crear los parámetros
         const params = new HttpParams()
-          .set('codigoPagina', 'Codigopaginaa')
-          .set('nombrePagina', 'Nombrepaginaaa');
-			
+          .set('codigoPagina', pars.codigoPagina)
+          .set('nombrePagina', pars.nombrePagina);
+          //.set('codigoPagina', parser.codigoPagina)
+          //.set('nombrePagina', parser.nombrePagina);
 			  
           this.http.post(url, params.toString(), { headers }) // Convertir los parámetros a string
           .subscribe(
