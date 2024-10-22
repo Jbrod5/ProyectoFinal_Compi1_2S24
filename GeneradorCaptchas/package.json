@@ -37,11 +37,11 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.3.5"
   },
-  "browser":{
+  "browser": {
     "fs": false,
-    "path":false,
+    "path": false,
     "os": false,
-    "net":false,
-    "tls":false
+    "net": false,
+    "tls": false
   }
 }

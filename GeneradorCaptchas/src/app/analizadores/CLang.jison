@@ -24,7 +24,10 @@
 	const {Parametro} = require('../componentes/Parametro')	;
 
 	var parametros = [];
-	
+	//static nombrePagina = "a";
+	//static codigoPagina = "b";
+
+
 
 
 	//function cambiarParametros(){
@@ -128,14 +131,40 @@
 			console.log("Token: " + mensaje + " | Valor: " + token);
 		}
 
+		//function establecerPaquete(parametro){
+		//	this.parametro = parametro; 
+		//}
+
 		//let nombrePagina = "No inicializado."; 
 		//let codigoPagina = "No inicializado."; 
 		//this.httpclient = undefined;
 
 		var nombrePagina = "a";
 		var codigoPagina = "b";
-		exports.nombrePagina = nombrePagina; 
-		exports.codigoPagina = codigoPagina;
+		//
+		//exports.nombrePagina = nombrePagina; 
+		//exports.codigoPagina = codigoPagina;
+
+		//exports.obtenerNombre = function(){
+		//	return this.nombrePagina;
+		//};
+//
+		//exports.obtenerCodigo = function(){
+		//	return this.codigoPagina;
+		//};
+
+
+		exports.obtenerNombre = function(){
+			return nombrePagina;
+		};
+
+		exports.obtenerCodigo = function(){
+			return codigoPagina;
+		};
+		//exports.establecerPaquete = function (parametro){
+		//	this.parametro = parametro; 
+		//}
+
 
 		//exports.cambiarParametros = funcion(
 		//	nombrePagina = "NOMBREPAGINA"
@@ -324,6 +353,11 @@ cc    : MENQUE CC      parametros MAYQUE etiquetas 		CC_FIN  {
 
 
 			nombrePagina = html.obtenerNombre();
+
+			if(this.parametro != undefined){
+				parametro.parametro = html.obtenerCodigo();
+				parametro.valor = html.obtenerNombre();
+			}
 			
 			$$ = html; 
 
