@@ -75,6 +75,12 @@ export class Html extends Componente{
     }
 
 
+    obtenerNombre(){
+        var nombre = this.name || "indefinido";
+        return nombre;
+    }
+
+
     /**
      * @returns {String} El codigo HTML.
      */

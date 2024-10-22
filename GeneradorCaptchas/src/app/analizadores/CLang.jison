@@ -1,6 +1,6 @@
 /* DEFINICIONES LEXICAS */
 %{	
-	
+	const {HttpClient, HttpHeaders} = require('@angular/common/http');
 	
 	const {Componente} = require ('../componentes/Componente');
 	
@@ -24,7 +24,18 @@
 	const {Parametro} = require('../componentes/Parametro')	;
 
 	var parametros = [];
+	var nombrePagina = undefined; 
+	var codigoPagina = undefined; 
+	//this.httpclient = undefined;
 
+	exports.nombrePagina = nombrePagina; 
+	exports.codigoPagina = codigoPagina;
+
+	//function setHttpClient(httpC){
+	//	this.httpclient = httpC;
+	//	return "";
+	//}
+	//exports.setHttpClient = setHttpClient(http);
 
 
 %}
@@ -286,6 +297,34 @@ cc    : MENQUE CC      parametros MAYQUE etiquetas 		CC_FIN  {
 			}
 
 			console.log(html.obtenerCodigo());
+			codigoPagina = html.obtenerCodigo();
+			nombrePagina = html.obtenerNombre();
+
+			//Enviar al servlet java: 
+			//var url = 'http://localhost:8080/AdministradorPaginas/guardarpagina';
+			//const headers = new HttpHeaders({
+			//	'Content-Type': 'application/json'
+			//  });
+			//
+			//  const bd = {
+			//	codigoPagina: html.obtenerCodigo(),
+			//	nombrePagina: html.obtenerNombre()
+			//  };
+			//
+			//  
+			//  this.httpclient.post(url, bd, { headers })
+			//	.subscribe(
+			//	  response => {
+			//		console.log('Respuesta del servidor:', response);
+			//		// Manejar la respuesta del servidor
+			//	  },
+			//	  error => {
+			//		console.error('Error al enviar la petición:', error);
+			//		// Manejar los errores
+			//	  }
+			//	);
+
+
 			$$ = html; 
 
 	  };

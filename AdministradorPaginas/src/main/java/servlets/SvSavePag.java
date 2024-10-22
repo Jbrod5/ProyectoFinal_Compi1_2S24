@@ -68,6 +68,12 @@ public class SvSavePag extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        // Configurar las cabeceras CORS
+        response.setHeader("Access-Control-Allow-Origin", "*");  // O puedes especificar un origen específico en lugar de '*'
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+        
+        
         String codigoPagina = request.getParameter("codigoPagina");
         String nombrePagina = request.getParameter("nombrePagina");
         String ruta = "/home/jorge/Compi_1/ProyectoFinal_Compi1_2S24/Paginas_generadas/";
@@ -77,6 +83,7 @@ public class SvSavePag extends HttpServlet {
         System.out.println("Nombre: " + nombrePagina);
         System.out.println("Ruta: " + ruta);
         
+        FileWriter escritor = null; 
         try {
             // Creamos un objeto File para representar el archivo
             File archivo = new File(ruta);
@@ -86,14 +93,16 @@ public class SvSavePag extends HttpServlet {
                 archivo.delete();
             }
 
-            try ( // Creamos el archivo y escribimos el contenido
-                    FileWriter escritor = new FileWriter(archivo)) {
+                escritor = new FileWriter(archivo);
                 escritor.write(codigoPagina);
-            }
+            
 
             System.out.println("El archivo se ha guardado correctamente en: " + ruta);
         } catch (IOException e) {
             System.out.println("Error al guardar el archivo: " + e.getMessage());
+            if(escritor != null){
+                escritor.close();
+            }
         }
         
         

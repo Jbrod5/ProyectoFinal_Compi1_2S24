@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import * as CLang from './analizadores/CLang';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,10 @@ import * as CLang from './analizadores/CLang';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+
+  constructor(private http: HttpClient) { }  // HttpClient inyectado en el constructor
+
  
   expression : string = "";
 
@@ -25,9 +31,38 @@ export class AppComponent {
     // Lógica para procesar el código cuando se haga clic en el botón "Process"
     const code = (document.getElementById('codeArea') as HTMLTextAreaElement).value;
     console.log('Código ingresado:', code);
-    const pars = CLang.parse(code)
+    const pars = CLang.parse(code);
+
+
+    console.log("CLANG:");
+    console.log(CLang.codigoPagina);
+
+    //Enviar al servlet java: 
+			var url = 'http://localhost:8080/AdministradorPaginas/guardarpagina';
+			const headers = new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded' // Cambiado a application/x-www-form-urlencoded
+			  });
+			
+			  // Crear los parámetros
+        const params = new HttpParams()
+          .set('codigoPagina', 'Codigopaginaa')
+          .set('nombrePagina', 'Nombrepaginaaa');
+			
+			  
+          this.http.post(url, params.toString(), { headers }) // Convertir los parámetros a string
+          .subscribe(
+              response => {
+                  console.log('Respuesta del servidor:', response);
+                  // Manejar la respuesta del servidor
+              },
+              error => {
+                  console.error('Error al enviar la petición:', error);
+                  // Manejar los errores
+              }
+          );
   }
   
+
 
 
 

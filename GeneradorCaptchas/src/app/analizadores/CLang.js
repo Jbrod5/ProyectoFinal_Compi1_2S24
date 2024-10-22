@@ -249,6 +249,34 @@ case 57:
 			}
 
 			console.log(html.obtenerCodigo());
+			codigoPagina = html.obtenerCodigo();
+			nombrePagina = html.obtenerNombre();
+
+			//Enviar al servlet java: 
+			//var url = 'http://localhost:8080/AdministradorPaginas/guardarpagina';
+			//const headers = new HttpHeaders({
+			//	'Content-Type': 'application/json'
+			//  });
+			//
+			//  const bd = {
+			//	codigoPagina: html.obtenerCodigo(),
+			//	nombrePagina: html.obtenerNombre()
+			//  };
+			//
+			//  
+			//  this.httpclient.post(url, bd, { headers })
+			//	.subscribe(
+			//	  response => {
+			//		console.log('Respuesta del servidor:', response);
+			//		// Manejar la respuesta del servidor
+			//	  },
+			//	  error => {
+			//		console.error('Error al enviar la petición:', error);
+			//		// Manejar los errores
+			//	  }
+			//	);
+
+
 			this.$ = html; 
 
 	  
@@ -849,7 +877,7 @@ _handle_error:
     return true;
 }};
 	
-	
+	const {HttpClient, HttpHeaders} = require('@angular/common/http');
 	
 	const {Componente} = require ('../componentes/Componente');
 	
@@ -873,7 +901,18 @@ _handle_error:
 	const {Parametro} = require('../componentes/Parametro')	;
 
 	var parametros = [];
+	var nombrePagina = undefined; 
+	var codigoPagina = undefined; 
+	//this.httpclient = undefined;
 
+	exports.nombrePagina = nombrePagina; 
+	exports.codigoPagina = codigoPagina;
+
+	//function setHttpClient(httpC){
+	//	this.httpclient = httpC;
+	//	return "";
+	//}
+	//exports.setHttpClient = setHttpClient(http);
 
 
  
