@@ -32,22 +32,12 @@ export class AppComponent {
     // Lógica para procesar el código cuando se haga clic en el botón "Process"
     const code = (document.getElementById('codeArea') as HTMLTextAreaElement).value;
     console.log('Código ingresado:', code);
-    //const pars = CLang.parse(code);
-
     var parser = new CLang.Parser();
-    var parametro = new Parametro('a','b');
-    //parser.establecerPaquete(parametro);
-    //parser.establecerPaquete(parametro);
     parser.parse(code);
-    //var parser = CLang;
 
 
     console.log("CLANG:");
     console.log(CLang.obtenerCodigo());
-
-    //CLang.cambiarParametros();
-    //console.log("CLANG:");
-    //console.log(CLang.codigoPagina);
 
 
     //Enviar al servlet java: 
@@ -58,16 +48,8 @@ export class AppComponent {
 			
 			  // Crear los parámetros
         const params = new HttpParams()
-          //.set('codigoPagina', pars.codigoPagina)
-          //.set('nombrePagina', pars.nombrePagina);
-
-          //.set('codigoPagina', parser.codigoPagina)
-          //.set('nombrePagina', parser.nombrePagina);
           .set('codigoPagina', CLang.obtenerCodigo())
           .set('nombrePagina', CLang.obtenerNombre());
-
-          //.set('codigoPagina', parametro.parametro)
-          //.set('nombrePagina', parametro.valor);
       
 			  
           this.http.post(url, params.toString(), { headers }) // Convertir los parámetros a string

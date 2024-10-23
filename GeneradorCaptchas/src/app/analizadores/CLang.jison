@@ -24,24 +24,6 @@
 	const {Parametro} = require('../componentes/Parametro')	;
 
 	var parametros = [];
-	//static nombrePagina = "a";
-	//static codigoPagina = "b";
-
-
-
-
-	//function cambiarParametros(){
-	//	nombrePagina="definido con funcion"
-	//	codigoPagina="Definido COn Funcion"
-	//}
-
-	//module.exports= {cambiarParametros()};
-	//function setHttpClient(httpC){
-	//	this.httpclient = httpC;
-	//	return "";
-	//}
-	//exports.setHttpClient = setHttpClient(http);
-
 
 %}
 %lex
@@ -131,45 +113,15 @@
 			console.log("Token: " + mensaje + " | Valor: " + token);
 		}
 
-		//function establecerPaquete(parametro){
-		//	this.parametro = parametro; 
-		//}
-
-		//let nombrePagina = "No inicializado."; 
-		//let codigoPagina = "No inicializado."; 
-		//this.httpclient = undefined;
-
 		var nombrePagina = "a";
 		var codigoPagina = "b";
-		//
-		//exports.nombrePagina = nombrePagina; 
-		//exports.codigoPagina = codigoPagina;
-
-		//exports.obtenerNombre = function(){
-		//	return this.nombrePagina;
-		//};
-//
-		//exports.obtenerCodigo = function(){
-		//	return this.codigoPagina;
-		//};
-
 
 		exports.obtenerNombre = function(){
 			return nombrePagina;
 		};
-
 		exports.obtenerCodigo = function(){
 			return codigoPagina;
 		};
-		//exports.establecerPaquete = function (parametro){
-		//	this.parametro = parametro; 
-		//}
-
-
-		//exports.cambiarParametros = funcion(
-		//	nombrePagina = "NOMBREPAGINA"
-		//	codigoPagina = "CODIGOPAGINA"
-		//)
 			
 	%}
 
@@ -342,22 +294,12 @@ cc    : MENQUE CC      parametros MAYQUE etiquetas 		CC_FIN  {
 				});
 			}
 
-			console.log(html.obtenerCodigo());
-
-			console.log("codigo pagina sin inicializar:");
-			console.log(codigoPagina)
-
-			console.log("codigo pagina inicializado:")
-			codigoPagina = html.obtenerCodigo();
-			console.log(codigoPagina)
-
-
+			
 			nombrePagina = html.obtenerNombre();
-
-			if(this.parametro != undefined){
-				parametro.parametro = html.obtenerCodigo();
-				parametro.valor = html.obtenerNombre();
-			}
+			codigoPagina = html.obtenerCodigo();
+			console.log('Nombre pagina: ' + nombrePagina);
+			console.log('Codigo pagina: ')
+			console.log(html.obtenerCodigo());
 			
 			$$ = html; 
 
