@@ -151,7 +151,7 @@ parametros : parametro parametros {
 				}
 				$$ = res; 
 			}
-		   | /**/ { $$ = undefined;  };
+		   | /* */ { $$ = []; };
 
 parametro : href        { $$ = $1; }    | background  { $$ = $1; }   | color       { $$ = $1; }    
 		  | font_size   { $$ = $1; }    | font_family { $$ = $1; }   | text_align  { $$ = $1; }    
