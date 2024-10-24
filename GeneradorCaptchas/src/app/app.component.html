@@ -19,17 +19,33 @@
 <button (click)="parse()" type="button" class="btn btn-success">Calcular</button>-->
 
 
+<div class="area-codigo">
 
-<div class="code-editor-container">
-  <div class="editor">
-    <div class="line-numbers" id="line-numbers"></div>
-    <textarea id="codeArea" (scroll)="syncScroll()" (keyup)="updateCursorPosition($event)" (click)="updateCursorPosition($event)" placeholder="Codigo C_LANG para captchas"></textarea>
+
+  <div class="code-editor-container">
+    <div class="editor">
+      <div class="line-numbers" id="line-numbers"></div>
+      <textarea id="codeArea" (scroll)="syncScroll()" (keyup)="updateCursorPosition($event)" (click)="updateCursorPosition($event)" placeholder="Codigo C_LANG para captchas"></textarea>
+    </div>
+    <div class="cursor-info">
+      Línea: {{ currentLine }}, Columna: {{ currentColumn }}
+    </div>
+    <button class="btn btn-success" (click)="processCode()">Procesar captcha</button>
   </div>
-  <div class="cursor-info">
-    Línea: {{ currentLine }}, Columna: {{ currentColumn }}
-  </div>
-  <button class="btn btn-success" (click)="processCode()">Procesar captcha</button>
+
+
+  <div class="side-area">
+    <fieldset class="textarea-container">
+      <legend>Salidas del análisis</legend>
+      <textarea name="" id="" placeholder="Mensajes del análisis."></textarea>
+    </fieldset>
   
+    <fieldset class="textarea-container">
+      <legend>Simbolos</legend>
+      <textarea name="" id="" placeholder="Tabla de simbolos."></textarea>
+    </fieldset>
+  </div>
+
 </div>
 
 <router-outlet></router-outlet>
