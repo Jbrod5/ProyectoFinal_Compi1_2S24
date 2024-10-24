@@ -1,3 +1,25 @@
+.header-container {
+  display: flex; /* Alinea los elementos en fila */
+  justify-content: space-between; /* Título a la izquierda y botones a la derecha */
+  align-items: center; /* Centra verticalmente los elementos */
+  padding: 10px; /* Añade un pequeño espacio alrededor */
+}
+
+.custom-title {
+  font-size: 30px; /* Reduce el tamaño del h1 */
+}
+
+.button-group {
+  display: flex; /* Alinea los botones en fila */
+  gap: 10px; /* Espacio entre los botones */
+}
+
+.btn-thin {
+  padding: 5px 10px; /* Botones más delgados */
+  font-size: 14px; /* Ajusta el tamaño de la fuente en los botones */
+}
+
+
 .code-editor-container {
     display: flex;
     flex-direction: column;

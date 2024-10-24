@@ -1,6 +1,14 @@
-<div>
-  <h1>Generador de captchas</h1>
+<div class="header-container">
+  <h1 class="custom-title">Generador de captchas</h1>
+  <div class="button-group">
+    <!-- Botones para Abrir, Guardar y Guardar como -->
+    <button class="btn btn-primary btn-thin" (click)="openFile()">Abrir archivo</button>
+    <button class="btn btn-secondary btn-thin" (click)="saveFile()">Guardar</button>
+    <button class="btn btn-secondary btn-thin" (click)="saveAs()">Guardar como</button>
+  </div>
 </div>
+
+
 
 <!--
 <div class="form-floating">
@@ -21,6 +29,7 @@
     Línea: {{ currentLine }}, Columna: {{ currentColumn }}
   </div>
   <button class="btn btn-success" (click)="processCode()">Procesar captcha</button>
+  
 </div>
 
 <router-outlet></router-outlet>

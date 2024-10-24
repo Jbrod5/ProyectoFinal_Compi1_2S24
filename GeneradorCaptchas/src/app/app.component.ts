@@ -4,6 +4,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import { Parametro } from './componentes/Parametro';
 
+import { saveAs } from 'file-saver'; // Importar la librería file-saver
+
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -23,6 +27,10 @@ export class AppComponent {
   currentColumn: number = 1;
 
   title = 'GeneradorCaptchas';
+
+  filePath: string | null = null; // Ruta del archivo abierto/guardado
+
+
 
   parse():void{
     const pars = CLang.parse(this.expression);
@@ -96,4 +104,71 @@ export class AppComponent {
     // Sincroniza el desplazamiento vertical
     lineNumbers.scrollTop = codeArea.scrollTop;
   }
+
+
+
+
+
+// Abrir archivo
+openFile(): void {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.txt, .c, .cpp'; // Tipos de archivos permitidos
+
+  input.onchange = (event: any) => {
+    const file = event.target.files[0];
+    this.filePath = file.name; // Guardar el nombre del archivo
+
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      const content = e.target.result;
+      (document.getElementById('codeArea') as HTMLTextAreaElement).value = content;
+      this.code = content;
+      this.updateLineNumbers();
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
+// Guardar archivo
+saveFile(): void {
+  if (this.filePath) {
+    this.saveToFile(this.filePath);
+  } else {
+    this.saveAs();
+  }
+}
+
+// Guardar como
+saveAs(): void {
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.placeholder = 'Nombre del archivo';
+  
+  input.onchange = () => {
+    const fileName = input.value ? `${input.value}.txt` : 'archivo.txt';
+    this.saveToFile(fileName);
+  };
+  
+  document.body.appendChild(input);
+  input.focus();
+  input.click();
+}
+
+// Función para guardar el contenido en un archivo
+saveToFile(fileName: string): void {
+  const content = (document.getElementById('codeArea') as HTMLTextAreaElement).value;
+  const blob = new Blob([content], { type: 'text/plain' });
+  const url = window.URL.createObjectURL(blob);
+  
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = fileName;
+  a.click();
+  
+  window.URL.revokeObjectURL(url); // Limpiar la URL creada
+}
+
+
 }
