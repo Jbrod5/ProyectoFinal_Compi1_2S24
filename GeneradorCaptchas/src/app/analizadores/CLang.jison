@@ -27,6 +27,7 @@
 
 %}
 %lex
+%options case-insensitive
 
 %% 
 /* - - - - - - - - - - - - - - EXPRESIONES REGULARES - - - - - - - - - - - - - - */ 
