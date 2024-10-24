@@ -32,6 +32,7 @@
 /* - - - - - - - - - - - - - - EXPRESIONES REGULARES - - - - - - - - - - - - - - */ 
 
 [ \r\t\n]     {/*ignorar*/}
+"!!".*        {console.log("Comentario: " + yytext);}
 
 // ETIQUETAS - - - - - - - - - - - - - - - - -
 "C_CC" 			{ mostrarToken('CC'			, yytext);   return 'CC';  	     }
