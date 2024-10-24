@@ -32,7 +32,8 @@
 /* - - - - - - - - - - - - - - EXPRESIONES REGULARES - - - - - - - - - - - - - - */ 
 
 [ \r\t\n]     {/*ignorar*/}
-"!!".*        {console.log("Comentario: " + yytext);}
+"!!".*        	   {console.log("Comentario: " + yytext);}
+//["--" .*  "-->"]\b {console.log("Comentario: " + yytext);}
 
 // ETIQUETAS - - - - - - - - - - - - - - - - -
 "C_CC" 			{ mostrarToken('CC'			, yytext);   return 'CC';  	     }
@@ -79,6 +80,9 @@
 "="  	       { mostrarToken("IGUAL" , yytext);  return 'IGUAL'; }
 "/"  	       { mostrarToken("BARRA" , yytext);  return 'BARRA'; }
 ("“"|"”"|"\"") { mostrarToken("COMILL", yytext); return 'COMILL'; }
+//"Comentarios  
+"!"			   {mostrarToken("EXCLAM", yytext); return 'EXCLAM'; }
+"-"			   {mostrarToken("MINUS", yytext);  return 'MENOS'; }
 
 // PARAMETROS - - - - - - - - - - - - - - - - - 
 "href"        { mostrarToken('HREF'		 , yytext);   return 'HREF';	  }   
@@ -217,6 +221,7 @@ etiqueta: head
 		| spam 	 { $$ = $1; } | input  { $$ = $1; } | t_area { $$ = $1; } 
 		| img 	 { $$ = $1; } | br 	   { $$ = $1; } | button { $$ = $1; } 
 		| h1 	 { $$ = $1; } | p 	   { $$ = $1; } 
+		| coment {}
 		| error {
 			console.log('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
 			$$ = undefined;
@@ -232,7 +237,33 @@ etiqueta: head
 
 
 
+valores : VALOR valores{
+			var valores = $2; 
+			var vl = $1; 
+			var res = [];
 
+			if(vl != undefined){
+				res.push(vl);
+			}
+
+			if(valores != undefined && Array.isArray(valores)){
+				valores.forEach(v=>{
+					if(v != undefined){
+						res.push(v);
+					}
+				});
+
+				$$ = res;
+			}
+		} 
+		| VALOR {
+			var vl = $1;
+			var res = [];
+			if(vl != undefined){
+				res.push(vl);
+			}
+			$$ = res; 
+		};
 
 valor : VALOR;
 
@@ -338,6 +369,9 @@ body  : MENQUE BODY    parametros MAYQUE etiquetas 		BODY_FIN{
 			console.log(body.obtenerCodigo());
 			$$ = body; 
 	  };
+coment : MENQUE EXCLAM MENOS MENOS valores MENOS MENOS MAYQUE{
+			console.log("Comentario multiple: " + $5);
+		};
 div   : MENQUE DIV     parametros MAYQUE etiquetas 		DIV_FIN {
 			var parametros = $3;
 			var etiquetas = $5;
