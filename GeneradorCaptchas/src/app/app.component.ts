@@ -47,6 +47,9 @@ export class AppComponent {
     console.log("CLANG:");
     console.log(CLang.obtenerCodigo());
 
+    //Mostrar los mensaje sen el area de mensajes: 
+    (document.getElementById('mensajes-analisis') as HTMLTextAreaElement).value = CLang.obtenerMensajes();
+
 
     //Enviar al servlet java: 
 			var url = 'http://localhost:8080/AdministradorPaginas/guardarpagina';

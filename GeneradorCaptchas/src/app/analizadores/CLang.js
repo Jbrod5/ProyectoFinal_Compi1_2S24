@@ -88,12 +88,12 @@ case 2:
 				var params = $$[$0]; 
 				var par = $$[$0-1];
 				var res = [];
-				console.log("parametro: " + par)
-				console.log(params);
+				mostrarSintactico("parametro: " + par)
+				mostrarSintactico(params);
 				res.push(par);
 
 				if(params != undefined && Array.isArray(params)){
-					console.log('Params si es un arary!')
+					mostrarSintactico('Params si es un arary!')
 					params.forEach(p=>{
 						res.push(p);
 					});
@@ -166,7 +166,7 @@ case 36:
 				}
 
 				if(etiquetas != undefined && Array.isArray(etiquetas)){
-					console.log("Etiquetas si es un array!");
+					//mostrarSintactico("Etiquetas si es un array!");
 					etiquetas.forEach(e=>{
 						if(e != undefined){
 							res.push(e);
@@ -188,7 +188,7 @@ case 37:
 break;
 case 54:
 
-			console.log('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
+			mostrarSintactico('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
 			this.$ = undefined;
 		
 break;
@@ -231,7 +231,7 @@ case 58:
 				head.agregarComponente(etiqueta);
 			});
 
-			console.log(head.obtenerCodigo());
+			mostrarSintactico(head.obtenerCodigo());
 			this.$ = head;
 	  
 break;
@@ -240,7 +240,7 @@ case 59:
 			var valor = $$[$0-1];
 			var titulo = new Title();
 			titulo.establecerValor(valor);
-			console.log(titulo.obtenerCodigo());
+			mostrarSintactico(titulo.obtenerCodigo());
 			this.$ = titulo; 
 	  
 break;
@@ -282,9 +282,9 @@ case 60:
 			
 			nombrePagina = html.obtenerNombre();
 			codigoPagina = html.obtenerCodigo();
-			console.log('Nombre pagina: ' + nombrePagina);
-			console.log('Codigo pagina: ')
-			console.log(html.obtenerCodigo());
+			mostrarSintactico('Nombre pagina: ' + nombrePagina + "\nCodigo pagina: \n"  + html.obtenerCodigo());
+			//mostrarSintactico('Codigo pagina: ')
+			//mostrarSintactico(html.obtenerCodigo());
 			
 			this.$ = html; 
 
@@ -321,13 +321,13 @@ case 61:
 				});
 			}
 		
-			console.log(body.obtenerCodigo());
+			mostrarSintactico(body.obtenerCodigo());
 			this.$ = body; 
 	  
 break;
 case 62:
 
-			console.log("Comentario multiple: " + $$[$0-3]);
+			mostrarSintactico("Comentario multiple: " + $$[$0-3]);
 		
 break;
 case 63:
@@ -361,7 +361,7 @@ case 63:
 				});
 			}
 		
-			console.log(div.obtenerCodigo());
+			mostrarSintactico(div.obtenerCodigo());
 			this.$ = div; 
 	  
 break;
@@ -395,7 +395,7 @@ case 64:
 				});
 			}
 		
-			console.log(select.obtenerCodigo());
+			mostrarSintactico(select.obtenerCodigo());
 			this.$ = select;
 
 		
@@ -405,7 +405,7 @@ case 65:
 			var option = new Option();
 			var val = $$[$0-1];
 			option.establecerValor(val);
-			console.log(option.obtenerCodigo());
+			mostrarSintactico(option.obtenerCodigo());
 			this.$ = option; 
 		
 break;
@@ -458,7 +458,7 @@ case 68:
 			}
 
 			res.establecerValor(valor);
-			console.log(res.obtenerCodigo());
+			mostrarSintactico(res.obtenerCodigo());
 			this.$ = res;
 	  
 break;
@@ -481,7 +481,7 @@ case 69:
 			}
 
 			res.establecerValor(valor);
-			console.log(res.obtenerCodigo());
+			mostrarSintactico(res.obtenerCodigo());
 			this.$ = res;
 	  
 break;
@@ -504,7 +504,7 @@ case 70:
 			}
 
 			res.establecerValor(valor);
-			console.log(res.obtenerCodigo());
+			mostrarSintactico(res.obtenerCodigo());
 			this.$ = res;
 	  
 break;
@@ -527,7 +527,7 @@ case 71:
 			}
 
 			res.establecerValor(valor);
-			console.log(res.obtenerCodigo());
+			mostrarSintactico(res.obtenerCodigo());
 			this.$ = res;
 	  
 break;
@@ -549,21 +549,21 @@ case 72:
 				});
 			}
 
-			console.log(img.obtenerCodigo());
+			mostrarSintactico(img.obtenerCodigo());
 			this.$ = img;
 	  
 break;
 case 73:
 
 			var result = new Br();
-			console.log(result.obtenerCodigo());
+			mostrarSintactico(result.obtenerCodigo());
 			this.$ = result;					
 	  
 break;
 case 74: case 75:
 
 			var result = new Br();
-			console.log(result.obtenerCodigo());
+			mostrarSintactico(result.obtenerCodigo());
 			this.$ = result;
 	  
 break;
@@ -586,7 +586,7 @@ case 76:
 			}
 
 			res.establecerValor(valor);
-			console.log(res.obtenerCodigo());
+			mostrarSintactico(res.obtenerCodigo());
 			this.$ = res; 
 
 	  
@@ -610,7 +610,7 @@ case 77:
 			}
 
 			res.establecerValor(valor);
-			console.log(res.obtenerCodigo());
+			mostrarSintactico(res.obtenerCodigo());
 			this.$ = res; 
 
 	  
@@ -634,7 +634,7 @@ case 78:
 			}
 
 			res.establecerValor(valor);
-			console.log(res.obtenerCodigo());
+			mostrarSintactico(res.obtenerCodigo());
 			this.$ = res; 
 
 	  
@@ -920,16 +920,29 @@ _handle_error:
 		//Codigo javascript incrustado
 		function mostrarToken(mensaje, token){
 			console.log("Token: " + mensaje + " | Valor: " + token);
+			mensajesSalida += "\nLEXER: \n"
+			mensajesSalida += "Token: " + mensaje + " | Valor: " + token + "\n";
 		}
 
 		var nombrePagina = "a";
 		var codigoPagina = "b";
+		var mensajesSalida ="";
 
 		exports.obtenerNombre = function(){
 			return nombrePagina;
 		};
 		exports.obtenerCodigo = function(){
 			return codigoPagina;
+		};
+		exports.obtenerMensajes = function(){
+			return mensajesSalida;
+		};
+
+
+		function mostrarSintactico(mensaje){
+			console.log(mensaje);
+			mensajesSalida += "\nPARSER: \n";
+			mensajesSalida += mensaje + "\n";
 		};
 			
 	/* generated by jison-lex 0.3.4 */
@@ -1262,7 +1275,7 @@ var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
 case 0:/*ignorar*/
 break;
-case 1:console.log("Comentario: " + yy_.yytext);
+case 1:mostrarSintactico("Comentario: " + yy_.yytext);
 break;
 case 2: mostrarToken('CC'			, yy_.yytext);   return 70;  	     
 break;

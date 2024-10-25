@@ -33,8 +33,8 @@
 /* - - - - - - - - - - - - - - EXPRESIONES REGULARES - - - - - - - - - - - - - - */ 
 
 [ \r\t\n]     {/*ignorar*/}
-"!!".*        	   {console.log("Comentario: " + yytext);}
-//["--" .*  "-->"]\b {console.log("Comentario: " + yytext);}
+"!!".*        	   {mostrarSintactico("Comentario: " + yytext);}
+//["--" .*  "-->"]\b {mostrarSintactico("Comentario: " + yytext);}
 
 // ETIQUETAS - - - - - - - - - - - - - - - - -
 "C_CC" 			{ mostrarToken('CC'			, yytext);   return 'CC';  	     }
@@ -117,16 +117,29 @@
 		//Codigo javascript incrustado
 		function mostrarToken(mensaje, token){
 			console.log("Token: " + mensaje + " | Valor: " + token);
+			mensajesSalida += "\nLEXER: \n"
+			mensajesSalida += "Token: " + mensaje + " | Valor: " + token + "\n";
 		}
 
 		var nombrePagina = "a";
 		var codigoPagina = "b";
+		var mensajesSalida ="";
 
 		exports.obtenerNombre = function(){
 			return nombrePagina;
 		};
 		exports.obtenerCodigo = function(){
 			return codigoPagina;
+		};
+		exports.obtenerMensajes = function(){
+			return mensajesSalida;
+		};
+
+
+		function mostrarSintactico(mensaje){
+			console.log(mensaje);
+			mensajesSalida += "\nPARSER: \n";
+			mensajesSalida += mensaje + "\n";
 		};
 			
 	%}
@@ -145,12 +158,12 @@ parametros : parametro parametros {
 				var params = $2; 
 				var par = $1;
 				var res = [];
-				console.log("parametro: " + par)
-				console.log(params);
+				mostrarSintactico("parametro: " + par)
+				mostrarSintactico(params);
 				res.push(par);
 
 				if(params != undefined && Array.isArray(params)){
-					console.log('Params si es un arary!')
+					mostrarSintactico('Params si es un arary!')
 					params.forEach(p=>{
 						res.push(p);
 					});
@@ -199,7 +212,7 @@ etiquetas: etiqueta etiquetas {
 				}
 
 				if(etiquetas != undefined && Array.isArray(etiquetas)){
-					console.log("Etiquetas si es un array!");
+					//mostrarSintactico("Etiquetas si es un array!");
 					etiquetas.forEach(e=>{
 						if(e != undefined){
 							res.push(e);
@@ -224,7 +237,7 @@ etiqueta: head
 		| h1 	 { $$ = $1; } | p 	   { $$ = $1; } 
 		| coment {}
 		| error {
-			console.log('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
+			mostrarSintactico('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
 			$$ = undefined;
 		};
 
@@ -276,14 +289,14 @@ head  : MENQUE HEAD  MAYQUE etiquetas 		HEAD_FIN{
 				head.agregarComponente(etiqueta);
 			});
 
-			console.log(head.obtenerCodigo());
+			mostrarSintactico(head.obtenerCodigo());
 			$$ = head;
 	  };
 title : MENQUE TITLE MAYQUE valor     		TITLE_FIN{
 			var valor = $4;
 			var titulo = new Title();
 			titulo.establecerValor(valor);
-			console.log(titulo.obtenerCodigo());
+			mostrarSintactico(titulo.obtenerCodigo());
 			$$ = titulo; 
 	  };
 
@@ -330,9 +343,9 @@ cc    : MENQUE CC      parametros MAYQUE etiquetas 		CC_FIN  {
 			
 			nombrePagina = html.obtenerNombre();
 			codigoPagina = html.obtenerCodigo();
-			console.log('Nombre pagina: ' + nombrePagina);
-			console.log('Codigo pagina: ')
-			console.log(html.obtenerCodigo());
+			mostrarSintactico('Nombre pagina: ' + nombrePagina + "\nCodigo pagina: \n"  + html.obtenerCodigo());
+			//mostrarSintactico('Codigo pagina: ')
+			//mostrarSintactico(html.obtenerCodigo());
 			
 			$$ = html; 
 
@@ -367,11 +380,11 @@ body  : MENQUE BODY    parametros MAYQUE etiquetas 		BODY_FIN{
 				});
 			}
 		
-			console.log(body.obtenerCodigo());
+			mostrarSintactico(body.obtenerCodigo());
 			$$ = body; 
 	  };
 coment : MENQUE EXCLAM MENOS MENOS valores MENOS MENOS MAYQUE{
-			console.log("Comentario multiple: " + $5);
+			mostrarSintactico("Comentario multiple: " + $5);
 		};
 div   : MENQUE DIV     parametros MAYQUE etiquetas 		DIV_FIN {
 			var parametros = $3;
@@ -403,7 +416,7 @@ div   : MENQUE DIV     parametros MAYQUE etiquetas 		DIV_FIN {
 				});
 			}
 		
-			console.log(div.obtenerCodigo());
+			mostrarSintactico(div.obtenerCodigo());
 			$$ = div; 
 	  };
 
@@ -436,7 +449,7 @@ select: MENQUE SELECT  parametros MAYQUE options  		SELECT_FIN{ //Solo etiquetas
 				});
 			}
 		
-			console.log(select.obtenerCodigo());
+			mostrarSintactico(select.obtenerCodigo());
 			$$ = select;
 
 		}; 
@@ -444,7 +457,7 @@ option  : MENQUE OPTION MAYQUE valor 					OPTION_FIN{
 			var option = new Option();
 			var val = $4;
 			option.establecerValor(val);
-			console.log(option.obtenerCodigo());
+			mostrarSintactico(option.obtenerCodigo());
 			$$ = option; 
 		};
 options : option options{
@@ -494,7 +507,7 @@ link  : MENQUE LINK     parametros MAYQUE valor     LINK_FIN	{
 			}
 
 			res.establecerValor(valor);
-			console.log(res.obtenerCodigo());
+			mostrarSintactico(res.obtenerCodigo());
 			$$ = res;
 	  };
 spam  : MENQUE SPAM     parametros MAYQUE valor     SPAM_FIN	{
@@ -515,7 +528,7 @@ spam  : MENQUE SPAM     parametros MAYQUE valor     SPAM_FIN	{
 			}
 
 			res.establecerValor(valor);
-			console.log(res.obtenerCodigo());
+			mostrarSintactico(res.obtenerCodigo());
 			$$ = res;
 	  }; 
 input : MENQUE INPUT    parametros MAYQUE valor 	INPUT_FIN	{
@@ -536,7 +549,7 @@ input : MENQUE INPUT    parametros MAYQUE valor 	INPUT_FIN	{
 			}
 
 			res.establecerValor(valor);
-			console.log(res.obtenerCodigo());
+			mostrarSintactico(res.obtenerCodigo());
 			$$ = res;
 	  }; 
 t_area: MENQUE TEXTAREA parametros MAYQUE valor     TEXTAREA_FIN{
@@ -557,7 +570,7 @@ t_area: MENQUE TEXTAREA parametros MAYQUE valor     TEXTAREA_FIN{
 			}
 
 			res.establecerValor(valor);
-			console.log(res.obtenerCodigo());
+			mostrarSintactico(res.obtenerCodigo());
 			$$ = res;
 	  };
 img   : MENQUE IMG      parametros MAYQUE{
@@ -577,22 +590,22 @@ img   : MENQUE IMG      parametros MAYQUE{
 				});
 			}
 
-			console.log(img.obtenerCodigo());
+			mostrarSintactico(img.obtenerCodigo());
 			$$ = img;
 	  };
 br    : MENQUE BR 				   MAYQUE{
 			var result = new Br();
-			console.log(result.obtenerCodigo());
+			mostrarSintactico(result.obtenerCodigo());
 			$$ = result;					
 	  }
 	  | MENQUE BARRA BR 		   MAYQUE{
 			var result = new Br();
-			console.log(result.obtenerCodigo());
+			mostrarSintactico(result.obtenerCodigo());
 			$$ = result;
 	  }
 	  | BR_FIN{
 			var result = new Br();
-			console.log(result.obtenerCodigo());
+			mostrarSintactico(result.obtenerCodigo());
 			$$ = result;
 	  };
 button: MENQUE BUTTON 	parametros MAYQUE valor     BUTTON_FIN{
@@ -613,7 +626,7 @@ button: MENQUE BUTTON 	parametros MAYQUE valor     BUTTON_FIN{
 			}
 
 			res.establecerValor(valor);
-			console.log(res.obtenerCodigo());
+			mostrarSintactico(res.obtenerCodigo());
 			$$ = res; 
 
 	  };
@@ -635,7 +648,7 @@ h1    : MENQUE H1       parametros MAYQUE valor     H1_FIN	  {
 			}
 
 			res.establecerValor(valor);
-			console.log(res.obtenerCodigo());
+			mostrarSintactico(res.obtenerCodigo());
 			$$ = res; 
 
 	  };
@@ -657,7 +670,7 @@ p     : MENQUE P        parametros MAYQUE valor     P_FIN	  {
 			}
 
 			res.establecerValor(valor);
-			console.log(res.obtenerCodigo());
+			mostrarSintactico(res.obtenerCodigo());
 			$$ = res; 
 
 	  }; 
