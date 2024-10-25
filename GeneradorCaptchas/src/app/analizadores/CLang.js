@@ -937,6 +937,9 @@ _handle_error:
 		exports.obtenerMensajes = function(){
 			return mensajesSalida;
 		};
+		exports.limpiarMensajes = function(){
+			mensajesSalida = "";
+		};
 
 
 		function mostrarSintactico(mensaje){

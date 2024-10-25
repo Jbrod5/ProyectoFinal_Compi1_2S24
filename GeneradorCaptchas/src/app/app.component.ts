@@ -5,6 +5,7 @@ import { HttpParams } from '@angular/common/http';
 import { Parametro } from './componentes/Parametro';
 
 import { saveAs } from 'file-saver'; // Importar la librería file-saver
+import { ParseError } from '@angular/compiler';
 
 
 
@@ -41,14 +42,23 @@ export class AppComponent {
     const code = (document.getElementById('codeArea') as HTMLTextAreaElement).value;
     console.log('Código ingresado:', code);
     var parser = new CLang.Parser();
-    parser.parse(code);
+    CLang.limpiarMensajes();
+    try{
+      parser.parse(code);
+      //Mostrar los mensaje sen el area de mensajes: 
+      (document.getElementById('mensajes-analisis') as HTMLTextAreaElement).value =  CLang.obtenerMensajes()
+    }catch(error){
+      if (error instanceof Error) {
+          (document.getElementById('mensajes-analisis') as HTMLTextAreaElement).value = "ERROR SINTACTICO CRITICO: \n" + error.message + "\n"  + CLang.obtenerMensajes();
+      }
+      console.error(error);
+    }
 
 
     console.log("CLANG:");
     console.log(CLang.obtenerCodigo());
 
-    //Mostrar los mensaje sen el area de mensajes: 
-    (document.getElementById('mensajes-analisis') as HTMLTextAreaElement).value = CLang.obtenerMensajes();
+    ;
 
 
     //Enviar al servlet java: 
