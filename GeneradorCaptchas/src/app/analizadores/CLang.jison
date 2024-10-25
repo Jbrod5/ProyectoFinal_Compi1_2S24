@@ -108,7 +108,11 @@
 //OTROS - - - - - - - - - - - - - - - - - - - -
 [a-zA-Z0-9.#/%_()]+         {mostrarToken("VALOR", yytext); return 'VALOR';}
 <<EOF>>                     return 'EOF'
-.                           return 'INVALID'
+.                           {  
+								mensajesSalida += "\nLEXER: \n";
+								mensajesSalida += "ERROR SINTACTICO: No se reconoce " + yytext + " como un simbolo valido.\n";
+								//return 'INVALID';
+							}
 
 
 /lex
@@ -141,6 +145,12 @@
 			mensajesSalida += "\nPARSER: \n";
 			mensajesSalida += mensaje + "\n";
 		};
+
+		function mostrarError(error){
+			mensajesSalida += "\nPARSER: \n";
+			mensajesSalida += error.message + "\n";
+			console.error(error.message)
+		}
 			
 	%}
 
@@ -318,8 +328,8 @@ cc    : MENQUE CC      parametros MAYQUE etiquetas 		CC_FIN  {
 					if(p!=undefined){
 						try{
 							html.establecerParametro(p.parametro, p.valor);
-						}catch(error){
-
+						}catch(error){ 
+							mostrarError(error);
 						}
 					}
 				});
@@ -362,8 +372,8 @@ body  : MENQUE BODY    parametros MAYQUE etiquetas 		BODY_FIN{
 					if(p!=undefined){
 						try{
 							body.establecerParametro(p.parametro, p.valor);
-						}catch(error){
-						
+						}catch(error){ 
+							mostrarError(error);
 						}
 					}
 				});
@@ -398,8 +408,8 @@ div   : MENQUE DIV     parametros MAYQUE etiquetas 		DIV_FIN {
 					if(p!=undefined){
 						try{
 							div.establecerParametro(p.parametro, p.valor);
-						}catch(error){
-						
+						}catch(error){ 
+							mostrarError(error);
 						}
 					}
 				});
@@ -431,8 +441,8 @@ select: MENQUE SELECT  parametros MAYQUE options  		SELECT_FIN{ //Solo etiquetas
 					if(p!=undefined){
 						try{
 							select.establecerParametro(p.parametro, p.valor);
-						}catch(error){
-						
+						}catch(error){ 
+							mostrarError(error);
 						}
 					}
 				});
@@ -499,8 +509,8 @@ link  : MENQUE LINK     parametros MAYQUE valor     LINK_FIN	{
 					if(p!= undefined){
 						try{
 							res.establecerParametro(p.parametro, p.valor);
-						}catch(error){
-
+						}catch(error){ 
+							mostrarError(error);
 						}
 					}
 				});
@@ -520,8 +530,8 @@ spam  : MENQUE SPAM     parametros MAYQUE valor     SPAM_FIN	{
 					if(p!= undefined){
 						try{
 							res.establecerParametro(p.parametro, p.valor);
-						}catch(error){
-
+						}catch(error){ 
+							mostrarError(error);
 						}
 					}
 				});
@@ -541,8 +551,8 @@ input : MENQUE INPUT    parametros MAYQUE valor 	INPUT_FIN	{
 					if(p!= undefined){
 						try{
 							res.establecerParametro(p.parametro, p.valor);
-						}catch(error){
-
+						}catch(error){ 
+							mostrarError(error);
 						}
 					}
 				});
@@ -562,8 +572,8 @@ t_area: MENQUE TEXTAREA parametros MAYQUE valor     TEXTAREA_FIN{
 					if(p!= undefined){
 						try{
 							res.establecerParametro(p.parametro, p.valor);
-						}catch(error){
-
+						}catch(error){ 
+							mostrarError(error);
 						}
 					}
 				});
@@ -583,8 +593,8 @@ img   : MENQUE IMG      parametros MAYQUE{
 					if(p!=undefined){
 						try{
 							img.establecerParametro(p.parametro, p.valor);
-						}catch(error){
-
+						}catch(error){ 
+							mostrarError(error);
 						}
 					}
 				});
@@ -618,8 +628,8 @@ button: MENQUE BUTTON 	parametros MAYQUE valor     BUTTON_FIN{
 					if(p!=undefined){
 						try{
 							res.establecerParametro(p.parametro, p.valor);
-						}catch(error){
-
+						}catch(error){ 
+							mostrarError(error);
 						}
 					}
 				});
@@ -640,8 +650,8 @@ h1    : MENQUE H1       parametros MAYQUE valor     H1_FIN	  {
 					if(p!=undefined){
 						try{
 							res.establecerParametro(p.parametro, p.valor);
-						}catch(error){
-
+						}catch(error){ 
+							mostrarError(error);
 						}
 					}
 				});
@@ -662,8 +672,8 @@ p     : MENQUE P        parametros MAYQUE valor     P_FIN	  {
 					if(p!=undefined){
 						try{
 							res.establecerParametro(p.parametro, p.valor);
-						}catch(error){
-
+						}catch(error){ 
+							mostrarError(error);
 						}
 					}
 				});
