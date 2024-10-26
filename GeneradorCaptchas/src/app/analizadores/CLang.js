@@ -72,12 +72,12 @@
   }
 */
 var CLang = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,5],$V1=[1,24],$V2=[2,3],$V3=[24,66],$V4=[1,61],$V5=[1,62],$V6=[1,63],$V7=[67,71,73,77],$V8=[2,64,67,71,73,77,95],$V9=[1,148],$Va=[1,184],$Vb=[1,193];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,5],$V1=[1,24],$V2=[2,3],$V3=[24,67],$V4=[1,62],$V5=[1,58],$V6=[1,63],$V7=[1,64],$V8=[68,72,74,78],$V9=[2,59,65,68,72,74,78,96],$Va=[1,149],$Vb=[1,185],$Vc=[1,194];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"inicio":3,"cc":4,"EOF":5,"parametros":6,"parametro":7,"href":8,"background":9,"color":10,"font_size":11,"font_family":12,"text_align":13,"type":14,"id":15,"name":16,"cols":17,"rows":18,"class":19,"src":20,"width":21,"height":22,"onclick":23,"CORIZQ":24,"HREF":25,"IGUAL":26,"COMILL":27,"VALOR":28,"CORDER":29,"BACKGROUND":30,"COLOR":31,"F_SIZE":32,"F_FAM":33,"TEXT_AL":34,"TYPE":35,"ID":36,"NAME":37,"COLS":38,"ROWS":39,"CLASS":40,"SRC":41,"WIDTH":42,"HEIGHT":43,"ONCLICK":44,"etiquetas":45,"etiqueta":46,"head":47,"title":48,"body":49,"div":50,"select":51,"link":52,"spam":53,"input":54,"t_area":55,"img":56,"br":57,"button":58,"h1":59,"p":60,"coment":61,"valores":62,"valor":63,"MENQUE":64,"HEAD":65,"MAYQUE":66,"HEAD_FIN":67,"TITLE":68,"TITLE_FIN":69,"CC":70,"CC_FIN":71,"BODY":72,"BODY_FIN":73,"EXCLAM":74,"MENOS":75,"DIV":76,"DIV_FIN":77,"SELECT":78,"options":79,"SELECT_FIN":80,"option":81,"OPTION":82,"OPTION_FIN":83,"LINK":84,"LINK_FIN":85,"SPAM":86,"SPAM_FIN":87,"INPUT":88,"INPUT_FIN":89,"TEXTAREA":90,"TEXTAREA_FIN":91,"IMG":92,"BR":93,"BARRA":94,"BR_FIN":95,"BUTTON":96,"BUTTON_FIN":97,"H1":98,"H1_FIN":99,"P":100,"P_FIN":101,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",24:"CORIZQ",25:"HREF",26:"IGUAL",27:"COMILL",28:"VALOR",29:"CORDER",30:"BACKGROUND",31:"COLOR",32:"F_SIZE",33:"F_FAM",34:"TEXT_AL",35:"TYPE",36:"ID",37:"NAME",38:"COLS",39:"ROWS",40:"CLASS",41:"SRC",42:"WIDTH",43:"HEIGHT",44:"ONCLICK",64:"MENQUE",65:"HEAD",66:"MAYQUE",67:"HEAD_FIN",68:"TITLE",69:"TITLE_FIN",70:"CC",71:"CC_FIN",72:"BODY",73:"BODY_FIN",74:"EXCLAM",75:"MENOS",76:"DIV",77:"DIV_FIN",78:"SELECT",80:"SELECT_FIN",82:"OPTION",83:"OPTION_FIN",84:"LINK",85:"LINK_FIN",86:"SPAM",87:"SPAM_FIN",88:"INPUT",89:"INPUT_FIN",90:"TEXTAREA",91:"TEXTAREA_FIN",92:"IMG",93:"BR",94:"BARRA",95:"BR_FIN",96:"BUTTON",97:"BUTTON_FIN",98:"H1",99:"H1_FIN",100:"P",101:"P_FIN"},
-productions_: [0,[3,2],[6,2],[6,0],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[8,7],[9,7],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7],[16,7],[17,7],[18,7],[19,7],[20,7],[21,7],[22,7],[23,7],[45,2],[45,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[62,2],[62,1],[63,1],[47,5],[48,5],[4,6],[49,6],[61,8],[50,6],[51,6],[81,5],[79,2],[79,1],[52,6],[53,6],[54,6],[55,6],[56,4],[57,3],[57,4],[57,1],[58,6],[59,6],[60,6]],
+symbols_: {"error":2,"inicio":3,"cc":4,"EOF":5,"parametros":6,"parametro":7,"href":8,"background":9,"color":10,"font_size":11,"font_family":12,"text_align":13,"type":14,"id":15,"name":16,"cols":17,"rows":18,"class":19,"src":20,"width":21,"height":22,"onclick":23,"CORIZQ":24,"HREF":25,"IGUAL":26,"COMILL":27,"VALOR":28,"CORDER":29,"BACKGROUND":30,"COLOR":31,"F_SIZE":32,"F_FAM":33,"TEXT_AL":34,"TYPE":35,"ID":36,"NAME":37,"COLS":38,"ROWS":39,"CLASS":40,"SRC":41,"WIDTH":42,"HEIGHT":43,"ONCLICK":44,"etiquetas":45,"etiqueta":46,"head":47,"title":48,"body":49,"div":50,"select":51,"link":52,"spam":53,"input":54,"t_area":55,"img":56,"br":57,"button":58,"SCRIPT":59,"h1":60,"p":61,"coment":62,"valores":63,"valor":64,"MENQUE":65,"HEAD":66,"MAYQUE":67,"HEAD_FIN":68,"TITLE":69,"TITLE_FIN":70,"CC":71,"CC_FIN":72,"BODY":73,"BODY_FIN":74,"EXCLAM":75,"MENOS":76,"DIV":77,"DIV_FIN":78,"SELECT":79,"options":80,"SELECT_FIN":81,"option":82,"OPTION":83,"OPTION_FIN":84,"LINK":85,"LINK_FIN":86,"SPAM":87,"SPAM_FIN":88,"INPUT":89,"INPUT_FIN":90,"TEXTAREA":91,"TEXTAREA_FIN":92,"IMG":93,"BR":94,"BARRA":95,"BR_FIN":96,"BUTTON":97,"BUTTON_FIN":98,"H1":99,"H1_FIN":100,"P":101,"P_FIN":102,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",24:"CORIZQ",25:"HREF",26:"IGUAL",27:"COMILL",28:"VALOR",29:"CORDER",30:"BACKGROUND",31:"COLOR",32:"F_SIZE",33:"F_FAM",34:"TEXT_AL",35:"TYPE",36:"ID",37:"NAME",38:"COLS",39:"ROWS",40:"CLASS",41:"SRC",42:"WIDTH",43:"HEIGHT",44:"ONCLICK",59:"SCRIPT",65:"MENQUE",66:"HEAD",67:"MAYQUE",68:"HEAD_FIN",69:"TITLE",70:"TITLE_FIN",71:"CC",72:"CC_FIN",73:"BODY",74:"BODY_FIN",75:"EXCLAM",76:"MENOS",77:"DIV",78:"DIV_FIN",79:"SELECT",81:"SELECT_FIN",83:"OPTION",84:"OPTION_FIN",85:"LINK",86:"LINK_FIN",87:"SPAM",88:"SPAM_FIN",89:"INPUT",90:"INPUT_FIN",91:"TEXTAREA",92:"TEXTAREA_FIN",93:"IMG",94:"BR",95:"BARRA",96:"BR_FIN",97:"BUTTON",98:"BUTTON_FIN",99:"H1",100:"H1_FIN",101:"P",102:"P_FIN"},
+productions_: [0,[3,2],[6,2],[6,0],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[8,7],[9,7],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7],[16,7],[17,7],[18,7],[19,7],[20,7],[21,7],[22,7],[23,7],[45,2],[45,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[63,2],[63,1],[64,1],[47,5],[48,5],[4,6],[49,6],[62,8],[50,6],[51,6],[82,5],[80,2],[80,1],[52,6],[53,6],[54,6],[55,6],[56,4],[57,3],[57,4],[57,1],[58,6],[60,6],[61,6]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -104,7 +104,7 @@ break;
 case 3:
  this.$ = []; 
 break;
-case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 39: case 40: case 41: case 42: case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51: case 52:
+case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 39: case 40: case 41: case 42: case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 52: case 53:
  this.$ = $$[$0]; 
 break;
 case 20:
@@ -186,13 +186,13 @@ case 37:
 				this.$ = res; 
 		 
 break;
-case 54:
+case 55:
 
 			mostrarSintactico('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
 			this.$ = undefined;
 		
 break;
-case 55:
+case 56:
 
 			var valores = $$[$0]; 
 			var vl = $$[$0-1]; 
@@ -213,7 +213,7 @@ case 55:
 			}
 		
 break;
-case 56:
+case 57:
 
 			var vl = $$[$0];
 			var res = [];
@@ -223,7 +223,7 @@ case 56:
 			this.$ = res; 
 		
 break;
-case 58:
+case 59:
 
 			var etiquetas = $$[$0-1];
 			var head = new Head();
@@ -235,7 +235,7 @@ case 58:
 			this.$ = head;
 	  
 break;
-case 59:
+case 60:
 
 			var valor = $$[$0-1];
 			var titulo = new Title();
@@ -244,7 +244,7 @@ case 59:
 			this.$ = titulo; 
 	  
 break;
-case 60:
+case 61:
 
 			var parametros = $$[$0-3];
 			var etiquetas = $$[$0-1];
@@ -290,7 +290,7 @@ case 60:
 
 	  
 break;
-case 61:
+case 62:
 
 			var parametros = $$[$0-3];
 			var etiquetas = $$[$0-1];
@@ -325,12 +325,12 @@ case 61:
 			this.$ = body; 
 	  
 break;
-case 62:
+case 63:
 
 			mostrarSintactico("Comentario multiple: " + $$[$0-3]);
 		
 break;
-case 63:
+case 64:
 
 			var parametros = $$[$0-3];
 			var etiquetas = $$[$0-1];
@@ -365,7 +365,7 @@ case 63:
 			this.$ = div; 
 	  
 break;
-case 64:
+case 65:
  //Solo etiquetas option
 			var parametros = $$[$0-3];
 			var opciones = $$[$0-1];
@@ -400,7 +400,7 @@ case 64:
 
 		
 break;
-case 65:
+case 66:
 
 			var option = new Option();
 			var val = $$[$0-1];
@@ -409,7 +409,7 @@ case 65:
 			this.$ = option; 
 		
 break;
-case 66:
+case 67:
 
 			var op = $$[$0-1];
 			var options = $$[$0];
@@ -429,7 +429,7 @@ case 66:
 			this.$ = res;
 		
 break;
-case 67:
+case 68:
 
 			var op = $$[$0];
 			var res = [];
@@ -439,7 +439,7 @@ case 67:
 			this.$ = res;
 		
 break;
-case 68:
+case 69:
 
 			var parametros = $$[$0-3];
 			var valor = $$[$0-1];
@@ -462,7 +462,7 @@ case 68:
 			this.$ = res;
 	  
 break;
-case 69:
+case 70:
 
 			var parametros = $$[$0-3];
 			var valor = $$[$0-1];
@@ -485,7 +485,7 @@ case 69:
 			this.$ = res;
 	  
 break;
-case 70:
+case 71:
 
 			var parametros = $$[$0-3];
 			var valor = $$[$0-1];
@@ -508,7 +508,7 @@ case 70:
 			this.$ = res;
 	  
 break;
-case 71:
+case 72:
 
 			var parametros = $$[$0-3];
 			var valor = $$[$0-1];
@@ -531,7 +531,7 @@ case 71:
 			this.$ = res;
 	  
 break;
-case 72:
+case 73:
 
 			var parametros = $$[$0-1];
 			var img = new Img();
@@ -553,21 +553,21 @@ case 72:
 			this.$ = img;
 	  
 break;
-case 73:
+case 74:
 
 			var result = new Br();
 			mostrarSintactico(result.obtenerCodigo());
 			this.$ = result;					
 	  
 break;
-case 74: case 75:
+case 75: case 76:
 
 			var result = new Br();
 			mostrarSintactico(result.obtenerCodigo());
 			this.$ = result;
 	  
 break;
-case 76:
+case 77:
 
 			var parametros = $$[$0-3];
 			var valor = $$[$0-1];
@@ -591,7 +591,7 @@ case 76:
 
 	  
 break;
-case 77:
+case 78:
 
 			var parametros = $$[$0-3];
 			var valor = $$[$0-1];
@@ -615,7 +615,7 @@ case 77:
 
 	  
 break;
-case 78:
+case 79:
 
 			var parametros = $$[$0-3];
 			var valor = $$[$0-1];
@@ -641,8 +641,8 @@ case 78:
 break;
 }
 },
-table: [{3:1,4:2,64:[1,3]},{1:[3]},{5:[1,4]},{70:$V0},{1:[2,1]},{6:6,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,66:$V2},{66:[1,25]},{6:26,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,66:$V2},o($V3,[2,4]),o($V3,[2,5]),o($V3,[2,6]),o($V3,[2,7]),o($V3,[2,8]),o($V3,[2,9]),o($V3,[2,10]),o($V3,[2,11]),o($V3,[2,12]),o($V3,[2,13]),o($V3,[2,14]),o($V3,[2,15]),o($V3,[2,16]),o($V3,[2,17]),o($V3,[2,18]),o($V3,[2,19]),{25:[1,27],30:[1,28],31:[1,29],32:[1,30],33:[1,31],34:[1,32],35:[1,33],36:[1,34],37:[1,35],38:[1,36],39:[1,37],40:[1,38],41:[1,39],42:[1,40],43:[1,41],44:[1,42]},{2:$V4,4:47,45:43,46:44,47:45,48:46,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,59:58,60:59,61:60,64:$V5,95:$V6},{66:[2,2]},{26:[1,64]},{26:[1,65]},{26:[1,66]},{26:[1,67]},{26:[1,68]},{26:[1,69]},{26:[1,70]},{26:[1,71]},{26:[1,72]},{26:[1,73]},{26:[1,74]},{26:[1,75]},{26:[1,76]},{26:[1,77]},{26:[1,78]},{26:[1,79]},{71:[1,80]},o($V7,[2,37],{46:44,47:45,48:46,4:47,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,59:58,60:59,61:60,45:81,2:$V4,64:$V5,95:$V6}),o($V8,[2,38]),o($V8,[2,39]),o($V8,[2,40]),o($V8,[2,41]),o($V8,[2,42]),o($V8,[2,43]),o($V8,[2,44]),o($V8,[2,45]),o($V8,[2,46]),o($V8,[2,47]),o($V8,[2,48]),o($V8,[2,49]),o($V8,[2,50]),o($V8,[2,51]),o($V8,[2,52]),o($V8,[2,53]),o($V8,[2,54]),{65:[1,82],68:[1,83],70:$V0,72:[1,84],74:[1,97],76:[1,85],78:[1,86],84:[1,87],86:[1,88],88:[1,89],90:[1,90],92:[1,91],93:[1,92],94:[1,93],96:[1,94],98:[1,95],100:[1,96]},o($V8,[2,75]),{27:[1,98]},{27:[1,99]},{27:[1,100]},{27:[1,101]},{27:[1,102]},{27:[1,103]},{27:[1,104]},{27:[1,105]},{27:[1,106]},{27:[1,107]},{27:[1,108]},{27:[1,109]},{27:[1,110]},{27:[1,111]},{27:[1,112]},{27:[1,113]},o([2,5,64,67,71,73,77,95],[2,60]),o($V7,[2,36]),{66:[1,114]},{66:[1,115]},{6:116,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,66:$V2},{6:117,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,66:$V2},{6:118,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,66:$V2},{6:119,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,66:$V2},{6:120,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,66:$V2},{6:121,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,66:$V2},{6:122,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,66:$V2},{6:123,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,66:$V2},{66:[1,124]},{93:[1,125]},{6:126,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,66:$V2},{6:127,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,66:$V2},{6:128,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,66:$V2},{75:[1,129]},{28:[1,130]},{28:[1,131]},{28:[1,132]},{28:[1,133]},{28:[1,134]},{28:[1,135]},{28:[1,136]},{28:[1,137]},{28:[1,138]},{28:[1,139]},{28:[1,140]},{28:[1,141]},{28:[1,142]},{28:[1,143]},{28:[1,144]},{28:[1,145]},{2:$V4,4:47,45:146,46:44,47:45,48:46,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,59:58,60:59,61:60,64:$V5,95:$V6},{28:$V9,63:147},{66:[1,149]},{66:[1,150]},{66:[1,151]},{66:[1,152]},{66:[1,153]},{66:[1,154]},{66:[1,155]},{66:[1,156]},o($V8,[2,73]),{66:[1,157]},{66:[1,158]},{66:[1,159]},{66:[1,160]},{75:[1,161]},{27:[1,162]},{27:[1,163]},{27:[1,164]},{27:[1,165]},{27:[1,166]},{27:[1,167]},{27:[1,168]},{27:[1,169]},{27:[1,170]},{27:[1,171]},{27:[1,172]},{27:[1,173]},{27:[1,174]},{27:[1,175]},{27:[1,176]},{27:[1,177]},{67:[1,178]},{69:[1,179]},o([69,83,85,87,89,91,97,99,101],[2,57]),{2:$V4,4:47,45:180,46:44,47:45,48:46,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,59:58,60:59,61:60,64:$V5,95:$V6},{2:$V4,4:47,45:181,46:44,47:45,48:46,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,59:58,60:59,61:60,64:$V5,95:$V6},{64:$Va,79:182,81:183},{28:$V9,63:185},{28:$V9,63:186},{28:$V9,63:187},{28:$V9,63:188},o($V8,[2,72]),o($V8,[2,74]),{28:$V9,63:189},{28:$V9,63:190},{28:$V9,63:191},{28:$Vb,62:192},{29:[1,194]},{29:[1,195]},{29:[1,196]},{29:[1,197]},{29:[1,198]},{29:[1,199]},{29:[1,200]},{29:[1,201]},{29:[1,202]},{29:[1,203]},{29:[1,204]},{29:[1,205]},{29:[1,206]},{29:[1,207]},{29:[1,208]},{29:[1,209]},o($V8,[2,58]),o($V8,[2,59]),{73:[1,210]},{77:[1,211]},{80:[1,212]},{64:$Va,79:213,80:[2,67],81:183},{82:[1,214]},{85:[1,215]},{87:[1,216]},{89:[1,217]},{91:[1,218]},{97:[1,219]},{99:[1,220]},{101:[1,221]},{75:[1,222]},{28:$Vb,62:223,75:[2,56]},o($V3,[2,20]),o($V3,[2,21]),o($V3,[2,22]),o($V3,[2,23]),o($V3,[2,24]),o($V3,[2,25]),o($V3,[2,26]),o($V3,[2,27]),o($V3,[2,28]),o($V3,[2,29]),o($V3,[2,30]),o($V3,[2,31]),o($V3,[2,32]),o($V3,[2,33]),o($V3,[2,34]),o($V3,[2,35]),o($V8,[2,61]),o($V8,[2,63]),o($V8,[2,64]),{80:[2,66]},{66:[1,224]},o($V8,[2,68]),o($V8,[2,69]),o($V8,[2,70]),o($V8,[2,71]),o($V8,[2,76]),o($V8,[2,77]),o($V8,[2,78]),{75:[1,225]},{75:[2,55]},{28:$V9,63:226},{66:[1,227]},{83:[1,228]},o($V8,[2,62]),o([64,80],[2,65])],
-defaultActions: {4:[2,1],26:[2,2],213:[2,66],223:[2,55]},
+table: [{3:1,4:2,65:[1,3]},{1:[3]},{5:[1,4]},{71:$V0},{1:[2,1]},{6:6,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{67:[1,25]},{6:26,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},o($V3,[2,4]),o($V3,[2,5]),o($V3,[2,6]),o($V3,[2,7]),o($V3,[2,8]),o($V3,[2,9]),o($V3,[2,10]),o($V3,[2,11]),o($V3,[2,12]),o($V3,[2,13]),o($V3,[2,14]),o($V3,[2,15]),o($V3,[2,16]),o($V3,[2,17]),o($V3,[2,18]),o($V3,[2,19]),{25:[1,27],30:[1,28],31:[1,29],32:[1,30],33:[1,31],34:[1,32],35:[1,33],36:[1,34],37:[1,35],38:[1,36],39:[1,37],40:[1,38],41:[1,39],42:[1,40],43:[1,41],44:[1,42]},{2:$V4,4:47,45:43,46:44,47:45,48:46,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,59:$V5,60:59,61:60,62:61,65:$V6,96:$V7},{67:[2,2]},{26:[1,65]},{26:[1,66]},{26:[1,67]},{26:[1,68]},{26:[1,69]},{26:[1,70]},{26:[1,71]},{26:[1,72]},{26:[1,73]},{26:[1,74]},{26:[1,75]},{26:[1,76]},{26:[1,77]},{26:[1,78]},{26:[1,79]},{26:[1,80]},{72:[1,81]},o($V8,[2,37],{46:44,47:45,48:46,4:47,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,60:59,61:60,62:61,45:82,2:$V4,59:$V5,65:$V6,96:$V7}),o($V9,[2,38]),o($V9,[2,39]),o($V9,[2,40]),o($V9,[2,41]),o($V9,[2,42]),o($V9,[2,43]),o($V9,[2,44]),o($V9,[2,45]),o($V9,[2,46]),o($V9,[2,47]),o($V9,[2,48]),o($V9,[2,49]),o($V9,[2,50]),o($V9,[2,51]),o($V9,[2,52]),o($V9,[2,53]),o($V9,[2,54]),o($V9,[2,55]),{66:[1,83],69:[1,84],71:$V0,73:[1,85],75:[1,98],77:[1,86],79:[1,87],85:[1,88],87:[1,89],89:[1,90],91:[1,91],93:[1,92],94:[1,93],95:[1,94],97:[1,95],99:[1,96],101:[1,97]},o($V9,[2,76]),{27:[1,99]},{27:[1,100]},{27:[1,101]},{27:[1,102]},{27:[1,103]},{27:[1,104]},{27:[1,105]},{27:[1,106]},{27:[1,107]},{27:[1,108]},{27:[1,109]},{27:[1,110]},{27:[1,111]},{27:[1,112]},{27:[1,113]},{27:[1,114]},o([2,5,59,65,68,72,74,78,96],[2,61]),o($V8,[2,36]),{67:[1,115]},{67:[1,116]},{6:117,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:118,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:119,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:120,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:121,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:122,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:123,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:124,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{67:[1,125]},{94:[1,126]},{6:127,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:128,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:129,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{76:[1,130]},{28:[1,131]},{28:[1,132]},{28:[1,133]},{28:[1,134]},{28:[1,135]},{28:[1,136]},{28:[1,137]},{28:[1,138]},{28:[1,139]},{28:[1,140]},{28:[1,141]},{28:[1,142]},{28:[1,143]},{28:[1,144]},{28:[1,145]},{28:[1,146]},{2:$V4,4:47,45:147,46:44,47:45,48:46,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,59:$V5,60:59,61:60,62:61,65:$V6,96:$V7},{28:$Va,64:148},{67:[1,150]},{67:[1,151]},{67:[1,152]},{67:[1,153]},{67:[1,154]},{67:[1,155]},{67:[1,156]},{67:[1,157]},o($V9,[2,74]),{67:[1,158]},{67:[1,159]},{67:[1,160]},{67:[1,161]},{76:[1,162]},{27:[1,163]},{27:[1,164]},{27:[1,165]},{27:[1,166]},{27:[1,167]},{27:[1,168]},{27:[1,169]},{27:[1,170]},{27:[1,171]},{27:[1,172]},{27:[1,173]},{27:[1,174]},{27:[1,175]},{27:[1,176]},{27:[1,177]},{27:[1,178]},{68:[1,179]},{70:[1,180]},o([70,84,86,88,90,92,98,100,102],[2,58]),{2:$V4,4:47,45:181,46:44,47:45,48:46,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,59:$V5,60:59,61:60,62:61,65:$V6,96:$V7},{2:$V4,4:47,45:182,46:44,47:45,48:46,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,59:$V5,60:59,61:60,62:61,65:$V6,96:$V7},{65:$Vb,80:183,82:184},{28:$Va,64:186},{28:$Va,64:187},{28:$Va,64:188},{28:$Va,64:189},o($V9,[2,73]),o($V9,[2,75]),{28:$Va,64:190},{28:$Va,64:191},{28:$Va,64:192},{28:$Vc,63:193},{29:[1,195]},{29:[1,196]},{29:[1,197]},{29:[1,198]},{29:[1,199]},{29:[1,200]},{29:[1,201]},{29:[1,202]},{29:[1,203]},{29:[1,204]},{29:[1,205]},{29:[1,206]},{29:[1,207]},{29:[1,208]},{29:[1,209]},{29:[1,210]},o($V9,[2,59]),o($V9,[2,60]),{74:[1,211]},{78:[1,212]},{81:[1,213]},{65:$Vb,80:214,81:[2,68],82:184},{83:[1,215]},{86:[1,216]},{88:[1,217]},{90:[1,218]},{92:[1,219]},{98:[1,220]},{100:[1,221]},{102:[1,222]},{76:[1,223]},{28:$Vc,63:224,76:[2,57]},o($V3,[2,20]),o($V3,[2,21]),o($V3,[2,22]),o($V3,[2,23]),o($V3,[2,24]),o($V3,[2,25]),o($V3,[2,26]),o($V3,[2,27]),o($V3,[2,28]),o($V3,[2,29]),o($V3,[2,30]),o($V3,[2,31]),o($V3,[2,32]),o($V3,[2,33]),o($V3,[2,34]),o($V3,[2,35]),o($V9,[2,62]),o($V9,[2,64]),o($V9,[2,65]),{81:[2,67]},{67:[1,225]},o($V9,[2,69]),o($V9,[2,70]),o($V9,[2,71]),o($V9,[2,72]),o($V9,[2,77]),o($V9,[2,78]),o($V9,[2,79]),{76:[1,226]},{76:[2,56]},{28:$Va,64:227},{67:[1,228]},{84:[1,229]},o($V9,[2,63]),o([65,81],[2,66])],
+defaultActions: {4:[2,1],26:[2,2],214:[2,67],224:[2,56]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -1286,129 +1286,135 @@ case 0:/*ignorar*/
 break;
 case 1:mostrarSintactico("Comentario: " + yy_.yytext);
 break;
-case 2: mostrarToken('CC'			, yy_.yytext);   return 70;  	     
+case 2: mostrarToken("SCRIPT", yy_.yytext); return 59; 
 break;
-case 3: mostrarToken('HEAD'		, yy_.yytext);   return 65;      
+case 3: mostrarToken('CC'			, yy_.yytext);   return 71;  	     
 break;
-case 4: mostrarToken('TITLE'		, yy_.yytext);	 return 68;     
+case 4: mostrarToken('HEAD'		, yy_.yytext);   return 66;      
 break;
-case 5: mostrarToken('LINK'		, yy_.yytext);	 return 84;      
+case 5: mostrarToken('TITLE'		, yy_.yytext);	 return 69;     
 break;
-case 6: mostrarToken('BODY'		, yy_.yytext);	 return 72;      
+case 6: mostrarToken('LINK'		, yy_.yytext);	 return 85;      
 break;
-case 7: mostrarToken('SPAM'		, yy_.yytext);	 return 86;      
+case 7: mostrarToken('BODY'		, yy_.yytext);	 return 73;      
 break;
-case 8: mostrarToken('INPUT'		, yy_.yytext);	 return 88;     
+case 8: mostrarToken('SPAM'		, yy_.yytext);	 return 87;      
 break;
-case 9: mostrarToken('TEXTAREA'	, yy_.yytext);	 return 90;  
+case 9: mostrarToken('INPUT'		, yy_.yytext);	 return 89;     
 break;
-case 10: mostrarToken('SELECT'		, yy_.yytext);	 return 78; 	 
+case 10: mostrarToken('TEXTAREA'	, yy_.yytext);	 return 91;  
 break;
-case 11: mostrarToken('OPTION'		, yy_.yytext);	 return 82; 	 
+case 11: mostrarToken('SELECT'		, yy_.yytext);	 return 79; 	 
 break;
-case 12: mostrarToken('DIV'		, yy_.yytext);	 return 76; 		 
+case 12: mostrarToken('OPTION'		, yy_.yytext);	 return 83; 	 
 break;
-case 13: mostrarToken('IMG'		, yy_.yytext);	 return 92; 		 
+case 13: mostrarToken('DIV'		, yy_.yytext);	 return 77; 		 
 break;
-case 14: mostrarToken('BR'			, yy_.yytext);	 return 93; 		 
+case 14: mostrarToken('IMG'		, yy_.yytext);	 return 93; 		 
 break;
-case 15: mostrarToken('BUTTON'		, yy_.yytext);	 return 96; 	 
+case 15: mostrarToken('BR'			, yy_.yytext);	 return 94; 		 
 break;
-case 16: mostrarToken('H1'			, yy_.yytext);	 return 98; 		 
+case 16: mostrarToken('BUTTON'		, yy_.yytext);	 return 97; 	 
 break;
-case 17: mostrarToken('P'			, yy_.yytext);	 return 100; 		 
+case 17: mostrarToken('H1'			, yy_.yytext);	 return 99; 		 
 break;
-case 18: mostrarToken('SCRIPTING'	, yy_.yytext);   return 'SCRIPTING'; 
+case 18: mostrarToken('P'			, yy_.yytext);	 return 101; 		 
 break;
-case 19: mostrarToken('CC_FIN'       , yy_.yytext);	 return 71;	    
+case 19: mostrarToken('SCRIPTING'	, yy_.yytext);   return 'SCRIPTING'; 
 break;
-case 20: mostrarToken('HEAD_FIN'     , yy_.yytext);	 return 67;     
+case 20: mostrarToken('CC_FIN'       , yy_.yytext);	 return 72;	    
 break;
-case 21: mostrarToken('TITLE_FIN'    , yy_.yytext);	 return 69;    
+case 21: mostrarToken('HEAD_FIN'     , yy_.yytext);	 return 68;     
 break;
-case 22: mostrarToken('LINK_FIN'     , yy_.yytext);	 return 85;     
+case 22: mostrarToken('TITLE_FIN'    , yy_.yytext);	 return 70;    
 break;
-case 23: mostrarToken('BODY_FIN'     , yy_.yytext);	 return 73;     
+case 23: mostrarToken('LINK_FIN'     , yy_.yytext);	 return 86;     
 break;
-case 24: mostrarToken('SPAM_FIN'     , yy_.yytext);     return 87;     
+case 24: mostrarToken('BODY_FIN'     , yy_.yytext);	 return 74;     
 break;
-case 25: mostrarToken('INPUT_FIN'    , yy_.yytext);     return 89;    
+case 25: mostrarToken('SPAM_FIN'     , yy_.yytext);     return 88;     
 break;
-case 26: mostrarToken('TEXTAREA_FIN' , yy_.yytext);     return 91; 
+case 26: mostrarToken('INPUT_FIN'    , yy_.yytext);     return 90;    
 break;
-case 27: mostrarToken('SELECT_FIN'   , yy_.yytext);     return 80;   
+case 27: mostrarToken('TEXTAREA_FIN' , yy_.yytext);     return 92; 
 break;
-case 28: mostrarToken('OPTION_FIN'   , yy_.yytext);     return 83;   
+case 28: mostrarToken('SELECT_FIN'   , yy_.yytext);     return 81;   
 break;
-case 29: mostrarToken('DIV_FIN'      , yy_.yytext);	 return 77;      
+case 29: mostrarToken('OPTION_FIN'   , yy_.yytext);     return 84;   
 break;
-case 30: mostrarToken('IMG_FIN'      , yy_.yytext);	 return 'IMG_FIN';      
+case 30: mostrarToken('DIV_FIN'      , yy_.yytext);	 return 78;      
 break;
-case 31: mostrarToken('BR_FIN'       , yy_.yytext);	 return 95;       
+case 31: mostrarToken('IMG_FIN'      , yy_.yytext);	 return 'IMG_FIN';      
 break;
-case 32: mostrarToken('BUTTON_FIN'   , yy_.yytext);     return 97;   
+case 32: mostrarToken('BR_FIN'       , yy_.yytext);	 return 96;       
 break;
-case 33: mostrarToken('H1_FIN'       , yy_.yytext);	 return 99;       
+case 33: mostrarToken('BUTTON_FIN'   , yy_.yytext);     return 98;   
 break;
-case 34: mostrarToken('P_FIN'        , yy_.yytext);	 return 101;        
+case 34: mostrarToken('H1_FIN'       , yy_.yytext);	 return 100;       
 break;
-case 35: mostrarToken('SCRIPTING_FIN', yy_.yytext);     return 'SCRIPTING_FIN';
+case 35: mostrarToken('P_FIN'        , yy_.yytext);	 return 102;        
 break;
-case 36: mostrarToken("MENQUE", yy_.yytext); return 64; 
+case 36: mostrarToken('SCRIPTING_FIN', yy_.yytext);     return 'SCRIPTING_FIN';
 break;
-case 37: mostrarToken("MAYQUE", yy_.yytext); return 66; 
+case 37: mostrarToken("MENQUE", yy_.yytext); return 65; 
 break;
-case 38: mostrarToken("CORIZQ", yy_.yytext); return 24; 
+case 38: mostrarToken("MAYQUE", yy_.yytext); return 67; 
 break;
-case 39: mostrarToken("CORDER", yy_.yytext); return 29; 
+case 39: mostrarToken("CORIZQ", yy_.yytext); return 24; 
 break;
-case 40: mostrarToken("IGUAL" , yy_.yytext);  return 26; 
+case 40: mostrarToken("CORDER", yy_.yytext); return 29; 
 break;
-case 41: mostrarToken("BARRA" , yy_.yytext);  return 94; 
+case 41: mostrarToken("IGUAL" , yy_.yytext);  return 26; 
 break;
-case 42: mostrarToken("COMILL", yy_.yytext); return 27; 
+case 42: mostrarToken("BARRA" , yy_.yytext);  return 95; 
 break;
-case 43:mostrarToken("EXCLAM", yy_.yytext); return 74; 
+case 43: mostrarToken("COMILL", yy_.yytext); return 27; 
 break;
-case 44:mostrarToken("MINUS", yy_.yytext);  return 75; 
+case 44:mostrarToken("EXCLAM", yy_.yytext); return 75; 
 break;
-case 45: mostrarToken('HREF'		 , yy_.yytext);   return 25;	  
+case 45:mostrarToken("MINUS", yy_.yytext);  return 76; 
 break;
-case 46: mostrarToken('BACKGROUND', yy_.yytext);   return 30;
+case 46: mostrarToken('HREF'		 , yy_.yytext);   return 25;	  
 break;
-case 47: mostrarToken('COLOR'	 , yy_.yytext);   return 31;	  
+case 47: mostrarToken('BACKGROUND', yy_.yytext);   return 30;
 break;
-case 48: mostrarToken('F_SIZE'	 , yy_.yytext);   return 32;	  
+case 48: mostrarToken('COLOR'	 , yy_.yytext);   return 31;	  
 break;
-case 49: mostrarToken('F_FAM' 	 , yy_.yytext);   return 33;	  
+case 49: mostrarToken('F_SIZE'	 , yy_.yytext);   return 32;	  
 break;
-case 50: mostrarToken('TEXT_AL'	 , yy_.yytext);   return 34;	  
+case 50: mostrarToken('F_FAM' 	 , yy_.yytext);   return 33;	  
 break;
-case 51: mostrarToken('TYPE'		 , yy_.yytext);   return 35;	  
+case 51: mostrarToken('TEXT_AL'	 , yy_.yytext);   return 34;	  
 break;
-case 52: mostrarToken('ID'		 , yy_.yytext);   return 36;		  
+case 52: mostrarToken('TYPE'		 , yy_.yytext);   return 35;	  
 break;
-case 53: mostrarToken('NAME'		 , yy_.yytext);   return 37;      
+case 53: mostrarToken('ID'		 , yy_.yytext);   return 36;		  
 break;
-case 54: mostrarToken('COLS' 	 , yy_.yytext);   return 38;      
+case 54: mostrarToken('NAME'		 , yy_.yytext);   return 37;      
 break;
-case 55: mostrarToken('ROWS'		 , yy_.yytext);   return 39;      
+case 55: mostrarToken('COLS' 	 , yy_.yytext);   return 38;      
 break;
-case 56: mostrarToken('CLASS'	 , yy_.yytext);   return 40;     
+case 56: mostrarToken('ROWS'		 , yy_.yytext);   return 39;      
 break;
-case 57: mostrarToken('SRC'		 , yy_.yytext);   return 41;       
+case 57: mostrarToken('CLASS'	 , yy_.yytext);   return 40;     
 break;
-case 58: mostrarToken('WIDTH'	 , yy_.yytext);   return 42;     
+case 58: mostrarToken('SRC'		 , yy_.yytext);   return 41;       
 break;
-case 59: mostrarToken('HEIGHT'	 , yy_.yytext);   return 43;    
+case 59: mostrarToken('WIDTH'	 , yy_.yytext);   return 42;     
 break;
-case 60: mostrarToken('ONCLICK'	 , yy_.yytext);   return 44;   
+case 60: mostrarToken('HEIGHT'	 , yy_.yytext);   return 43;    
 break;
-case 61:mostrarToken("VALOR", yy_.yytext); return 28;
+case 61: mostrarToken('ONCLICK'	 , yy_.yytext);   return 44;   
 break;
-case 62:return 5
+case 62: mostrarToken('ONLOAD'  , yy_.yytext); return 'ONLOAD'  ; 
 break;
-case 63:  
+case 63: mostrarToken('FUNCTION', yy_.yytext); return 'FUNCTION'; 
+break;
+case 64:mostrarToken("VALOR", yy_.yytext); return 28;
+break;
+case 65:return 5
+break;
+case 66:  
 								mensajesSalida += "\nLEXER: \n";
 								mensajesSalida += "ERROR SINTACTICO: No se reconoce " + yy_.yytext + " como un simbolo valido.\n";
 								//return 'INVALID';
@@ -1416,8 +1422,8 @@ case 63:
 break;
 }
 },
-rules: [/^(?:[ \r\t\n])/i,/^(?:!!.*)/i,/^(?:C_CC\b)/i,/^(?:C_HEAD\b)/i,/^(?:C_TITLE\b)/i,/^(?:C_LINK\b)/i,/^(?:C_BODY\b)/i,/^(?:C_SPAM\b)/i,/^(?:C_INPUT\b)/i,/^(?:C_TEXTAREA\b)/i,/^(?:C_SELECT\b)/i,/^(?:C_OPTION\b)/i,/^(?:C_DIV\b)/i,/^(?:C_IMG\b)/i,/^(?:C_BR\b)/i,/^(?:C_BUTTON\b)/i,/^(?:C_H1\b)/i,/^(?:C_P\b)/i,/^(?:C_SCRIPTING\b)/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_CC[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_HEAD[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_TITLE[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_LINK[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_BODY[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_SPAM[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_INPUT[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_TEXTAREA[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_SELECT[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_OPTION[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_DIV[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_IMG[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_BR[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_BUTTON[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_H1[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_P[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_SCRIPTING[\r\t\n]*>))/i,/^(?:<)/i,/^(?:>)/i,/^(?:\[)/i,/^(?:\])/i,/^(?:=)/i,/^(?:\/)/i,/^(?:(“|”|"))/i,/^(?:!)/i,/^(?:-)/i,/^(?:href\b)/i,/^(?:background\b)/i,/^(?:color\b)/i,/^(?:font-size\b)/i,/^(?:font-family\b)/i,/^(?:text-align\b)/i,/^(?:type\b)/i,/^(?:id\b)/i,/^(?:name\b)/i,/^(?:cols\b)/i,/^(?:rows\b)/i,/^(?:class\b)/i,/^(?:src\b)/i,/^(?:width\b)/i,/^(?:height\b)/i,/^(?:onclick\(\))/i,/^(?:[a-zA-Z0-9.#/%_()]+)/i,/^(?:$)/i,/^(?:.)/i],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63],"inclusive":true}}
+rules: [/^(?:[ \r\t\n])/i,/^(?:!!.*)/i,/^(?:<C_SCRIPTING>([\s\S]*?)<\/C_SCRIPTING>)/i,/^(?:C_CC\b)/i,/^(?:C_HEAD\b)/i,/^(?:C_TITLE\b)/i,/^(?:C_LINK\b)/i,/^(?:C_BODY\b)/i,/^(?:C_SPAM\b)/i,/^(?:C_INPUT\b)/i,/^(?:C_TEXTAREA\b)/i,/^(?:C_SELECT\b)/i,/^(?:C_OPTION\b)/i,/^(?:C_DIV\b)/i,/^(?:C_IMG\b)/i,/^(?:C_BR\b)/i,/^(?:C_BUTTON\b)/i,/^(?:C_H1\b)/i,/^(?:C_P\b)/i,/^(?:C_SCRIPTING\b)/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_CC[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_HEAD[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_TITLE[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_LINK[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_BODY[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_SPAM[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_INPUT[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_TEXTAREA[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_SELECT[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_OPTION[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_DIV[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_IMG[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_BR[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_BUTTON[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_H1[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_P[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_SCRIPTING[\r\t\n]*>))/i,/^(?:<)/i,/^(?:>)/i,/^(?:\[)/i,/^(?:\])/i,/^(?:=)/i,/^(?:\/)/i,/^(?:(“|”|"))/i,/^(?:!)/i,/^(?:-)/i,/^(?:href\b)/i,/^(?:background\b)/i,/^(?:color\b)/i,/^(?:font-size\b)/i,/^(?:font-family\b)/i,/^(?:text-align\b)/i,/^(?:type\b)/i,/^(?:id\b)/i,/^(?:name\b)/i,/^(?:cols\b)/i,/^(?:rows\b)/i,/^(?:class\b)/i,/^(?:src\b)/i,/^(?:width\b)/i,/^(?:height\b)/i,/^(?:onclick\(\))/i,/^(?:ON_LOAD\b)/i,/^(?:FUNCTION_\b)/i,/^(?:[a-zA-Z0-9.#/%_()]+)/i,/^(?:$)/i,/^(?:.)/i],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66],"inclusive":true}}
 });
 return lexer;
 })();

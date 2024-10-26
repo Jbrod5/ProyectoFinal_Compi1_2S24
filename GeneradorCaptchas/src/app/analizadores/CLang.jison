@@ -36,6 +36,8 @@
 "!!".*        	   {mostrarSintactico("Comentario: " + yytext);}
 //["--" .*  "-->"]\b {mostrarSintactico("Comentario: " + yytext);}
 
+"<C_SCRIPTING>"([\s\S]*?)"</C_SCRIPTING>" { mostrarToken("SCRIPT", yytext); return 'SCRIPT'; }
+
 // ETIQUETAS - - - - - - - - - - - - - - - - -
 "C_CC" 			{ mostrarToken('CC'			, yytext);   return 'CC';  	     }
 "C_HEAD" 		{ mostrarToken('HEAD'		, yytext);   return 'HEAD';      }
@@ -85,6 +87,13 @@
 "!"			   {mostrarToken("EXCLAM", yytext); return 'EXCLAM'; }
 "-"			   {mostrarToken("MINUS", yytext);  return 'MENOS'; }
 
+//Scripting
+//"|"            {mostrarToken("ORSIMB",yytext); return 'ORSIMB'; }
+//"&"            {mostrarToken("AMPERS",yytext); return 'AMPERS'; }
+//";"            {mostrarToken("SEMICO",yytext); return 'SEMICO'; }
+////Otros
+//"."            {mostrarToken("DOTSIM",yytext); return 'DOTSIM'; }
+
 // PARAMETROS - - - - - - - - - - - - - - - - - 
 "href"        { mostrarToken('HREF'		 , yytext);   return 'HREF';	  }   
 "background"  { mostrarToken('BACKGROUND', yytext);   return 'BACKGROUND';}   
@@ -105,8 +114,30 @@
 
 
 
+
+
+
+
+//SCRIPTING - - - - - - - - - - - - - - - - - - - 
+"ON_LOAD"     { mostrarToken('ONLOAD'  , yytext); return 'ONLOAD'  ; }
+"FUNCTION_"   { mostrarToken('FUNCTION', yytext); return 'FUNCTION'; }
+
+
+
+
+
+
+
+
+
 //OTROS - - - - - - - - - - - - - - - - - - - -
+
 [a-zA-Z0-9.#/%_()]+         {mostrarToken("VALOR", yytext); return 'VALOR';}
+//[0-9]                       {mostrarToken("ENTERO", yytext); return 'ENTERO';}
+//[0-9]+("."[0-9]+)\b        {mostrarToken("DECIMAL", yytext); return 'DECIMAL';} 
+//[a-zA-Z_$-][a-zA-Z0-9_$-]\b   {mostrarToken("ID", yytext); 	  return 'ID'; }
+
+
 <<EOF>>                     return 'EOF'
 .                           {  
 								mensajesSalida += "\nLEXER: \n";
@@ -246,7 +277,8 @@ etiqueta: head
 		| title  { $$ = $1; } | cc 	 { $$ = $1; }   | body 	 { $$ = $1; } 
 		| div 	 { $$ = $1; } | select { $$ = $1; } | link 	 { $$ = $1; } 
 		| spam 	 { $$ = $1; } | input  { $$ = $1; } | t_area { $$ = $1; } 
-		| img 	 { $$ = $1; } | br 	   { $$ = $1; } | button { $$ = $1; } 
+		| img 	 { $$ = $1; } | br 	   { $$ = $1; } | button { $$ = $1; }
+		| SCRIPT 
 		| h1 	 { $$ = $1; } | p 	   { $$ = $1; } 
 		| coment {}
 		| error {
