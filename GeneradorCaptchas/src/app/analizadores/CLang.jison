@@ -37,6 +37,7 @@
 //["--" .*  "-->"]\b {mostrarSintactico("Comentario: " + yytext);}
 
 "<C_SCRIPTING>"([\s\S]*?)"</C_SCRIPTING>" { mostrarToken("SCRIPT", yytext); return 'SCRIPT'; }
+"<!--"([\s\S]*?)"-->"                     { mostrarSintactico("Comentario: " + yytext); }
 
 // ETIQUETAS - - - - - - - - - - - - - - - - -
 "C_CC" 			{ mostrarToken('CC'			, yytext);   return 'CC';  	     }
