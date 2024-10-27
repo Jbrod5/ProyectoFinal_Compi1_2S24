@@ -186,6 +186,11 @@ case 37:
 				this.$ = res; 
 		 
 break;
+case 51:
+
+			scriptClc = $$[$0];
+		
+break;
 case 55:
 
 			mostrarSintactico('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
@@ -927,6 +932,7 @@ _handle_error:
 		var nombrePagina = "a";
 		var codigoPagina = "b";
 		var mensajesSalida ="";
+		var scriptClc = "";
 
 		exports.obtenerNombre = function(){
 			return nombrePagina;
@@ -939,7 +945,12 @@ _handle_error:
 		};
 		exports.limpiarMensajes = function(){
 			mensajesSalida = "";
+			scriptClc = "";
 		};
+		exports.obtenerScript = function(){
+			return scriptClc;
+		};
+		
 
 
 		function mostrarSintactico(mensaje){

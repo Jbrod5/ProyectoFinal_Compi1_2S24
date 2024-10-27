@@ -14,36 +14,10 @@
 "!!".*        	          {/* Comentario una linea */}
 "<!--"([\s\S]*?)"-->"     {/* Comentario multilinea */}
 
-
-
-//SIMBOLOS - - - - - - - - - - - - - - -
-"(" {mostrarToken("PAROPN", yytext); return  'PAROPN';}
-")" {mostrarToken("PARCLS", yytext); return  'PARCLS';}
-"[" {mostrarToken("COROPN", yytext); return  'COROPN';}
-"]" {mostrarToken("CORCLS", yytext); return  'CORCLS';}
-"{" {mostrarToken("LLAVOP", yytext); return  'LLAVOP';}
-"}" {mostrarToken("LLAVCL", yytext); return  'LLAVCL';}
-"," {mostrarToken("COMMA", yytext);  return  'COMMA' ;}
-";" {mostrarToken("SEMIC", yytext);  return  'SEMIC' ;}
-":" {mostrarToken("COLON", yytext);  return  'COLON' ;}
-
-"=" {mostrarToken('EQU' ,yytext); return 'EQU'; }
-"+" {mostrarToken('MAS' ,yytext); return 'MAS'; }
-"-" {mostrarToken('MEN' ,yytext); return 'MEN'; }
-"/" {mostrarToken('DIV' ,yytext); return 'DIV'; }
-"*" {mostrarToken('TIM' ,yytext); return 'TIM'; }
-"!" {mostrarToken('EXC' ,yytext); return 'EXC'; }
-"<" {mostrarToken('MEN' ,yytext); return 'MEN'; }
-">" {mostrarToken('MAY' ,yytext); return 'MAY'; }
-"|" {mostrarToken('ORS' ,yytext); return 'ORS'; }
-"&" {mostrarToken('AND' ,yytext); return 'AND'; }
-
-
-
 //PALABRAS RESERVADAS - - - - - - - - - -  
-"FUNCTION_" {mostrarToken('FUNCTION', yytext);  return 'FUNCTION';} 
-"ON_LOAD"   {mostrarToken('ONLOAD', yytext)  ;  return 'ONLOAD';} 
-"@global"   {mostrarToken('GLOBAL', yytext)  ;  return 'GLOBAL';} 
+"FUNCTION_"? {mostrarToken('FUNCTION', yytext);  return 'FUNCTION';} 
+"ON_LOAD"    {mostrarToken('ONLOAD', yytext)  ;  return 'ONLOAD';} 
+"@global"    {mostrarToken('GLOBAL', yytext)  ;  return 'GLOBAL';} 
 
 "IF"        {mostrarToken('IF',   yytext); return 'IF'  ;} 
 "THEN"      {mostrarToken('THEN', yytext); return 'THEN';} 
@@ -71,9 +45,38 @@
 
 
 
+//SIMBOLOS - - - - - - - - - - - - - - -
+"(" {mostrarToken("PAROPN", yytext); return  'PAROPN';}
+")" {mostrarToken("PARCLS", yytext); return  'PARCLS';}
+"[" {mostrarToken("COROPN", yytext); return  'COROPN';}
+"]" {mostrarToken("CORCLS", yytext); return  'CORCLS';}
+"{" {mostrarToken("LLAVOP", yytext); return  'LLAVOP';}
+"}" {mostrarToken("LLAVCL", yytext); return  'LLAVCL';}
+"," {mostrarToken("COMMA", yytext);  return  'COMMA' ;}
+";" {mostrarToken("SEMIC", yytext);  return  'SEMIC' ;}
+":" {mostrarToken("COLON", yytext);  return  'COLON' ;}
+
+"=" {mostrarToken('EQU' ,yytext); return 'EQU'; }
+"+" {mostrarToken('MAS' ,yytext); return 'MAS'; }
+"-" {mostrarToken('MEN' ,yytext); return 'MEN'; }
+"/" {mostrarToken('DIV' ,yytext); return 'DIV'; }
+"*" {mostrarToken('TIM' ,yytext); return 'TIM'; }
+"!" {mostrarToken('EXC' ,yytext); return 'EXC'; }
+"<" {mostrarToken('MEN' ,yytext); return 'MEN'; }
+">" {mostrarToken('MAY' ,yytext); return 'MAY'; }
+"|" {mostrarToken('ORS' ,yytext); return 'ORS'; }
+"&" {mostrarToken('AND' ,yytext); return 'AND'; }
+
+
+
+
+
+
+
+
 
 // IDENTIFICADOR - - - - - - - - - - - - -
-[a-zA-Z_$-][a-zA-Z0-9_$-]\b   {mostrarToken("ID", yytext); 	  return 'ID'; }
+[a-zA-Z_$-][a-zA-Z0-9_$-]*   {mostrarToken("ID", yytext); 	  return 'ID'; }
 
 
 
@@ -129,7 +132,14 @@
 
 
 /* - - - - - - - - - - - - - - - - - PRODUCCIONES - - - - - - - - - - - - - - - - - */
-inicio: EOF;
+inicio: functions EOF;
 
-function: FUNCTION ID PAROPN PARCLS CORCLS expresiones CORCLS 
+functions: function functions 
+		 | function 
+		 |error {
+			mostrarSintactico('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
+			$$ = undefined;
+		}; 
+
+function: FUNCTION ID PAROPN PARCLS COROPN expresiones CORCLS 
         | ON_LOAD     PAROPN PARCLS COROPN expresiones CORCLS;

@@ -160,6 +160,7 @@
 		var nombrePagina = "a";
 		var codigoPagina = "b";
 		var mensajesSalida ="";
+		var scriptClc = "";
 
 		exports.obtenerNombre = function(){
 			return nombrePagina;
@@ -172,7 +173,12 @@
 		};
 		exports.limpiarMensajes = function(){
 			mensajesSalida = "";
+			scriptClc = "";
 		};
+		exports.obtenerScript = function(){
+			return scriptClc;
+		};
+		
 
 
 		function mostrarSintactico(mensaje){
@@ -279,7 +285,9 @@ etiqueta: head
 		| div 	 { $$ = $1; } | select { $$ = $1; } | link 	 { $$ = $1; } 
 		| spam 	 { $$ = $1; } | input  { $$ = $1; } | t_area { $$ = $1; } 
 		| img 	 { $$ = $1; } | br 	   { $$ = $1; } | button { $$ = $1; }
-		| SCRIPT 
+		| SCRIPT {
+			scriptClc = $1;
+		}
 		| h1 	 { $$ = $1; } | p 	   { $$ = $1; } 
 		| coment {}
 		| error {

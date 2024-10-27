@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as CLang from './analizadores/CLang';
+import * as CLC from './analizadores/CLC';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import { Parametro } from './componentes/Parametro';
@@ -43,13 +44,33 @@ export class AppComponent {
     console.log('Código ingresado:', code);
     var parser = new CLang.Parser();
     CLang.limpiarMensajes();
+
+    //CLC: 
+    var clc = new CLC.Parser();
+    CLC.limpiarMensajes();
+    var mensaje = "";
+
     try{
       parser.parse(code);
       //Mostrar los mensaje sen el area de mensajes: 
-      (document.getElementById('mensajes-analisis') as HTMLTextAreaElement).value =  CLang.obtenerMensajes()
+      mensaje +=    " = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n";
+      mensaje +=    " = = = = = = = = = = = C L A N G  = = = = = = = = = = =\n";
+      mensaje +=    " = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n\n\n";
+      mensaje += CLang.obtenerMensajes() + "\n\n\n"; 
+      
+      //Parsear scripts: 
+      mensaje +=    " = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n";
+      mensaje +=    " = = = = = = = = = = = = = C L C = = = = = = = = = = = = =\n";
+      mensaje +=    " = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n\n\n";
+      var script = CLang.obtenerScript();
+      CLC.parse(script);
+      mensaje += CLC.obtenerMensajes();
+
+
     }catch(error){
       if (error instanceof Error) {
-          (document.getElementById('mensajes-analisis') as HTMLTextAreaElement).value = "ERROR SINTACTICO CRITICO: \n" + error.message + "\n"  + CLang.obtenerMensajes();
+          //(document.getElementById('mensajes-analisis') as HTMLTextAreaElement).value 
+          mensaje += "ERROR SINTACTICO CRITICO: \n" + error.message + "\n"  + CLang.obtenerMensajes();
       }
       console.error(error);
     }
@@ -57,6 +78,9 @@ export class AppComponent {
 
     console.log("CLANG:");
     console.log(CLang.obtenerCodigo());
+    //Mostrar mensajes
+    (document.getElementById('mensajes-analisis') as HTMLTextAreaElement).value = mensaje;
+
 
     ;
 
