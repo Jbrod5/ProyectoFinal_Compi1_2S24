@@ -172,26 +172,26 @@ valor: ID
 	 //| numero;
 
 
-declaracion: INT        identificadores SEMIC 
-		   | STR        identificadores SEMIC 
-		   | DEC        identificadores SEMIC 
-		   | CHA        identificadores SEMIC 
-		   | BOO        identificadores SEMIC 
-		   | INT GLOBAL identificadores SEMIC
-		   | STR GLOBAL identificadores SEMIC
-		   | DEC GLOBAL identificadores SEMIC
-		   | CHA GLOBAL identificadores SEMIC
-		   | BOO GLOBAL identificadores SEMIC
-		   | INT        identificadores EQU ints SEMIC 
-		   | STR        identificadores EQU strs SEMIC 
-		   | DEC        identificadores EQU decs SEMIC 
-		   | CHA        identificadores EQU chas SEMIC 
-		   | BOO        identificadores EQU boos SEMIC 
-		   | INT GLOBAL identificadores EQU ints SEMIC
-		   | STR GLOBAL identificadores EQU strs SEMIC
-		   | DEC GLOBAL identificadores EQU decs SEMIC
-		   | CHA GLOBAL identificadores EQU chas SEMIC
-		   | BOO GLOBAL identificadores EQU boos SEMIC;
+declaracion: INT        identificadores  
+		   | STR        identificadores  
+		   | DEC        identificadores  
+		   | CHA        identificadores  
+		   | BOO        identificadores  
+		   | INT GLOBAL identificadores 
+		   | STR GLOBAL identificadores 
+		   | DEC GLOBAL identificadores 
+		   | CHA GLOBAL identificadores 
+		   | BOO GLOBAL identificadores 
+		   | INT        identificadores EQU ints 
+		   | STR        identificadores EQU strs 
+		   | DEC        identificadores EQU decs 
+		   | CHA        identificadores EQU chas 
+		   | BOO        identificadores EQU boos 
+		   | INT GLOBAL identificadores EQU ints
+		   | STR GLOBAL identificadores EQU strs
+		   | DEC GLOBAL identificadores EQU decs
+		   | CHA GLOBAL identificadores EQU chas
+		   | BOO GLOBAL identificadores EQU boos;
 
 identificadores: ID identificadores | ID;
 
@@ -261,8 +261,8 @@ numero: INTEGER { $$ = $1; }
 
 expresiones : expresion expresiones | expresion;
 
-expresion: declaracion
-		 | asignacion
+expresion: declaracion SEMIC
+		 | asignacion SEMIC
 		 | if_exp
 		 //|elif_exp
 		 | else_exp
