@@ -14,6 +14,7 @@
 "!!".*        	          {/* Comentario una linea */}
 "<!--"([\s\S]*?)"-->"     {/* Comentario multilinea */}
 
+
 //PALABRAS RESERVADAS - - - - - - - - - -  
 "FUNCTION_"? {mostrarToken('FUNCTION', yytext);  return 'FUNCTION';} 
 "ON_LOAD"    {mostrarToken('ONLOAD', yytext)  ;  return 'ONLOAD';} 
@@ -75,8 +76,21 @@
 
 
 
-// IDENTIFICADOR - - - - - - - - - - - - -
-[a-zA-Z_$-][a-zA-Z0-9_$-]*   {mostrarToken("ID", yytext); 	  return 'ID'; }
+// VALORES - - - - - - - - - - - - -
+("\""([\s\S]*?)"\"")         {mostrarToken("STRING", yytext);   return 'STRING' ;}
+("“"([\s\S]*?)"“")           {mostrarToken("STRING", yytext);   return 'STRING' ;}
+("”"([\s\S]*?)"”")           {mostrarToken("STRING", yytext);   return 'STRING' ;}
+("“"([\s\S]*?)"”")           {mostrarToken("STRING", yytext);   return 'STRING' ;}
+("”"([\s\S]*?)"“")           {mostrarToken("STRING", yytext);   return 'STRING' ;}
+
+"\'"[a-zA-Z]"\'"\b			 {mostrarToken("CHAR"  , yytext); 	return 'CHAR'	;}
+
+"true"                       {mostrarToken("TRUE"	, yytext); 	return 'TRUE'	;}       
+"false"                      {mostrarToken("FALSE"	, yytext); 	return 'FALSE'	;}    
+[0-9]+("."[0-9]+)?\b         {mostrarToken("DECIMAL", yytext); 	return 'DECIMAL';}     
+[0-9]+\b                     {mostrarToken("INTEGER", yytext); 	return 'INTEGER';}    
+[a-zA-Z_$-][a-zA-Z0-9_$-]*   {mostrarToken("ID"		, yytext); 	return 'ID'		;}
+
 
 
 
@@ -139,7 +153,18 @@ functions: function functions
 		 |error {
 			mostrarSintactico('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
 			$$ = undefined;
-		}; 
+		};
+
+valor: ID 
+	 | TRUE
+	 | FALSE
+	 | DECIMAL
+	 | INTEGER
+	 | CHAR
+	 | STRING;
+
+
+//expresion;
 
 function: FUNCTION ID PAROPN PARCLS COROPN expresiones CORCLS 
         | ON_LOAD     PAROPN PARCLS COROPN expresiones CORCLS;

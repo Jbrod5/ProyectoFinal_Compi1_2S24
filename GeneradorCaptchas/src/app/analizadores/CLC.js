@@ -72,12 +72,12 @@
   }
 */
 var CLC = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4],$V1=[1,5],$V2=[1,6],$V3=[2,5,7,14];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4],$V1=[1,5],$V2=[1,6],$V3=[2,5,15,21];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"inicio":3,"functions":4,"EOF":5,"function":6,"FUNCTION":7,"ID":8,"PAROPN":9,"PARCLS":10,"COROPN":11,"expresiones":12,"CORCLS":13,"ON_LOAD":14,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",7:"FUNCTION",8:"ID",9:"PAROPN",10:"PARCLS",11:"COROPN",12:"expresiones",13:"CORCLS",14:"ON_LOAD"},
-productions_: [0,[3,2],[4,2],[4,1],[4,1],[6,7],[6,6]],
+symbols_: {"error":2,"inicio":3,"functions":4,"EOF":5,"function":6,"valor":7,"ID":8,"TRUE":9,"FALSE":10,"DECIMAL":11,"INTEGER":12,"CHAR":13,"STRING":14,"FUNCTION":15,"PAROPN":16,"PARCLS":17,"COROPN":18,"expresiones":19,"CORCLS":20,"ON_LOAD":21,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",8:"ID",9:"TRUE",10:"FALSE",11:"DECIMAL",12:"INTEGER",13:"CHAR",14:"STRING",15:"FUNCTION",16:"PAROPN",17:"PARCLS",18:"COROPN",19:"expresiones",20:"CORCLS",21:"ON_LOAD"},
+productions_: [0,[3,2],[4,2],[4,1],[4,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[6,7],[6,6]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -91,7 +91,7 @@ case 4:
 break;
 }
 },
-table: [{2:$V0,3:1,4:2,6:3,7:$V1,14:$V2},{1:[3]},{5:[1,7]},{2:$V0,4:8,5:[2,3],6:3,7:$V1,14:$V2},{5:[2,4]},{8:[1,9]},{9:[1,10]},{1:[2,1]},{5:[2,2]},{9:[1,11]},{10:[1,12]},{10:[1,13]},{11:[1,14]},{11:[1,15]},{12:[1,16]},{12:[1,17]},{13:[1,18]},{13:[1,19]},o($V3,[2,6]),o($V3,[2,5])],
+table: [{2:$V0,3:1,4:2,6:3,15:$V1,21:$V2},{1:[3]},{5:[1,7]},{2:$V0,4:8,5:[2,3],6:3,15:$V1,21:$V2},{5:[2,4]},{8:[1,9]},{16:[1,10]},{1:[2,1]},{5:[2,2]},{16:[1,11]},{17:[1,12]},{17:[1,13]},{18:[1,14]},{18:[1,15]},{19:[1,16]},{19:[1,17]},{20:[1,18]},{20:[1,19]},o($V3,[2,13]),o($V3,[2,12])],
 defaultActions: {4:[2,4],7:[2,1],8:[2,2]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
@@ -717,7 +717,7 @@ case 3:/* Comentario una linea */
 break;
 case 4:/* Comentario multilinea */
 break;
-case 5:mostrarToken('FUNCTION', yy_.yytext);  return 7;
+case 5:mostrarToken('FUNCTION', yy_.yytext);  return 15;
 break;
 case 6:mostrarToken('ONLOAD', yy_.yytext)  ;  return 'ONLOAD';
 break;
@@ -791,11 +791,31 @@ case 40:mostrarToken('ORS' ,yy_.yytext); return 'ORS';
 break;
 case 41:mostrarToken('AND' ,yy_.yytext); return 'AND'; 
 break;
-case 42:mostrarToken("ID", yy_.yytext); 	  return 8; 
+case 42:mostrarToken("STRING", yy_.yytext);   return 14 ;
 break;
-case 43:return 5
+case 43:mostrarToken("STRING", yy_.yytext);   return 14 ;
 break;
-case 44:  
+case 44:mostrarToken("STRING", yy_.yytext);   return 14 ;
+break;
+case 45:mostrarToken("STRING", yy_.yytext);   return 14 ;
+break;
+case 46:mostrarToken("STRING", yy_.yytext);   return 14 ;
+break;
+case 47:mostrarToken("CHAR"  , yy_.yytext); 	return 13	;
+break;
+case 48:mostrarToken("TRUE"	, yy_.yytext); 	return 9	;
+break;
+case 49:mostrarToken("FALSE"	, yy_.yytext); 	return 10	;
+break;
+case 50:mostrarToken("DECIMAL", yy_.yytext); 	return 11;
+break;
+case 51:mostrarToken("INTEGER", yy_.yytext); 	return 12;
+break;
+case 52:mostrarToken("ID"		, yy_.yytext); 	return 8		;
+break;
+case 53:return 5
+break;
+case 54:  
 								//mensajesSalida += "\nLEXER: \n";
 								//mensajesSalida += "ERROR SINTACTICO: No se reconoce " + yy_.yytext + " como un simbolo valido.\n";
 								//return 'INVALID';
@@ -803,8 +823,8 @@ case 44:
 break;
 }
 },
-rules: [/^(?:[ \r\t\n])/,/^(?:<C_SCRIPTING>)/,/^(?:<\/C_SCRIPTING>)/,/^(?:!!.*)/,/^(?:<!--([\s\S]*?)-->)/,/^(?:FUNCTION_?)/,/^(?:ON_LOAD\b)/,/^(?:@global\b)/,/^(?:IF\b)/,/^(?:THEN\b)/,/^(?:ELSE\b)/,/^(?:REPEAT\b)/,/^(?:HUNTIL\b)/,/^(?:WHILE\b)/,/^(?:THENWHILE\b)/,/^(?:INIT\b)/,/^(?:END\b)/,/^(?:INSERT\b)/,/^(?:integer\b)/,/^(?:string\b)/,/^(?:decimal\b)/,/^(?:char\b)/,/^(?:boolean\b)/,/^(?:\()/,/^(?:\))/,/^(?:\[)/,/^(?:\])/,/^(?:\{)/,/^(?:\})/,/^(?:,)/,/^(?:;)/,/^(?::)/,/^(?:=)/,/^(?:\+)/,/^(?:-)/,/^(?:\/)/,/^(?:\*)/,/^(?:!)/,/^(?:<)/,/^(?:>)/,/^(?:\|)/,/^(?:&)/,/^(?:[a-zA-Z_$-][a-zA-Z0-9_$-]*)/,/^(?:$)/,/^(?:.)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44],"inclusive":true}}
+rules: [/^(?:[ \r\t\n])/,/^(?:<C_SCRIPTING>)/,/^(?:<\/C_SCRIPTING>)/,/^(?:!!.*)/,/^(?:<!--([\s\S]*?)-->)/,/^(?:FUNCTION_?)/,/^(?:ON_LOAD\b)/,/^(?:@global\b)/,/^(?:IF\b)/,/^(?:THEN\b)/,/^(?:ELSE\b)/,/^(?:REPEAT\b)/,/^(?:HUNTIL\b)/,/^(?:WHILE\b)/,/^(?:THENWHILE\b)/,/^(?:INIT\b)/,/^(?:END\b)/,/^(?:INSERT\b)/,/^(?:integer\b)/,/^(?:string\b)/,/^(?:decimal\b)/,/^(?:char\b)/,/^(?:boolean\b)/,/^(?:\()/,/^(?:\))/,/^(?:\[)/,/^(?:\])/,/^(?:\{)/,/^(?:\})/,/^(?:,)/,/^(?:;)/,/^(?::)/,/^(?:=)/,/^(?:\+)/,/^(?:-)/,/^(?:\/)/,/^(?:\*)/,/^(?:!)/,/^(?:<)/,/^(?:>)/,/^(?:\|)/,/^(?:&)/,/^(?:("([\s\S]*?)"))/,/^(?:(“([\s\S]*?)“))/,/^(?:(”([\s\S]*?)”))/,/^(?:(“([\s\S]*?)”))/,/^(?:(”([\s\S]*?)“))/,/^(?:\\'[a-zA-Z]\\'\b)/,/^(?:true\b)/,/^(?:false\b)/,/^(?:[0-9]+(\.[0-9]+)?\b)/,/^(?:[0-9]+\b)/,/^(?:[a-zA-Z_$-][a-zA-Z0-9_$-]*)/,/^(?:$)/,/^(?:.)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54],"inclusive":true}}
 });
 return lexer;
 })();
