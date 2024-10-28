@@ -1,4 +1,4 @@
-<c_CC [id = “valor”] [name = “valor”] [type="tipos"]>
+<c_CC [id = "ejemplo"] [name = "captcha1"] [type="tipos"]>
     
     <C_HEAD>
         <C_TITLE>
@@ -7,7 +7,7 @@
     </C_HEAD>
     !! Esto es un comentario de una linea
     
-    <C_BODY [background="black"]>
+    <C_BODY [background="olive"]>
         !! Esto es otro comentario de una linea 
         
         <C_DIV>
@@ -75,15 +75,18 @@
                 <C_OPTION>d</C_OPTION>
             </C_SELECT>
 
-            <C_LINK>EsteEsElLink</C_LINK>
+            <C_LINK [href = "https://i.pinimg.com/564x/be/dc/c5/bedcc5715f193ba54f8af170ba98ae93.jpg"] >EsteEsElLink</C_LINK>
             <C_BR>
-            <C_SPAM>TEXTOSPAM</C_SPAM>
+            <C_SPAM [color = "red"] [font-size = "15px"] [text-align = "center"] [id = "idSpam"]>TEXTOSPAM</C_SPAM>
             </C_BR>
-            <C_INPUT>fda</C_INPUT>
+            <C_INPUT[type = "text"]>text</C_INPUT> <C_BR>
+            <C_INPUT[type = "number"]>number</C_INPUT> <C_BR>
+            <C_INPUT[type = "radio"]>radio</C_INPUT> <C_BR>
+            <C_INPUT[type = "checkbox"]>checkbox</C_INPUT> <C_BR>
             <C_BR>
-            <C_TEXTAREA>aslkdj</C_TEXTAREA>
+            <C_TEXTAREA[cols = "40"] [rows = "2"]>aslkdj</C_TEXTAREA>
             </C_BR>
-            <C_IMG>
+            <C_IMG [width = "300px"] [height = "450px"] [src = "https://i.pinimg.com/564x/70/b3/ba/70b3bace7a286266f0d05fc5488a3e8c.jpg"]>
 
 
             <C_BUTTON>EsteEsUnBoton</C_BUTTON>
