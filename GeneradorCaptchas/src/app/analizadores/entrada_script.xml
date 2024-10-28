@@ -1,0 +1,96 @@
+<c_CC [id = “valor”] [name = “valor”] [type="tipos"]>
+    
+    <C_HEAD>
+        <C_TITLE>
+            Hola
+        </C_TITLE>
+    </C_HEAD>
+    !! Esto es un comentario de una linea
+    
+    <C_BODY [background="black"]>
+        !! Esto es otro comentario de una linea 
+        
+        <C_DIV>
+            <C_SCRIPTING> 
+
+                FUNCTION_calc() [ 
+                    !! Estas instrucciones no se ejecutan hasta llamar a FUNCTION_calc()
+                    integer @global contador_fallas = 5; 
+                    string result_caja_texto = getElemenById("entrada_1"); 
+                    string @global result = "10 ";
+                    result = "30 ";
+
+                    string mensaje_fallo = "El captcha no fue validado intente otra vez "; 
+                    string mensaje_acierto = "El captcha fue validado "; 
+                    string mensaje_final = “El captcha no logró ser validado :( intente mas tarde”; 
+                    
+
+                    WHILE (true) THENWHILE 
+                        !! instruccion 
+                        INSERT(‘Iteración infinita’); 
+
+                    !!EJEMPLO REPEAT
+                    REPEAT (integer i=0 ) HUNTIL ((5*4)/2) 
+                        !! bloque de instrucciones 
+                        INIT {: 
+                            INSERT(‘Iteración No: ’, i);
+                            INSERT(‘__________________’); 
+                        :} END 
+
+
+
+
+                    !! Validacion del numero de oportunidades restantes 
+                    IF (contador_fallas == 0) THEN 
+                        INIT {: 
+                            ALERT_INFO(mensaje_final); 
+                            EXIT(); 
+                        :} END
+
+                    !! Validación de fallas y aciertos 
+                    IF (result_caja_texto == result ) THEN 
+                        !!si el resultado es correcto 
+                        INIT {: 
+                            ALERT_INFO(mensaje_acierto); 
+                            REDIRECT(); !!puede usarALERT_INFO(mensaje_acierto);se también EXIT() para redirigir 
+                        :} END 
+                    ELSE 
+                        !!si el intento es incorrecto 
+                        INIT {: 
+                            ALERT_INFO(mensaje_fallo); 
+                            contador_fallas = contador_fallas -1; 
+                        :} END 
+                ] 
+            </C_SCRIPTING> 
+
+
+            <!-- Este es un comentario
+             de multiples
+             lineas
+            -->
+            <C_SELECT>
+                <C_OPTION>a</C_OPTION>
+                <C_OPTION>b</C_OPTION>
+                <C_OPTION>c</C_OPTION>
+                <C_OPTION>d</C_OPTION>
+            </C_SELECT>
+
+            <C_LINK>EsteEsElLink</C_LINK>
+            <C_BR>
+            <C_SPAM>TEXTOSPAM</C_SPAM>
+            </C_BR>
+            <C_INPUT>fda</C_INPUT>
+            <C_BR>
+            <C_TEXTAREA>aslkdj</C_TEXTAREA>
+            </C_BR>
+            <C_IMG>
+
+
+            <C_BUTTON>EsteEsUnBoton</C_BUTTON>
+            <C_H1>HACHEUNOOO</C_H1>
+            <C_P>PEEEE</C_P>
+   
+        </C_DIV>
+    
+    </C_BODY>
+</C_CC> 
