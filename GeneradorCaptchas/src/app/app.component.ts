@@ -57,6 +57,9 @@ export class AppComponent {
       mensaje +=    " = = = = = = = = = = = C L A N G  = = = = = = = = = = =\n";
       mensaje +=    " = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n\n\n";
       mensaje += CLang.obtenerMensajes() + "\n\n\n"; 
+
+      mensaje +=    " - - - - - - - - - - Script a procesar - - - - - - - - - - \n\n"
+      mensaje += CLang.obtenerScript() + "\n\n\n"
       
       //Parsear scripts: 
       mensaje +=    " = = = = = = = = = = = = = = = = = = = = = = = = = = = = =\n";

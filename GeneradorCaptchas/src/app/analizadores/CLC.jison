@@ -276,8 +276,14 @@ expresion: declaracion SEMIC
 			$$ = undefined;
 		 };
 
-function: FUNCTION ID PAROPN PARCLS COROPN expresiones CORCLS 
-        | ON_LOAD     PAROPN PARCLS COROPN expresiones CORCLS
+function: FUNCTION ID PAROPN PARCLS COROPN expresiones CORCLS {
+			console.log("Funcion " + $2 + " terminada con exito.");
+			mensajesSalida += "PARSER: Funcion " + $2 + " terminada con exito.\n";
+		}
+        | ONLOAD      PAROPN PARCLS COROPN expresiones CORCLS{
+			console.log("Funcion ONLOAD terminada correctamente.");
+			mensajesSalida += "FPARSER: Funcion ONLOAD terminada correctamente.\n";
+		}
 		|error {
 			mostrarSintactico('FUNCION COMO ERROR -> \nError: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
 			$$ = undefined;

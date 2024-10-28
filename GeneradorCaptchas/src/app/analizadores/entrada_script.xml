@@ -75,6 +75,26 @@
                 <C_OPTION>d</C_OPTION>
             </C_SELECT>
 
+
+
+            <C_SCRIPTING>
+
+                ON_LOAD () [ 
+                    !!Estas instrucciones se ejecutan media vez se entra al scripting !! Insertamos el input con sus parámetros con la instrucción INSERT 
+                    INSERT('<C_INPUT [type= "text"] [text-align= "center"] [id= "entrada_1"] >'); 
+                    INSERT('</C_INPUT>'); 
+                ] 
+
+                FUNCTION_calcular() [
+                    string mensaje_acierto = "El captcha fue validado "; 
+                ] 
+
+
+            </C_SCRIPTING>
+
+
+
+
             <C_LINK [href = "https://i.pinimg.com/564x/be/dc/c5/bedcc5715f193ba54f8af170ba98ae93.jpg"] >EsteEsElLink pero con separaciones</C_LINK>
             <C_BR>
             <C_SPAM [color = "red"] [font-size = "15px"] [text-align = "center"] [id = "idSpam"]>Este es el spam</C_SPAM>

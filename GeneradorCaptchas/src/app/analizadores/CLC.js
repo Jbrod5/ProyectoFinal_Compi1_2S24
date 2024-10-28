@@ -75,8 +75,8 @@ var CLC = (function(){
 var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,6],$V1=[1,4],$V2=[1,5],$V3=[2,5,63,66],$V4=[1,24],$V5=[1,30],$V6=[1,25],$V7=[1,26],$V8=[1,27],$V9=[1,28],$Va=[1,29],$Vb=[1,31],$Vc=[1,32],$Vd=[1,34],$Ve=[1,33],$Vf=[65,69],$Vg=[2,8,23,25,26,27,28,46,51,54,57,65,69],$Vh=[1,42],$Vi=[1,55],$Vj=[17,44],$Vk=[17,30,44],$Vl=[1,71],$Vm=[1,72],$Vn=[1,73],$Vo=[1,74],$Vp=[1,75],$Vq=[1,76],$Vr=[1,77],$Vs=[1,78],$Vt=[1,81],$Vu=[1,88],$Vv=[1,91],$Vw=[1,94],$Vx=[1,97],$Vy=[1,101],$Vz=[1,102],$VA=[1,105],$VB=[1,106],$VC=[1,107],$VD=[1,108],$VE=[17,18,19,20,21,30,38,39,40,41,42,44],$VF=[17,36,44],$VG=[17,18,19,30,38,39,40,41,42,44],$VH=[1,170],$VI=[1,169],$VJ=[1,171],$VK=[1,174],$VL=[1,175],$VM=[1,176],$VN=[1,177],$VO=[17,18,19,20,21],$VP=[17,18,19];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"inicio":3,"functions":4,"EOF":5,"function":6,"valor":7,"ID":8,"TRUE":9,"FALSE":10,"DECIMAL":11,"INTEGER":12,"CHAR":13,"STRING":14,"PAROPN":15,"condicion":16,"PARCLS":17,"MAS":18,"MEN":19,"TIM":20,"DIV":21,"declaracion":22,"INT":23,"identificadores":24,"STR":25,"DEC":26,"CHA":27,"BOO":28,"GLOBAL":29,"EQU":30,"ints":31,"strs":32,"decs":33,"chas":34,"boos":35,"COMMA":36,"valbool":37,"AND":38,"ORS":39,"EXCLAM":40,"MENQUE":41,"MAYQUE":42,"asignacion":43,"SEMIC":44,"if_exp":45,"IF":46,"THEN":47,"expresion":48,"bloque_ins":49,"elif_exp":50,"ELSE":51,"else_exp":52,"while_exp":53,"WHILE":54,"THENWHILE":55,"repeat":56,"REPEAT":57,"variable":58,"HUNTIL":59,"num":60,"numero":61,"expresiones":62,"FUNCTION":63,"COROPN":64,"CORCLS":65,"ON_LOAD":66,"INIT":67,"LLAVOP":68,"COLON":69,"LLAVCL":70,"END":71,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",8:"ID",9:"TRUE",10:"FALSE",11:"DECIMAL",12:"INTEGER",13:"CHAR",14:"STRING",15:"PAROPN",17:"PARCLS",18:"MAS",19:"MEN",20:"TIM",21:"DIV",23:"INT",25:"STR",26:"DEC",27:"CHA",28:"BOO",29:"GLOBAL",30:"EQU",36:"COMMA",38:"AND",39:"ORS",40:"EXCLAM",41:"MENQUE",42:"MAYQUE",44:"SEMIC",46:"IF",47:"THEN",51:"ELSE",54:"WHILE",55:"THENWHILE",57:"REPEAT",59:"HUNTIL",63:"FUNCTION",64:"COROPN",65:"CORCLS",66:"ON_LOAD",67:"INIT",68:"LLAVOP",69:"COLON",70:"LLAVCL",71:"END"},
+symbols_: {"error":2,"inicio":3,"functions":4,"EOF":5,"function":6,"valor":7,"ID":8,"TRUE":9,"FALSE":10,"DECIMAL":11,"INTEGER":12,"CHAR":13,"STRING":14,"PAROPN":15,"condicion":16,"PARCLS":17,"MAS":18,"MEN":19,"TIM":20,"DIV":21,"declaracion":22,"INT":23,"identificadores":24,"STR":25,"DEC":26,"CHA":27,"BOO":28,"GLOBAL":29,"EQU":30,"ints":31,"strs":32,"decs":33,"chas":34,"boos":35,"COMMA":36,"valbool":37,"AND":38,"ORS":39,"EXCLAM":40,"MENQUE":41,"MAYQUE":42,"asignacion":43,"SEMIC":44,"if_exp":45,"IF":46,"THEN":47,"expresion":48,"bloque_ins":49,"elif_exp":50,"ELSE":51,"else_exp":52,"while_exp":53,"WHILE":54,"THENWHILE":55,"repeat":56,"REPEAT":57,"variable":58,"HUNTIL":59,"num":60,"numero":61,"expresiones":62,"FUNCTION":63,"COROPN":64,"CORCLS":65,"ONLOAD":66,"INIT":67,"LLAVOP":68,"COLON":69,"LLAVCL":70,"END":71,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",8:"ID",9:"TRUE",10:"FALSE",11:"DECIMAL",12:"INTEGER",13:"CHAR",14:"STRING",15:"PAROPN",17:"PARCLS",18:"MAS",19:"MEN",20:"TIM",21:"DIV",23:"INT",25:"STR",26:"DEC",27:"CHA",28:"BOO",29:"GLOBAL",30:"EQU",36:"COMMA",38:"AND",39:"ORS",40:"EXCLAM",41:"MENQUE",42:"MAYQUE",44:"SEMIC",46:"IF",47:"THEN",51:"ELSE",54:"WHILE",55:"THENWHILE",57:"REPEAT",59:"HUNTIL",63:"FUNCTION",64:"COROPN",65:"CORCLS",66:"ONLOAD",67:"INIT",68:"LLAVOP",69:"COLON",70:"LLAVCL",71:"END"},
 productions_: [0,[3,2],[4,2],[4,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,3],[7,3],[7,3],[7,3],[7,3],[22,2],[22,2],[22,2],[22,2],[22,2],[22,3],[22,3],[22,3],[22,3],[22,3],[22,4],[22,4],[22,4],[22,4],[22,4],[22,5],[22,5],[22,5],[22,5],[22,5],[24,2],[24,1],[31,3],[31,1],[32,3],[32,1],[33,3],[33,1],[34,3],[34,1],[35,3],[35,1],[37,1],[37,1],[16,4],[16,4],[16,2],[16,4],[16,4],[16,3],[16,4],[16,3],[16,4],[16,1],[43,4],[45,6],[45,6],[50,2],[52,2],[52,2],[53,6],[53,6],[56,9],[56,9],[58,1],[58,1],[60,1],[60,1],[61,1],[61,1],[61,3],[61,3],[61,3],[61,3],[61,3],[62,2],[62,1],[48,2],[48,2],[48,1],[48,1],[48,1],[48,1],[48,1],[6,7],[6,6],[6,1],[49,7]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
@@ -119,6 +119,18 @@ case 89:
 			mostrarSintactico('EXPRESION COMO ERROR -> \nError: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
 			this.$ = undefined;
 		 
+break;
+case 90:
+
+			console.log("Funcion " + $$[$0-5] + " terminada con exito.");
+			mensajesSalida += "PARSER: Funcion " + $$[$0-5] + " terminada con exito.\n";
+		
+break;
+case 91:
+
+			console.log("Funcion ONLOAD terminada correctamente.");
+			mensajesSalida += "FPARSER: Funcion ONLOAD terminada correctamente.\n";
+		
 break;
 case 92:
 
@@ -756,7 +768,7 @@ case 4:/* Comentario multilinea */
 break;
 case 5:mostrarToken('FUNCTION', yy_.yytext);  return 63;
 break;
-case 6:mostrarToken('ONLOAD',   yy_.yytext);  return 'ONLOAD'  ;
+case 6:mostrarToken('ONLOAD',   yy_.yytext);  return 66  ;
 break;
 case 7:mostrarToken('GLOBAL',   yy_.yytext);  return 29  ;
 break;

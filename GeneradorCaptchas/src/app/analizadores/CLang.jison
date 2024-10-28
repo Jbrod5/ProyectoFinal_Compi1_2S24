@@ -287,7 +287,7 @@ etiqueta: head
 		| spam 	 { $$ = $1; } | input  { $$ = $1; } | t_area { $$ = $1; } 
 		| img 	 { $$ = $1; } | br 	   { $$ = $1; } | button { $$ = $1; }
 		| SCRIPT {
-			scriptClc = $1;
+			scriptClc += $1 + "\n";
 		}
 		| h1 	 { $$ = $1; } | p 	   { $$ = $1; } 
 		| coment {}

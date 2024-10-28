@@ -191,7 +191,7 @@ case 39:
 break;
 case 53:
 
-			scriptClc = $$[$0];
+			scriptClc += $$[$0] + "\n";
 		
 break;
 case 57:
