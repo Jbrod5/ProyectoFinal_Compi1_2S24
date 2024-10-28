@@ -111,7 +111,8 @@
 "src"         { mostrarToken('SRC'		 , yytext);   return 'SRC';       } 
 "width"       { mostrarToken('WIDTH'	 , yytext);   return 'WIDTH';     }      
 "height"      { mostrarToken('HEIGHT'	 , yytext);   return 'HEIGHT';    }     
-"onclick()"   { mostrarToken('ONCLICK'	 , yytext);   return 'ONCLICK';   }   
+"onclick()"   { mostrarToken('ONCLICK'	 , yytext);   return 'ONCLICK';   }  
+"alt"         { mostrarToken('ALT'       , yytext);   return 'ALT';       } 
 
 
 
@@ -120,8 +121,8 @@
 
 
 //SCRIPTING - - - - - - - - - - - - - - - - - - - 
-"ON_LOAD"     { mostrarToken('ONLOAD'  , yytext); return 'ONLOAD'  ; }
-"FUNCTION_"   { mostrarToken('FUNCTION', yytext); return 'FUNCTION'; }
+//"ON_LOAD"     { mostrarToken('ONLOAD'  , yytext); return 'ONLOAD'  ; }
+//"FUNCTION_"   { mostrarToken('FUNCTION', yytext); return 'FUNCTION'; }
 
 
 
@@ -133,7 +134,7 @@
 
 //OTROS - - - - - - - - - - - - - - - - - - - -
 
-[a-zA-Z0-9.#/%_()]+         {mostrarToken("VALOR", yytext); return 'VALOR';}
+[a-zA-Z0-9.:#/%_()]+         {mostrarToken("VALOR", yytext); return 'VALOR';}
 //[0-9]                       {mostrarToken("ENTERO", yytext); return 'ENTERO';}
 //[0-9]+("."[0-9]+)\b        {mostrarToken("DECIMAL", yytext); return 'DECIMAL';} 
 //[a-zA-Z_$-][a-zA-Z0-9_$-]\b   {mostrarToken("ID", yytext); 	  return 'ID'; }
@@ -228,26 +229,26 @@ parametro : href        { $$ = $1; }    | background  { $$ = $1; }   | color    
 		  | type        { $$ = $1; }    | id          { $$ = $1; }   | name        { $$ = $1; } 
 		  | cols        { $$ = $1; }    | rows        { $$ = $1; }   | class       { $$ = $1; }  
 		  | src         { $$ = $1; }    | width       { $$ = $1; }   | height      { $$ = $1; }
-		  | onclick     { $$ = $1; };
+		  | onclick     { $$ = $1; }    | alt         { $$ = $1; };
 
 
-href 		: CORIZQ HREF 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("HREF"		  , $5); }; 
-background  : CORIZQ BACKGROUND IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("BACKGROUND" , $5); };
-color		: CORIZQ COLOR 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("COLOR"	  , $5); };
-font_size   : CORIZQ F_SIZE 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("FONT_SIZE"  , $5); };
-font_family : CORIZQ F_FAM 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("FONT_FAMILY", $5); }; 
-text_align  : CORIZQ TEXT_AL 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("TEXT_ALIGN" , $5); }; 
-type        : CORIZQ TYPE 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("TIPO"       , $5); };  
-id          : CORIZQ ID 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("ID"         , $5); };       
-name        : CORIZQ NAME 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("NAME"       , $5); };      
-cols        : CORIZQ COLS 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("COLS"       , $5); };   
-rows        : CORIZQ ROWS 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("ROWS"       , $5); };     
-class       : CORIZQ CLASS 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("CLASS"      , $5); };         
-src         : CORIZQ SRC 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("SRC"        , $5); };     
-width       : CORIZQ WIDTH 		IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("WIDTH"      , $5); };     
-height      : CORIZQ HEIGHT 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("HEIGHT"     , $5); };    
-onclick     : CORIZQ ONCLICK 	IGUAL COMILL VALOR COMILL CORDER{ $$ = new Parametro("ONCLICK"    , $5); };  
-
+href 		: CORIZQ HREF 		IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("HREF"	    , $5); }; 
+background  : CORIZQ BACKGROUND IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("BACKGROUND" , $5); };
+color		: CORIZQ COLOR 		IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("COLOR"	    , $5); };
+font_size   : CORIZQ F_SIZE 	IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("FONT_SIZE"  , $5); };
+font_family : CORIZQ F_FAM 		IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("FONT_FAMILY", $5); }; 
+text_align  : CORIZQ TEXT_AL 	IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("TEXT_ALIGN" , $5); }; 
+type        : CORIZQ TYPE 		IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("TIPO"       , $5); };  
+id          : CORIZQ ID 		IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("ID"         , $5); };       
+name        : CORIZQ NAME 		IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("NAME"       , $5); };      
+cols        : CORIZQ COLS 		IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("COLS"       , $5); };   
+rows        : CORIZQ ROWS 		IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("ROWS"       , $5); };     
+class       : CORIZQ CLASS 		IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("CLASS"      , $5); };         
+src         : CORIZQ SRC 		IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("SRC"        , $5); };     
+width       : CORIZQ WIDTH 		IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("WIDTH"      , $5); };     
+height      : CORIZQ HEIGHT 	IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("HEIGHT"     , $5); };    
+onclick     : CORIZQ ONCLICK 	IGUAL COMILL VALOR   COMILL CORDER{ $$ = new Parametro("ONCLICK"    , $5); };  
+alt         : CORIZQ ALT        IGUAL COMILL valores COMILL CORDER{ $$ = new Parametro("ALT", $5.join(' '));};
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // Etiquetas = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -346,10 +347,10 @@ head  : MENQUE HEAD  MAYQUE etiquetas 		HEAD_FIN{
 			mostrarSintactico(head.obtenerCodigo());
 			$$ = head;
 	  };
-title : MENQUE TITLE MAYQUE valor     		TITLE_FIN{
+title : MENQUE TITLE MAYQUE valores    		TITLE_FIN{
 			var valor = $4;
 			var titulo = new Title();
-			titulo.establecerValor(valor);
+			titulo.establecerValor(valor.join(' '));
 			mostrarSintactico(titulo.obtenerCodigo());
 			$$ = titulo; 
 	  };
@@ -507,10 +508,10 @@ select: MENQUE SELECT  parametros MAYQUE options  		SELECT_FIN{ //Solo etiquetas
 			$$ = select;
 
 		}; 
-option  : MENQUE OPTION MAYQUE valor 					OPTION_FIN{
+option  : MENQUE OPTION MAYQUE valores 					OPTION_FIN{
 			var option = new Option();
 			var val = $4;
-			option.establecerValor(val);
+			option.establecerValor(val.join(' '));
 			mostrarSintactico(option.obtenerCodigo());
 			$$ = option; 
 		};
@@ -543,9 +544,9 @@ options : option options{
 
 
 //Sin etiquetas
-link  : MENQUE LINK     parametros MAYQUE valor     LINK_FIN	{
+link  : MENQUE LINK     parametros MAYQUE valores     LINK_FIN	{
 			var parametros = $3;
-			var valor = $5;
+			var valor = $5.join(' ');
 			var res = new Link();
 
 			if(parametros != undefined && Array.isArray(parametros)){
@@ -564,9 +565,9 @@ link  : MENQUE LINK     parametros MAYQUE valor     LINK_FIN	{
 			mostrarSintactico(res.obtenerCodigo());
 			$$ = res;
 	  };
-spam  : MENQUE SPAM     parametros MAYQUE valor     SPAM_FIN	{
+spam  : MENQUE SPAM     parametros MAYQUE valores     SPAM_FIN	{
 			var parametros = $3;
-			var valor = $5;
+			var valor = $5.join(' ');
 			var res = new Spam();
 
 			if(parametros != undefined && Array.isArray(parametros)){
@@ -585,9 +586,9 @@ spam  : MENQUE SPAM     parametros MAYQUE valor     SPAM_FIN	{
 			mostrarSintactico(res.obtenerCodigo());
 			$$ = res;
 	  }; 
-input : MENQUE INPUT    parametros MAYQUE valor 	INPUT_FIN	{
+input : MENQUE INPUT    parametros MAYQUE valores 	INPUT_FIN	{
 			var parametros = $3;
-			var valor = $5;
+			var valor = $5.join(' ');
 			var res = new Input();
 
 			if(parametros != undefined && Array.isArray(parametros)){
@@ -606,9 +607,9 @@ input : MENQUE INPUT    parametros MAYQUE valor 	INPUT_FIN	{
 			mostrarSintactico(res.obtenerCodigo());
 			$$ = res;
 	  }; 
-t_area: MENQUE TEXTAREA parametros MAYQUE valor     TEXTAREA_FIN{
+t_area: MENQUE TEXTAREA parametros MAYQUE valores     TEXTAREA_FIN{
 			var parametros = $3;
-			var valor = $5;
+			var valor = $5.join(' ');
 			var res = new TextArea();
 
 			if(parametros != undefined && Array.isArray(parametros)){
@@ -662,9 +663,9 @@ br    : MENQUE BR 				   MAYQUE{
 			mostrarSintactico(result.obtenerCodigo());
 			$$ = result;
 	  };
-button: MENQUE BUTTON 	parametros MAYQUE valor     BUTTON_FIN{
+button: MENQUE BUTTON 	parametros MAYQUE valores     BUTTON_FIN{
 			var parametros = $3;
-			var valor = $5;
+			var valor = $5.join(' ');
 			var res = new Button();
 
 			if(parametros != undefined && Array.isArray(parametros)){
@@ -684,9 +685,9 @@ button: MENQUE BUTTON 	parametros MAYQUE valor     BUTTON_FIN{
 			$$ = res; 
 
 	  };
-h1    : MENQUE H1       parametros MAYQUE valor     H1_FIN	  {
+h1    : MENQUE H1       parametros MAYQUE valores     H1_FIN	  {
 			var parametros = $3;
-			var valor = $5;
+			var valor = $5.join(' ');
 			var res = new H1();
 
 			if(parametros != undefined && Array.isArray(parametros)){
@@ -706,9 +707,9 @@ h1    : MENQUE H1       parametros MAYQUE valor     H1_FIN	  {
 			$$ = res; 
 
 	  };
-p     : MENQUE P        parametros MAYQUE valor     P_FIN	  {
+p     : MENQUE P        parametros MAYQUE valores     P_FIN	  {
 			var parametros = $3;
-			var valor = $5;
+			var valor = $5.join(' ');
 			var res = new P();
 
 			if(parametros != undefined && Array.isArray(parametros)){

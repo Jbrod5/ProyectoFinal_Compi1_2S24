@@ -36,30 +36,30 @@ export class Input extends Componente{
             
 
             case 'FONT_SIZE':
-                if(this.font_size != undefined){
+                if(this.fontSize != undefined){
                     var mensaje = "Error Semantico: se intento establecer el parametro font-size pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 }
-                this.font_size = valor;  
+                this.fontSize = valor;  
                 break;
             case 'FONT_FAMILY':
-                if(this.font_family != undefined){
+                if(this.fontFamily != undefined){
                     var mensaje = "Error Semantico: se intento establecer el parametro font_family pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 } 
-                this.font_family = valor;
+                this.fontFamily = valor;
                 break;
             case 'TEXT_ALIGN':
-                if(this.text_align != undefined){
+                if(this.textAlign != undefined){
                     var mensaje = "Error Semantico: se intento establecer el parametro text-align pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 } 
                 var al = valor.toLowerCase(); 
                 switch(al){
-                    case 'left': this.text_align = 'left'; break; 
-                    case 'right': this.text_align = 'right'; break; 
-                    case 'center': this.text_align = 'center'; break; 
-                    case 'justify': this.text_align = 'justify'; break;                    
+                    case 'left': this.textAlign = 'left'; break; 
+                    case 'right': this.textAlign = 'right'; break; 
+                    case 'center': this.textAlign = 'center'; break; 
+                    case 'justify': this.textAlign = 'justify'; break;                    
                     default: this.lanzarExcepcionSintactica("Error Sintactico: se intento establecer una alineacion de texto " + al + " pero no es una alineacion valida.")
                 }
                 break;
@@ -96,8 +96,9 @@ export class Input extends Componente{
         this.fontSize = this.fontSize || '10px';
         this.fontFamily = this.fontFamily || 'Arial';
         this.textAlign = this.textAlign || 'left';
-        var style = "\" color: " + this.color + "; font-size: " + this.fontSize + "; font-family: " + this.fontFamily + "; text-align: " + this.textAlign + ";\"";
+        var style = " style =\" color: " + this.color + "; font-size: " + this.fontSize + "; font-family: " + this.fontFamily + "; text-align: " + this.textAlign + ";\"";
         var codigo = "<input type=\"" + this.tipo + "\" id = \"" + this.id + "\" name = \""+ this.id  +"\" " + style + " value = \"" + this.valor + "\">";
+        codigo +=    "<label for=\""+ this.id + "\" " + style + ">"+ this.valor + "</label>";
 
 
         return codigo; 

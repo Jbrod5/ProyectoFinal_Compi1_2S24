@@ -72,12 +72,12 @@
   }
 */
 var CLang = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,5],$V1=[1,24],$V2=[2,3],$V3=[24,67],$V4=[1,62],$V5=[1,58],$V6=[1,63],$V7=[1,64],$V8=[68,72,74,78],$V9=[2,59,65,68,72,74,78,96],$Va=[1,149],$Vb=[1,185],$Vc=[1,194];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,5],$V1=[1,25],$V2=[2,3],$V3=[25,69],$V4=[1,64],$V5=[1,60],$V6=[1,65],$V7=[1,66],$V8=[70,74,76,80],$V9=[2,62,67,70,74,76,80,98],$Va=[1,152],$Vb=[28,72,78,86,88,90,92,94,100,102,104],$Vc=[1,192];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"inicio":3,"cc":4,"EOF":5,"parametros":6,"parametro":7,"href":8,"background":9,"color":10,"font_size":11,"font_family":12,"text_align":13,"type":14,"id":15,"name":16,"cols":17,"rows":18,"class":19,"src":20,"width":21,"height":22,"onclick":23,"CORIZQ":24,"HREF":25,"IGUAL":26,"COMILL":27,"VALOR":28,"CORDER":29,"BACKGROUND":30,"COLOR":31,"F_SIZE":32,"F_FAM":33,"TEXT_AL":34,"TYPE":35,"ID":36,"NAME":37,"COLS":38,"ROWS":39,"CLASS":40,"SRC":41,"WIDTH":42,"HEIGHT":43,"ONCLICK":44,"etiquetas":45,"etiqueta":46,"head":47,"title":48,"body":49,"div":50,"select":51,"link":52,"spam":53,"input":54,"t_area":55,"img":56,"br":57,"button":58,"SCRIPT":59,"h1":60,"p":61,"coment":62,"valores":63,"valor":64,"MENQUE":65,"HEAD":66,"MAYQUE":67,"HEAD_FIN":68,"TITLE":69,"TITLE_FIN":70,"CC":71,"CC_FIN":72,"BODY":73,"BODY_FIN":74,"EXCLAM":75,"MENOS":76,"DIV":77,"DIV_FIN":78,"SELECT":79,"options":80,"SELECT_FIN":81,"option":82,"OPTION":83,"OPTION_FIN":84,"LINK":85,"LINK_FIN":86,"SPAM":87,"SPAM_FIN":88,"INPUT":89,"INPUT_FIN":90,"TEXTAREA":91,"TEXTAREA_FIN":92,"IMG":93,"BR":94,"BARRA":95,"BR_FIN":96,"BUTTON":97,"BUTTON_FIN":98,"H1":99,"H1_FIN":100,"P":101,"P_FIN":102,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",24:"CORIZQ",25:"HREF",26:"IGUAL",27:"COMILL",28:"VALOR",29:"CORDER",30:"BACKGROUND",31:"COLOR",32:"F_SIZE",33:"F_FAM",34:"TEXT_AL",35:"TYPE",36:"ID",37:"NAME",38:"COLS",39:"ROWS",40:"CLASS",41:"SRC",42:"WIDTH",43:"HEIGHT",44:"ONCLICK",59:"SCRIPT",65:"MENQUE",66:"HEAD",67:"MAYQUE",68:"HEAD_FIN",69:"TITLE",70:"TITLE_FIN",71:"CC",72:"CC_FIN",73:"BODY",74:"BODY_FIN",75:"EXCLAM",76:"MENOS",77:"DIV",78:"DIV_FIN",79:"SELECT",81:"SELECT_FIN",83:"OPTION",84:"OPTION_FIN",85:"LINK",86:"LINK_FIN",87:"SPAM",88:"SPAM_FIN",89:"INPUT",90:"INPUT_FIN",91:"TEXTAREA",92:"TEXTAREA_FIN",93:"IMG",94:"BR",95:"BARRA",96:"BR_FIN",97:"BUTTON",98:"BUTTON_FIN",99:"H1",100:"H1_FIN",101:"P",102:"P_FIN"},
-productions_: [0,[3,2],[6,2],[6,0],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[8,7],[9,7],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7],[16,7],[17,7],[18,7],[19,7],[20,7],[21,7],[22,7],[23,7],[45,2],[45,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[46,1],[63,2],[63,1],[64,1],[47,5],[48,5],[4,6],[49,6],[62,8],[50,6],[51,6],[82,5],[80,2],[80,1],[52,6],[53,6],[54,6],[55,6],[56,4],[57,3],[57,4],[57,1],[58,6],[60,6],[61,6]],
+symbols_: {"error":2,"inicio":3,"cc":4,"EOF":5,"parametros":6,"parametro":7,"href":8,"background":9,"color":10,"font_size":11,"font_family":12,"text_align":13,"type":14,"id":15,"name":16,"cols":17,"rows":18,"class":19,"src":20,"width":21,"height":22,"onclick":23,"alt":24,"CORIZQ":25,"HREF":26,"IGUAL":27,"COMILL":28,"VALOR":29,"CORDER":30,"BACKGROUND":31,"COLOR":32,"F_SIZE":33,"F_FAM":34,"TEXT_AL":35,"TYPE":36,"ID":37,"NAME":38,"COLS":39,"ROWS":40,"CLASS":41,"SRC":42,"WIDTH":43,"HEIGHT":44,"ONCLICK":45,"ALT":46,"valores":47,"etiquetas":48,"etiqueta":49,"head":50,"title":51,"body":52,"div":53,"select":54,"link":55,"spam":56,"input":57,"t_area":58,"img":59,"br":60,"button":61,"SCRIPT":62,"h1":63,"p":64,"coment":65,"valor":66,"MENQUE":67,"HEAD":68,"MAYQUE":69,"HEAD_FIN":70,"TITLE":71,"TITLE_FIN":72,"CC":73,"CC_FIN":74,"BODY":75,"BODY_FIN":76,"EXCLAM":77,"MENOS":78,"DIV":79,"DIV_FIN":80,"SELECT":81,"options":82,"SELECT_FIN":83,"option":84,"OPTION":85,"OPTION_FIN":86,"LINK":87,"LINK_FIN":88,"SPAM":89,"SPAM_FIN":90,"INPUT":91,"INPUT_FIN":92,"TEXTAREA":93,"TEXTAREA_FIN":94,"IMG":95,"BR":96,"BARRA":97,"BR_FIN":98,"BUTTON":99,"BUTTON_FIN":100,"H1":101,"H1_FIN":102,"P":103,"P_FIN":104,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",25:"CORIZQ",26:"HREF",27:"IGUAL",28:"COMILL",29:"VALOR",30:"CORDER",31:"BACKGROUND",32:"COLOR",33:"F_SIZE",34:"F_FAM",35:"TEXT_AL",36:"TYPE",37:"ID",38:"NAME",39:"COLS",40:"ROWS",41:"CLASS",42:"SRC",43:"WIDTH",44:"HEIGHT",45:"ONCLICK",46:"ALT",62:"SCRIPT",67:"MENQUE",68:"HEAD",69:"MAYQUE",70:"HEAD_FIN",71:"TITLE",72:"TITLE_FIN",73:"CC",74:"CC_FIN",75:"BODY",76:"BODY_FIN",77:"EXCLAM",78:"MENOS",79:"DIV",80:"DIV_FIN",81:"SELECT",83:"SELECT_FIN",85:"OPTION",86:"OPTION_FIN",87:"LINK",88:"LINK_FIN",89:"SPAM",90:"SPAM_FIN",91:"INPUT",92:"INPUT_FIN",93:"TEXTAREA",94:"TEXTAREA_FIN",95:"IMG",96:"BR",97:"BARRA",98:"BR_FIN",99:"BUTTON",100:"BUTTON_FIN",101:"H1",102:"H1_FIN",103:"P",104:"P_FIN"},
+productions_: [0,[3,2],[6,2],[6,0],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[7,1],[8,7],[9,7],[10,7],[11,7],[12,7],[13,7],[14,7],[15,7],[16,7],[17,7],[18,7],[19,7],[20,7],[21,7],[22,7],[23,7],[24,7],[48,2],[48,1],[49,1],[49,1],[49,1],[49,1],[49,1],[49,1],[49,1],[49,1],[49,1],[49,1],[49,1],[49,1],[49,1],[49,1],[49,1],[49,1],[49,1],[49,1],[47,2],[47,1],[66,1],[50,5],[51,5],[4,6],[52,6],[65,8],[53,6],[54,6],[84,5],[82,2],[82,1],[55,6],[56,6],[57,6],[58,6],[59,4],[60,3],[60,4],[60,1],[61,6],[63,6],[64,6]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -104,58 +104,61 @@ break;
 case 3:
  this.$ = []; 
 break;
-case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 39: case 40: case 41: case 42: case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 52: case 53:
+case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19: case 20: case 41: case 42: case 43: case 44: case 45: case 46: case 47: case 48: case 49: case 50: case 51: case 52: case 54: case 55:
  this.$ = $$[$0]; 
 break;
-case 20:
- this.$ = new Parametro("HREF"		  , $$[$0-2]); 
-break;
 case 21:
- this.$ = new Parametro("BACKGROUND" , $$[$0-2]); 
+ this.$ = new Parametro("HREF"	    , $$[$0-2]); 
 break;
 case 22:
- this.$ = new Parametro("COLOR"	  , $$[$0-2]); 
+ this.$ = new Parametro("BACKGROUND" , $$[$0-2]); 
 break;
 case 23:
- this.$ = new Parametro("FONT_SIZE"  , $$[$0-2]); 
+ this.$ = new Parametro("COLOR"	    , $$[$0-2]); 
 break;
 case 24:
- this.$ = new Parametro("FONT_FAMILY", $$[$0-2]); 
+ this.$ = new Parametro("FONT_SIZE"  , $$[$0-2]); 
 break;
 case 25:
- this.$ = new Parametro("TEXT_ALIGN" , $$[$0-2]); 
+ this.$ = new Parametro("FONT_FAMILY", $$[$0-2]); 
 break;
 case 26:
- this.$ = new Parametro("TIPO"       , $$[$0-2]); 
+ this.$ = new Parametro("TEXT_ALIGN" , $$[$0-2]); 
 break;
 case 27:
- this.$ = new Parametro("ID"         , $$[$0-2]); 
+ this.$ = new Parametro("TIPO"       , $$[$0-2]); 
 break;
 case 28:
- this.$ = new Parametro("NAME"       , $$[$0-2]); 
+ this.$ = new Parametro("ID"         , $$[$0-2]); 
 break;
 case 29:
- this.$ = new Parametro("COLS"       , $$[$0-2]); 
+ this.$ = new Parametro("NAME"       , $$[$0-2]); 
 break;
 case 30:
- this.$ = new Parametro("ROWS"       , $$[$0-2]); 
+ this.$ = new Parametro("COLS"       , $$[$0-2]); 
 break;
 case 31:
- this.$ = new Parametro("CLASS"      , $$[$0-2]); 
+ this.$ = new Parametro("ROWS"       , $$[$0-2]); 
 break;
 case 32:
- this.$ = new Parametro("SRC"        , $$[$0-2]); 
+ this.$ = new Parametro("CLASS"      , $$[$0-2]); 
 break;
 case 33:
- this.$ = new Parametro("WIDTH"      , $$[$0-2]); 
+ this.$ = new Parametro("SRC"        , $$[$0-2]); 
 break;
 case 34:
- this.$ = new Parametro("HEIGHT"     , $$[$0-2]); 
+ this.$ = new Parametro("WIDTH"      , $$[$0-2]); 
 break;
 case 35:
- this.$ = new Parametro("ONCLICK"    , $$[$0-2]); 
+ this.$ = new Parametro("HEIGHT"     , $$[$0-2]); 
 break;
 case 36:
+ this.$ = new Parametro("ONCLICK"    , $$[$0-2]); 
+break;
+case 37:
+ this.$ = new Parametro("ALT", $$[$0-2].join(' '));
+break;
+case 38:
 
 				var etiquetas = $$[$0];
 				var et = $$[$0-1];
@@ -176,7 +179,7 @@ case 36:
 				this.$ = res;
 		 
 break;
-case 37:
+case 39:
 
 				var etiqueta = $$[$0];
 				var res = [];
@@ -186,18 +189,18 @@ case 37:
 				this.$ = res; 
 		 
 break;
-case 51:
+case 53:
 
 			scriptClc = $$[$0];
 		
 break;
-case 55:
+case 57:
 
 			mostrarSintactico('Error: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
 			this.$ = undefined;
 		
 break;
-case 56:
+case 58:
 
 			var valores = $$[$0]; 
 			var vl = $$[$0-1]; 
@@ -218,7 +221,7 @@ case 56:
 			}
 		
 break;
-case 57:
+case 59:
 
 			var vl = $$[$0];
 			var res = [];
@@ -228,7 +231,7 @@ case 57:
 			this.$ = res; 
 		
 break;
-case 59:
+case 61:
 
 			var etiquetas = $$[$0-1];
 			var head = new Head();
@@ -240,16 +243,16 @@ case 59:
 			this.$ = head;
 	  
 break;
-case 60:
+case 62:
 
 			var valor = $$[$0-1];
 			var titulo = new Title();
-			titulo.establecerValor(valor);
+			titulo.establecerValor(valor.join(' '));
 			mostrarSintactico(titulo.obtenerCodigo());
 			this.$ = titulo; 
 	  
 break;
-case 61:
+case 63:
 
 			var parametros = $$[$0-3];
 			var etiquetas = $$[$0-1];
@@ -295,7 +298,7 @@ case 61:
 
 	  
 break;
-case 62:
+case 64:
 
 			var parametros = $$[$0-3];
 			var etiquetas = $$[$0-1];
@@ -330,12 +333,12 @@ case 62:
 			this.$ = body; 
 	  
 break;
-case 63:
+case 65:
 
 			mostrarSintactico("Comentario multiple: " + $$[$0-3]);
 		
 break;
-case 64:
+case 66:
 
 			var parametros = $$[$0-3];
 			var etiquetas = $$[$0-1];
@@ -370,7 +373,7 @@ case 64:
 			this.$ = div; 
 	  
 break;
-case 65:
+case 67:
  //Solo etiquetas option
 			var parametros = $$[$0-3];
 			var opciones = $$[$0-1];
@@ -405,16 +408,16 @@ case 65:
 
 		
 break;
-case 66:
+case 68:
 
 			var option = new Option();
 			var val = $$[$0-1];
-			option.establecerValor(val);
+			option.establecerValor(val.join(' '));
 			mostrarSintactico(option.obtenerCodigo());
 			this.$ = option; 
 		
 break;
-case 67:
+case 69:
 
 			var op = $$[$0-1];
 			var options = $$[$0];
@@ -434,7 +437,7 @@ case 67:
 			this.$ = res;
 		
 break;
-case 68:
+case 70:
 
 			var op = $$[$0];
 			var res = [];
@@ -444,57 +447,11 @@ case 68:
 			this.$ = res;
 		
 break;
-case 69:
-
-			var parametros = $$[$0-3];
-			var valor = $$[$0-1];
-			var res = new Link();
-
-			if(parametros != undefined && Array.isArray(parametros)){
-				parametros.forEach(p=>{
-					if(p!= undefined){
-						try{
-							res.establecerParametro(p.parametro, p.valor);
-						}catch(error){ 
-							mostrarError(error);
-						}
-					}
-				});
-			}
-
-			res.establecerValor(valor);
-			mostrarSintactico(res.obtenerCodigo());
-			this.$ = res;
-	  
-break;
-case 70:
-
-			var parametros = $$[$0-3];
-			var valor = $$[$0-1];
-			var res = new Spam();
-
-			if(parametros != undefined && Array.isArray(parametros)){
-				parametros.forEach(p=>{
-					if(p!= undefined){
-						try{
-							res.establecerParametro(p.parametro, p.valor);
-						}catch(error){ 
-							mostrarError(error);
-						}
-					}
-				});
-			}
-
-			res.establecerValor(valor);
-			mostrarSintactico(res.obtenerCodigo());
-			this.$ = res;
-	  
-break;
 case 71:
 
 			var parametros = $$[$0-3];
-			var valor = $$[$0-1];
-			var res = new Input();
+			var valor = $$[$0-1].join(' ');
+			var res = new Link();
 
 			if(parametros != undefined && Array.isArray(parametros)){
 				parametros.forEach(p=>{
@@ -516,8 +473,8 @@ break;
 case 72:
 
 			var parametros = $$[$0-3];
-			var valor = $$[$0-1];
-			var res = new TextArea();
+			var valor = $$[$0-1].join(' ');
+			var res = new Spam();
 
 			if(parametros != undefined && Array.isArray(parametros)){
 				parametros.forEach(p=>{
@@ -537,6 +494,52 @@ case 72:
 	  
 break;
 case 73:
+
+			var parametros = $$[$0-3];
+			var valor = $$[$0-1].join(' ');
+			var res = new Input();
+
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!= undefined){
+						try{
+							res.establecerParametro(p.parametro, p.valor);
+						}catch(error){ 
+							mostrarError(error);
+						}
+					}
+				});
+			}
+
+			res.establecerValor(valor);
+			mostrarSintactico(res.obtenerCodigo());
+			this.$ = res;
+	  
+break;
+case 74:
+
+			var parametros = $$[$0-3];
+			var valor = $$[$0-1].join(' ');
+			var res = new TextArea();
+
+			if(parametros != undefined && Array.isArray(parametros)){
+				parametros.forEach(p=>{
+					if(p!= undefined){
+						try{
+							res.establecerParametro(p.parametro, p.valor);
+						}catch(error){ 
+							mostrarError(error);
+						}
+					}
+				});
+			}
+
+			res.establecerValor(valor);
+			mostrarSintactico(res.obtenerCodigo());
+			this.$ = res;
+	  
+break;
+case 75:
 
 			var parametros = $$[$0-1];
 			var img = new Img();
@@ -558,24 +561,24 @@ case 73:
 			this.$ = img;
 	  
 break;
-case 74:
+case 76:
 
 			var result = new Br();
 			mostrarSintactico(result.obtenerCodigo());
 			this.$ = result;					
 	  
 break;
-case 75: case 76:
+case 77: case 78:
 
 			var result = new Br();
 			mostrarSintactico(result.obtenerCodigo());
 			this.$ = result;
 	  
 break;
-case 77:
+case 79:
 
 			var parametros = $$[$0-3];
-			var valor = $$[$0-1];
+			var valor = $$[$0-1].join(' ');
 			var res = new Button();
 
 			if(parametros != undefined && Array.isArray(parametros)){
@@ -596,10 +599,10 @@ case 77:
 
 	  
 break;
-case 78:
+case 80:
 
 			var parametros = $$[$0-3];
-			var valor = $$[$0-1];
+			var valor = $$[$0-1].join(' ');
 			var res = new H1();
 
 			if(parametros != undefined && Array.isArray(parametros)){
@@ -620,10 +623,10 @@ case 78:
 
 	  
 break;
-case 79:
+case 81:
 
 			var parametros = $$[$0-3];
-			var valor = $$[$0-1];
+			var valor = $$[$0-1].join(' ');
 			var res = new P();
 
 			if(parametros != undefined && Array.isArray(parametros)){
@@ -646,8 +649,8 @@ case 79:
 break;
 }
 },
-table: [{3:1,4:2,65:[1,3]},{1:[3]},{5:[1,4]},{71:$V0},{1:[2,1]},{6:6,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{67:[1,25]},{6:26,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},o($V3,[2,4]),o($V3,[2,5]),o($V3,[2,6]),o($V3,[2,7]),o($V3,[2,8]),o($V3,[2,9]),o($V3,[2,10]),o($V3,[2,11]),o($V3,[2,12]),o($V3,[2,13]),o($V3,[2,14]),o($V3,[2,15]),o($V3,[2,16]),o($V3,[2,17]),o($V3,[2,18]),o($V3,[2,19]),{25:[1,27],30:[1,28],31:[1,29],32:[1,30],33:[1,31],34:[1,32],35:[1,33],36:[1,34],37:[1,35],38:[1,36],39:[1,37],40:[1,38],41:[1,39],42:[1,40],43:[1,41],44:[1,42]},{2:$V4,4:47,45:43,46:44,47:45,48:46,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,59:$V5,60:59,61:60,62:61,65:$V6,96:$V7},{67:[2,2]},{26:[1,65]},{26:[1,66]},{26:[1,67]},{26:[1,68]},{26:[1,69]},{26:[1,70]},{26:[1,71]},{26:[1,72]},{26:[1,73]},{26:[1,74]},{26:[1,75]},{26:[1,76]},{26:[1,77]},{26:[1,78]},{26:[1,79]},{26:[1,80]},{72:[1,81]},o($V8,[2,37],{46:44,47:45,48:46,4:47,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,60:59,61:60,62:61,45:82,2:$V4,59:$V5,65:$V6,96:$V7}),o($V9,[2,38]),o($V9,[2,39]),o($V9,[2,40]),o($V9,[2,41]),o($V9,[2,42]),o($V9,[2,43]),o($V9,[2,44]),o($V9,[2,45]),o($V9,[2,46]),o($V9,[2,47]),o($V9,[2,48]),o($V9,[2,49]),o($V9,[2,50]),o($V9,[2,51]),o($V9,[2,52]),o($V9,[2,53]),o($V9,[2,54]),o($V9,[2,55]),{66:[1,83],69:[1,84],71:$V0,73:[1,85],75:[1,98],77:[1,86],79:[1,87],85:[1,88],87:[1,89],89:[1,90],91:[1,91],93:[1,92],94:[1,93],95:[1,94],97:[1,95],99:[1,96],101:[1,97]},o($V9,[2,76]),{27:[1,99]},{27:[1,100]},{27:[1,101]},{27:[1,102]},{27:[1,103]},{27:[1,104]},{27:[1,105]},{27:[1,106]},{27:[1,107]},{27:[1,108]},{27:[1,109]},{27:[1,110]},{27:[1,111]},{27:[1,112]},{27:[1,113]},{27:[1,114]},o([2,5,59,65,68,72,74,78,96],[2,61]),o($V8,[2,36]),{67:[1,115]},{67:[1,116]},{6:117,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:118,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:119,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:120,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:121,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:122,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:123,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:124,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{67:[1,125]},{94:[1,126]},{6:127,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:128,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{6:129,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:$V1,67:$V2},{76:[1,130]},{28:[1,131]},{28:[1,132]},{28:[1,133]},{28:[1,134]},{28:[1,135]},{28:[1,136]},{28:[1,137]},{28:[1,138]},{28:[1,139]},{28:[1,140]},{28:[1,141]},{28:[1,142]},{28:[1,143]},{28:[1,144]},{28:[1,145]},{28:[1,146]},{2:$V4,4:47,45:147,46:44,47:45,48:46,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,59:$V5,60:59,61:60,62:61,65:$V6,96:$V7},{28:$Va,64:148},{67:[1,150]},{67:[1,151]},{67:[1,152]},{67:[1,153]},{67:[1,154]},{67:[1,155]},{67:[1,156]},{67:[1,157]},o($V9,[2,74]),{67:[1,158]},{67:[1,159]},{67:[1,160]},{67:[1,161]},{76:[1,162]},{27:[1,163]},{27:[1,164]},{27:[1,165]},{27:[1,166]},{27:[1,167]},{27:[1,168]},{27:[1,169]},{27:[1,170]},{27:[1,171]},{27:[1,172]},{27:[1,173]},{27:[1,174]},{27:[1,175]},{27:[1,176]},{27:[1,177]},{27:[1,178]},{68:[1,179]},{70:[1,180]},o([70,84,86,88,90,92,98,100,102],[2,58]),{2:$V4,4:47,45:181,46:44,47:45,48:46,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,59:$V5,60:59,61:60,62:61,65:$V6,96:$V7},{2:$V4,4:47,45:182,46:44,47:45,48:46,49:48,50:49,51:50,52:51,53:52,54:53,55:54,56:55,57:56,58:57,59:$V5,60:59,61:60,62:61,65:$V6,96:$V7},{65:$Vb,80:183,82:184},{28:$Va,64:186},{28:$Va,64:187},{28:$Va,64:188},{28:$Va,64:189},o($V9,[2,73]),o($V9,[2,75]),{28:$Va,64:190},{28:$Va,64:191},{28:$Va,64:192},{28:$Vc,63:193},{29:[1,195]},{29:[1,196]},{29:[1,197]},{29:[1,198]},{29:[1,199]},{29:[1,200]},{29:[1,201]},{29:[1,202]},{29:[1,203]},{29:[1,204]},{29:[1,205]},{29:[1,206]},{29:[1,207]},{29:[1,208]},{29:[1,209]},{29:[1,210]},o($V9,[2,59]),o($V9,[2,60]),{74:[1,211]},{78:[1,212]},{81:[1,213]},{65:$Vb,80:214,81:[2,68],82:184},{83:[1,215]},{86:[1,216]},{88:[1,217]},{90:[1,218]},{92:[1,219]},{98:[1,220]},{100:[1,221]},{102:[1,222]},{76:[1,223]},{28:$Vc,63:224,76:[2,57]},o($V3,[2,20]),o($V3,[2,21]),o($V3,[2,22]),o($V3,[2,23]),o($V3,[2,24]),o($V3,[2,25]),o($V3,[2,26]),o($V3,[2,27]),o($V3,[2,28]),o($V3,[2,29]),o($V3,[2,30]),o($V3,[2,31]),o($V3,[2,32]),o($V3,[2,33]),o($V3,[2,34]),o($V3,[2,35]),o($V9,[2,62]),o($V9,[2,64]),o($V9,[2,65]),{81:[2,67]},{67:[1,225]},o($V9,[2,69]),o($V9,[2,70]),o($V9,[2,71]),o($V9,[2,72]),o($V9,[2,77]),o($V9,[2,78]),o($V9,[2,79]),{76:[1,226]},{76:[2,56]},{28:$Va,64:227},{67:[1,228]},{84:[1,229]},o($V9,[2,63]),o([65,81],[2,66])],
-defaultActions: {4:[2,1],26:[2,2],214:[2,67],224:[2,56]},
+table: [{3:1,4:2,67:[1,3]},{1:[3]},{5:[1,4]},{73:$V0},{1:[2,1]},{6:6,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:24,25:$V1,69:$V2},{69:[1,26]},{6:27,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:24,25:$V1,69:$V2},o($V3,[2,4]),o($V3,[2,5]),o($V3,[2,6]),o($V3,[2,7]),o($V3,[2,8]),o($V3,[2,9]),o($V3,[2,10]),o($V3,[2,11]),o($V3,[2,12]),o($V3,[2,13]),o($V3,[2,14]),o($V3,[2,15]),o($V3,[2,16]),o($V3,[2,17]),o($V3,[2,18]),o($V3,[2,19]),o($V3,[2,20]),{26:[1,28],31:[1,29],32:[1,30],33:[1,31],34:[1,32],35:[1,33],36:[1,34],37:[1,35],38:[1,36],39:[1,37],40:[1,38],41:[1,39],42:[1,40],43:[1,41],44:[1,42],45:[1,43],46:[1,44]},{2:$V4,4:49,48:45,49:46,50:47,51:48,52:50,53:51,54:52,55:53,56:54,57:55,58:56,59:57,60:58,61:59,62:$V5,63:61,64:62,65:63,67:$V6,98:$V7},{69:[2,2]},{27:[1,67]},{27:[1,68]},{27:[1,69]},{27:[1,70]},{27:[1,71]},{27:[1,72]},{27:[1,73]},{27:[1,74]},{27:[1,75]},{27:[1,76]},{27:[1,77]},{27:[1,78]},{27:[1,79]},{27:[1,80]},{27:[1,81]},{27:[1,82]},{27:[1,83]},{74:[1,84]},o($V8,[2,39],{49:46,50:47,51:48,4:49,52:50,53:51,54:52,55:53,56:54,57:55,58:56,59:57,60:58,61:59,63:61,64:62,65:63,48:85,2:$V4,62:$V5,67:$V6,98:$V7}),o($V9,[2,40]),o($V9,[2,41]),o($V9,[2,42]),o($V9,[2,43]),o($V9,[2,44]),o($V9,[2,45]),o($V9,[2,46]),o($V9,[2,47]),o($V9,[2,48]),o($V9,[2,49]),o($V9,[2,50]),o($V9,[2,51]),o($V9,[2,52]),o($V9,[2,53]),o($V9,[2,54]),o($V9,[2,55]),o($V9,[2,56]),o($V9,[2,57]),{68:[1,86],71:[1,87],73:$V0,75:[1,88],77:[1,101],79:[1,89],81:[1,90],87:[1,91],89:[1,92],91:[1,93],93:[1,94],95:[1,95],96:[1,96],97:[1,97],99:[1,98],101:[1,99],103:[1,100]},o($V9,[2,78]),{28:[1,102]},{28:[1,103]},{28:[1,104]},{28:[1,105]},{28:[1,106]},{28:[1,107]},{28:[1,108]},{28:[1,109]},{28:[1,110]},{28:[1,111]},{28:[1,112]},{28:[1,113]},{28:[1,114]},{28:[1,115]},{28:[1,116]},{28:[1,117]},{28:[1,118]},o([2,5,62,67,70,74,76,80,98],[2,63]),o($V8,[2,38]),{69:[1,119]},{69:[1,120]},{6:121,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:24,25:$V1,69:$V2},{6:122,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:24,25:$V1,69:$V2},{6:123,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:24,25:$V1,69:$V2},{6:124,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:24,25:$V1,69:$V2},{6:125,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:24,25:$V1,69:$V2},{6:126,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:24,25:$V1,69:$V2},{6:127,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:24,25:$V1,69:$V2},{6:128,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:24,25:$V1,69:$V2},{69:[1,129]},{96:[1,130]},{6:131,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:24,25:$V1,69:$V2},{6:132,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:24,25:$V1,69:$V2},{6:133,7:7,8:8,9:9,10:10,11:11,12:12,13:13,14:14,15:15,16:16,17:17,18:18,19:19,20:20,21:21,22:22,23:23,24:24,25:$V1,69:$V2},{78:[1,134]},{29:[1,135]},{29:[1,136]},{29:[1,137]},{29:[1,138]},{29:[1,139]},{29:[1,140]},{29:[1,141]},{29:[1,142]},{29:[1,143]},{29:[1,144]},{29:[1,145]},{29:[1,146]},{29:[1,147]},{29:[1,148]},{29:[1,149]},{29:[1,150]},{29:$Va,47:151},{2:$V4,4:49,48:153,49:46,50:47,51:48,52:50,53:51,54:52,55:53,56:54,57:55,58:56,59:57,60:58,61:59,62:$V5,63:61,64:62,65:63,67:$V6,98:$V7},{29:$Va,47:154},{69:[1,155]},{69:[1,156]},{69:[1,157]},{69:[1,158]},{69:[1,159]},{69:[1,160]},{69:[1,161]},{69:[1,162]},o($V9,[2,76]),{69:[1,163]},{69:[1,164]},{69:[1,165]},{69:[1,166]},{78:[1,167]},{28:[1,168]},{28:[1,169]},{28:[1,170]},{28:[1,171]},{28:[1,172]},{28:[1,173]},{28:[1,174]},{28:[1,175]},{28:[1,176]},{28:[1,177]},{28:[1,178]},{28:[1,179]},{28:[1,180]},{28:[1,181]},{28:[1,182]},{28:[1,183]},{28:[1,184]},o($Vb,[2,59],{47:185,29:$Va}),{70:[1,186]},{72:[1,187]},{2:$V4,4:49,48:188,49:46,50:47,51:48,52:50,53:51,54:52,55:53,56:54,57:55,58:56,59:57,60:58,61:59,62:$V5,63:61,64:62,65:63,67:$V6,98:$V7},{2:$V4,4:49,48:189,49:46,50:47,51:48,52:50,53:51,54:52,55:53,56:54,57:55,58:56,59:57,60:58,61:59,62:$V5,63:61,64:62,65:63,67:$V6,98:$V7},{67:$Vc,82:190,84:191},{29:$Va,47:193},{29:$Va,47:194},{29:$Va,47:195},{29:$Va,47:196},o($V9,[2,75]),o($V9,[2,77]),{29:$Va,47:197},{29:$Va,47:198},{29:$Va,47:199},{29:$Va,47:200},{30:[1,201]},{30:[1,202]},{30:[1,203]},{30:[1,204]},{30:[1,205]},{30:[1,206]},{30:[1,207]},{30:[1,208]},{30:[1,209]},{30:[1,210]},{30:[1,211]},{30:[1,212]},{30:[1,213]},{30:[1,214]},{30:[1,215]},{30:[1,216]},{30:[1,217]},o($Vb,[2,58]),o($V9,[2,61]),o($V9,[2,62]),{76:[1,218]},{80:[1,219]},{83:[1,220]},{67:$Vc,82:221,83:[2,70],84:191},{85:[1,222]},{88:[1,223]},{90:[1,224]},{92:[1,225]},{94:[1,226]},{100:[1,227]},{102:[1,228]},{104:[1,229]},{78:[1,230]},o($V3,[2,21]),o($V3,[2,22]),o($V3,[2,23]),o($V3,[2,24]),o($V3,[2,25]),o($V3,[2,26]),o($V3,[2,27]),o($V3,[2,28]),o($V3,[2,29]),o($V3,[2,30]),o($V3,[2,31]),o($V3,[2,32]),o($V3,[2,33]),o($V3,[2,34]),o($V3,[2,35]),o($V3,[2,36]),o($V3,[2,37]),o($V9,[2,64]),o($V9,[2,66]),o($V9,[2,67]),{83:[2,69]},{69:[1,231]},o($V9,[2,71]),o($V9,[2,72]),o($V9,[2,73]),o($V9,[2,74]),o($V9,[2,79]),o($V9,[2,80]),o($V9,[2,81]),{78:[1,232]},{29:$Va,47:233},{69:[1,234]},{86:[1,235]},o($V9,[2,65]),o([67,83],[2,68])],
+defaultActions: {4:[2,1],27:[2,2],221:[2,69]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -1297,137 +1300,135 @@ case 0:/*ignorar*/
 break;
 case 1:mostrarSintactico("Comentario: " + yy_.yytext);
 break;
-case 2: mostrarToken("SCRIPT", yy_.yytext); return 59; 
+case 2: mostrarToken("SCRIPT", yy_.yytext); return 62; 
 break;
 case 3: mostrarSintactico("Comentario: " + yy_.yytext); 
 break;
-case 4: mostrarToken('CC'			, yy_.yytext);   return 71;  	     
+case 4: mostrarToken('CC'			, yy_.yytext);   return 73;  	     
 break;
-case 5: mostrarToken('HEAD'		, yy_.yytext);   return 66;      
+case 5: mostrarToken('HEAD'		, yy_.yytext);   return 68;      
 break;
-case 6: mostrarToken('TITLE'		, yy_.yytext);	 return 69;     
+case 6: mostrarToken('TITLE'		, yy_.yytext);	 return 71;     
 break;
-case 7: mostrarToken('LINK'		, yy_.yytext);	 return 85;      
+case 7: mostrarToken('LINK'		, yy_.yytext);	 return 87;      
 break;
-case 8: mostrarToken('BODY'		, yy_.yytext);	 return 73;      
+case 8: mostrarToken('BODY'		, yy_.yytext);	 return 75;      
 break;
-case 9: mostrarToken('SPAM'		, yy_.yytext);	 return 87;      
+case 9: mostrarToken('SPAM'		, yy_.yytext);	 return 89;      
 break;
-case 10: mostrarToken('INPUT'		, yy_.yytext);	 return 89;     
+case 10: mostrarToken('INPUT'		, yy_.yytext);	 return 91;     
 break;
-case 11: mostrarToken('TEXTAREA'	, yy_.yytext);	 return 91;  
+case 11: mostrarToken('TEXTAREA'	, yy_.yytext);	 return 93;  
 break;
-case 12: mostrarToken('SELECT'		, yy_.yytext);	 return 79; 	 
+case 12: mostrarToken('SELECT'		, yy_.yytext);	 return 81; 	 
 break;
-case 13: mostrarToken('OPTION'		, yy_.yytext);	 return 83; 	 
+case 13: mostrarToken('OPTION'		, yy_.yytext);	 return 85; 	 
 break;
-case 14: mostrarToken('DIV'		, yy_.yytext);	 return 77; 		 
+case 14: mostrarToken('DIV'		, yy_.yytext);	 return 79; 		 
 break;
-case 15: mostrarToken('IMG'		, yy_.yytext);	 return 93; 		 
+case 15: mostrarToken('IMG'		, yy_.yytext);	 return 95; 		 
 break;
-case 16: mostrarToken('BR'			, yy_.yytext);	 return 94; 		 
+case 16: mostrarToken('BR'			, yy_.yytext);	 return 96; 		 
 break;
-case 17: mostrarToken('BUTTON'		, yy_.yytext);	 return 97; 	 
+case 17: mostrarToken('BUTTON'		, yy_.yytext);	 return 99; 	 
 break;
-case 18: mostrarToken('H1'			, yy_.yytext);	 return 99; 		 
+case 18: mostrarToken('H1'			, yy_.yytext);	 return 101; 		 
 break;
-case 19: mostrarToken('P'			, yy_.yytext);	 return 101; 		 
+case 19: mostrarToken('P'			, yy_.yytext);	 return 103; 		 
 break;
 case 20: mostrarToken('SCRIPTING'	, yy_.yytext);   return 'SCRIPTING'; 
 break;
-case 21: mostrarToken('CC_FIN'       , yy_.yytext);	 return 72;	    
+case 21: mostrarToken('CC_FIN'       , yy_.yytext);	 return 74;	    
 break;
-case 22: mostrarToken('HEAD_FIN'     , yy_.yytext);	 return 68;     
+case 22: mostrarToken('HEAD_FIN'     , yy_.yytext);	 return 70;     
 break;
-case 23: mostrarToken('TITLE_FIN'    , yy_.yytext);	 return 70;    
+case 23: mostrarToken('TITLE_FIN'    , yy_.yytext);	 return 72;    
 break;
-case 24: mostrarToken('LINK_FIN'     , yy_.yytext);	 return 86;     
+case 24: mostrarToken('LINK_FIN'     , yy_.yytext);	 return 88;     
 break;
-case 25: mostrarToken('BODY_FIN'     , yy_.yytext);	 return 74;     
+case 25: mostrarToken('BODY_FIN'     , yy_.yytext);	 return 76;     
 break;
-case 26: mostrarToken('SPAM_FIN'     , yy_.yytext);     return 88;     
+case 26: mostrarToken('SPAM_FIN'     , yy_.yytext);     return 90;     
 break;
-case 27: mostrarToken('INPUT_FIN'    , yy_.yytext);     return 90;    
+case 27: mostrarToken('INPUT_FIN'    , yy_.yytext);     return 92;    
 break;
-case 28: mostrarToken('TEXTAREA_FIN' , yy_.yytext);     return 92; 
+case 28: mostrarToken('TEXTAREA_FIN' , yy_.yytext);     return 94; 
 break;
-case 29: mostrarToken('SELECT_FIN'   , yy_.yytext);     return 81;   
+case 29: mostrarToken('SELECT_FIN'   , yy_.yytext);     return 83;   
 break;
-case 30: mostrarToken('OPTION_FIN'   , yy_.yytext);     return 84;   
+case 30: mostrarToken('OPTION_FIN'   , yy_.yytext);     return 86;   
 break;
-case 31: mostrarToken('DIV_FIN'      , yy_.yytext);	 return 78;      
+case 31: mostrarToken('DIV_FIN'      , yy_.yytext);	 return 80;      
 break;
 case 32: mostrarToken('IMG_FIN'      , yy_.yytext);	 return 'IMG_FIN';      
 break;
-case 33: mostrarToken('BR_FIN'       , yy_.yytext);	 return 96;       
+case 33: mostrarToken('BR_FIN'       , yy_.yytext);	 return 98;       
 break;
-case 34: mostrarToken('BUTTON_FIN'   , yy_.yytext);     return 98;   
+case 34: mostrarToken('BUTTON_FIN'   , yy_.yytext);     return 100;   
 break;
-case 35: mostrarToken('H1_FIN'       , yy_.yytext);	 return 100;       
+case 35: mostrarToken('H1_FIN'       , yy_.yytext);	 return 102;       
 break;
-case 36: mostrarToken('P_FIN'        , yy_.yytext);	 return 102;        
+case 36: mostrarToken('P_FIN'        , yy_.yytext);	 return 104;        
 break;
 case 37: mostrarToken('SCRIPTING_FIN', yy_.yytext);     return 'SCRIPTING_FIN';
 break;
-case 38: mostrarToken("MENQUE", yy_.yytext); return 65; 
+case 38: mostrarToken("MENQUE", yy_.yytext); return 67; 
 break;
-case 39: mostrarToken("MAYQUE", yy_.yytext); return 67; 
+case 39: mostrarToken("MAYQUE", yy_.yytext); return 69; 
 break;
-case 40: mostrarToken("CORIZQ", yy_.yytext); return 24; 
+case 40: mostrarToken("CORIZQ", yy_.yytext); return 25; 
 break;
-case 41: mostrarToken("CORDER", yy_.yytext); return 29; 
+case 41: mostrarToken("CORDER", yy_.yytext); return 30; 
 break;
-case 42: mostrarToken("IGUAL" , yy_.yytext);  return 26; 
+case 42: mostrarToken("IGUAL" , yy_.yytext);  return 27; 
 break;
-case 43: mostrarToken("BARRA" , yy_.yytext);  return 95; 
+case 43: mostrarToken("BARRA" , yy_.yytext);  return 97; 
 break;
-case 44: mostrarToken("COMILL", yy_.yytext); return 27; 
+case 44: mostrarToken("COMILL", yy_.yytext); return 28; 
 break;
-case 45:mostrarToken("EXCLAM", yy_.yytext); return 75; 
+case 45:mostrarToken("EXCLAM", yy_.yytext); return 77; 
 break;
-case 46:mostrarToken("MINUS", yy_.yytext);  return 76; 
+case 46:mostrarToken("MINUS", yy_.yytext);  return 78; 
 break;
-case 47: mostrarToken('HREF'		 , yy_.yytext);   return 25;	  
+case 47: mostrarToken('HREF'		 , yy_.yytext);   return 26;	  
 break;
-case 48: mostrarToken('BACKGROUND', yy_.yytext);   return 30;
+case 48: mostrarToken('BACKGROUND', yy_.yytext);   return 31;
 break;
-case 49: mostrarToken('COLOR'	 , yy_.yytext);   return 31;	  
+case 49: mostrarToken('COLOR'	 , yy_.yytext);   return 32;	  
 break;
-case 50: mostrarToken('F_SIZE'	 , yy_.yytext);   return 32;	  
+case 50: mostrarToken('F_SIZE'	 , yy_.yytext);   return 33;	  
 break;
-case 51: mostrarToken('F_FAM' 	 , yy_.yytext);   return 33;	  
+case 51: mostrarToken('F_FAM' 	 , yy_.yytext);   return 34;	  
 break;
-case 52: mostrarToken('TEXT_AL'	 , yy_.yytext);   return 34;	  
+case 52: mostrarToken('TEXT_AL'	 , yy_.yytext);   return 35;	  
 break;
-case 53: mostrarToken('TYPE'		 , yy_.yytext);   return 35;	  
+case 53: mostrarToken('TYPE'		 , yy_.yytext);   return 36;	  
 break;
-case 54: mostrarToken('ID'		 , yy_.yytext);   return 36;		  
+case 54: mostrarToken('ID'		 , yy_.yytext);   return 37;		  
 break;
-case 55: mostrarToken('NAME'		 , yy_.yytext);   return 37;      
+case 55: mostrarToken('NAME'		 , yy_.yytext);   return 38;      
 break;
-case 56: mostrarToken('COLS' 	 , yy_.yytext);   return 38;      
+case 56: mostrarToken('COLS' 	 , yy_.yytext);   return 39;      
 break;
-case 57: mostrarToken('ROWS'		 , yy_.yytext);   return 39;      
+case 57: mostrarToken('ROWS'		 , yy_.yytext);   return 40;      
 break;
-case 58: mostrarToken('CLASS'	 , yy_.yytext);   return 40;     
+case 58: mostrarToken('CLASS'	 , yy_.yytext);   return 41;     
 break;
-case 59: mostrarToken('SRC'		 , yy_.yytext);   return 41;       
+case 59: mostrarToken('SRC'		 , yy_.yytext);   return 42;       
 break;
-case 60: mostrarToken('WIDTH'	 , yy_.yytext);   return 42;     
+case 60: mostrarToken('WIDTH'	 , yy_.yytext);   return 43;     
 break;
-case 61: mostrarToken('HEIGHT'	 , yy_.yytext);   return 43;    
+case 61: mostrarToken('HEIGHT'	 , yy_.yytext);   return 44;    
 break;
-case 62: mostrarToken('ONCLICK'	 , yy_.yytext);   return 44;   
+case 62: mostrarToken('ONCLICK'	 , yy_.yytext);   return 45;   
 break;
-case 63: mostrarToken('ONLOAD'  , yy_.yytext); return 'ONLOAD'  ; 
+case 63: mostrarToken('ALT'       , yy_.yytext);   return 46;       
 break;
-case 64: mostrarToken('FUNCTION', yy_.yytext); return 'FUNCTION'; 
+case 64:mostrarToken("VALOR", yy_.yytext); return 29;
 break;
-case 65:mostrarToken("VALOR", yy_.yytext); return 28;
+case 65:return 5
 break;
-case 66:return 5
-break;
-case 67:  
+case 66:  
 								mensajesSalida += "\nLEXER: \n";
 								mensajesSalida += "ERROR SINTACTICO: No se reconoce " + yy_.yytext + " como un simbolo valido.\n";
 								//return 'INVALID';
@@ -1435,8 +1436,8 @@ case 67:
 break;
 }
 },
-rules: [/^(?:[ \r\t\n])/i,/^(?:!!.*)/i,/^(?:<C_SCRIPTING>([\s\S]*?)<\/C_SCRIPTING>)/i,/^(?:<!--([\s\S]*?)-->)/i,/^(?:C_CC\b)/i,/^(?:C_HEAD\b)/i,/^(?:C_TITLE\b)/i,/^(?:C_LINK\b)/i,/^(?:C_BODY\b)/i,/^(?:C_SPAM\b)/i,/^(?:C_INPUT\b)/i,/^(?:C_TEXTAREA\b)/i,/^(?:C_SELECT\b)/i,/^(?:C_OPTION\b)/i,/^(?:C_DIV\b)/i,/^(?:C_IMG\b)/i,/^(?:C_BR\b)/i,/^(?:C_BUTTON\b)/i,/^(?:C_H1\b)/i,/^(?:C_P\b)/i,/^(?:C_SCRIPTING\b)/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_CC[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_HEAD[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_TITLE[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_LINK[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_BODY[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_SPAM[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_INPUT[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_TEXTAREA[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_SELECT[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_OPTION[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_DIV[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_IMG[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_BR[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_BUTTON[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_H1[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_P[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_SCRIPTING[\r\t\n]*>))/i,/^(?:<)/i,/^(?:>)/i,/^(?:\[)/i,/^(?:\])/i,/^(?:=)/i,/^(?:\/)/i,/^(?:(“|”|"))/i,/^(?:!)/i,/^(?:-)/i,/^(?:href\b)/i,/^(?:background\b)/i,/^(?:color\b)/i,/^(?:font-size\b)/i,/^(?:font-family\b)/i,/^(?:text-align\b)/i,/^(?:type\b)/i,/^(?:id\b)/i,/^(?:name\b)/i,/^(?:cols\b)/i,/^(?:rows\b)/i,/^(?:class\b)/i,/^(?:src\b)/i,/^(?:width\b)/i,/^(?:height\b)/i,/^(?:onclick\(\))/i,/^(?:ON_LOAD\b)/i,/^(?:FUNCTION_\b)/i,/^(?:[a-zA-Z0-9.#/%_()]+)/i,/^(?:$)/i,/^(?:.)/i],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67],"inclusive":true}}
+rules: [/^(?:[ \r\t\n])/i,/^(?:!!.*)/i,/^(?:<C_SCRIPTING>([\s\S]*?)<\/C_SCRIPTING>)/i,/^(?:<!--([\s\S]*?)-->)/i,/^(?:C_CC\b)/i,/^(?:C_HEAD\b)/i,/^(?:C_TITLE\b)/i,/^(?:C_LINK\b)/i,/^(?:C_BODY\b)/i,/^(?:C_SPAM\b)/i,/^(?:C_INPUT\b)/i,/^(?:C_TEXTAREA\b)/i,/^(?:C_SELECT\b)/i,/^(?:C_OPTION\b)/i,/^(?:C_DIV\b)/i,/^(?:C_IMG\b)/i,/^(?:C_BR\b)/i,/^(?:C_BUTTON\b)/i,/^(?:C_H1\b)/i,/^(?:C_P\b)/i,/^(?:C_SCRIPTING\b)/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_CC[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_HEAD[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_TITLE[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_LINK[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_BODY[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_SPAM[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_INPUT[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_TEXTAREA[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_SELECT[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_OPTION[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_DIV[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_IMG[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_BR[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_BUTTON[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_H1[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_P[\r\t\n]*>))/i,/^(?:(<[ \r\t\n]*\/[ \r\t\n]*C_SCRIPTING[\r\t\n]*>))/i,/^(?:<)/i,/^(?:>)/i,/^(?:\[)/i,/^(?:\])/i,/^(?:=)/i,/^(?:\/)/i,/^(?:(“|”|"))/i,/^(?:!)/i,/^(?:-)/i,/^(?:href\b)/i,/^(?:background\b)/i,/^(?:color\b)/i,/^(?:font-size\b)/i,/^(?:font-family\b)/i,/^(?:text-align\b)/i,/^(?:type\b)/i,/^(?:id\b)/i,/^(?:name\b)/i,/^(?:cols\b)/i,/^(?:rows\b)/i,/^(?:class\b)/i,/^(?:src\b)/i,/^(?:width\b)/i,/^(?:height\b)/i,/^(?:onclick\(\))/i,/^(?:alt\b)/i,/^(?:[a-zA-Z0-9.:#/%_()]+)/i,/^(?:$)/i,/^(?:.)/i],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66],"inclusive":true}}
 });
 return lexer;
 })();

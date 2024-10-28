@@ -33,30 +33,30 @@ export class TextArea extends Componente{
                 this.rows = valor;
                 break;
             case 'FONT_SIZE':
-                if(this.font_size != undefined){
+                if(this.fontSize != undefined){
                     var mensaje = "Error Semantico: se intento establecer el parametro font-size pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 }
-                this.font_size = valor;  
+                this.fontSize = valor;  
                 break;
             case 'FONT_FAMILY':
-                if(this.font_family != undefined){
+                if(this.fontFamily != undefined){
                     var mensaje = "Error Semantico: se intento establecer el parametro font_family pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 } 
-                this.font_family = valor;
+                this.fontFamily = valor;
                 break;
             case 'TEXT_ALIGN':
-                if(this.text_align != undefined){
+                if(this.textAlign != undefined){
                     var mensaje = "Error Semantico: se intento establecer el parametro text-align pero ya estaba definido.";
                     super.lanzarExcepcionSemantica(mensaje);
                 } 
                 var al = valor.toLowerCase(); 
                 switch(al){
-                    case 'left': this.text_align = 'left'; break; 
-                    case 'right': this.text_align = 'right'; break; 
-                    case 'center': this.text_align = 'center'; break; 
-                    case 'justify': this.text_align = 'justify'; break;                    
+                    case 'left': this.textAlign = 'left'; break; 
+                    case 'right': this.textAlign = 'right'; break; 
+                    case 'center': this.textAlign = 'center'; break; 
+                    case 'justify': this.textAlign = 'justify'; break;                    
                     default: this.lanzarExcepcionSintactica("Error Sintactico: se intento establecer una alineacion de texto " + al + " pero no es una alineacion valida.")
                 }
                 break;
