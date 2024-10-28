@@ -229,6 +229,9 @@ else_exp: ELSE expresion
 		| ELSE bloque_ins;
 
 
+while_exp : WHILE PAROPN condicion PARCLS THENWHILE expresion
+		  | WHILE PAROPN condicion PARCLS THENWHILE bloque_ins;
+
 
 repeat: REPEAT PAROPN variable PARCLS HUNTIL PAROPN num PARCLS expresion
 	  | REPEAT PAROPN variable PARCLS HUNTIL PAROPN num PARCLS bloque_ins; 
@@ -267,6 +270,7 @@ expresion: declaracion SEMIC
 		 //|elif_exp
 		 | else_exp
 		 | repeat
+		 | while_exp
 		 | error {
 			mostrarSintactico('EXPRESION COMO ERROR -> \nError: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
 			$$ = undefined;
