@@ -43,7 +43,23 @@
 "char"       {mostrarToken('CHR', yytext); return 'CHR';}
 "boolean"    {mostrarToken('BOO', yytext); return 'BOO';}
 
+//Funciones especiales - -
+//valores
+"ASC"                   {mostrarToken('ASC'					, yytext); return 'ASC'					;}     
+"DESC"                  {mostrarToken('DESC'				, yytext); return 'DESC'				;}      
+"LETPAR_NUM"            {mostrarToken('LETPAR_NUM'			, yytext); return 'LETPAR_NUM'			;}           
+"LETIMPAR_NUM"          {mostrarToken('LETIMPAR_NUM'		, yytext); return 'LETIMPAR_NUM'		;}    
+"REVERSE"               {mostrarToken('REVERSE'				, yytext); return 'REVERSE'				;}      
+"CARACTER_ALEATORIO"    {mostrarToken('CARACTER_ALEATORIO'	, yytext); return 'CARACTER_ALEATORIO'	;}     
+"NUM_ALEATORIO"         {mostrarToken('NUM_ALEATORIO'		, yytext); return 'NUM_ALEATORIO'		;}
 
+"getElementById"?        {mostrarToken('GET_ELEMENT'			, yytext); return 'GET_ELEMENT'         ;}
+//sin retorno
+"ALERT_INFO"            {mostrarToken('ALERT_INFO'			, yytext); return 'ALERT_INFO'			;}  
+"EXIT"                  {mostrarToken('EXIT'				, yytext); return 'EXIT'				;}
+"REDIRECT"              {mostrarToken('REDIRECT'			, yytext); return 'REDIRECT'			;}
+
+"INSERT"                {mostrarToken('INSERT'              , yytext); return 'INSERT'              ;}
 
 
 //SIMBOLOS - - - - - - - - - - - - - - -
@@ -83,11 +99,12 @@
 ("“"([\s\S]*?)"”")           {mostrarToken("STRING", yytext);   return 'STRING' ;}
 ("”"([\s\S]*?)"“")           {mostrarToken("STRING", yytext);   return 'STRING' ;}
 
-"\'"[a-zA-Z]"\'"\b			 {mostrarToken("CHAR"  , yytext); 	return 'CHAR'	;}
+"'"[a-zA-Z]"'"\b			 {mostrarToken("CHAR"  , yytext); 	return 'CHAR'	;}
+("'"([\s\S]*?)"'")         {mostrarToken("STRING", yytext);   return 'STRING' ;}
 
 "true"                       {mostrarToken("TRUE"	, yytext); 	return 'TRUE'	;}       
 "false"                      {mostrarToken("FALSE"	, yytext); 	return 'FALSE'	;}    
-[0-9]+"."[0-9]+               {mostrarToken("DECIMAL",yytext); 	return 'DECIMAL';}     
+[0-9]+"."[0-9]+              {mostrarToken("DECIMAL", yytext); 	return 'DECIMAL';}     
 [0-9]+\b                     {mostrarToken("INTEGER", yytext); 	return 'INTEGER';}    
 [a-zA-Z_$-][a-zA-Z0-9_$-]*   {mostrarToken("ID"		, yytext); 	return 'ID'		;}
 
@@ -168,8 +185,77 @@ valor: ID
 	 | valor MAS valor
 	 | valor MEN valor
 	 | valor TIM valor
-	 | valor DIV valor;
+	 | valor DIV valor
+	 | funcion_st
+	 | numero_aleatorio;
 	 //| numero;
+
+funcion_st : asc {$$ = $1;}
+		   | desc {$$ = $1;}
+		   | letpar_num{$$ = 1; }
+		   | letimpar_num{$$ = 1;}
+		   | reverse{$$ = 1;}
+		   | caracter_aleatorio{$$ = 1; }
+		   | getElement{$$ = $1;}; 
+
+
+asc: ASC PAROPN STRING PARCLS{
+		$$ = $3.split('').sort().join('');
+	}
+	| ASC PAROPN ID PARCLS;
+desc: DESC PAROPN STRING PARCLS{
+		$$ = $3.split('').sort().reverse().join('');
+	}
+	| DESC PAROPN ID PARCLS; 
+letpar_num: LETPAR_NUM PAROPN STRING PARCLS{
+			var resultado = '';
+
+			for (let i = 0; i < palabra.length; i++) {
+				if (i % 2 === 0) {
+					// Mantiene las letras en posiciones impares (índices pares) en ASCII
+					resultado += palabra.charCodeAt(i);
+				} else {
+					// Deja las letras en posiciones impares (índices impares) como están
+					resultado += palabra[i];
+				}
+			}
+			$$ = resultado;
+		 }
+		 | LETPAR_NUM PAROPN ID PARCLS;
+letimpar_num: LETIMPAR_NUM PAROPN STRING PARCLS{
+				var resultado = '';
+
+				for (let i = 0; i < palabra.length; i++) {
+					if (i % 2 !== 0) {
+						// Convierte las letras en posiciones impares (índices impares) a ASCII
+						resultado += palabra.charCodeAt(i);
+					} else {
+						// Deja las letras en posiciones pares (índices pares) como están
+						resultado += palabra[i];
+					}
+				}
+				$$ = resultado; 
+			}
+			| LETIMPAR_NUM PAROPN ID PARCLS;
+reverse: REVERSE PAROPN STRING PARCLS{
+			$$ = $3.split('').reverse().join('');
+		}
+		| REVERSE PAROPN ID PARCLS;
+getElement: GET_ELEMENT PAROPN STRING PARCLS;
+
+caracter_aleatorio : CARACTER_ALEATORIO PAROPN PARCLS{
+						const esMayuscula = Math.random() < 0.5; // Decide si será mayúscula o minúscula
+						const codigoAscii = esMayuscula 
+							? Math.floor(Math.random() * 26) + 65  // ASCII para A-Z (65-90)
+							: Math.floor(Math.random() * 26) + 97; // ASCII para a-z (97-122)
+						
+						$$ =  String.fromCharCode(codigoAscii);
+					};
+
+numero_aleatorio : NUM_ALEATORIO PAROPN PARCLS{
+					$$ = Math.floor(Math.random() * 10);
+				};
+
 
 
 declaracion: INT        identificadores  
@@ -195,10 +281,14 @@ declaracion: INT        identificadores
 
 identificadores: ID identificadores | ID;
 
-ints : INTEGER COMMA ints | INTEGER;
-strs : STRING  COMMA strs | STRING;
+ints : INTEGER COMMA ints | INTEGER
+		numero COMMA ints | numero;
+strs : STRING  COMMA strs | STRING
+	 | funcion_st COMMA strs 
+	 | funcion_st;
 decs : DECIMAL COMMA decs | DECIMAL;
-chas : CHAR    COMMA chas | CHAR;
+chas : CHAR    COMMA chas | CHAR
+	 | caracter_aleatorio COMMA chas | caracter_aleatorio;
 boos : valbool COMMA boos | valbool;
 
 valbool: TRUE | FALSE;
@@ -220,7 +310,7 @@ condicion: //PAROPN condicion PARCLS
 
 
 
-asignacion : ID EQU valor SEMIC; 
+asignacion : ID EQU valor; 
 
 if_exp:   IF PAROPN condicion PARCLS THEN expresion 
 		| IF PAROPN condicion PARCLS THEN bloque_ins;
@@ -238,7 +328,7 @@ repeat: REPEAT PAROPN variable PARCLS HUNTIL PAROPN num PARCLS expresion
 
 variable: asignacion | declaracion; 
 num: ID { $$ = $1; }
-   | numero { console.log("NUMERO RETORNADO POR PRODUCCION: " + $1);  $$ = $1; };
+   | numero { console.log("NUMERO RETORNADO POR PRODUCCION: " + $1); mostrarSintactico("NUMERO RETORNADO POR PRODUCCION: " + $1); $$ = $1; };
 
 numero: INTEGER { $$ = $1; } 
 	  | DECIMAL { $$ = $1; }
@@ -256,7 +346,8 @@ numero: INTEGER { $$ = $1; }
 	  }
 	  | PAROPN numero PARCLS{
 		$$ = $2;
-	  };  
+	  }
+	  | num_aleatorio;  
 
 
 
@@ -264,13 +355,19 @@ numero: INTEGER { $$ = $1; }
 
 expresiones : expresion expresiones | expresion;
 
-expresion: declaracion SEMIC
-		 | asignacion SEMIC
-		 | if_exp
+expresion: declaracion SEMIC {mostrarSintactico("Expresion declaracion correctamente");}
+		 | asignacion SEMIC {mostrarSintactico("Expresion asignacion terminada correctamente");}
+		 | if_exp {mostrarSintactico("Expresion if terminada correctamente");}
 		 //|elif_exp
-		 | else_exp
-		 | repeat
-		 | while_exp
+		 | else_exp {mostrarSintactico("Expresion else terminada correctamente");}
+		 | repeat {mostrarSintactico("Expresion repeat terminada correctamente");}
+		 | while_exp {mostrarSintactico("Expresion while correctamente");}
+		 | funcion_st SEMIC {mostrarSintactico("Expresion funcion correctamente");}
+		 | numero_aleatorio SEMIC {mostrarSintactico("Expresion numero aleatorio terminada correctamente");}
+		 | alert_info {mostrarSintactico("Expresion alert terminada correctamente");}
+		 | exit {mostrarSintactico("Expresion exit terminada correctamente");}
+		 | redirect {mostrarSintactico("Expresion redirect terminada correctamente.");}
+		 | insert {mostrarSintactico("Expresion insert terminaa correctamente.");}
 		 | error {
 			mostrarSintactico('EXPRESION COMO ERROR -> \nError: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
 			$$ = undefined;
@@ -290,5 +387,15 @@ function: FUNCTION ID PAROPN PARCLS COROPN expresiones CORCLS {
 		};
 
 bloque_ins: INIT LLAVOP COLON expresiones COLON LLAVCL END;
+
+alert_info: ALERT_INFO PAROPN STRING PARCLS SEMIC
+		  | ALERT_INFO PAROPN ID     PARCLS SEMIC;
+exit : EXIT PAROPN PARCLS SEMIC;
+redirect : REDIRECT PAROPN PARCLS SEMIC; 
+insert : INSERT PAROPN inserts PARCLS;
+inserts : STRING | STRING COMMA inserts | STRING inserts
+		| ID     | ID COMMA inserts | ID insert;
+
+
 
 

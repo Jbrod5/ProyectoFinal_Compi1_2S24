@@ -16,7 +16,7 @@
                 FUNCTION_calc() [ 
                     !! Estas instrucciones no se ejecutan hasta llamar a FUNCTION_calc()
                     integer @global contador_fallas = 5; 
-                    string result_caja_texto = getElemenById("entrada_1"); 
+                    string result_caja_texto = getElementById("entrada_1"); 
                     string @global result = "10 ";
                     result = "30 ";
 
@@ -27,14 +27,14 @@
 
                     WHILE (true) THENWHILE 
                         !! instruccion 
-                        INSERT(‘Iteración infinita’); 
+                        INSERT('Iteracion infinita'); 
 
                     !!EJEMPLO REPEAT
                     REPEAT (integer i=0 ) HUNTIL ((5*4)/2) 
                         !! bloque de instrucciones 
                         INIT {: 
-                            INSERT(‘Iteración No: ’, i);
-                            INSERT(‘__________________’); 
+                            INSERT('Iteración No: ', i);
+                            INSERT('__________________'); 
                         :} END 
 
 
