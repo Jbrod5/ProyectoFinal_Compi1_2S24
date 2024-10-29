@@ -126,6 +126,16 @@
 
 %start inicio
     %{
+		//Para tabla de simbolos: 
+		var tabla = "";
+		var posicion = 0;
+
+		exports.obtenerTabla = function() {
+			return tabla; 
+		};
+
+
+
         //Codigo javascript incrustado 
         function mostrarToken(mensaje, token){
 			console.log("Token: " + mensaje + " | Valor: " + token);
@@ -148,6 +158,9 @@
 		};
 		exports.limpiarMensajes = function(){
 			mensajesSalida = "";
+			codigoPagina = "";
+			tabla = "";
+			posicion = 0; 
 		};
 
 
@@ -162,6 +175,14 @@
 			mensajesSalida += error.message + "\n";
 			console.error(error.message)
 		}
+
+
+
+
+
+		
+
+
     %}
 %%
 
@@ -192,21 +213,21 @@ valor: ID
 
 funcion_st : asc {$$ = $1;}
 		   | desc {$$ = $1;}
-		   | letpar_num{$$ = 1; }
-		   | letimpar_num{$$ = 1;}
-		   | reverse{$$ = 1;}
-		   | caracter_aleatorio{$$ = 1; }
+		   | letpar_num{$$ = $1; }
+		   | letimpar_num{$$ = $1;}
+		   | reverse{$$ = $1;}
+		   | caracter_aleatorio{$$ = $1; }
 		   | getElement{$$ = $1;}; 
 
 
 asc: ASC PAROPN STRING PARCLS{
 		$$ = $3.split('').sort().join('');
 	}
-	| ASC PAROPN ID PARCLS;
+	| ASC PAROPN ID PARCLS { $$ = "ASC(" + $3 + ")";};
 desc: DESC PAROPN STRING PARCLS{
 		$$ = $3.split('').sort().reverse().join('');
 	}
-	| DESC PAROPN ID PARCLS; 
+	| DESC PAROPN ID PARCLS { $$ = "DESC(" + $3 + ")";}; 
 letpar_num: LETPAR_NUM PAROPN STRING PARCLS{
 			var resultado = '';
 
@@ -221,7 +242,7 @@ letpar_num: LETPAR_NUM PAROPN STRING PARCLS{
 			}
 			$$ = resultado;
 		 }
-		 | LETPAR_NUM PAROPN ID PARCLS;
+		 | LETPAR_NUM PAROPN ID PARCLS { $$ = "LETPAR_NUM(" + $3 +")"; };
 letimpar_num: LETIMPAR_NUM PAROPN STRING PARCLS{
 				var resultado = '';
 
@@ -236,12 +257,13 @@ letimpar_num: LETIMPAR_NUM PAROPN STRING PARCLS{
 				}
 				$$ = resultado; 
 			}
-			| LETIMPAR_NUM PAROPN ID PARCLS;
+			| LETIMPAR_NUM PAROPN ID PARCLS { $$ = "LETIMPAR_NUM(" + $3 + ")"; };
 reverse: REVERSE PAROPN STRING PARCLS{
 			$$ = $3.split('').reverse().join('');
 		}
-		| REVERSE PAROPN ID PARCLS;
-getElement: GET_ELEMENT PAROPN STRING PARCLS;
+		| REVERSE PAROPN ID PARCLS { $$ = "REVERSE(" + $3 + ")"; };
+getElement: GET_ELEMENT PAROPN STRING PARCLS { $$ = "getElementById(" + $3 + ")"; }
+		  | GET_ELEMENT PAROPN ID 	  PARCLS { $$ = "getElementById(" + $3 + ")"; };
 
 caracter_aleatorio : CARACTER_ALEATORIO PAROPN PARCLS{
 						const esMayuscula = Math.random() < 0.5; // Decide si será mayúscula o minúscula
@@ -257,44 +279,474 @@ numero_aleatorio : NUM_ALEATORIO PAROPN PARCLS{
 				};
 
 
+// Posicion | Identificador | Tipo | Valor actual | Modo | Ambito 
+declaracion: INT        identificadores  {
+											var ids = $2;
+											if(ids != undefined && Array.isArray(ids)){
+												ids.forEach(id=>{
+													posicion++;
+													tabla += posicion + " | " + id + " | integer | undefined | - | ambito \n";  
+												});
+											} 
+										 }
+		   | STR        identificadores {
+											var ids = $2;
+											if(ids != undefined && Array.isArray(ids)){
+												ids.forEach(id=>{
+													posicion++;
+													tabla += posicion + " | " + id + " | string | undefined | - | ambito \n";  
+													console.log("TABLA : " + tabla);
+												});
+											} 
+										 }
+		   | DEC        identificadores  {
+											var ids = $2;
+											if(ids != undefined && Array.isArray(ids)){
+												ids.forEach(id=>{
+													posicion++;
+													tabla += posicion + " | " + id + " | decimal | undefined | - | ambito \n";  
+												});
+											} 
+										 }
+		   | CHA        identificadores  {
+											var ids = $2;
+											if(ids != undefined && Array.isArray(ids)){
+												ids.forEach(id=>{
+													posicion++;
+													tabla += posicion + " | " + id + " | char | undefined | - | ambito \n";  
+												});
+											} 
+										 }
+		   | BOO        identificadores  {
+											var ids = $2;
+											if(ids != undefined && Array.isArray(ids)){
+												ids.forEach(id=>{
+													posicion++;
+													tabla += posicion + " | " + id + " | boolean | undefined | - | ambito \n";  
+												});
+											} 
+										 }
+		   | INT GLOBAL identificadores {
+											var ids = $3;
+											if(ids != undefined && Array.isArray(ids)){
+												ids.forEach(id=>{
+													posicion++;
+													tabla += posicion + " | " + id + " | integer | undefined | @global | ambito \n";  
+												});
+											} 
+										 }
+		   | STR GLOBAL identificadores {
+											console.log("DECLARACION STRING GLOBAL");
+											var ids = $3;
+											if(ids != undefined && Array.isArray(ids)){
+												ids.forEach(id=>{
+													posicion++;
+													tabla += posicion + " | " + id + " | string | undefined | @global | ambito \n";  
+													console.log("TABLA DEC GLOBAL : " + tabla);
+												});
+											} 
+										 }
+		   | DEC GLOBAL identificadores {
+											var ids = $3;
+											if(ids != undefined && Array.isArray(ids)){
+												ids.forEach(id=>{
+													posicion++;
+													tabla += posicion + " | " + id + " | decimal | undefined | @global | ambito \n";  
+												});
+											} 
+										 }
+		   | CHA GLOBAL identificadores {
+											var ids = $3;
+											if(ids != undefined && Array.isArray(ids)){
+												ids.forEach(id=>{
+													posicion++;
+													tabla += posicion + " | " + id + " | char | undefined | @global | ambito \n";  
+												});
+											} 
+										 }
+		   | BOO GLOBAL identificadores {
+											var ids = $3;
+											if(ids != undefined && Array.isArray(ids)){
+												ids.forEach(id=>{
+													posicion++;
+													tabla += posicion + " | " + id + " | boolean | undefined | @global | ambito \n";  
+												});
+											} 
+										 }
+		   | INT        identificadores EQU ints {
+														var ids = $2; var valores = $4; 
+														if( Array.isArray(ids) && Array.isArray(valores)){
+															//Si solo hay un valor, todos los ids tienen ese valor
+															if(valores.length == 1){
+																var vl = valores[0];
+																ids.forEach(i =>{
+																	posicion++;
+																	tabla += posicion + " | " + i + " | integer | "+ vl +" | - | ambito \n"; 
+																});
+															}else{
+																//Si hay varios valores, asignar hasta donde sea posible
+																for(let i = 0; i < ids.length;  i++){
+																	posicion++;
+																	var vl = "undefined"; 
+																	if(i < valores.length){
+																		vl = valores[i];
+																	}
 
-declaracion: INT        identificadores  
-		   | STR        identificadores  
-		   | DEC        identificadores  
-		   | CHA        identificadores  
-		   | BOO        identificadores  
-		   | INT GLOBAL identificadores 
-		   | STR GLOBAL identificadores 
-		   | DEC GLOBAL identificadores 
-		   | CHA GLOBAL identificadores 
-		   | BOO GLOBAL identificadores 
-		   | INT        identificadores EQU ints 
-		   | STR        identificadores EQU strs 
-		   | DEC        identificadores EQU decs 
-		   | CHA        identificadores EQU chas 
-		   | BOO        identificadores EQU boos 
-		   | INT GLOBAL identificadores EQU ints
-		   | STR GLOBAL identificadores EQU strs
-		   | DEC GLOBAL identificadores EQU decs
-		   | CHA GLOBAL identificadores EQU chas
-		   | BOO GLOBAL identificadores EQU boos;
+																	tabla += posicion + " | " + ids[i] + " | integer | "+ vl +" | - | ambito \n";
+																}
+															}
 
-identificadores: ID identificadores | ID;
+															
+														}
+		   										 }
+		   | STR        identificadores EQU strs {
+														var ids = $2; var valores = $4; 
+														if( Array.isArray(ids) && Array.isArray(valores)){
+															//Si solo hay un valor, todos los ids tienen ese valor
+															if(valores.length == 1){
+																var vl = valores[0];
+																ids.forEach(i =>{
+																	posicion++;
+																	tabla += posicion + " | " + i + " | string | "+ vl +" | - | ambito \n"; 
+																});
+															}else{
+																//Si hay varios valores, asignar hasta donde sea posible
+																for(let i = 0; i < ids.length;  i++){
+																	posicion++;
+																	var vl = "undefined"; 
+																	if(i < valores.length){
+																		vl = valores[i];
+																	}
 
-ints : INTEGER COMMA ints | INTEGER
-		numero COMMA ints | numero;
-strs : STRING  COMMA strs | STRING
-	 | funcion_st COMMA strs 
-	 | funcion_st;
-decs : DECIMAL COMMA decs | DECIMAL;
-chas : CHAR    COMMA chas | CHAR
-	 | caracter_aleatorio COMMA chas | caracter_aleatorio;
-boos : valbool COMMA boos | valbool;
+																	tabla += posicion + " | " + ids[i] + " | string | "+ vl +" | - | ambito \n";
+																}
+															}
+														}
+		   										 }
+		   | DEC        identificadores EQU decs {
+														var ids = $2; var valores = $4; 
+														if( Array.isArray(ids) && Array.isArray(valores)){
+															//Si solo hay un valor, todos los ids tienen ese valor
+															if(valores.length == 1){
+																var vl = valores[0];
+																ids.forEach(i =>{
+																	posicion++;
+																	tabla += posicion + " | " + i + " | decimal | "+ vl +" | - | ambito \n"; 
+																});
+															}else{
+																//Si hay varios valores, asignar hasta donde sea posible
+																for(let i = 0; i < ids.length;  i++){
+																	posicion++;
+																	var vl = "undefined"; 
+																	if(i < valores.length){
+																		vl = valores[i];
+																	}
 
-valbool: TRUE | FALSE;
+																	tabla += posicion + " | " + ids[i] + " | decimal | "+ vl +" | - | ambito \n";
+																}
+															}
+														}
+		   										 }
+		   | CHA        identificadores EQU chas {
+														var ids = $2; var valores = $4; 
+														if( Array.isArray(ids) && Array.isArray(valores)){
+															//Si solo hay un valor, todos los ids tienen ese valor
+															if(valores.length == 1){
+																var vl = valores[0];
+																ids.forEach(i =>{
+																	posicion++;
+																	tabla += posicion + " | " + i + " | char | "+ vl +" | - | ambito \n"; 
+																});
+															}else{
+																//Si hay varios valores, asignar hasta donde sea posible
+																for(let i = 0; i < ids.length;  i++){
+																	posicion++;
+																	var vl = "undefined"; 
+																	if(i < valores.length){
+																		vl = valores[i];
+																	}
+
+																	tabla += posicion + " | " + ids[i] + " | char | "+ vl +" | - | ambito \n";
+																}
+															}
+														}
+		   										 }
+		   | BOO        identificadores EQU boos {
+														var ids = $2; var valores = $4; 
+														if( Array.isArray(ids) && Array.isArray(valores)){
+															//Si solo hay un valor, todos los ids tienen ese valor
+															if(valores.length == 1){
+																var vl = valores[0];
+																ids.forEach(i =>{
+																	posicion++;
+																	tabla += posicion + " | " + i + " | boolean | "+ vl +" | - | ambito \n"; 
+																});
+															}else{
+																//Si hay varios valores, asignar hasta donde sea posible
+																for(let i = 0; i < ids.length;  i++){
+																	posicion++;
+																	var vl = "undefined"; 
+																	if(i < valores.length){
+																		vl = valores[i];
+																	}
+
+																	tabla += posicion + " | " + ids[i] + " | boolean | "+ vl +" | - | ambito \n";
+																}
+															}
+														}
+		   										 }
+		   | INT GLOBAL identificadores EQU ints{
+														var ids = $3; var valores = $5; 
+														if( Array.isArray(ids) && Array.isArray(valores)){
+															//Si solo hay un valor, todos los ids tienen ese valor
+															if(valores.length == 1){
+																var vl = valores[0];
+																ids.forEach(i =>{
+																	posicion++;
+																	tabla += posicion + " | " + i + " | integer | "+ vl +" | @global | ambito \n"; 
+																});
+															}else{
+																//Si hay varios valores, asignar hasta donde sea posible
+																for(let i = 0; i < ids.length;  i++){
+																	posicion++;
+																	var vl = "undefined"; 
+																	if(i < valores.length){
+																		vl = valores[i];
+																	}
+
+																	tabla += posicion + " | " + ids[i] + " | integer | "+ vl +" | @global | ambito \n";
+																}
+															}
+														}
+		   										 }
+		   | STR GLOBAL identificadores EQU strs{
+														var ids = $3; var valores = $5; 
+														if( Array.isArray(ids) && Array.isArray(valores)){
+															//Si solo hay un valor, todos los ids tienen ese valor
+															if(valores.length == 1){
+																var vl = valores[0];
+																ids.forEach(i =>{
+																	posicion++;
+																	tabla += posicion + " | " + i + " | string | "+ vl +" | @global | ambito \n"; 
+																});
+															}else{
+																//Si hay varios valores, asignar hasta donde sea posible
+																for(let i = 0; i < ids.length;  i++){
+																	posicion++;
+																	var vl = "undefined"; 
+																	if(i < valores.length){
+																		vl = valores[i];
+																	}
+
+																	tabla += posicion + " | " + ids[i] + " | string | "+ vl +" | @global | ambito \n";
+																}
+															}
+														}
+		   										 }
+		   | DEC GLOBAL identificadores EQU decs{
+														var ids = $3; var valores = $5; 
+														if( Array.isArray(ids) && Array.isArray(valores)){
+															//Si solo hay un valor, todos los ids tienen ese valor
+															if(valores.length == 1){
+																var vl = valores[0];
+																ids.forEach(i =>{
+																	posicion++;
+																	tabla += posicion + " | " + i + " | decimal | "+ vl +" | @global | ambito \n"; 
+																});
+															}else{
+																//Si hay varios valores, asignar hasta donde sea posible
+																for(let i = 0; i < ids.length;  i++){
+																	posicion++;
+																	var vl = "undefined"; 
+																	if(i < valores.length){
+																		vl = valores[i];
+																	}
+
+																	tabla += posicion + " | " + ids[i] + " | decimal | "+ vl +" | @global | ambito \n";
+																}
+															}
+														}
+		   										 }
+		   | CHA GLOBAL identificadores EQU chas{
+														var ids = $3; var valores = $5; 
+														if( Array.isArray(ids) && Array.isArray(valores)){
+															//Si solo hay un valor, todos los ids tienen ese valor
+															if(valores.length == 1){
+																var vl = valores[0];
+																ids.forEach(i =>{
+																	posicion++;
+																	tabla += posicion + " | " + i + " | char | "+ vl +" | @global | ambito \n"; 
+																});
+															}else{
+																//Si hay varios valores, asignar hasta donde sea posible
+																for(let i = 0; i < ids.length;  i++){
+																	posicion++;
+																	var vl = "undefined"; 
+																	if(i < valores.length){
+																		vl = valores[i];
+																	}
+
+																	tabla += posicion + " | " + ids[i] + " | char | "+ vl +" | @global | ambito \n";
+																}
+															}
+														}
+		   										 }
+		   | BOO GLOBAL identificadores EQU boos {
+														var ids = $3; var valores = $5; 
+														if( Array.isArray(ids) && Array.isArray(valores)){
+															//Si solo hay un valor, todos los ids tienen ese valor
+															if(valores.length == 1){
+																var vl = valores[0];
+																ids.forEach(i =>{
+																	posicion++;
+																	tabla += posicion + " | " + i + " | boolean | "+ vl +" | @global | ambito \n"; 
+																});
+															}else{
+																//Si hay varios valores, asignar hasta donde sea posible
+																for(let i = 0; i < ids.length;  i++){
+																	posicion++;
+																	var vl = "undefined"; 
+																	if(i < valores.length){
+																		vl = valores[i];
+																	}
+
+																	tabla += posicion + " | " + ids[i] + " | boolean | "+ vl +" | @global | ambito \n";
+																}
+															}
+														}
+		   										 };
+
+identificadores: ID identificadores {
+					var resultado = [];
+					var identificador = $1;
+					if(identificador != undefined){
+						resultado.push(identificador);
+					}
+
+					var ids = $2;
+					if(ids != undefined && Array.isArray(ids)){
+						ids.forEach(id =>{
+							resultado.push(id);
+						});
+					}
+					$$ = resultado; 
+				}
+			   | ID {
+				   var resultado = [];
+				   resultado.push($1);
+				   $$ = resultado;
+			   };
+
+ints : /*INTEGER COMMA ints {
+								var resultado = [];
+								resultado.push($1);
+
+								var ints = $3;
+								if(ints != undefined && Array.isArray(ints)){
+									ints.forEach(i=>{
+										resultado.push();
+									});
+								}
+								$$ = resultado; 
+						  }*/
+	 //| INTEGER { var resultado = []; resultado.push($1); $$ = resultado; }
+	 | numero COMMA ints  {
+								var resultado = [];
+								resultado.push($1);
+
+								var ints = $3;
+								if(ints != undefined && Array.isArray(ints)){
+									ints.forEach(i=>{
+										resultado.push(i);
+									});
+								}
+								$$ = resultado; 
+						  }
+	 | numero  { var resultado = []; resultado.push($1); $$ = resultado; };
+strs : STRING  COMMA strs {
+								var resultado = [];
+								resultado.push($1);
+
+								var sts = $3;
+								if(sts != undefined && Array.isArray(sts)){
+									sts.forEach(i=>{
+										resultado.push(i);
+									});
+								}
+								$$ = resultado;
+						  }
+	 | STRING { var resultado = []; resultado.push($1); $$ = resultado;}
+	 | funcion_st COMMA strs {
+								var resultado = [];
+								resultado.push($1);
+
+								var sts = $3;
+								if(sts != undefined && Array.isArray(sts)){
+									sts.forEach(i=>{
+										resultado.push(i);
+									});
+								}
+								$$ = resultado;
+						  }
+	 | funcion_st {var resultado = []; resultado.push($1); $$ = resultado; };
+decs : DECIMAL COMMA decs {
+								var resultado = [];
+								resultado.push($1);
+
+								var sts = $3;
+								if(sts != undefined && Array.isArray(sts)){
+									sts.forEach(i=>{
+										resultado.push(i);
+									});
+								}
+								$$ = resultado;
+						  }
+	 | DECIMAL {var resultado = []; resultado.push($1); $$ = resultado; };
+chas : CHAR    COMMA chas {
+								var resultado = [];
+								resultado.push($1);
+
+								var sts = $3;
+								if(sts != undefined && Array.isArray(sts)){
+									sts.forEach(i=>{
+										resultado.push(i);
+									});
+								}
+								$$ = resultado;
+						  }
+	 | CHAR {var resultado = []; resultado.push($1); $$ = resultado; }
+	 | caracter_aleatorio COMMA chas {
+										var resultado = [];
+										resultado.push($1);
+
+										var sts = $3;
+										if(sts != undefined && Array.isArray(sts)){
+											sts.forEach(i=>{
+												resultado.push(i);
+											});
+										}
+										$$ = resultado;
+						  			}
+	 | caracter_aleatorio {var resultado = []; resultado.push($1); $$ = resultado; };
+boos : valbool COMMA boos {
+								var resultado = [];
+								resultado.push($1);
+
+								var sts = $3;
+								if(sts != undefined && Array.isArray(sts)){
+									sts.forEach(i=>{
+										resultado.push(i);
+									});
+								}
+								$$ = resultado;
+						   }
+	| valbool {var resultado = []; resultado.push($1); $$ = resultado;};
+
+valbool: TRUE { $$ = $1; } 
+	  | FALSE { $$ = $1; };
 
 condicion: //PAROPN condicion PARCLS
-		   valor AND AND    valor
+		    valor AND AND    valor
 		   |valor ORS ORS    valor
 		   | 		  EXCLAM valor
 		   |valor EQU EQU 	 valor
@@ -376,10 +828,13 @@ expresion: declaracion SEMIC {mostrarSintactico("Expresion declaracion correctam
 function: FUNCTION ID PAROPN PARCLS COROPN expresiones CORCLS {
 			console.log("Funcion " + $2 + " terminada con exito.");
 			mensajesSalida += "PARSER: Funcion " + $2 + " terminada con exito.\n";
+			tabla = tabla.replaceAll("ambito", $1 + $2 + "()");
 		}
         | ONLOAD      PAROPN PARCLS COROPN expresiones CORCLS{
 			console.log("Funcion ONLOAD terminada correctamente.");
 			mensajesSalida += "FPARSER: Funcion ONLOAD terminada correctamente.\n";
+			//tabla = tabla.replace(/ambito/g, "ON_LOAD()");
+			tabla = tabla.replaceAll("ambito", "ON_LOAD()");
 		}
 		|error {
 			mostrarSintactico('FUNCION COMO ERROR -> \nError: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));

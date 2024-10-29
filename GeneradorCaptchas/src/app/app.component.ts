@@ -50,6 +50,8 @@ export class AppComponent {
     CLC.limpiarMensajes();
     var mensaje = "";
 
+    var tabla = "";
+
     try{
       parser.parse(code);
       //Mostrar los mensaje sen el area de mensajes: 
@@ -69,6 +71,8 @@ export class AppComponent {
       CLC.parse(script);
       mensaje += CLC.obtenerMensajes();
 
+      tabla = CLC.obtenerTabla();
+
 
     }catch(error){
       if (error instanceof Error) {
@@ -81,8 +85,11 @@ export class AppComponent {
 
     console.log("CLANG:");
     console.log(CLang.obtenerCodigo());
-    //Mostrar mensajes
+    //Mostrar mensajes y la tabla de simbolos
     (document.getElementById('mensajes-analisis') as HTMLTextAreaElement).value = mensaje;
+    (document.getElementById('tabla-simbolos') as HTMLTextAreaElement).value = tabla;
+    console.log("TABLA DE SIMBOLOS")
+    console.log(tabla);
 
 
     ;

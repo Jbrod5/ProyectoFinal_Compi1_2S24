@@ -20,6 +20,9 @@
                     string @global result = "10 ";
                     result = "30 ";
 
+                    string @global p_declaracion; 
+                    string p2_declaracion; 
+
                     string mensaje_fallo = "El captcha no fue validado intente otra vez "; 
                     string mensaje_acierto = "El captcha fue validado "; 
                     string mensaje_final = “El captcha no logró ser validado :( intente mas tarde”; 
