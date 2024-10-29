@@ -436,7 +436,7 @@ case 87:
 							//Buscar si el id ya fue declarado anteriormente
 							var filas = tabla.split('\n');
 							filas.forEach(fila => {
-								if(fila.includes(id)){
+								if(fila.includes(id) && fila.includes("ambito")){
 									encontrado = true; 
 								}
 							});
