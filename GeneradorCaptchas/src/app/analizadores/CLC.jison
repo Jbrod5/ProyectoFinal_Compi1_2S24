@@ -126,6 +126,16 @@
 
 %start inicio
     %{
+		//Para tabla de simbolos: 
+		var tabla = "";
+		var posicion = 0;
+
+		exports.obtenerTabla = function() {
+			return tabla; 
+		};
+
+
+
         //Codigo javascript incrustado 
         function mostrarToken(mensaje, token){
 			console.log("Token: " + mensaje + " | Valor: " + token);
@@ -148,6 +158,9 @@
 		};
 		exports.limpiarMensajes = function(){
 			mensajesSalida = "";
+			codigoPagina = "";
+			tabla = "";
+			posicion = 0; 
 		};
 
 
@@ -162,6 +175,58 @@
 			mensajesSalida += error.message + "\n";
 			console.error(error.message)
 		}
+
+
+		/** 
+		 * @param ids: array de identificadores
+		 * @param valores: array de valores que serán asignados a las variables
+		 * @param tipo: string con el tipo de dato del simbolo
+		 * @param modo: string con el modo de declaracion de la variable: @global o -
+		*/
+		function declararVariableValor(ids, valores, tipo, modo){
+			if( Array.isArray(ids) && Array.isArray(valores)){
+				//Si solo hay un valor, todos los ids tienen ese valor
+				if(valores.length == 1){
+					var vl = valores[0];
+					ids.forEach(i =>{
+						posicion++;
+						tabla += posicion + " | " + i + " | " + tipo + " | "+ vl +" | " + modo + " | ambito | declaracion\n"; 
+					});
+				}else{
+					//Si hay varios valores, asignar hasta donde sea posible
+					for(let i = 0; i < ids.length;  i++){
+						posicion++;
+						var vl = "undefined"; 
+						if(i < valores.length){
+							vl = valores[i];
+						}
+
+						tabla += posicion + " | " + ids[i] + " | " + tipo + " | "+ vl +" | " + modo + " | ambito | declaracion\n";
+					}
+				}
+			}
+		}
+
+		/**
+		 * @param ids: array de identificadores
+		 * @param tipo: string con el tipo del simbolo
+		 * @param modo: string con el modo de declaracion de la variable: @global o -
+		 */
+		function declararVariable(ids, tipo, modo){
+			if(ids != undefined && Array.isArray(ids)){
+				ids.forEach(id=>{
+					posicion++;
+					tabla += posicion + " | " + id + " | " + tipo + "| undefined | " + modo + " | ambito | declaracion\n";  
+				});
+			} 
+		}
+
+
+
+
+		
+
+
     %}
 %%
 
@@ -173,40 +238,40 @@ functions: function functions
 		 | function;
 		 
 
-valor: ID 
-	 | TRUE
-	 | FALSE
-	 | DECIMAL
-	 | INTEGER
-	 | CHAR
-	 | STRING
-	 | PAROPN condicion PARCLS
+valor: ID {$$ = $1;}
+	 | TRUE {$$ = $1;}
+	 | FALSE {$$ = $1;}
+	 | DECIMAL {$$ = $1;}
+	 | INTEGER {$$ = $1;}
+	 | CHAR {$$ = $1;}
+	 | STRING {$$ = $1;}
+	 | PAROPN condicion PARCLS {$$ = $2;}
 	 //| condicion
-	 | valor MAS valor
-	 | valor MEN valor
-	 | valor TIM valor
-	 | valor DIV valor
-	 | funcion_st
-	 | numero_aleatorio;
+	 | valor MAS valor {try{$$ = $1 + $3;}catch(error){mensajesSalida += "ERROR: al intentar operar dos valores.\n"}}
+	 | valor MEN valor {try{$$ = $1 - $3;}catch(error){mensajesSalida += "ERROR: al intentar operar dos valores.\n"}}
+	 | valor TIM valor {try{$$ = $1 * $3;}catch(error){mensajesSalida += "ERROR: al intentar operar dos valores.\n"}}
+	 | valor DIV valor {try{$$ = $1 / $3;}catch(error){mensajesSalida += "ERROR: al intentar operar dos valores.\n"}}
+	 | funcion_st {$$ = $1;}
+	 | numero_aleatorio {$$ = $1;};
 	 //| numero;
 
 funcion_st : asc {$$ = $1;}
 		   | desc {$$ = $1;}
-		   | letpar_num{$$ = 1; }
-		   | letimpar_num{$$ = 1;}
-		   | reverse{$$ = 1;}
-		   | caracter_aleatorio{$$ = 1; }
+		   | letpar_num{$$ = $1; }
+		   | letimpar_num{$$ = $1;}
+		   | reverse{$$ = $1;}
+		   | caracter_aleatorio{$$ = $1; }
 		   | getElement{$$ = $1;}; 
 
 
 asc: ASC PAROPN STRING PARCLS{
 		$$ = $3.split('').sort().join('');
 	}
-	| ASC PAROPN ID PARCLS;
+	| ASC PAROPN ID PARCLS { $$ = "ASC(" + $3 + ")";};
 desc: DESC PAROPN STRING PARCLS{
 		$$ = $3.split('').sort().reverse().join('');
 	}
-	| DESC PAROPN ID PARCLS; 
+	| DESC PAROPN ID PARCLS { $$ = "DESC(" + $3 + ")";}; 
 letpar_num: LETPAR_NUM PAROPN STRING PARCLS{
 			var resultado = '';
 
@@ -221,7 +286,7 @@ letpar_num: LETPAR_NUM PAROPN STRING PARCLS{
 			}
 			$$ = resultado;
 		 }
-		 | LETPAR_NUM PAROPN ID PARCLS;
+		 | LETPAR_NUM PAROPN ID PARCLS { $$ = "LETPAR_NUM(" + $3 +")"; };
 letimpar_num: LETIMPAR_NUM PAROPN STRING PARCLS{
 				var resultado = '';
 
@@ -236,12 +301,13 @@ letimpar_num: LETIMPAR_NUM PAROPN STRING PARCLS{
 				}
 				$$ = resultado; 
 			}
-			| LETIMPAR_NUM PAROPN ID PARCLS;
+			| LETIMPAR_NUM PAROPN ID PARCLS { $$ = "LETIMPAR_NUM(" + $3 + ")"; };
 reverse: REVERSE PAROPN STRING PARCLS{
 			$$ = $3.split('').reverse().join('');
 		}
-		| REVERSE PAROPN ID PARCLS;
-getElement: GET_ELEMENT PAROPN STRING PARCLS;
+		| REVERSE PAROPN ID PARCLS { $$ = "REVERSE(" + $3 + ")"; };
+getElement: GET_ELEMENT PAROPN STRING PARCLS { $$ = "getElementById(" + $3 + ")"; }
+		  | GET_ELEMENT PAROPN ID 	  PARCLS { $$ = "getElementById(" + $3 + ")"; };
 
 caracter_aleatorio : CARACTER_ALEATORIO PAROPN PARCLS{
 						const esMayuscula = Math.random() < 0.5; // Decide si será mayúscula o minúscula
@@ -257,60 +323,240 @@ numero_aleatorio : NUM_ALEATORIO PAROPN PARCLS{
 				};
 
 
+// Posicion | Identificador | Tipo | Valor actual | Modo | Ambito 
+declaracion: INT        identificadores  {
+											var ids = $2;
+											declararVariable(ids, "integer", "-");
+										} 
+		   | STR        identificadores {
+											var ids = $2;
+											declararVariable(ids, "string", "-");
+										 }
+		   | DEC        identificadores  {
+											var ids = $2;
+											declararVariable(ids, "decimal", "-");
+										 }
+		   | CHA        identificadores  {
+											var ids = $2;
+											declararVariable(ids, "char", "-");
+										 }
+		   | BOO        identificadores  {
+											var ids = $2;
+											declararVariable(ids, "boolean", "-");
+										 }
+		   | INT GLOBAL identificadores {
+											var ids = $3;
+											declararVariable(ids, "integer", "@global");
+										 }
+		   | STR GLOBAL identificadores {
+											var ids = $3;
+											declararVariable(ids, "string", "@global");
+										 }
+		   | DEC GLOBAL identificadores {
+											var ids = $3;
+											declararVariable(ids, "decimal", "@global");
+										 }
+		   | CHA GLOBAL identificadores {
+											var ids = $3;
+											declararVariable(ids, "char", "@global");
+										 }
+		   | BOO GLOBAL identificadores {
+											var ids = $3;
+											declararVariable(ids, "boolean", "@global");
+										 }
+		   | INT        identificadores EQU ints {
+														var ids = $2; var valores = $4; 
+														declararVariableValor(ids, valores, "integer", "-")
+		   										 }
+		   | STR        identificadores EQU strs {
+														var ids = $2; var valores = $4; 
+														declararVariableValor(ids, valores, "string", "-");
+		   										 }
+		   | DEC        identificadores EQU decs {
+														var ids = $2; var valores = $4; 
+														declararVariableValor(ids, valores, "decimal", "-");
+		   										 }
+		   | CHA        identificadores EQU chas {
+														var ids = $2; var valores = $4; 
+														declararVariableValor(ids, valores, "char", "-");
+		   										 }
+		   | BOO        identificadores EQU boos {
+														var ids = $2; var valores = $4; 
+														declararVariableValor(ids, valores, "boolean", "-");
+		   										 }
+		   | INT GLOBAL identificadores EQU ints{
+														var ids = $3; var valores = $5; 
+														declararVariableValor(ids, valores, "integer", "@global");
+		   										 }
+		   | STR GLOBAL identificadores EQU strs{
+														var ids = $3; var valores = $5; 
+														declararVariableValor(ids, valores, "string", "@global");
+		   										 }
+		   | DEC GLOBAL identificadores EQU decs{
+														var ids = $3; var valores = $5; 
+														declararVariableValor(ids, valores, "decimal", "@global");
+		   										 }
+		   | CHA GLOBAL identificadores EQU chas{
+														var ids = $3; var valores = $5; 
+														declararVariableValor(ids, valores, "char", "@global");
+		   										 }
+		   | BOO GLOBAL identificadores EQU boos {
+														var ids = $3; var valores = $5; 
+														declararVariableValor(ids, valores, "boolean", "@global");
+		   										 };
 
-declaracion: INT        identificadores  
-		   | STR        identificadores  
-		   | DEC        identificadores  
-		   | CHA        identificadores  
-		   | BOO        identificadores  
-		   | INT GLOBAL identificadores 
-		   | STR GLOBAL identificadores 
-		   | DEC GLOBAL identificadores 
-		   | CHA GLOBAL identificadores 
-		   | BOO GLOBAL identificadores 
-		   | INT        identificadores EQU ints 
-		   | STR        identificadores EQU strs 
-		   | DEC        identificadores EQU decs 
-		   | CHA        identificadores EQU chas 
-		   | BOO        identificadores EQU boos 
-		   | INT GLOBAL identificadores EQU ints
-		   | STR GLOBAL identificadores EQU strs
-		   | DEC GLOBAL identificadores EQU decs
-		   | CHA GLOBAL identificadores EQU chas
-		   | BOO GLOBAL identificadores EQU boos;
+identificadores: ID identificadores {
+					var resultado = [];
+					var identificador = $1;
+					if(identificador != undefined){
+						resultado.push(identificador);
+					}
 
-identificadores: ID identificadores | ID;
+					var ids = $2;
+					if(ids != undefined && Array.isArray(ids)){
+						ids.forEach(id =>{
+							resultado.push(id);
+						});
+					}
+					$$ = resultado; 
+				}
+			   | ID {
+				   var resultado = [];
+				   resultado.push($1);
+				   $$ = resultado;
+			   };
 
-ints : INTEGER COMMA ints | INTEGER
-		numero COMMA ints | numero;
-strs : STRING  COMMA strs | STRING
-	 | funcion_st COMMA strs 
-	 | funcion_st;
-decs : DECIMAL COMMA decs | DECIMAL;
-chas : CHAR    COMMA chas | CHAR
-	 | caracter_aleatorio COMMA chas | caracter_aleatorio;
-boos : valbool COMMA boos | valbool;
+ints : numero COMMA ints  {
+								var resultado = [];
+								resultado.push($1);
 
-valbool: TRUE | FALSE;
+								var ints = $3;
+								if(ints != undefined && Array.isArray(ints)){
+									ints.forEach(i=>{
+										resultado.push(i);
+									});
+								}
+								$$ = resultado; 
+						  }
+	 | numero  { var resultado = []; resultado.push($1); $$ = resultado; };
+strs : STRING  COMMA strs {
+								var resultado = [];
+								resultado.push($1);
+
+								var sts = $3;
+								if(sts != undefined && Array.isArray(sts)){
+									sts.forEach(i=>{
+										resultado.push(i);
+									});
+								}
+								$$ = resultado;
+						  }
+	 | STRING { var resultado = []; resultado.push($1); $$ = resultado;}
+	 | funcion_st COMMA strs {
+								var resultado = [];
+								resultado.push($1);
+
+								var sts = $3;
+								if(sts != undefined && Array.isArray(sts)){
+									sts.forEach(i=>{
+										resultado.push(i);
+									});
+								}
+								$$ = resultado;
+						  }
+	 | funcion_st {var resultado = []; resultado.push($1); $$ = resultado; };
+decs : DECIMAL COMMA decs {
+								var resultado = [];
+								resultado.push($1);
+
+								var sts = $3;
+								if(sts != undefined && Array.isArray(sts)){
+									sts.forEach(i=>{
+										resultado.push(i);
+									});
+								}
+								$$ = resultado;
+						  }
+	 | DECIMAL {var resultado = []; resultado.push($1); $$ = resultado; };
+chas : CHAR    COMMA chas {
+								var resultado = [];
+								resultado.push($1);
+
+								var sts = $3;
+								if(sts != undefined && Array.isArray(sts)){
+									sts.forEach(i=>{
+										resultado.push(i);
+									});
+								}
+								$$ = resultado;
+						  }
+	 | CHAR {var resultado = []; resultado.push($1); $$ = resultado; }
+	 | caracter_aleatorio COMMA chas {
+										var resultado = [];
+										resultado.push($1);
+
+										var sts = $3;
+										if(sts != undefined && Array.isArray(sts)){
+											sts.forEach(i=>{
+												resultado.push(i);
+											});
+										}
+										$$ = resultado;
+						  			}
+	 | caracter_aleatorio {var resultado = []; resultado.push($1); $$ = resultado; };
+boos : valbool COMMA boos {
+								var resultado = [];
+								resultado.push($1);
+
+								var sts = $3;
+								if(sts != undefined && Array.isArray(sts)){
+									sts.forEach(i=>{
+										resultado.push(i);
+									});
+								}
+								$$ = resultado;
+						   }
+	| valbool {var resultado = []; resultado.push($1); $$ = resultado;};
+
+valbool: TRUE { $$ = $1; } 
+	  | FALSE { $$ = $1; };
 
 condicion: //PAROPN condicion PARCLS
-		   valor AND AND    valor
-		   |valor ORS ORS    valor
-		   | 		  EXCLAM valor
-		   |valor EQU EQU 	 valor
-		   |valor EXCLAM EQU valor
-		   |valor MENQUE 	 valor
-		   |valor MENQUE EQU valor
-		   |valor MAYQUE 	 valor
-		   |valor MAYQUE EQU valor
-		   |valor;
+		    valor AND AND    valor{try{$$=$1 && $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   |valor ORS ORS    valor{try{$$=$1 || $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   | 		  EXCLAM valor{try{$$=!$2;	   }catch(error){mensajesSalida += "ERROR: al negar una condicion\n";  $$ = false;}}
+		   |valor EQU EQU 	 valor{try{$$=$1 == $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   |valor EXCLAM EQU valor{try{$$=$1 != $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   |valor MENQUE 	 valor{try{$$=$1 < $4; }catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   |valor MENQUE EQU valor{try{$$=$1 <= $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   |valor MAYQUE 	 valor{try{$$=$1 > $4; }catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   |valor MAYQUE EQU valor{try{$$=$1 >= $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   |valor {$$ = $1;};
 
 
 
 
 
 
-asignacion : ID EQU valor; 
+asignacion : ID EQU valor{
+							var id = $1;
+							var vl = $3; 
+							var as = "asignacion"
+							var encontrado = false; 
+							
+							//Buscar si el id ya fue declarado anteriormente
+							var filas = tabla.split('\n');
+							filas.forEach(fila => {
+								if(fila.includes(id) && fila.includes("ambito")){
+									encontrado = true; 
+								}
+							});
+							posicion ++; 
+							if(!encontrado){
+								as = "NO DECLARADO"
+							}
+							tabla += posicion + " | " + id + " |  |" + vl + " |  | ambito | "+as+"\n"
+						 }; 
 
 if_exp:   IF PAROPN condicion PARCLS THEN expresion 
 		| IF PAROPN condicion PARCLS THEN bloque_ins;
@@ -376,10 +622,13 @@ expresion: declaracion SEMIC {mostrarSintactico("Expresion declaracion correctam
 function: FUNCTION ID PAROPN PARCLS COROPN expresiones CORCLS {
 			console.log("Funcion " + $2 + " terminada con exito.");
 			mensajesSalida += "PARSER: Funcion " + $2 + " terminada con exito.\n";
+			tabla = tabla.replaceAll("ambito", $1 + $2 + "()");
 		}
         | ONLOAD      PAROPN PARCLS COROPN expresiones CORCLS{
 			console.log("Funcion ONLOAD terminada correctamente.");
 			mensajesSalida += "FPARSER: Funcion ONLOAD terminada correctamente.\n";
+			//tabla = tabla.replace(/ambito/g, "ON_LOAD()");
+			tabla = tabla.replaceAll("ambito", "ON_LOAD()");
 		}
 		|error {
 			mostrarSintactico('FUNCION COMO ERROR -> \nError: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));

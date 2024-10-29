@@ -19,6 +19,11 @@
                     string result_caja_texto = getElementById("entrada_1"); 
                     string @global result = "10 ";
                     result = "30 ";
+     
+                    no_declarada = 40;
+
+                    string @global p_declaracion; 
+                    string p2_declaracion; 
 
                     string mensaje_fallo = "El captcha no fue validado intente otra vez "; 
                     string mensaje_acierto = "El captcha fue validado "; 

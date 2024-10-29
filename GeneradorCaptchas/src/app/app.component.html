@@ -40,10 +40,35 @@
       <textarea name="mensajes-analisis" id="mensajes-analisis" placeholder="Mensajes del análisis."></textarea>
     </fieldset>
   
-    <fieldset class="textarea-container">
+  
+    <!--<fieldset class="textarea-container">
       <legend>Simbolos</legend>
-      <textarea name="" id="" placeholder="Tabla de simbolos."></textarea>
-    </fieldset>
+      <textarea name="tabla-simbolos" id="tabla-simbolos" placeholder="Tabla de simbolos."></textarea>
+    </fieldset> -->
+
+
+      <!-- Nueva tabla dinámica -->
+  <fieldset class="tabla-container">
+    <legend>Tabla de simbolos</legend> <br>
+    <div>
+    <table>
+      <thead>
+        <tr>
+          
+          <th>Pos.</th> <th>Identificador</th> <th>Tipo</th> <th>Valor actual</th><th>Modo</th><th>Ambito</th><th>Por</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fila of tablaDatos">
+          <td *ngFor="let dato of fila">{{ dato }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </fieldset>
+
+
+
   </div>
 
 </div>
