@@ -793,7 +793,7 @@ _handle_error:
 					var vl = valores[0];
 					ids.forEach(i =>{
 						posicion++;
-						tabla += posicion + " | " + i + " | " + tipo + " | "+ vl +" | " + modo + " | ambito \n"; 
+						tabla += posicion + " | " + i + " | " + tipo + " | "+ vl +" | " + modo + " | ambito | declaracion\n"; 
 					});
 				}else{
 					//Si hay varios valores, asignar hasta donde sea posible
@@ -804,7 +804,7 @@ _handle_error:
 							vl = valores[i];
 						}
 
-						tabla += posicion + " | " + ids[i] + " | " + tipo + " | "+ vl +" | " + modo + " | ambito \n";
+						tabla += posicion + " | " + ids[i] + " | " + tipo + " | "+ vl +" | " + modo + " | ambito |declaracion\n";
 					}
 				}
 			}
@@ -819,7 +819,7 @@ _handle_error:
 			if(ids != undefined && Array.isArray(ids)){
 				ids.forEach(id=>{
 					posicion++;
-					tabla += posicion + " | " + id + " | " + tipo + "| undefined | " + modo + " | ambito \n";  
+					tabla += posicion + " | " + id + " | " + tipo + "| undefined | " + modo + " | ambito |declaracion\n";  
 				});
 			} 
 		}
