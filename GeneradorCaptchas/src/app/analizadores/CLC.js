@@ -172,376 +172,121 @@ break;
 case 39:
 
 											var ids = $$[$0];
-											if(ids != undefined && Array.isArray(ids)){
-												ids.forEach(id=>{
-													posicion++;
-													tabla += posicion + " | " + id + " | integer | undefined | - | ambito \n";  
-												});
-											} 
-										 
+											declararVariable(ids, "integer", "-");
+										
 break;
 case 40:
 
 											var ids = $$[$0];
-											if(ids != undefined && Array.isArray(ids)){
-												ids.forEach(id=>{
-													posicion++;
-													tabla += posicion + " | " + id + " | string | undefined | - | ambito \n";  
-													console.log("TABLA : " + tabla);
-												});
-											} 
+											declararVariable(ids, "string", "-");
 										 
 break;
 case 41:
 
 											var ids = $$[$0];
-											if(ids != undefined && Array.isArray(ids)){
-												ids.forEach(id=>{
-													posicion++;
-													tabla += posicion + " | " + id + " | decimal | undefined | - | ambito \n";  
-												});
-											} 
+											declararVariable(ids, "decimal", "-");
 										 
 break;
 case 42:
 
 											var ids = $$[$0];
-											if(ids != undefined && Array.isArray(ids)){
-												ids.forEach(id=>{
-													posicion++;
-													tabla += posicion + " | " + id + " | char | undefined | - | ambito \n";  
-												});
-											} 
+											declararVariable(ids, "char", "-");
 										 
 break;
 case 43:
 
 											var ids = $$[$0];
-											if(ids != undefined && Array.isArray(ids)){
-												ids.forEach(id=>{
-													posicion++;
-													tabla += posicion + " | " + id + " | boolean | undefined | - | ambito \n";  
-												});
-											} 
+											declararVariable(ids, "boolean", "-");
 										 
 break;
 case 44:
 
 											var ids = $$[$0];
-											if(ids != undefined && Array.isArray(ids)){
-												ids.forEach(id=>{
-													posicion++;
-													tabla += posicion + " | " + id + " | integer | undefined | @global | ambito \n";  
-												});
-											} 
+											declararVariable(ids, "integer", "@global");
 										 
 break;
 case 45:
 
-											console.log("DECLARACION STRING GLOBAL");
 											var ids = $$[$0];
-											if(ids != undefined && Array.isArray(ids)){
-												ids.forEach(id=>{
-													posicion++;
-													tabla += posicion + " | " + id + " | string | undefined | @global | ambito \n";  
-													console.log("TABLA DEC GLOBAL : " + tabla);
-												});
-											} 
+											declararVariable(ids, "string", "@global");
 										 
 break;
 case 46:
 
 											var ids = $$[$0];
-											if(ids != undefined && Array.isArray(ids)){
-												ids.forEach(id=>{
-													posicion++;
-													tabla += posicion + " | " + id + " | decimal | undefined | @global | ambito \n";  
-												});
-											} 
+											declararVariable(ids, "decimal", "@global");
 										 
 break;
 case 47:
 
 											var ids = $$[$0];
-											if(ids != undefined && Array.isArray(ids)){
-												ids.forEach(id=>{
-													posicion++;
-													tabla += posicion + " | " + id + " | char | undefined | @global | ambito \n";  
-												});
-											} 
+											declararVariable(ids, "char", "@global");
 										 
 break;
 case 48:
 
 											var ids = $$[$0];
-											if(ids != undefined && Array.isArray(ids)){
-												ids.forEach(id=>{
-													posicion++;
-													tabla += posicion + " | " + id + " | boolean | undefined | @global | ambito \n";  
-												});
-											} 
+											declararVariable(ids, "boolean", "@global");
 										 
 break;
 case 49:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														if( Array.isArray(ids) && Array.isArray(valores)){
-															//Si solo hay un valor, todos los ids tienen ese valor
-															if(valores.length == 1){
-																var vl = valores[0];
-																ids.forEach(i =>{
-																	posicion++;
-																	tabla += posicion + " | " + i + " | integer | "+ vl +" | - | ambito \n"; 
-																});
-															}else{
-																//Si hay varios valores, asignar hasta donde sea posible
-																for(let i = 0; i < ids.length;  i++){
-																	posicion++;
-																	var vl = "undefined"; 
-																	if(i < valores.length){
-																		vl = valores[i];
-																	}
-
-																	tabla += posicion + " | " + ids[i] + " | integer | "+ vl +" | - | ambito \n";
-																}
-															}
-
-															
-														}
+														declararVariableValor(ids, valores, "integer", "-")
 		   										 
 break;
 case 50:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														if( Array.isArray(ids) && Array.isArray(valores)){
-															//Si solo hay un valor, todos los ids tienen ese valor
-															if(valores.length == 1){
-																var vl = valores[0];
-																ids.forEach(i =>{
-																	posicion++;
-																	tabla += posicion + " | " + i + " | string | "+ vl +" | - | ambito \n"; 
-																});
-															}else{
-																//Si hay varios valores, asignar hasta donde sea posible
-																for(let i = 0; i < ids.length;  i++){
-																	posicion++;
-																	var vl = "undefined"; 
-																	if(i < valores.length){
-																		vl = valores[i];
-																	}
-
-																	tabla += posicion + " | " + ids[i] + " | string | "+ vl +" | - | ambito \n";
-																}
-															}
-														}
+														declararVariableValor(ids, valores, "string", "-");
 		   										 
 break;
 case 51:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														if( Array.isArray(ids) && Array.isArray(valores)){
-															//Si solo hay un valor, todos los ids tienen ese valor
-															if(valores.length == 1){
-																var vl = valores[0];
-																ids.forEach(i =>{
-																	posicion++;
-																	tabla += posicion + " | " + i + " | decimal | "+ vl +" | - | ambito \n"; 
-																});
-															}else{
-																//Si hay varios valores, asignar hasta donde sea posible
-																for(let i = 0; i < ids.length;  i++){
-																	posicion++;
-																	var vl = "undefined"; 
-																	if(i < valores.length){
-																		vl = valores[i];
-																	}
-
-																	tabla += posicion + " | " + ids[i] + " | decimal | "+ vl +" | - | ambito \n";
-																}
-															}
-														}
+														declararVariableValor(ids, valores, "decimal", "-");
 		   										 
 break;
 case 52:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														if( Array.isArray(ids) && Array.isArray(valores)){
-															//Si solo hay un valor, todos los ids tienen ese valor
-															if(valores.length == 1){
-																var vl = valores[0];
-																ids.forEach(i =>{
-																	posicion++;
-																	tabla += posicion + " | " + i + " | char | "+ vl +" | - | ambito \n"; 
-																});
-															}else{
-																//Si hay varios valores, asignar hasta donde sea posible
-																for(let i = 0; i < ids.length;  i++){
-																	posicion++;
-																	var vl = "undefined"; 
-																	if(i < valores.length){
-																		vl = valores[i];
-																	}
-
-																	tabla += posicion + " | " + ids[i] + " | char | "+ vl +" | - | ambito \n";
-																}
-															}
-														}
+														declararVariableValor(ids, valores, "char", "-");
 		   										 
 break;
 case 53:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														if( Array.isArray(ids) && Array.isArray(valores)){
-															//Si solo hay un valor, todos los ids tienen ese valor
-															if(valores.length == 1){
-																var vl = valores[0];
-																ids.forEach(i =>{
-																	posicion++;
-																	tabla += posicion + " | " + i + " | boolean | "+ vl +" | - | ambito \n"; 
-																});
-															}else{
-																//Si hay varios valores, asignar hasta donde sea posible
-																for(let i = 0; i < ids.length;  i++){
-																	posicion++;
-																	var vl = "undefined"; 
-																	if(i < valores.length){
-																		vl = valores[i];
-																	}
-
-																	tabla += posicion + " | " + ids[i] + " | boolean | "+ vl +" | - | ambito \n";
-																}
-															}
-														}
+														declararVariableValor(ids, valores, "boolean", "-");
 		   										 
 break;
 case 54:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														if( Array.isArray(ids) && Array.isArray(valores)){
-															//Si solo hay un valor, todos los ids tienen ese valor
-															if(valores.length == 1){
-																var vl = valores[0];
-																ids.forEach(i =>{
-																	posicion++;
-																	tabla += posicion + " | " + i + " | integer | "+ vl +" | @global | ambito \n"; 
-																});
-															}else{
-																//Si hay varios valores, asignar hasta donde sea posible
-																for(let i = 0; i < ids.length;  i++){
-																	posicion++;
-																	var vl = "undefined"; 
-																	if(i < valores.length){
-																		vl = valores[i];
-																	}
-
-																	tabla += posicion + " | " + ids[i] + " | integer | "+ vl +" | @global | ambito \n";
-																}
-															}
-														}
+														declararVariableValor(ids, valores, "integer", "@global");
 		   										 
 break;
 case 55:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														if( Array.isArray(ids) && Array.isArray(valores)){
-															//Si solo hay un valor, todos los ids tienen ese valor
-															if(valores.length == 1){
-																var vl = valores[0];
-																ids.forEach(i =>{
-																	posicion++;
-																	tabla += posicion + " | " + i + " | string | "+ vl +" | @global | ambito \n"; 
-																});
-															}else{
-																//Si hay varios valores, asignar hasta donde sea posible
-																for(let i = 0; i < ids.length;  i++){
-																	posicion++;
-																	var vl = "undefined"; 
-																	if(i < valores.length){
-																		vl = valores[i];
-																	}
-
-																	tabla += posicion + " | " + ids[i] + " | string | "+ vl +" | @global | ambito \n";
-																}
-															}
-														}
+														declararVariableValor(ids, valores, "string", "@global");
 		   										 
 break;
 case 56:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														if( Array.isArray(ids) && Array.isArray(valores)){
-															//Si solo hay un valor, todos los ids tienen ese valor
-															if(valores.length == 1){
-																var vl = valores[0];
-																ids.forEach(i =>{
-																	posicion++;
-																	tabla += posicion + " | " + i + " | decimal | "+ vl +" | @global | ambito \n"; 
-																});
-															}else{
-																//Si hay varios valores, asignar hasta donde sea posible
-																for(let i = 0; i < ids.length;  i++){
-																	posicion++;
-																	var vl = "undefined"; 
-																	if(i < valores.length){
-																		vl = valores[i];
-																	}
-
-																	tabla += posicion + " | " + ids[i] + " | decimal | "+ vl +" | @global | ambito \n";
-																}
-															}
-														}
+														declararVariableValor(ids, valores, "decimal", "@global");
 		   										 
 break;
 case 57:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														if( Array.isArray(ids) && Array.isArray(valores)){
-															//Si solo hay un valor, todos los ids tienen ese valor
-															if(valores.length == 1){
-																var vl = valores[0];
-																ids.forEach(i =>{
-																	posicion++;
-																	tabla += posicion + " | " + i + " | char | "+ vl +" | @global | ambito \n"; 
-																});
-															}else{
-																//Si hay varios valores, asignar hasta donde sea posible
-																for(let i = 0; i < ids.length;  i++){
-																	posicion++;
-																	var vl = "undefined"; 
-																	if(i < valores.length){
-																		vl = valores[i];
-																	}
-
-																	tabla += posicion + " | " + ids[i] + " | char | "+ vl +" | @global | ambito \n";
-																}
-															}
-														}
+														declararVariableValor(ids, valores, "char", "@global");
 		   										 
 break;
 case 58:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														if( Array.isArray(ids) && Array.isArray(valores)){
-															//Si solo hay un valor, todos los ids tienen ese valor
-															if(valores.length == 1){
-																var vl = valores[0];
-																ids.forEach(i =>{
-																	posicion++;
-																	tabla += posicion + " | " + i + " | boolean | "+ vl +" | @global | ambito \n"; 
-																});
-															}else{
-																//Si hay varios valores, asignar hasta donde sea posible
-																for(let i = 0; i < ids.length;  i++){
-																	posicion++;
-																	var vl = "undefined"; 
-																	if(i < valores.length){
-																		vl = valores[i];
-																	}
-
-																	tabla += posicion + " | " + ids[i] + " | boolean | "+ vl +" | @global | ambito \n";
-																}
-															}
-														}
+														declararVariableValor(ids, valores, "boolean", "@global");
 		   										 
 break;
 case 59:
@@ -1034,6 +779,50 @@ _handle_error:
 			console.error(error.message)
 		}
 
+
+		/** 
+		 * @param ids: array de identificadores
+		 * @param valores: array de valores que serán asignados a las variables
+		 * @param tipo: string con el tipo de dato del simbolo
+		 * @param modo: string con el modo de declaracion de la variable: @global o -
+		*/
+		function declararVariableValor(ids, valores, tipo, modo){
+			if( Array.isArray(ids) && Array.isArray(valores)){
+				//Si solo hay un valor, todos los ids tienen ese valor
+				if(valores.length == 1){
+					var vl = valores[0];
+					ids.forEach(i =>{
+						posicion++;
+						tabla += posicion + " | " + i + " | " + tipo + " | "+ vl +" | " + modo + " | ambito \n"; 
+					});
+				}else{
+					//Si hay varios valores, asignar hasta donde sea posible
+					for(let i = 0; i < ids.length;  i++){
+						posicion++;
+						var vl = "undefined"; 
+						if(i < valores.length){
+							vl = valores[i];
+						}
+
+						tabla += posicion + " | " + ids[i] + " | " + tipo + " | "+ vl +" | " + modo + " | ambito \n";
+					}
+				}
+			}
+		}
+
+		/**
+		 * @param ids: array de identificadores
+		 * @param tipo: string con el tipo del simbolo
+		 * @param modo: string con el modo de declaracion de la variable: @global o -
+		 */
+		function declararVariable(ids, tipo, modo){
+			if(ids != undefined && Array.isArray(ids)){
+				ids.forEach(id=>{
+					posicion++;
+					tabla += posicion + " | " + id + " | " + tipo + "| undefined | " + modo + " | ambito \n";  
+				});
+			} 
+		}
 
 
 
