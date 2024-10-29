@@ -104,6 +104,9 @@
   border-radius: 5px;
 }
 
+
+
+
 .textarea-container legend {
   font-weight: bold;
   padding: 0 10px;
@@ -117,4 +120,53 @@
   display: block;
   margin-bottom: 5px;
   color: #333;
+}
+
+
+
+
+.tabla-container legend{
+  font-weight: bold;
+  padding: 0 10px;
+  color: #333;
+  font-size: 12px;
+
+  position: sticky; 
+  top: 0;
+}
+
+.tabla-container{
+  border: 2px solid #ccc; /* Borde alrededor de la tabla */
+  padding: 10px;
+  margin-bottom: 10px; /* Separación entre los textareas */
+  margin-left: 3px;
+  margin-right: 2px;
+  border-radius: 5px;
+
+  overflow-y: auto;  /* Activa el scroll vertical */
+  overflow-x: auto;  /* Activa el scroll horizontal si es necesario */
+}
+
+/* Estilos adicionales para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  color: #333;
+}
+
+th, td {
+  padding: 8px;
+  font-size: 11px;
+  color: #555;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+/* Asegura que el encabezado de la tabla permanezca alineado al desplazarse */
+th {
+  position: sticky;
+  top: 20px;
+  background-color: #f2f2f2;
+  font-weight: bold;
 }

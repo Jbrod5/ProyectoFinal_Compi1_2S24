@@ -16,7 +16,7 @@ import { ParseError } from '@angular/compiler';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  tablaDatos: string[][] = []; // Array para almacenar las filas y columnas de la tabla
 
   constructor(private http: HttpClient) { }  // HttpClient inyectado en el constructor
 
@@ -87,9 +87,10 @@ export class AppComponent {
     console.log(CLang.obtenerCodigo());
     //Mostrar mensajes y la tabla de simbolos
     (document.getElementById('mensajes-analisis') as HTMLTextAreaElement).value = mensaje;
-    (document.getElementById('tabla-simbolos') as HTMLTextAreaElement).value = tabla;
+    //(document.getElementById('tabla-simbolos') as HTMLTextAreaElement).value = tabla;
     console.log("TABLA DE SIMBOLOS")
     console.log(tabla);
+    this.procesarString(tabla);
 
 
     ;
@@ -215,6 +216,16 @@ saveToFile(fileName: string): void {
   a.click();
   
   window.URL.revokeObjectURL(url); // Limpiar la URL creada
+}
+
+
+
+
+
+procesarString(inputString: string) {
+  // Divide el string en filas (cada salto de línea representa una nueva fila)
+  const filas = inputString.split('\n');
+  this.tablaDatos = filas.map(fila => fila.split('|'));
 }
 
 
