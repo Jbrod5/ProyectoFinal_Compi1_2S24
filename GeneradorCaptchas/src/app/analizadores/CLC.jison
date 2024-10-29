@@ -201,7 +201,7 @@
 							vl = valores[i];
 						}
 
-						tabla += posicion + " | " + ids[i] + " | " + tipo + " | "+ vl +" | " + modo + " | ambito |declaracion\n";
+						tabla += posicion + " | " + ids[i] + " | " + tipo + " | "+ vl +" | " + modo + " | ambito | declaracion\n";
 					}
 				}
 			}
@@ -216,7 +216,7 @@
 			if(ids != undefined && Array.isArray(ids)){
 				ids.forEach(id=>{
 					posicion++;
-					tabla += posicion + " | " + id + " | " + tipo + "| undefined | " + modo + " | ambito |declaracion\n";  
+					tabla += posicion + " | " + id + " | " + tipo + "| undefined | " + modo + " | ambito | declaracion\n";  
 				});
 			} 
 		}
@@ -238,21 +238,21 @@ functions: function functions
 		 | function;
 		 
 
-valor: ID 
-	 | TRUE
-	 | FALSE
-	 | DECIMAL
-	 | INTEGER
-	 | CHAR
-	 | STRING
-	 | PAROPN condicion PARCLS
+valor: ID {$$ = $1;}
+	 | TRUE {$$ = $1;}
+	 | FALSE {$$ = $1;}
+	 | DECIMAL {$$ = $1;}
+	 | INTEGER {$$ = $1;}
+	 | CHAR {$$ = $1;}
+	 | STRING {$$ = $1;}
+	 | PAROPN condicion PARCLS {$$ = $2;}
 	 //| condicion
-	 | valor MAS valor
-	 | valor MEN valor
-	 | valor TIM valor
-	 | valor DIV valor
-	 | funcion_st
-	 | numero_aleatorio;
+	 | valor MAS valor {try{$$ = $1 + $3;}catch(error){mensajesSalida += "ERROR: al intentar operar dos valores.\n"}}
+	 | valor MEN valor {try{$$ = $1 - $3;}catch(error){mensajesSalida += "ERROR: al intentar operar dos valores.\n"}}
+	 | valor TIM valor {try{$$ = $1 * $3;}catch(error){mensajesSalida += "ERROR: al intentar operar dos valores.\n"}}
+	 | valor DIV valor {try{$$ = $1 / $3;}catch(error){mensajesSalida += "ERROR: al intentar operar dos valores.\n"}}
+	 | funcion_st {$$ = $1;}
+	 | numero_aleatorio {$$ = $1;};
 	 //| numero;
 
 funcion_st : asc {$$ = $1;}
@@ -426,20 +426,7 @@ identificadores: ID identificadores {
 				   $$ = resultado;
 			   };
 
-ints : /*INTEGER COMMA ints {
-								var resultado = [];
-								resultado.push($1);
-
-								var ints = $3;
-								if(ints != undefined && Array.isArray(ints)){
-									ints.forEach(i=>{
-										resultado.push();
-									});
-								}
-								$$ = resultado; 
-						  }*/
-	 //| INTEGER { var resultado = []; resultado.push($1); $$ = resultado; }
-	 | numero COMMA ints  {
+ints : numero COMMA ints  {
 								var resultado = [];
 								resultado.push($1);
 
@@ -535,23 +522,41 @@ valbool: TRUE { $$ = $1; }
 	  | FALSE { $$ = $1; };
 
 condicion: //PAROPN condicion PARCLS
-		    valor AND AND    valor
-		   |valor ORS ORS    valor
-		   | 		  EXCLAM valor
-		   |valor EQU EQU 	 valor
-		   |valor EXCLAM EQU valor
-		   |valor MENQUE 	 valor
-		   |valor MENQUE EQU valor
-		   |valor MAYQUE 	 valor
-		   |valor MAYQUE EQU valor
-		   |valor;
+		    valor AND AND    valor{try{$$=$1 && $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   |valor ORS ORS    valor{try{$$=$1 || $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   | 		  EXCLAM valor{try{$$=!$2;	   }catch(error){mensajesSalida += "ERROR: al negar una condicion\n";  $$ = false;}}
+		   |valor EQU EQU 	 valor{try{$$=$1 == $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   |valor EXCLAM EQU valor{try{$$=$1 != $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   |valor MENQUE 	 valor{try{$$=$1 < $4; }catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   |valor MENQUE EQU valor{try{$$=$1 <= $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   |valor MAYQUE 	 valor{try{$$=$1 > $4; }catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   |valor MAYQUE EQU valor{try{$$=$1 >= $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		   |valor {$$ = $1;};
 
 
 
 
 
 
-asignacion : ID EQU valor; 
+asignacion : ID EQU valor{
+							var id = $1;
+							var vl = $3; 
+							var as = "asignacion"
+							var encontrado = false; 
+							
+							//Buscar si el id ya fue declarado anteriormente
+							var filas = tabla.split('\n');
+							filas.forEach(fila => {
+								if(fila.includes(id)){
+									encontrado = true; 
+								}
+							});
+							posicion ++; 
+							if(!encontrado){
+								as = "NO DECLARADO"
+							}
+							tabla += posicion + " | " + id + " |  |" + vl + " |  | ambito | "+as+"\n"
+						 }; 
 
 if_exp:   IF PAROPN condicion PARCLS THEN expresion 
 		| IF PAROPN condicion PARCLS THEN bloque_ins;

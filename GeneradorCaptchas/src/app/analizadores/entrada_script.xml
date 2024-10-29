@@ -19,6 +19,8 @@
                     string result_caja_texto = getElementById("entrada_1"); 
                     string @global result = "10 ";
                     result = "30 ";
+     
+                    no_declarada = 40;
 
                     string @global p_declaracion; 
                     string p2_declaracion; 
