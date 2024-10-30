@@ -18,6 +18,9 @@ import { ParseError } from '@angular/compiler';
 })
 export class AppComponent {
   tablaDatos: string[][] = []; // Array para almacenar las filas y columnas de la tabla
+  
+  captchasGenerados: string[] = [];
+  contadorCaptchas: number[] = [];
 
   constructor(private http: HttpClient) { }  // HttpClient inyectado en el constructor
 
@@ -122,6 +125,20 @@ export class AppComponent {
               response => {
                   console.log('Respuesta del servidor:', response);
                   // Manejar la respuesta del servidor
+
+                  //Agregar la url a la lista de urls
+                  let urlCaptcha = "http://localhost:8000/" + CLang.obtenerNombre() + ".html";
+                  let encontrado = false
+                  this.captchasGenerados.forEach(captcha => {
+                    if(captcha === urlCaptcha){
+                      encontrado = true; 
+                    }
+                  });
+                  if(!encontrado){
+                    this.captchasGenerados.push(urlCaptcha);
+                    this.contadorCaptchas.push(0);
+                  }
+                  
               },
               error => {
                   console.error('Error al enviar la petición:', error);
@@ -236,6 +253,22 @@ procesarString(inputString: string) {
   const filas = inputString.split('\n');
   this.tablaDatos = filas.map(fila => fila.split('|'));
 }
+
+
+isMenuOpen = false;
+toggleMenu() {
+  this.isMenuOpen = !this.isMenuOpen;
+}
+
+someAction() {
+  // Acción que realiza el menú, puedes agregar lógica aquí
+
+  
+}
+  // Método para incrementar el contador
+  incrementarContador(index: number): void {
+    this.contadorCaptchas[index] = (this.contadorCaptchas[index] || 0) + 1;
+  }
 
 
 }

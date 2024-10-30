@@ -5,9 +5,25 @@
     <button class="btn btn-primary btn-thin" (click)="openFile()">Abrir archivo</button>
     <button class="btn btn-secondary btn-thin" (click)="saveFile()">Guardar</button>
     <button class="btn btn-secondary btn-thin" (click)="saveAs()">Guardar como</button>
+
+
+    <button class="btn btn-info btn-thin" (click)="toggleMenu()">Captchas generados</button> <!-- Botón para el menú lateral -->
+
   </div>
 </div>
 
+<!-- Menú lateral -->
+<div class="side-menu" *ngIf="isMenuOpen">
+  <ul>
+    <li *ngFor="let captcha of captchasGenerados; let i = index">
+      <!-- Enlace al URL almacenado en captcha y contador de clics -->
+      <a [href]="captcha" target="_blank" (click)="incrementarContador(i)">
+        {{ captcha }}
+      </a>
+      <span>  Visitado: {{ contadorCaptchas[i] || 0 }} veces</span>
+    </li>
+  </ul>
+</div>
 
 
 <!--
