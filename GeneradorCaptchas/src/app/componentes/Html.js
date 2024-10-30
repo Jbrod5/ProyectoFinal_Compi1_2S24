@@ -54,6 +54,10 @@ export class Html extends Componente{
         this.head = head; 
     }
 
+    establecerScript(script){
+        this.head.establecerScript(script);
+    }
+
     /**
      * Establece un titulo para el contenido html.
      * @param {Title} titulo 

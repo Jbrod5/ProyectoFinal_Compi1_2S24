@@ -88,6 +88,7 @@
                     !!Estas instrucciones se ejecutan media vez se entra al scripting !! Insertamos el input con sus parámetros con la instrucción INSERT 
                     INSERT('<C_INPUT [type= "text"] [text-align= "center"] [id= "entrada_1"] >'); 
                     INSERT('</C_INPUT>'); 
+                    ALERT_INFO("La pagina ha cargado :D");
                 ] 
 
                 FUNCTION_calcular() [

@@ -30,6 +30,17 @@ export class Head extends Componente{
         this.title = componente
     }
 
+    establecerScript(script){
+         
+        if(script != undefined){
+            script = script.replaceAll("“", '"');
+            script = script.replaceAll("”", '"');
+        }
+
+        this.script = script;
+       
+    }
+
 
     /**
      * @returns {String} String con el codigo html del componente.
@@ -39,6 +50,10 @@ export class Head extends Componente{
         if(this.title != undefined){
             codigo += this.title.obtenerCodigo() + "\n";
         }
+        if(this.script != undefined){
+            codigo += this.script + "\n";
+        }
+
         codigo+= "</head>";
         return codigo;
     }

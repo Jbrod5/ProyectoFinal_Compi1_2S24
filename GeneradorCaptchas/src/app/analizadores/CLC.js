@@ -83,7 +83,7 @@ performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* actio
 
 var $0 = $$.length - 1;
 switch (yystate) {
-case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 16: case 17: case 18: case 19: case 21: case 22: case 24: case 86:
+case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 16: case 17: case 18: case 19: case 21: case 22: case 24: case 86: case 97:
 this.$ = $$[$0];
 break;
 case 11:
@@ -101,7 +101,7 @@ break;
 case 15:
 try{this.$ = $$[$0-2] / $$[$0];}catch(error){mensajesSalida += "ERROR: al intentar operar dos valores.\n"}
 break;
-case 20: case 23:
+case 20: case 23: case 98:
 this.$ = $$[$0]; 
 break;
 case 25:
@@ -167,7 +167,7 @@ case 34:
  this.$ = "REVERSE(" + $$[$0-1] + ")"; 
 break;
 case 35: case 36:
- this.$ = "getElementById(" + $$[$0-1] + ")"; 
+ this.$ = "document.getElementById(" + $$[$0-1] + ")"; 
 break;
 case 37:
 
@@ -187,121 +187,121 @@ break;
 case 39:
 
 											var ids = $$[$0];
-											declararVariable(ids, "integer", "-");
+											this.$ = declararVariable(ids, "integer", "-");
 										
 break;
 case 40:
 
 											var ids = $$[$0];
-											declararVariable(ids, "string", "-");
+											this.$ = declararVariable(ids, "string", "-");
 										 
 break;
 case 41:
 
 											var ids = $$[$0];
-											declararVariable(ids, "decimal", "-");
+											this.$ = declararVariable(ids, "decimal", "-");
 										 
 break;
 case 42:
 
 											var ids = $$[$0];
-											declararVariable(ids, "char", "-");
+											this.$ = declararVariable(ids, "char", "-");
 										 
 break;
 case 43:
 
 											var ids = $$[$0];
-											declararVariable(ids, "boolean", "-");
+											this.$ = declararVariable(ids, "boolean", "-");
 										 
 break;
 case 44:
 
 											var ids = $$[$0];
-											declararVariable(ids, "integer", "@global");
+											this.$ = declararVariable(ids, "integer", "@global");
 										 
 break;
 case 45:
 
 											var ids = $$[$0];
-											declararVariable(ids, "string", "@global");
+											this.$ = declararVariable(ids, "string", "@global");
 										 
 break;
 case 46:
 
 											var ids = $$[$0];
-											declararVariable(ids, "decimal", "@global");
+											this.$ = declararVariable(ids, "decimal", "@global");
 										 
 break;
 case 47:
 
 											var ids = $$[$0];
-											declararVariable(ids, "char", "@global");
+											this.$ = declararVariable(ids, "char", "@global");
 										 
 break;
 case 48:
 
 											var ids = $$[$0];
-											declararVariable(ids, "boolean", "@global");
+											this.$ = declararVariable(ids, "boolean", "@global");
 										 
 break;
 case 49:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														declararVariableValor(ids, valores, "integer", "-")
+														this.$ = declararVariableValor(ids, valores, "integer", "-")
 		   										 
 break;
 case 50:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														declararVariableValor(ids, valores, "string", "-");
+														this.$ = declararVariableValor(ids, valores, "string", "-");
 		   										 
 break;
 case 51:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														declararVariableValor(ids, valores, "decimal", "-");
+														this.$ = declararVariableValor(ids, valores, "decimal", "-");
 		   										 
 break;
 case 52:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														declararVariableValor(ids, valores, "char", "-");
+														this.$ = declararVariableValor(ids, valores, "char", "-");
 		   										 
 break;
 case 53:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														declararVariableValor(ids, valores, "boolean", "-");
+														this.$ = declararVariableValor(ids, valores, "boolean", "-");
 		   										 
 break;
 case 54:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														declararVariableValor(ids, valores, "integer", "@global");
+														this.$ = declararVariableValor(ids, valores, "integer", "@global");
 		   										 
 break;
 case 55:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														declararVariableValor(ids, valores, "string", "@global");
+														this.$ = declararVariableValor(ids, valores, "string", "@global");
 		   										 
 break;
 case 56:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														declararVariableValor(ids, valores, "decimal", "@global");
+														this.$ = declararVariableValor(ids, valores, "decimal", "@global");
 		   										 
 break;
 case 57:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														declararVariableValor(ids, valores, "char", "@global");
+														this.$ = declararVariableValor(ids, valores, "char", "@global");
 		   										 
 break;
 case 58:
 
 														var ids = $$[$0-2]; var valores = $$[$0]; 
-														declararVariableValor(ids, valores, "boolean", "@global");
+														this.$ = declararVariableValor(ids, valores, "boolean", "@global");
 		   										 
 break;
 case 59:
@@ -400,31 +400,49 @@ case 75: case 76: case 99: case 101: case 102:
  this.$ = $$[$0]; 
 break;
 case 77:
-try{this.$=$$[$0-3] && $$[$0];}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}
+/*try{this.$=$$[$0-3] && $$[$0];}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}*/
+								  	this.$ = $$[$0-3] + " && " + $$[$0];
+								  
 break;
 case 78:
-try{this.$=$$[$0-3] || $$[$0];}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}
+/*try{this.$=$$[$0-3] || $$[$0];}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}*/
+		   							this.$ = $$[$0-3] + " || " + $$[$0]; 
+		   						  
 break;
 case 79:
-try{this.$=!$$[$0];	   }catch(error){mensajesSalida += "ERROR: al negar una condicion\n";  this.$ = false;}
+/*try{this.$=!$$[$0];	   }catch(error){mensajesSalida += "ERROR: al negar una condicion\n";  this.$ = false;}*/
+		   						  	this.$ = "!" + $$[$0]; 
+								  
 break;
 case 80:
-try{this.$=$$[$0-3] == $$[$0];}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}
+/*try{this.$=$$[$0-3] == $$[$0];}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}*/
+		   						  	this.$ = $$[$0-3] + " == " + $$[$0]; 
+								  
 break;
 case 81:
-try{this.$=$$[$0-3] != $$[$0];}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}
+/*try{this.$=$$[$0-3] != $$[$0];}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}*/
+		   						  	this.$ = $$[$0-3] + " != " + $$[$0]; 
+								  
 break;
 case 82:
-try{this.$=$$[$0-2] < $$[$01]; }catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}
+/*try{this.$=$$[$0-2] < $$[$01]; }catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}*/
+		   						  	this.$ = $$[$0-2] + " < " + $$[$0]; 
+								  
 break;
 case 83:
-try{this.$=$$[$0-3] <= $$[$0];}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}
+/*try{this.$=$$[$0-3] <= $$[$0];}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}*/
+		   						  	this.$ = $$[$0-3] + " <= " + $$[$0];
+								  
 break;
 case 84:
-try{this.$=$$[$0-2] > $$[$01]; }catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}
+/*try{this.$=$$[$0-2] > $$[$01]; }catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}*/
+		   						  	this.$ = $$[$0-2] + " > " + $$[$0]; 
+								  
 break;
 case 85:
-try{this.$=$$[$0-3] >= $$[$0];}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}
+/*try{this.$=$$[$0-3] >= $$[$0];}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; this.$ = false;}*/
+		   						  	this.$ = $$[$0-3] + " >= " + $$[$0]; 
+								  
 break;
 case 87:
 
@@ -432,12 +450,15 @@ case 87:
 							var vl = $$[$0]; 
 							var as = "asignacion"
 							var encontrado = false; 
+
+							var codigo = "";
 							
 							//Buscar si el id ya fue declarado anteriormente
 							var filas = tabla.split('\n');
 							filas.forEach(fila => {
 								if(fila.includes(id) && fila.includes("ambito")){
 									encontrado = true; 
+									codigo += id + " = " + vl + ";\n";
 								}
 							});
 							posicion ++; 
@@ -445,7 +466,70 @@ case 87:
 								as = "NO DECLARADO"
 							}
 							tabla += posicion + " | " + id + " |  |" + vl + " |  | ambito | "+as+"\n"
+							this.$ = codigo; 
 						 
+break;
+case 88: case 89:
+
+														var codigo = "if(" + $$[$0-3] + "){\n" + $$[$0] + "\n}";
+														this.$ = codigo; 
+													
+break;
+case 91:
+
+								var codigo = "else{\n" + $$[$0] + "}\n";
+								this.$ = codigo; 
+						 
+break;
+case 92:
+
+							var codigo = "else{\n" + $$[$0] + "}\n";
+							this.$ = codigo; 
+						 
+break;
+case 93:
+
+																	var codigo = "while(" + $$[$0-3] + "){\n" + $$[$0] + "}\n";
+																	this.$ = codigo; 
+															 
+break;
+case 94:
+
+																	var codigo = "while(" + $$[$0-3] + "){\n" + $$[$0] + "}\n";
+																	this.$ = codigo; 
+		  													  
+break;
+case 95:
+
+																			var id = "";
+																			if($$[$0-6].length > 1){
+																				var partes = $$[$0-6].split(" ");
+																				if(partes[0] === "var"){
+																					id = partes[1]; 
+																				}else{
+																					id = partes[0];
+																				}
+																			}
+
+																			var codigo = "for(" + $$[$0-6] + " " + id + " <= " + $$[$0-2] + "; " + id + "++){\n" + $$[$0] + "}\n";
+																			this.$ = codigo; 
+																		 
+break;
+case 96:
+
+																			var id = "";
+																			if($$[$0-6].length > 1){
+																				var partes = $$[$0-6].split(" ");
+																				if(partes[0] === "var"){
+																					id = partes[1]; 
+																				}else{
+																					id = partes[0];
+																				}
+																			}
+
+																			var codigo = "for(" + $$[$0-6] + " " + id + " <= " + $$[$0-2] + "; " + id + "++){\n" + $$[$0] + "}\n";
+																			this.$ = codigo; 
+	  																	 
 break;
 case 100:
  console.log("NUMERO RETORNADO POR PRODUCCION: " + $$[$0]); mostrarSintactico("NUMERO RETORNADO POR PRODUCCION: " + $$[$0]); this.$ = $$[$0]; 
@@ -475,46 +559,76 @@ case 107:
 		this.$ = $$[$0-1];
 	  
 break;
+case 109:
+this.$ = $$[$0-1] + $$[$0]; 
+break;
+case 110:
+ this.$ = $$[$0];
+break;
 case 111:
-mostrarSintactico("Expresion declaracion correctamente");
+
+								mostrarSintactico("Expresion declaracion correctamente");
+								this.$ = $$[$0-1]; 
+							
 break;
 case 112:
-mostrarSintactico("Expresion asignacion terminada correctamente");
+
+								mostrarSintactico("Expresion asignacion terminada correctamente");
+								this.$ = $$[$0-1]; 
+							
 break;
 case 113:
-mostrarSintactico("Expresion if terminada correctamente");
+
+					mostrarSintactico("Expresion if terminada correctamente");
+					this.$ = $$[$0];
+				  
 break;
 case 114:
-mostrarSintactico("Expresion else terminada correctamente");
+
+						mostrarSintactico("Expresion else terminada correctamente");
+						this.$ = $$[$0]; 
+					
 break;
 case 115:
-mostrarSintactico("Expresion repeat terminada correctamente");
+
+					mostrarSintactico("Expresion repeat terminada correctamente");
+				  	this.$ = $$[$0]; 
+				  
 break;
 case 116:
-mostrarSintactico("Expresion while correctamente");
+
+						mostrarSintactico("Expresion while correctamente");
+					 	this.$ = $$[$0]; 
+					 
 break;
 case 117:
-mostrarSintactico("Expresion funcion correctamente");
+mostrarSintactico("Expresion funcion correctamente"); this.$ = "";
 break;
 case 118:
-mostrarSintactico("Expresion numero aleatorio terminada correctamente");
+mostrarSintactico("Expresion numero aleatorio terminada correctamente"); this.$ = "";
 break;
 case 119:
-mostrarSintactico("Expresion alert terminada correctamente");
+
+						mostrarSintactico("Expresion alert terminada correctamente"); 
+					    this.$ = $$[$0]; 
+					  
 break;
 case 120:
-mostrarSintactico("Expresion exit terminada correctamente");
+
+					mostrarSintactico("Expresion exit terminada correctamente");
+					this.$ = $$[$0]; 	
+				
 break;
 case 121:
-mostrarSintactico("Expresion redirect terminada correctamente.");
+mostrarSintactico("Expresion redirect terminada correctamente."); this.$ = "";
 break;
 case 122:
-mostrarSintactico("Expresion insert terminaa correctamente.");
+mostrarSintactico("Expresion insert terminaa correctamente.");this.$ = "";
 break;
 case 123:
 
 			mostrarSintactico('EXPRESION COMO ERROR -> \nError: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
-			this.$ = undefined;
+			this.$ = "";
 		 
 break;
 case 124:
@@ -522,6 +636,10 @@ case 124:
 			console.log("Funcion " + $$[$0-5] + " terminada con exito.");
 			mensajesSalida += "PARSER: Funcion " + $$[$0-5] + " terminada con exito.\n";
 			tabla = tabla.replaceAll("ambito", $$[$0-6] + $$[$0-5] + "()");
+
+			var codigo = "function FUNCTION_" + $$[$0-5] + "(){\n" + $$[$0-1] + "}\n";
+			codigoScript += codigo;
+
 		
 break;
 case 125:
@@ -530,6 +648,9 @@ case 125:
 			mensajesSalida += "FPARSER: Funcion ONLOAD terminada correctamente.\n";
 			//tabla = tabla.replace(/ambito/g, "ON_LOAD()");
 			tabla = tabla.replaceAll("ambito", "ON_LOAD()");
+
+			var codigo = "window.onload = function(){\n" + $$[$0-1] + "};\n";
+			codigoScript += codigo; 
 		
 break;
 case 126:
@@ -537,6 +658,20 @@ case 126:
 			mostrarSintactico('FUNCION COMO ERROR -> \nError: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
 			this.$ = undefined;
 		
+break;
+case 127:
+
+																this.$ = $$[$0-3];
+														  
+break;
+case 128: case 129:
+this.$ = "alert(" + $$[$0-2] + ");\n";
+break;
+case 130:
+this.$ = "return;\n"
+break;
+case 131: case 132:
+this.$ = "";
 break;
 }
 },
@@ -809,22 +944,22 @@ _handle_error:
 			mensajesSalida += "Token: " + mensaje + " | Valor: " + token + "\n";
 		}
 
-		var nombrePagina = "a";
-		var codigoPagina = "b";
+		var nombrePagina = "";
+		var codigoScript = "";
 		var mensajesSalida ="";
 
 		exports.obtenerNombre = function(){
 			return nombrePagina;
 		};
 		exports.obtenerCodigo = function(){
-			return codigoPagina;
+			return codigoScript;
 		};
 		exports.obtenerMensajes = function(){
 			return mensajesSalida;
 		};
 		exports.limpiarMensajes = function(){
 			mensajesSalida = "";
-			codigoPagina = "";
+			codigoScript = "";
 			tabla = "";
 			posicion = 0; 
 		};
@@ -850,6 +985,7 @@ _handle_error:
 		 * @param modo: string con el modo de declaracion de la variable: @global o -
 		*/
 		function declararVariableValor(ids, valores, tipo, modo){
+			var codigo = "";
 			if( Array.isArray(ids) && Array.isArray(valores)){
 				//Si solo hay un valor, todos los ids tienen ese valor
 				if(valores.length == 1){
@@ -857,6 +993,7 @@ _handle_error:
 					ids.forEach(i =>{
 						posicion++;
 						tabla += posicion + " | " + i + " | " + tipo + " | "+ vl +" | " + modo + " | ambito | declaracion\n"; 
+						codigo += "var " + i + " = " + vl + ";\n";
 					});
 				}else{
 					//Si hay varios valores, asignar hasta donde sea posible
@@ -868,9 +1005,11 @@ _handle_error:
 						}
 
 						tabla += posicion + " | " + ids[i] + " | " + tipo + " | "+ vl +" | " + modo + " | ambito | declaracion\n";
+						codigo += "var " + ids[i] + " = " + vl + ";\n";
 					}
 				}
 			}
+			return codigo;
 		}
 
 		/**
@@ -879,12 +1018,15 @@ _handle_error:
 		 * @param modo: string con el modo de declaracion de la variable: @global o -
 		 */
 		function declararVariable(ids, tipo, modo){
+			var codigo = "";
 			if(ids != undefined && Array.isArray(ids)){
 				ids.forEach(id=>{
 					posicion++;
 					tabla += posicion + " | " + id + " | " + tipo + "| undefined | " + modo + " | ambito | declaracion\n";  
+					codigo += "var " + id + ";\n";
 				});
 			} 
+			return codigo; 
 		}
 
 
