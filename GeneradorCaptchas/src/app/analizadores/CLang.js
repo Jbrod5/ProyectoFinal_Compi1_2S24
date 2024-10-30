@@ -293,7 +293,7 @@ case 63:
 			mostrarSintactico('Nombre pagina: ' + nombrePagina + "\nCodigo pagina: \n"  + html.obtenerCodigo());
 			//mostrarSintactico('Codigo pagina: ')
 			//mostrarSintactico(html.obtenerCodigo());
-			
+			pagina = html; 
 			this.$ = html; 
 
 	  
@@ -936,6 +936,7 @@ _handle_error:
 		var codigoPagina = "b";
 		var mensajesSalida ="";
 		var scriptClc = "";
+		var pagina;
 
 		exports.obtenerNombre = function(){
 			return nombrePagina;
@@ -952,6 +953,10 @@ _handle_error:
 		};
 		exports.obtenerScript = function(){
 			return scriptClc;
+		};
+
+		exports.obtenerPagina = function(){
+			return pagina; 
 		};
 		
 

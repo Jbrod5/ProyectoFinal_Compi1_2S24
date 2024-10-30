@@ -162,6 +162,7 @@
 		var codigoPagina = "b";
 		var mensajesSalida ="";
 		var scriptClc = "";
+		var pagina;
 
 		exports.obtenerNombre = function(){
 			return nombrePagina;
@@ -178,6 +179,10 @@
 		};
 		exports.obtenerScript = function(){
 			return scriptClc;
+		};
+
+		exports.obtenerPagina = function(){
+			return pagina; 
 		};
 		
 
@@ -401,7 +406,7 @@ cc    : MENQUE CC      parametros MAYQUE etiquetas 		CC_FIN  {
 			mostrarSintactico('Nombre pagina: ' + nombrePagina + "\nCodigo pagina: \n"  + html.obtenerCodigo());
 			//mostrarSintactico('Codigo pagina: ')
 			//mostrarSintactico(html.obtenerCodigo());
-			
+			pagina = html; 
 			$$ = html; 
 
 	  };

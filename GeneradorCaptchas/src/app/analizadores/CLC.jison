@@ -143,22 +143,22 @@
 			mensajesSalida += "Token: " + mensaje + " | Valor: " + token + "\n";
 		}
 
-		var nombrePagina = "a";
-		var codigoPagina = "b";
+		var nombrePagina = "";
+		var codigoScript = "";
 		var mensajesSalida ="";
 
 		exports.obtenerNombre = function(){
 			return nombrePagina;
 		};
 		exports.obtenerCodigo = function(){
-			return codigoPagina;
+			return codigoScript;
 		};
 		exports.obtenerMensajes = function(){
 			return mensajesSalida;
 		};
 		exports.limpiarMensajes = function(){
 			mensajesSalida = "";
-			codigoPagina = "";
+			codigoScript = "";
 			tabla = "";
 			posicion = 0; 
 		};
@@ -184,6 +184,7 @@
 		 * @param modo: string con el modo de declaracion de la variable: @global o -
 		*/
 		function declararVariableValor(ids, valores, tipo, modo){
+			var codigo = "";
 			if( Array.isArray(ids) && Array.isArray(valores)){
 				//Si solo hay un valor, todos los ids tienen ese valor
 				if(valores.length == 1){
@@ -191,6 +192,7 @@
 					ids.forEach(i =>{
 						posicion++;
 						tabla += posicion + " | " + i + " | " + tipo + " | "+ vl +" | " + modo + " | ambito | declaracion\n"; 
+						codigo += "var " + i + " = " + vl + ";\n";
 					});
 				}else{
 					//Si hay varios valores, asignar hasta donde sea posible
@@ -202,9 +204,11 @@
 						}
 
 						tabla += posicion + " | " + ids[i] + " | " + tipo + " | "+ vl +" | " + modo + " | ambito | declaracion\n";
+						codigo += "var " + ids[i] + " = " + vl + ";\n";
 					}
 				}
 			}
+			return codigo;
 		}
 
 		/**
@@ -213,12 +217,15 @@
 		 * @param modo: string con el modo de declaracion de la variable: @global o -
 		 */
 		function declararVariable(ids, tipo, modo){
+			var codigo = "";
 			if(ids != undefined && Array.isArray(ids)){
 				ids.forEach(id=>{
 					posicion++;
 					tabla += posicion + " | " + id + " | " + tipo + "| undefined | " + modo + " | ambito | declaracion\n";  
+					codigo += "var " + id + ";\n";
 				});
 			} 
+			return codigo; 
 		}
 
 
@@ -306,8 +313,8 @@ reverse: REVERSE PAROPN STRING PARCLS{
 			$$ = $3.split('').reverse().join('');
 		}
 		| REVERSE PAROPN ID PARCLS { $$ = "REVERSE(" + $3 + ")"; };
-getElement: GET_ELEMENT PAROPN STRING PARCLS { $$ = "getElementById(" + $3 + ")"; }
-		  | GET_ELEMENT PAROPN ID 	  PARCLS { $$ = "getElementById(" + $3 + ")"; };
+getElement: GET_ELEMENT PAROPN STRING PARCLS { $$ = "document.getElementById(" + $3 + ")"; }
+		  | GET_ELEMENT PAROPN ID 	  PARCLS { $$ = "document.getElementById(" + $3 + ")"; };
 
 caracter_aleatorio : CARACTER_ALEATORIO PAROPN PARCLS{
 						const esMayuscula = Math.random() < 0.5; // Decide si será mayúscula o minúscula
@@ -326,83 +333,83 @@ numero_aleatorio : NUM_ALEATORIO PAROPN PARCLS{
 // Posicion | Identificador | Tipo | Valor actual | Modo | Ambito 
 declaracion: INT        identificadores  {
 											var ids = $2;
-											declararVariable(ids, "integer", "-");
+											$$ = declararVariable(ids, "integer", "-");
 										} 
 		   | STR        identificadores {
 											var ids = $2;
-											declararVariable(ids, "string", "-");
+											$$ = declararVariable(ids, "string", "-");
 										 }
 		   | DEC        identificadores  {
 											var ids = $2;
-											declararVariable(ids, "decimal", "-");
+											$$ = declararVariable(ids, "decimal", "-");
 										 }
 		   | CHA        identificadores  {
 											var ids = $2;
-											declararVariable(ids, "char", "-");
+											$$ = declararVariable(ids, "char", "-");
 										 }
 		   | BOO        identificadores  {
 											var ids = $2;
-											declararVariable(ids, "boolean", "-");
+											$$ = declararVariable(ids, "boolean", "-");
 										 }
 		   | INT GLOBAL identificadores {
 											var ids = $3;
-											declararVariable(ids, "integer", "@global");
+											$$ = declararVariable(ids, "integer", "@global");
 										 }
 		   | STR GLOBAL identificadores {
 											var ids = $3;
-											declararVariable(ids, "string", "@global");
+											$$ = declararVariable(ids, "string", "@global");
 										 }
 		   | DEC GLOBAL identificadores {
 											var ids = $3;
-											declararVariable(ids, "decimal", "@global");
+											$$ = declararVariable(ids, "decimal", "@global");
 										 }
 		   | CHA GLOBAL identificadores {
 											var ids = $3;
-											declararVariable(ids, "char", "@global");
+											$$ = declararVariable(ids, "char", "@global");
 										 }
 		   | BOO GLOBAL identificadores {
 											var ids = $3;
-											declararVariable(ids, "boolean", "@global");
+											$$ = declararVariable(ids, "boolean", "@global");
 										 }
 		   | INT        identificadores EQU ints {
 														var ids = $2; var valores = $4; 
-														declararVariableValor(ids, valores, "integer", "-")
+														$$ = declararVariableValor(ids, valores, "integer", "-")
 		   										 }
 		   | STR        identificadores EQU strs {
 														var ids = $2; var valores = $4; 
-														declararVariableValor(ids, valores, "string", "-");
+														$$ = declararVariableValor(ids, valores, "string", "-");
 		   										 }
 		   | DEC        identificadores EQU decs {
 														var ids = $2; var valores = $4; 
-														declararVariableValor(ids, valores, "decimal", "-");
+														$$ = declararVariableValor(ids, valores, "decimal", "-");
 		   										 }
 		   | CHA        identificadores EQU chas {
 														var ids = $2; var valores = $4; 
-														declararVariableValor(ids, valores, "char", "-");
+														$$ = declararVariableValor(ids, valores, "char", "-");
 		   										 }
 		   | BOO        identificadores EQU boos {
 														var ids = $2; var valores = $4; 
-														declararVariableValor(ids, valores, "boolean", "-");
+														$$ = declararVariableValor(ids, valores, "boolean", "-");
 		   										 }
 		   | INT GLOBAL identificadores EQU ints{
 														var ids = $3; var valores = $5; 
-														declararVariableValor(ids, valores, "integer", "@global");
+														$$ = declararVariableValor(ids, valores, "integer", "@global");
 		   										 }
 		   | STR GLOBAL identificadores EQU strs{
 														var ids = $3; var valores = $5; 
-														declararVariableValor(ids, valores, "string", "@global");
+														$$ = declararVariableValor(ids, valores, "string", "@global");
 		   										 }
 		   | DEC GLOBAL identificadores EQU decs{
 														var ids = $3; var valores = $5; 
-														declararVariableValor(ids, valores, "decimal", "@global");
+														$$ = declararVariableValor(ids, valores, "decimal", "@global");
 		   										 }
 		   | CHA GLOBAL identificadores EQU chas{
 														var ids = $3; var valores = $5; 
-														declararVariableValor(ids, valores, "char", "@global");
+														$$ = declararVariableValor(ids, valores, "char", "@global");
 		   										 }
 		   | BOO GLOBAL identificadores EQU boos {
 														var ids = $3; var valores = $5; 
-														declararVariableValor(ids, valores, "boolean", "@global");
+														$$ = declararVariableValor(ids, valores, "boolean", "@global");
 		   										 };
 
 identificadores: ID identificadores {
@@ -522,15 +529,33 @@ valbool: TRUE { $$ = $1; }
 	  | FALSE { $$ = $1; };
 
 condicion: //PAROPN condicion PARCLS
-		    valor AND AND    valor{try{$$=$1 && $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
-		   |valor ORS ORS    valor{try{$$=$1 || $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
-		   | 		  EXCLAM valor{try{$$=!$2;	   }catch(error){mensajesSalida += "ERROR: al negar una condicion\n";  $$ = false;}}
-		   |valor EQU EQU 	 valor{try{$$=$1 == $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
-		   |valor EXCLAM EQU valor{try{$$=$1 != $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
-		   |valor MENQUE 	 valor{try{$$=$1 < $4; }catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
-		   |valor MENQUE EQU valor{try{$$=$1 <= $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
-		   |valor MAYQUE 	 valor{try{$$=$1 > $4; }catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
-		   |valor MAYQUE EQU valor{try{$$=$1 >= $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}}
+		    valor AND AND    valor{/*try{$$=$1 && $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}*/
+								  	$$ = $1 + " && " + $4;
+								  }
+		   |valor ORS ORS    valor{/*try{$$=$1 || $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}*/
+		   							$$ = $1 + " || " + $4; 
+		   						  }
+		   | 		  EXCLAM valor{/*try{$$=!$2;	   }catch(error){mensajesSalida += "ERROR: al negar una condicion\n";  $$ = false;}*/
+		   						  	$$ = "!" + $2; 
+								  }
+		   |valor EQU EQU 	 valor{/*try{$$=$1 == $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}*/
+		   						  	$$ = $1 + " == " + $4; 
+								  }
+		   |valor EXCLAM EQU valor{/*try{$$=$1 != $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}*/
+		   						  	$$ = $1 + " != " + $4; 
+								  }
+		   |valor MENQUE 	 valor{/*try{$$=$1 < $4; }catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}*/
+		   						  	$$ = $1 + " < " + $3; 
+								  }
+		   |valor MENQUE EQU valor{/*try{$$=$1 <= $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}*/
+		   						  	$$ = $1 + " <= " + $4;
+								  }
+		   |valor MAYQUE 	 valor{/*try{$$=$1 > $4; }catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}*/
+		   						  	$$ = $1 + " > " + $3; 
+								  }
+		   |valor MAYQUE EQU valor{/*try{$$=$1 >= $4;}catch(error){mensajesSalida += "ERROR: al operar una condicion\n"; $$ = false;}*/
+		   						  	$$ = $1 + " >= " + $4; 
+								  }
 		   |valor {$$ = $1;};
 
 
@@ -543,12 +568,15 @@ asignacion : ID EQU valor{
 							var vl = $3; 
 							var as = "asignacion"
 							var encontrado = false; 
+
+							var codigo = "";
 							
 							//Buscar si el id ya fue declarado anteriormente
 							var filas = tabla.split('\n');
 							filas.forEach(fila => {
 								if(fila.includes(id) && fila.includes("ambito")){
 									encontrado = true; 
+									codigo += id + " = " + vl + ";\n";
 								}
 							});
 							posicion ++; 
@@ -556,23 +584,68 @@ asignacion : ID EQU valor{
 								as = "NO DECLARADO"
 							}
 							tabla += posicion + " | " + id + " |  |" + vl + " |  | ambito | "+as+"\n"
+							$$ = codigo; 
 						 }; 
 
-if_exp:   IF PAROPN condicion PARCLS THEN expresion 
-		| IF PAROPN condicion PARCLS THEN bloque_ins;
+if_exp:   IF PAROPN condicion PARCLS THEN expresion {
+														var codigo = "if(" + $3 + "){\n" + $6 + "\n}";
+														$$ = codigo; 
+													}
+		| IF PAROPN condicion PARCLS THEN bloque_ins{
+														var codigo = "if(" + $3 + "){\n" + $6 + "\n}";
+														$$ = codigo; 
+													};
 elif_exp: ELSE if_exp;
-else_exp: ELSE expresion
-		| ELSE bloque_ins;
+else_exp: ELSE expresion {
+								var codigo = "else{\n" + $2 + "}\n";
+								$$ = codigo; 
+						 }
+		| ELSE bloque_ins{
+							var codigo = "else{\n" + $2 + "}\n";
+							$$ = codigo; 
+						 };
 
 
-while_exp : WHILE PAROPN condicion PARCLS THENWHILE expresion
-		  | WHILE PAROPN condicion PARCLS THENWHILE bloque_ins;
+while_exp : WHILE PAROPN condicion PARCLS THENWHILE expresion{
+																	var codigo = "while(" + $3 + "){\n" + $6 + "}\n";
+																	$$ = codigo; 
+															 }
+		  | WHILE PAROPN condicion PARCLS THENWHILE bloque_ins{
+																	var codigo = "while(" + $3 + "){\n" + $6 + "}\n";
+																	$$ = codigo; 
+		  													  };
 
 
-repeat: REPEAT PAROPN variable PARCLS HUNTIL PAROPN num PARCLS expresion
-	  | REPEAT PAROPN variable PARCLS HUNTIL PAROPN num PARCLS bloque_ins; 
+repeat: REPEAT PAROPN variable PARCLS HUNTIL PAROPN num PARCLS expresion {
+																			var id = "";
+																			if($3.length > 1){
+																				var partes = $3.split(" ");
+																				if(partes[0] === "var"){
+																					id = partes[1]; 
+																				}else{
+																					id = partes[0];
+																				}
+																			}
 
-variable: asignacion | declaracion; 
+																			var codigo = "for(" + $3 + " " + id + " <= " + $7 + "; " + id + "++){\n" + $9 + "}\n";
+																			$$ = codigo; 
+																		 }
+	  | REPEAT PAROPN variable PARCLS HUNTIL PAROPN num PARCLS bloque_ins{
+																			var id = "";
+																			if($3.length > 1){
+																				var partes = $3.split(" ");
+																				if(partes[0] === "var"){
+																					id = partes[1]; 
+																				}else{
+																					id = partes[0];
+																				}
+																			}
+
+																			var codigo = "for(" + $3 + " " + id + " <= " + $7 + "; " + id + "++){\n" + $9 + "}\n";
+																			$$ = codigo; 
+	  																	 }; 
+
+variable: asignacion {$$ = $1;}| declaracion{$$ = $1; }; 
 num: ID { $$ = $1; }
    | numero { console.log("NUMERO RETORNADO POR PRODUCCION: " + $1); mostrarSintactico("NUMERO RETORNADO POR PRODUCCION: " + $1); $$ = $1; };
 
@@ -599,49 +672,83 @@ numero: INTEGER { $$ = $1; }
 
 
 
-expresiones : expresion expresiones | expresion;
+expresiones : expresion expresiones {$$ = $1 + $2; }
+		    | expresion{ $$ = $1;};
 
-expresion: declaracion SEMIC {mostrarSintactico("Expresion declaracion correctamente");}
-		 | asignacion SEMIC {mostrarSintactico("Expresion asignacion terminada correctamente");}
-		 | if_exp {mostrarSintactico("Expresion if terminada correctamente");}
+expresion: declaracion SEMIC {
+								mostrarSintactico("Expresion declaracion correctamente");
+								$$ = $1; 
+							}
+		 | asignacion SEMIC {
+								mostrarSintactico("Expresion asignacion terminada correctamente");
+								$$ = $1; 
+							}
+		 | if_exp {
+					mostrarSintactico("Expresion if terminada correctamente");
+					$$ = $1;
+				  }
 		 //|elif_exp
-		 | else_exp {mostrarSintactico("Expresion else terminada correctamente");}
-		 | repeat {mostrarSintactico("Expresion repeat terminada correctamente");}
-		 | while_exp {mostrarSintactico("Expresion while correctamente");}
-		 | funcion_st SEMIC {mostrarSintactico("Expresion funcion correctamente");}
-		 | numero_aleatorio SEMIC {mostrarSintactico("Expresion numero aleatorio terminada correctamente");}
-		 | alert_info {mostrarSintactico("Expresion alert terminada correctamente");}
-		 | exit {mostrarSintactico("Expresion exit terminada correctamente");}
-		 | redirect {mostrarSintactico("Expresion redirect terminada correctamente.");}
-		 | insert {mostrarSintactico("Expresion insert terminaa correctamente.");}
+		 | else_exp {
+						mostrarSintactico("Expresion else terminada correctamente");
+						$$ = $1; 
+					}
+		 | repeat {
+					mostrarSintactico("Expresion repeat terminada correctamente");
+				  	$$ = $1; 
+				  }
+		 | while_exp {
+						mostrarSintactico("Expresion while correctamente");
+					 	$$ = $1; 
+					 }
+		 | funcion_st SEMIC {mostrarSintactico("Expresion funcion correctamente"); $$ = "";}
+		 | numero_aleatorio SEMIC {mostrarSintactico("Expresion numero aleatorio terminada correctamente"); $$ = "";}
+		 | alert_info {
+						mostrarSintactico("Expresion alert terminada correctamente"); 
+					    $$ = $1; 
+					  }
+		 | exit {
+					mostrarSintactico("Expresion exit terminada correctamente");
+					$$ = $1; 	
+				}
+		 | redirect {mostrarSintactico("Expresion redirect terminada correctamente."); $$ = "";}
+		 | insert {mostrarSintactico("Expresion insert terminaa correctamente.");$$ = "";}
 		 | error {
 			mostrarSintactico('EXPRESION COMO ERROR -> \nError: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
-			$$ = undefined;
+			$$ = "";
 		 };
 
 function: FUNCTION ID PAROPN PARCLS COROPN expresiones CORCLS {
 			console.log("Funcion " + $2 + " terminada con exito.");
 			mensajesSalida += "PARSER: Funcion " + $2 + " terminada con exito.\n";
 			tabla = tabla.replaceAll("ambito", $1 + $2 + "()");
+
+			var codigo = "function FUNCTION_" + $2 + "(){\n" + $6 + "}\n";
+			codigoScript += codigo;
+
 		}
         | ONLOAD      PAROPN PARCLS COROPN expresiones CORCLS{
 			console.log("Funcion ONLOAD terminada correctamente.");
 			mensajesSalida += "FPARSER: Funcion ONLOAD terminada correctamente.\n";
 			//tabla = tabla.replace(/ambito/g, "ON_LOAD()");
 			tabla = tabla.replaceAll("ambito", "ON_LOAD()");
+
+			var codigo = "window.onload = function(){\n" + $5 + "};\n";
+			codigoScript += codigo; 
 		}
 		|error {
 			mostrarSintactico('FUNCION COMO ERROR -> \nError: ' + yytext + ' linea: ' + (this._$.first_line) + ' columna: ' + (this._$.first_column));
 			$$ = undefined;
 		};
 
-bloque_ins: INIT LLAVOP COLON expresiones COLON LLAVCL END;
+bloque_ins: INIT LLAVOP COLON expresiones COLON LLAVCL END{
+																$$ = $4;
+														  };
 
-alert_info: ALERT_INFO PAROPN STRING PARCLS SEMIC
-		  | ALERT_INFO PAROPN ID     PARCLS SEMIC;
-exit : EXIT PAROPN PARCLS SEMIC;
-redirect : REDIRECT PAROPN PARCLS SEMIC; 
-insert : INSERT PAROPN inserts PARCLS;
+alert_info: ALERT_INFO PAROPN STRING PARCLS SEMIC{$$ = "alert(" + $3 + ");\n";}
+		  | ALERT_INFO PAROPN ID     PARCLS SEMIC{$$ = "alert(" + $3 + ");\n";};
+exit : EXIT PAROPN PARCLS SEMIC {$$ = "return;\n"};
+redirect : REDIRECT PAROPN PARCLS SEMIC {$$ = "";}; 
+insert : INSERT PAROPN inserts PARCLS {$$ = "";};
 inserts : STRING | STRING COMMA inserts | STRING inserts
 		| ID     | ID COMMA inserts | ID insert;
 

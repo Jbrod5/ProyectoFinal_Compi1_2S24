@@ -3,6 +3,7 @@ import * as CLang from './analizadores/CLang';
 import * as CLC from './analizadores/CLC';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
+import { Html } from './componentes/Html';
 import { Parametro } from './componentes/Parametro';
 
 import { saveAs } from 'file-saver'; // Importar la librería file-saver
@@ -71,6 +72,14 @@ export class AppComponent {
       CLC.parse(script);
       mensaje += CLC.obtenerMensajes();
 
+
+      mensaje += " - - - - - - - - - - - - - - SCRIPT  - - - - - - - - - - - - - - \n";
+      mensaje += CLC.obtenerCodigo();
+      script = "<script>\n" + CLC.obtenerCodigo() + "\n</script>";
+      var paginaCompleta = CLang.obtenerPagina();
+      paginaCompleta.establecerScript(script);
+
+
       tabla = CLC.obtenerTabla();
 
 
@@ -104,7 +113,7 @@ export class AppComponent {
 			
 			  // Crear los parámetros
         const params = new HttpParams()
-          .set('codigoPagina', CLang.obtenerCodigo())
+          .set('codigoPagina', paginaCompleta.obtenerCodigo())
           .set('nombrePagina', CLang.obtenerNombre());
       
 			  
