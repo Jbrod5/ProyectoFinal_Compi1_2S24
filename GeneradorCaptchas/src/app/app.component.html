@@ -18,7 +18,7 @@
     <li *ngFor="let captcha of captchasGenerados; let i = index">
       <!-- Enlace al URL almacenado en captcha y contador de clics -->
       <a [href]="captcha" target="_blank" (click)="incrementarContador(i)">
-        {{ captcha }}
+        {{ nombresCaptchas[i] || "Captcha " + i }}
       </a>
       <span>  Visitado: {{ contadorCaptchas[i] || 0 }} veces</span>
     </li>

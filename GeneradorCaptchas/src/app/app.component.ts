@@ -20,6 +20,7 @@ export class AppComponent {
   tablaDatos: string[][] = []; // Array para almacenar las filas y columnas de la tabla
   
   captchasGenerados: string[] = [];
+  nombresCaptchas: string[] = [];
   contadorCaptchas: number[] = [];
 
   constructor(private http: HttpClient) { }  // HttpClient inyectado en el constructor
@@ -137,6 +138,7 @@ export class AppComponent {
                   if(!encontrado){
                     this.captchasGenerados.push(urlCaptcha);
                     this.contadorCaptchas.push(0);
+                    this.nombresCaptchas.push(CLang.obtenerNombre());
                   }
                   
               },

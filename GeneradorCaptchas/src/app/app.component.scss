@@ -170,3 +170,65 @@ th {
   background-color: #f2f2f2;
   font-weight: bold;
 }
+
+
+
+
+
+/* Contenedor del menú lateral */
+.side-menu {
+
+  top: 20px;
+  left: 20px;
+  background-color: #f8f9fa;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  max-height: 90vh;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Lista de elementos */
+.side-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu li {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Enlace de cada captcha */
+.side-menu a {
+  color: #007bff;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Efecto hover en el enlace */
+.side-menu a:hover {
+  background-color: #e2e6ea;
+  color: #0056b3;
+}
+
+/* Contador de clics */
+.side-menu span {
+  font-size: 13px;
+  color: #666;
+  margin-left: 8px;
+}
+
+/* Efecto de apertura/cierre del menú */
+.side-menu.hidden {
+  transform: translateX(-100%);
+  opacity: 0;
+}
